@@ -4,7 +4,7 @@
   "bin": "bin/cli.js",
   "scripts": {
     "watch": "rollup -c -w src/index.ts",
-    "build": "rollup src/index.ts -c"
+    "build": "rollup -c"
   },
   "dependencies": {
     "axios": "^0.19.2",
