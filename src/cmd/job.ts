@@ -30,9 +30,9 @@ const applyCommand = (program: Command) => {
         .action((jobId: string, cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
-            const variables = parent.variables;
             const accessToken = parent.parent.accessToken;
             const basePath = parent.parent.apiUrl;
+            const variables = cmd.variables;
             const waitUntilFinished = cmd.wait;
             const suppressOutputs = cmd.suppressOutputs;
             const suppressVariables = cmd.suppressVariables;

@@ -19,7 +19,7 @@ const createProgram = () => {
             'API access token',
             process.env.REFACTR_AUTH_TOKEN
         )
-        .option('--api-url', 'API endpoint', BASE_PATH);
+        .option('--api-url <url>', 'API endpoint', BASE_PATH);
 
     // @ts-ignore
     applyCommands(program, [job, project]);
