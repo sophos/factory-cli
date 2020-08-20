@@ -11,4 +11,4 @@ COPY ./dist ./dist
 
 ENV PATH="/opt/cli/bin:${PATH}"
 
-ENTRYPOINT ["./bin/cli.js"]
+ENTRYPOINT ["./bin/cli"]
