@@ -9,4 +9,6 @@ RUN npm install
 COPY ./bin ./bin
 COPY ./dist ./dist
 
+ENV PATH="/opt/cli/bin:${PATH}"
+
 ENTRYPOINT ["./bin/cli.js"]
