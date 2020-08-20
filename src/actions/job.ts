@@ -83,16 +83,20 @@ async function run(
             for (let i = eventsOffset; i < totalEvents; i++) {
                 if (typeof events[i] !== 'undefined') {
                     const event = events[i];
+
                     log(
                         `[${event.level}] ${event.occurred} - ${event.message}`
                     );
+                    if (event.details) {
+                        log(event.details);
+                    }
                 }
             }
 
             eventsOffset = totalEvents;
 
             if (result.finished) {
-                const outputs = result?.run?.outputs ?? {};
+                const outputs = result?.run?.outputs;
 
                 if (outputs) {
                     log('\n');
