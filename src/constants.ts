@@ -1,3 +1,3 @@
-const BASE_PATH = 'http://localhost:7101/v1';
+const BASE_PATH = 'https://api.refactr.it/v1';
 
 export { BASE_PATH };
