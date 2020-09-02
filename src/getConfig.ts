@@ -1,4 +1,4 @@
-import { Configuration } from './client';
+import { Configuration } from '@refactr/api-client';
 
 function getConfig(basePath: string, accessToken: string) {
     return new Configuration({

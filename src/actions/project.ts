@@ -1,4 +1,5 @@
-import { ProjectsApi } from '../client';
+import { ProjectsApi } from '@refactr/api-client';
+
 import { getConfig } from '../getConfig';
 import { error, handleAPIError } from '../utilities';
 import { printTable } from 'console-table-printer';

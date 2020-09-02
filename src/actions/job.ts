@@ -1,7 +1,7 @@
 import { printTable } from 'console-table-printer';
 
-import { JobsApi, RunsApi } from '../client';
-import { BASE_PATH } from '../constants';
+import { JobsApi, RunsApi } from '@refactr/api-client';
+
 import { error, log } from '../utilities';
 import { getConfig } from '../getConfig';
 import { retry } from '../utils/retry';

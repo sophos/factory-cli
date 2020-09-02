@@ -1,17 +1,15 @@
 {
-  "name": "cli",
+  "name": "@refactr/cli",
   "version": "0.1.0",
   "bin": "bin/cli.js",
-  "scripts": {
-    "watch": "rollup -c -w src/index.ts",
-    "build": "rollup -c"
-  },
+  "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.19.2",
     "commander": "^6.0.0",
     "console-table-printer": "^2.3.3"
   },
   "devDependencies": {
+    "@refactr/api-client": "^0.1.1",
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
@@ -26,5 +24,9 @@
     "prettier": "^2.0.5",
     "rollup": "^2.19.0",
     "typescript": "^3.9.6"
+  },
+  "scripts": {
+    "watch": "rollup -c -w src/index.ts",
+    "build": "rollup -c"
   }
 }
