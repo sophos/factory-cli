@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
-RUN mkdir -p /opt/cli
-WORKDIR /opt/cli
+RUN mkdir -p /opt/refactr
+WORKDIR /opt/refactr
 
 COPY ./package.json ./package-lock.json ./
 RUN npm install
@@ -9,6 +9,6 @@ RUN npm install
 COPY ./bin ./bin
 COPY ./dist ./dist
 
-ENV PATH="/opt/cli/bin:${PATH}"
+ENV PATH="/opt/refactr/bin:${PATH}"
 
 ENTRYPOINT ["./bin/refactrctl"]
