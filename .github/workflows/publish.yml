@@ -27,8 +27,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: refactr/cli
           tag_with_ref: true
-          tags:
-            - latest
+          tags: latest
 
       - name: Publish to npm registry
         run: npm publish --access public
