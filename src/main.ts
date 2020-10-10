@@ -1,7 +1,7 @@
 import { createProgram } from './cmd';
 import * as util from './utilities';
 
-const handleError = (err) => {
+const handleError = (err: any) => {
     util.handleAPIError(err);
     process.exit(1);
 };

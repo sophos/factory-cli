@@ -1,7 +1,9 @@
 {
   "name": "@refactr/cli",
   "version": "0.10.0",
-  "bin": "bin/refactrctl",
+  "bin": {
+    "refactrctl": "bin/refactrctl"
+  },
   "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.19.2",
