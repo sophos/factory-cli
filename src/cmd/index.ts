@@ -13,7 +13,7 @@ const createProgram = () => {
 
     program
         .version(__VERSION__)
-        .name('refactr-cli')
+        .name('refactrctl')
         .option(
             '--access-token <token>',
             'API access token',

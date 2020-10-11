@@ -1,0 +1,15 @@
+.github
+
+# Deps
+node_modules
+
+# Source
+src
+
+# Configs
+.editorconfig
+babel.config.js
+prettier.config.js
+rollup.config.js
+tsconfig.json
+Dockerfile
