@@ -1,5 +1,7 @@
 import { Command } from 'commander';
 import { list } from '../actions/project';
+import { error, handleAPIError } from '../utilities';
+import { printTable } from 'console-table-printer';
 
 const applyCommand = (program: Command) => {
     const command = new Command('project');
@@ -10,15 +12,27 @@ const applyCommand = (program: Command) => {
         .command('list')
         .option('--organization <id>', 'Filter by organization')
         .description('list available projects')
-        .action((cmd: Command) => {
+        .action(async (cmd: Command) => {
             const organization = cmd.organization;
             const parent = cmd.parent;
             const accessToken = parent.parent.accessToken;
             const basePath = parent.parent.apiUrl;
 
-            return list(accessToken, basePath, {
-                organizationId: organization
-            });
+            try {
+                const projects = await list(accessToken, basePath, {
+                    organizationId: organization
+                });
+
+                if (!projects || projects.length === 0) {
+                    error('No projects were found!');
+                    return;
+                }
+
+                printTable(projects);
+            } catch (err) {
+                handleAPIError(err);
+                return;
+            }
         });
 
     program.addCommand(command);

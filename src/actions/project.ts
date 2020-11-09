@@ -1,8 +1,6 @@
 import { ProjectsApi } from '@refactr/api-client';
 
 import { getConfig } from '../getConfig';
-import { error, handleAPIError } from '../utilities';
-import { printTable } from 'console-table-printer';
 
 async function list(
     accessToken: string,
@@ -12,33 +10,23 @@ async function list(
     const client = new ProjectsApi(getConfig(basePath, accessToken));
 
     let projects;
-    try {
-        if (organizationId) {
-            const { data } = await client.listOrganizationProjects(
-                organizationId
-            );
-            projects = data.projects;
-        } else {
-            const { data } = await client.listProjects();
-            projects = data.projects;
-        }
-    } catch (err) {
-        handleAPIError(err);
-        return;
+    if (organizationId) {
+        const { data } = await client.listOrganizationProjects(organizationId);
+        projects = data.projects;
+    } else {
+        const { data } = await client.listProjects();
+        projects = data.projects;
     }
 
     if (!projects) {
-        error('No projects were found!');
         return;
     }
 
-    printTable(
-        projects.map(({ _id, name, organization_id }) => ({
-            id: _id,
-            name,
-            organization_id
-        }))
-    );
+    return projects.map(({ _id, name, organization_id }) => ({
+        id: _id,
+        name,
+        organization_id
+    }));
 }
 
 export { list };

@@ -12,6 +12,7 @@ export default {
     input: 'src/main.ts',
     plugins: [
         nodeResolve({
+            preferBuiltins: true,
             extensions
         }),
         commonjs(),

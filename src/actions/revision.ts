@@ -60,10 +60,9 @@ async function createRevision(
     );
 
     return {
-        projectId,
-        pipelineId,
-        revisionId: id,
-        revision
+        id,
+        revision,
+        pipeline_id: pipelineId
     };
 }
 
@@ -132,10 +131,9 @@ async function findOrCreateRevision(
 
     if (compareRevisions(r1, revisionContent)) {
         return {
-            projectId,
-            pipelineId,
-            revisionId: r1._id,
-            revision: r1.revision
+            id: r1._id,
+            revision: r1.revision,
+            pipeline_id: pipelineId
         };
     }
 

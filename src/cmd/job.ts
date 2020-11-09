@@ -1,5 +1,8 @@
 import { Command } from 'commander';
 import { list, run } from '../actions/job';
+import { printTable } from 'console-table-printer';
+import { waitForRun } from '../waitForRun';
+import { error, handleAPIError, log } from '../utilities';
 
 const applyCommand = (program: Command) => {
     const command = new Command('job');
@@ -10,24 +13,30 @@ const applyCommand = (program: Command) => {
     command
         .command('list')
         .description('list available jobs')
-        .action((cmd: Command) => {
+        .action(async (cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
             const accessToken = parent.parent.accessToken;
             const basePath = parent.parent.apiUrl;
 
-            return list(projectId, accessToken, basePath);
+            const jobs = await list(projectId, accessToken, basePath);
+            if (!jobs || jobs.length === 0) {
+                error('No jobs were found!');
+                return;
+            }
+
+            printTable(jobs);
         });
 
     command
         .command('run <id>')
         .description('create a new run for given job')
-        .option('--wait', 'wait until the job run is finished', false)
+        .option('--wait', 'Wait until the job run is finished', false)
         .option('--suppress-outputs', 'Suppress output', false)
         .option('--suppress-events', 'Suppress events', false)
         .option('--suppress-variables', 'Suppress variables', false)
-        .option('--variables <vars>', 'run variables')
-        .action((jobId: string, cmd: Command) => {
+        .option('--variables <vars>', 'Run variables')
+        .action(async (jobId: string, cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
             const accessToken = parent.parent.accessToken;
@@ -49,13 +58,36 @@ const applyCommand = (program: Command) => {
                 }
             }
 
-            return run(projectId, jobId, accessToken, basePath, {
-                suppressOutputs,
-                suppressVariables,
-                suppressEvents,
-                variables: vars,
-                waitUntilFinished
-            });
+            let runId;
+            try {
+                const result = await run(
+                    projectId,
+                    jobId,
+                    accessToken,
+                    basePath,
+                    {
+                        suppressOutputs,
+                        suppressVariables,
+                        suppressEvents,
+                        variables: vars
+                    }
+                );
+                runId = result.id;
+            } catch (err) {
+                handleAPIError(err);
+                return;
+            }
+
+            if (!runId) {
+                error('Unable to schedule a job!');
+                return;
+            } else {
+                log(runId);
+            }
+
+            if (waitUntilFinished) {
+                await waitForRun(projectId, runId, basePath, accessToken);
+            }
         });
 
     program.addCommand(command);
