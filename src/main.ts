@@ -11,12 +11,12 @@ function listenGlobalEvents() {
     process.on('uncaughtException', handleError);
 }
 
-function main(argv: any[]) {
+async function main(argv: any[]) {
     listenGlobalEvents();
 
     const program = createProgram();
 
-    program.parse(argv);
+    await program.parseAsync(argv);
 }
 
 export default main;

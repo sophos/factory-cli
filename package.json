@@ -8,7 +8,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "commander": "^6.0.0",
-    "console-table-printer": "^2.3.3"
+    "console-table-printer": "^2.3.3",
+    "js-yaml": "^3.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -21,6 +22,7 @@
     "@rollup/plugin-node-resolve": "^8.1.0",
     "@rollup/plugin-replace": "^2.3.3",
     "@types/jest": "^26.0.3",
+    "@types/js-yaml": "^3.12.5",
     "@types/react": "^16.9.44",
     "jest": "^26.1.0",
     "prettier": "^2.0.5",
