@@ -1,7 +1,8 @@
 name: Publish image to Docker Hub
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - v*
 
 jobs:
   push_to_registry:
@@ -17,6 +18,10 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
 
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
+
       - run: npm ci
       - run: npm run build
 
@@ -27,9 +32,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: refactr/cli
           tag_with_ref: true
-          tags: latest
 
       - name: Publish to npm registry
-        run: npm publish --access public
+        run: npm publish --access public --tag ${{ steps.steps.get_version.outputs.version }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
