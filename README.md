@@ -27,32 +27,32 @@ docker pull refactr/cli
 
 ## Usage
 
-If `refactr-cli` is installed globally, you should be able to run it directly from a terminal:
+If `refactrctl` is installed globally, you should be able to run it directly from a terminal:
 ```
-$ refactr-cli <command>
+$ refactrctl <command>
 ```
 
 When running with Docker, it can be executed using:
 ```
-$ docker run refactr-cli <command>
+$ docker run refactrctl <command>
 ```
 
 #### Non-API commands
 
-Every command has a following options:
+Every command has the following options:
 ```
 -h, --help              display help for command
 ```
 
-The `--help` option is equivalent to executing `refactr-cli help <command>`.
+The `--help` option is equivalent to executing `refactrctl help <command>`.
 
 ##### `help`
 The `help` command will provide information about the particular `command`,
 for example:
 
 ```
-$ refactr-cli help job
-Usage: refactr-cli job [options] [command]
+$ refactrctl help job
+Usage: refactrctl job [options] [command]
 
 job actions
 
@@ -78,7 +78,7 @@ List projects.
 
 Example
 ```
-$ refactr-cli project list
+$ refactrctl project list
 ```
 
 ##### `--organization <id>`
@@ -92,7 +92,7 @@ List jobs in the given project.
 
 Example
 ```
-$ refactr-cli job list --project <project-id>
+$ refactrctl job list --project <project-id>
 ```
 
 #### `job run [options] <id>`
@@ -100,7 +100,7 @@ Creates a new job run with given `id`. To obtain a job `id`, use `job list` comm
 
 Example
 ```
-refactr-cli job run <run-id> --project <project-id> --wait
+refactrctl job run <run-id> --project <project-id> --wait
 ```
 
 ##### `--wait`
