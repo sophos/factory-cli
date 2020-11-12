@@ -16,8 +16,7 @@ const createProgram = () => {
         .name('refactrctl')
         .option(
             '--access-token <token>',
-            'API access token',
-            process.env.REFACTR_AUTH_TOKEN
+            'API token'
         )
         .option('--api-url <url>', 'API endpoint', BASE_PATH);
 
