@@ -13,7 +13,7 @@ const applyCommand = (program: Command) => {
         .action((cmd: Command) => {
             const organization = cmd.organization;
             const parent = cmd.parent;
-            const accessToken = parent.parent.accessToken;
+            const accessToken = parent.parent.getAccessToken();
             const basePath = parent.parent.apiUrl;
 
             return list(accessToken, basePath, {

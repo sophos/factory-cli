@@ -13,7 +13,7 @@ const applyCommand = (program: Command) => {
         .action((cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
-            const accessToken = parent.parent.accessToken;
+            const accessToken = parent.parent.getAccessToken();
             const basePath = parent.parent.apiUrl;
 
             return list(projectId, accessToken, basePath);
@@ -30,7 +30,7 @@ const applyCommand = (program: Command) => {
         .action((jobId: string, cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
-            const accessToken = parent.parent.accessToken;
+            const accessToken = parent.parent.getAccessToken();
             const basePath = parent.parent.apiUrl;
             const variables = cmd.variables;
             const waitUntilFinished = cmd.wait;
