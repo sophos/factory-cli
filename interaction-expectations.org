@@ -1,0 +1,125 @@
+
+
+: NOTE: =:eval= (or ~:eval~?) header docs: https://orgmode.org/manual/Evaluating-Code-Blocks.html
+
+: NOTE: consider making :results verbatim part of defaults
+
+
+Ensure Emacs can run the shell snippets from this document:
+#+begin_src emacs-lisp :results silent
+  (customize-set-variable 'org-babel-load-languages '((shell . t)))
+#+end_src
+(Addresses errors like =No org-babel-execute function for sh!=)
+
+: #  - * -  org-babel-default-header-args: ((:exports . "both") (:eval . "never-export"))  - * -
+
+
+#+begin_example sh
+  export PATH="$(brew --prefix node@12)"/bin:"$PATH"
+#+end_example
+
+#+begin_example sh
+  export HOME="$(mktemp -d)"
+  npm config set prefix '~/.local'
+  export PATH="$HOME/.local/bin:$PATH"
+  npm install --global @refactr/cli
+#+end_example
+
+(The =|| true= in the following is because ~refactrctl~ has an exit code of 1 with no arguments)
+#+begin_src sh
+  refactrctl || true
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Usage: refactrctl [options] [command]
+
+Options:
+  -V, --version           output the version number
+  --access-token <token>  API token
+  --api-url <url>         API endpoint (default: "https://api.refactr.it/v1")
+  -h, --help              display help for command
+
+Commands:
+  job [options]           Commands to view and modify jobs.
+  project                 Commands to view and modify projects.
+  help [command]          display help for command
+#+end_example
+
+#+begin_src sh
+  refactrctl help
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Usage: refactrctl [options] [command]
+
+Options:
+  -V, --version           output the version number
+  --access-token <token>  API token
+  --api-url <url>         API endpoint (default: "https://api.refactr.it/v1")
+  -h, --help              display help for command
+
+Commands:
+  job [options]           Commands to view and modify jobs.
+  project                 Commands to view and modify projects.
+  help [command]          display help for command
+#+end_example
+
+#+begin_src sh
+  refactrctl --help
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Usage: refactrctl [options] [command]
+
+Options:
+  -V, --version           output the version number
+  --access-token <token>  API token
+  --api-url <url>         API endpoint (default: "https://api.refactr.it/v1")
+  -h, --help              display help for command
+
+Commands:
+  job [options]           Commands to view and modify jobs.
+  project                 Commands to view and modify projects.
+  help [command]          display help for command
+#+end_example
+
+#+begin_src sh
+  refactrctl -h
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Usage: refactrctl [options] [command]
+
+Options:
+  -V, --version           output the version number
+  --access-token <token>  API token
+  --api-url <url>         API endpoint (default: "https://api.refactr.it/v1")
+  -h, --help              display help for command
+
+Commands:
+  job [options]           Commands to view and modify jobs.
+  project                 Commands to view and modify projects.
+  help [command]          display help for command
+#+end_example
+
+#+begin_src sh :results replace
+  echo "OB_REFACTR_ACCESS_TOKEN: $OB_REFACTR_ACCESS_TOKEN"
+#+end_src
+
+#+RESULTS:
+: OB_REFACTR_ACCESS_TOKEN: 
+
+
+
+
+
+: # org-babel-default-header-args: ((:session . "refactr-cli") (:results . "output verbatim replace"))
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# org-babel-default-header-args: ((:results . "verbatim replace"))
+# End:
