@@ -16,7 +16,7 @@ function main(argv: any[]) {
 
     const program = createProgram();
 
-    program.parse(argv);
+    program.parseAsync(argv);
 }
 
 export default main;

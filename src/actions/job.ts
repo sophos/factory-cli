@@ -1,10 +1,9 @@
-import { printTable } from 'console-table-printer';
-
 import { JobsApi, RunsApi } from '@refactr/api-client';
 
 import { error, log } from '../utilities';
 import { getConfig } from '../getConfig';
 import { retry } from '../utils/retry';
+import { print } from '../utils/print';
 
 const FINISH_STATUSES = ['Succeeded', 'Failed'];
 
@@ -23,7 +22,7 @@ async function run(
 ) {
     const config = getConfig(basePath, accessToken);
     const jobClient = new JobsApi(config);
-    const { data: { _id: runId } = {} } = await jobClient.runJob(
+    const { data = {} } = await jobClient.runJob(
         projectId,
         jobId,
         {
@@ -34,11 +33,19 @@ async function run(
         }
     );
 
-    if (!runId) {
+    if (!data._id) {
         error('Unable to schedule a job!');
         return;
     } else {
-        log(runId);
+        const {
+            suppress_vars,
+            suppress_events,
+            suppress_outputs,
+            events,
+            operations,
+            ...rest
+        } = data;
+        print('table', [rest]);
     }
 
     if (waitUntilFinished) {
@@ -84,9 +91,7 @@ async function run(
                 if (typeof events[i] !== 'undefined') {
                     const event = events[i];
 
-                    log(
-                        `[${event.level}] ${event.occurred} - ${event.message}`
-                    );
+                    log(`[${event.level}] ${event.occurred} - ${event.message}`);
                     if (event.details) {
                         log(event.details);
                     }
@@ -101,7 +106,8 @@ async function run(
                 if (outputs) {
                     log('\n');
                     log('outputs');
-                    printTable(
+                    print(
+                        'table',
                         Object.keys(outputs).map((key) => ({
                             name: key,
                             value: outputs[key]
@@ -120,17 +126,7 @@ async function run(
 async function list(projectId: string, accessToken: string, basePath: string) {
     const config = getConfig(basePath, accessToken);
     const client = new JobsApi(config);
-    const { data: { jobs } = {} } = await client.listJobs(projectId);
-    if (!jobs) {
-        return;
-    }
-
-    printTable(
-        jobs.map(({ _id, name }) => ({
-            id: _id,
-            name
-        }))
-    );
+    return await client.listJobs(projectId);
 }
 
 export { list, run };

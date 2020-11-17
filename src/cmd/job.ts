@@ -1,5 +1,8 @@
+import { resolve } from 'path';
+import { writeFileSync } from 'fs';
 import { Command } from 'commander';
 import { list, run } from '../actions/job';
+import { format } from '../utils/print';
 
 const applyCommand = (program: Command) => {
     const command = new Command('job');
@@ -10,7 +13,9 @@ const applyCommand = (program: Command) => {
     command
         .command('list')
         .description('List jobs in the project specified by --project.')
-        .action((cmd: Command) => {
+        .option('--format', 'output format', 'json')
+        .option('--out-file', 'output file path')
+        .action(async (cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
             const accessToken = parent.parent.accessToken ?? process.env.REFACTR_AUTH_TOKEN;
@@ -19,7 +24,21 @@ const applyCommand = (program: Command) => {
             }
             const basePath = parent.parent.apiUrl;
 
-            return list(projectId, accessToken, basePath);
+            const { data } = await list(projectId, accessToken, basePath);
+
+            const formatted = format(
+                'table',
+                data.jobs.map(({ _id, name }) => ({
+                    id: _id,
+                    name
+                }))
+            );
+            if (cmd.outFile) {
+                const outputPath = resolve(cmd.outFile);
+                writeFileSync(outputPath, formatted, 'utf8');
+            } else {
+                console.log(formatted);
+            }
         });
 
     command
@@ -30,7 +49,8 @@ const applyCommand = (program: Command) => {
         .option('--suppress-events', 'Suppress events', false)
         .option('--suppress-variables', 'Suppress variables', false)
         .option('--variables <vars>', 'run variables')
-        .action((jobId: string, cmd: Command) => {
+        .option('--format', 'output format', 'json')
+        .action(async (jobId: string, cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
             const accessToken = parent.parent.accessToken ?? process.env.REFACTR_AUTH_TOKEN;
@@ -55,7 +75,7 @@ const applyCommand = (program: Command) => {
                 }
             }
 
-            return run(projectId, jobId, accessToken, basePath, {
+            await run(projectId, jobId, accessToken, basePath, {
                 suppressOutputs,
                 suppressVariables,
                 suppressEvents,
