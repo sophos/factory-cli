@@ -15,8 +15,8 @@ const applyCommand = (program: Command) => {
     command
         .command('get <id>')
         .description('Retrieve data about a run')
-        .option('--format', 'output format', 'json')
-        .option('--out-file', 'output file path')
+        .option('--format <format>', 'output format', 'json')
+        .option('--out-file <outFile>', 'output file path')
         .action(async (runId: string, cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
@@ -27,7 +27,7 @@ const applyCommand = (program: Command) => {
             const basePath = parent.parent.apiUrl;
 
             const { data } = await get(projectId, runId, accessToken, basePath);
-            console.info(cmd);
+
             const formatted = format(cmd.format, data);
             if (cmd.outFile) {
                 const outputPath = resolve(cmd.outFile);

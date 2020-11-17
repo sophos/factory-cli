@@ -49,7 +49,7 @@ const applyCommand = (program: Command) => {
         .option('--suppress-events', 'Suppress events', false)
         .option('--suppress-variables', 'Suppress variables', false)
         .option('--variables <vars>', 'run variables')
-        .option('--format', 'output format', 'json')
+        .option('--format <format>', 'output format', 'json')
         .action(async (jobId: string, cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;
