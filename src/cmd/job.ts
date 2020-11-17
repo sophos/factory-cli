@@ -13,8 +13,8 @@ const applyCommand = (program: Command) => {
     command
         .command('list')
         .description('List jobs in the project specified by --project.')
-        .option('--format', 'output format', 'json')
-        .option('--out-file', 'output file path')
+        .option('--format <format>', 'output format', 'json')
+        .option('--out-file <outFile>', 'output file path')
         .action(async (cmd: Command) => {
             const parent = cmd.parent;
             const projectId = parent.project;

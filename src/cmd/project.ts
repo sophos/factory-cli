@@ -15,15 +15,15 @@ const applyCommand = (program: Command) => {
         .command('list')
         .option('--organization <id>', 'Filter by organization')
         .description('List projects. If --organization is provided, the list is filtered by the organization ID.')
-        .option('--format', 'output format', 'json')
-        .option('--out-file', 'output file path')
+        .option('--format <format>', 'output format', 'json')
+        .option('--out-file <outFile>', 'output file path')
         .action(async (cmd: Command) => {
             const organization = cmd.organization;
             const parent = cmd.parent;
             const accessToken = parent.parent.accessToken ?? process.env.REFACTR_AUTH_TOKEN;
             if (!accessToken) {
                 throw new Error('Auth token is required.');
-            };
+            }
             const basePath = parent.parent.apiUrl;
 
             const { data } = await list(accessToken, basePath, {
