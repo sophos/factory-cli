@@ -1,0 +1,1063 @@
+
+#+begin_example emacs-lisp
+  (customize-set-variable 'org-babel-load-languages '((http . t)))
+#+end_example
+(apparently not necessary?)
+
+#+begin_src emacs-lisp :results silent
+  (customize-set-variable 'org-babel-default-header-args:http
+                          `((:curl . ,(concat "--oauth2-bearer " (getenv "OB_REFACTR_ACCESS_TOKEN")))
+                            (:pretty)))
+#+end_src
+
+#+begin_src http :curl
+  GET https://api.refactr.it/v1/organizations
+#+end_src
+
+#+RESULTS:
+: {
+:   "status": 401,
+:   "errors": [
+:     {
+:       "code": "Unauthorized",
+:       "message": "Authentication failed"
+:     }
+:   ]
+: }
+
+#+begin_src http
+  GET https://api.refactr.it/v1/organizations
+#+end_src
+
+#+RESULTS:
+#+begin_example json
+{
+  "organizations": [
+    {
+      "_id": "5db4b34a5155b30036b6c52e",
+      "admin": true,
+      "name": "Refactr",
+      "created": "2019-10-26T20:57:46.108Z",
+      "city": "Seattle",
+      "contact_email": "mike@refactr.it",
+      "contact_name": "Michael Fraser",
+      "modified": "2019-11-21T05:12:42.540Z",
+      "state": "WA",
+      "zip": "98101",
+      "address": "1411 4th Ave.",
+      "plan": "admin",
+      "plan_quotas": {
+        "project_count": -1,
+        "user_count": -1,
+        "agent_count": -1,
+        "run_minutes": -1
+      }
+    }
+  ]
+}
+#+end_example
+
+#+begin_src http
+  GET https://api.refactr.it/v1/projects/5e4f4d258b388200389d81d3
+#+end_src
+
+#+RESULTS:
+#+begin_example json
+{
+  "_id": "5e4f4d258b388200389d81d3",
+  "organization_id": "5db4b34a5155b30036b6c52e",
+  "created": "2020-02-21T03:23:17.859Z",
+  "modified": "2020-10-13T07:34:42.699Z",
+  "pipeline_count": 10,
+  "name": "Kitchen Sink Suite",
+  "image_id": "5ed5d2855df9401db3474886",
+  "access": {
+    "role": "admin",
+    "run": true
+  }
+}
+#+end_example
+
+#+begin_src http
+  GET https://api.refactr.it/v1/projects/5e4f4d258b388200389d81d3?fields=variables&fields=organization
+#+end_src
+
+#+RESULTS:
+#+begin_example json
+{
+  "_id": "5e4f4d258b388200389d81d3",
+  "variables": [
+    {
+      "type": "String",
+      "name": "project_eval1",
+      "key": "project_eval1",
+      "value": "{|\"1\"|}",
+      "required": false,
+      "visible": true
+    },
+    {
+      "type": "String",
+      "name": "project_eval2",
+      "key": "project_eval2",
+      "value": "{|vars.project_eval1 + \"2\"|}",
+      "required": false,
+      "visible": true
+    },
+    {
+      "type": "String",
+      "name": "project_eval3",
+      "key": "project_eval3",
+      "value": "{|vars.project_eval2 + \"3\"|}",
+      "required": false,
+      "visible": true
+    }
+  ],
+  "organization_id": "5db4b34a5155b30036b6c52e",
+  "created": "2020-02-21T03:23:17.859Z",
+  "modified": "2020-10-13T07:34:42.699Z",
+  "pipeline_count": 10,
+  "name": "Kitchen Sink Suite",
+  "image_id": "5ed5d2855df9401db3474886",
+  "organization": {
+    "_id": "5db4b34a5155b30036b6c52e",
+    "name": "Refactr",
+    "access": {
+      "default_project_role": "admin",
+      "default_project_run": true,
+      "create_projects": true,
+      "organization_admin": true
+    }
+  },
+  "access": {
+    "role": "admin",
+    "run": true
+  }
+}
+#+end_example
+
+#+begin_src http
+  GET https://api.refactr.it/v1/projects
+#+end_src
+
+#+RESULTS:
+#+begin_example json
+{
+  "projects": [
+    {
+      "_id": "5f4d4b1b853181b41e8b0b12",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-08-31T19:10:19.186Z",
+      "modified": "2020-11-13T01:45:49.195Z",
+      "pipeline_count": 18,
+      "name": "Culpepper's Corner",
+      "image_id": "5f7b72cf61bd93573803837a"
+    },
+    {
+      "_id": "5db96e5569889400360bb6c2",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2019-10-30T11:04:53.469Z",
+      "modified": "2020-11-11T23:45:56.219Z",
+      "name": "Refactr Publishing",
+      "pipeline_count": 69,
+      "image_id": "5db55278a7b79d0036ae062e"
+    },
+    {
+      "_id": "5ee400ee6a31cf8bd75eef73",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-06-12T22:25:50.065Z",
+      "modified": "2020-11-11T23:41:55.877Z",
+      "pipeline_count": 80,
+      "name": "Speelman Sandbox",
+      "image_id": "5ef61c9a46601a258d4faab7"
+    },
+    {
+      "_id": "5ef3e3eafb48500826c19229",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-06-24T23:38:18.632Z",
+      "modified": "2020-11-10T17:36:44.415Z",
+      "pipeline_count": 24,
+      "name": "Sales Demos",
+      "image_id": "5f90b3468cc8f0d1922c00b5"
+    },
+    {
+      "_id": "5dbb31f4e898eb0036771efd",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2019-10-31T19:11:48.379Z",
+      "modified": "2020-11-06T09:18:46.981Z",
+      "name": "Scratch / Testing",
+      "pipeline_count": 20
+    },
+    {
+      "_id": "5fa4b77cc1cc201246a7cb2b",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-11-06T02:39:56.936Z",
+      "modified": "2020-11-06T06:15:21.759Z",
+      "pipeline_count": 3,
+      "name": "Speelman Self-Hosted Runner",
+      "image_id": "5fa4e0ed0f6f4430f3953cfc"
+    },
+    {
+      "_id": "5f6e5fbac0dfa832219c334e",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-09-25T21:23:06.271Z",
+      "modified": "2020-11-02T23:13:46.431Z",
+      "pipeline_count": 13,
+      "name": "Screenshots",
+      "image_id": "5f6e70906809384b5aba9c4b"
+    },
+    {
+      "_id": "5eff6cd7ae909b0ff2bb651c",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-07-03T17:37:27.818Z",
+      "modified": "2020-11-02T22:43:25.888Z",
+      "pipeline_count": 9,
+      "name": "Fortinet PoC",
+      "image_id": "5eff6ce415a26bae66fc6052"
+    },
+    {
+      "_id": "5ef02894a6c1bb4d4b88240b",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-06-22T03:42:12.738Z",
+      "modified": "2020-10-26T21:55:08.404Z",
+      "pipeline_count": 2,
+      "name": "[Deprecated] Checkmarx PoC (See Checkmarx Organization for new Project)",
+      "image_id": "5ef0293f4677ccf440cac344"
+    },
+    {
+      "_id": "5e3914daa8f4de004023df87",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-02-04T06:53:14.094Z",
+      "modified": "2020-10-21T22:43:17.069Z",
+      "pipeline_count": 7,
+      "name": "Air Force LevelUp Project",
+      "image_id": "5f90b9828cc8f020482c00bb"
+    }
+  ]
+}
+#+end_example
+
+#+begin_src http
+  GET https://api.refactr.it/v1/projects?fields=organization
+#+end_src
+
+#+RESULTS:
+#+begin_example json
+{
+  "projects": [
+    {
+      "_id": "5f4d4b1b853181b41e8b0b12",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-08-31T19:10:19.186Z",
+      "modified": "2020-11-13T01:45:49.195Z",
+      "pipeline_count": 18,
+      "name": "Culpepper's Corner",
+      "image_id": "5f7b72cf61bd93573803837a",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5db96e5569889400360bb6c2",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2019-10-30T11:04:53.469Z",
+      "modified": "2020-11-11T23:45:56.219Z",
+      "name": "Refactr Publishing",
+      "pipeline_count": 69,
+      "image_id": "5db55278a7b79d0036ae062e",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5ee400ee6a31cf8bd75eef73",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-06-12T22:25:50.065Z",
+      "modified": "2020-11-11T23:41:55.877Z",
+      "pipeline_count": 80,
+      "name": "Speelman Sandbox",
+      "image_id": "5ef61c9a46601a258d4faab7",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5ef3e3eafb48500826c19229",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-06-24T23:38:18.632Z",
+      "modified": "2020-11-10T17:36:44.415Z",
+      "pipeline_count": 24,
+      "name": "Sales Demos",
+      "image_id": "5f90b3468cc8f0d1922c00b5",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5dbb31f4e898eb0036771efd",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2019-10-31T19:11:48.379Z",
+      "modified": "2020-11-06T09:18:46.981Z",
+      "name": "Scratch / Testing",
+      "pipeline_count": 20,
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5fa4b77cc1cc201246a7cb2b",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-11-06T02:39:56.936Z",
+      "modified": "2020-11-06T06:15:21.759Z",
+      "pipeline_count": 3,
+      "name": "Speelman Self-Hosted Runner",
+      "image_id": "5fa4e0ed0f6f4430f3953cfc",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5f6e5fbac0dfa832219c334e",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-09-25T21:23:06.271Z",
+      "modified": "2020-11-02T23:13:46.431Z",
+      "pipeline_count": 13,
+      "name": "Screenshots",
+      "image_id": "5f6e70906809384b5aba9c4b",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5eff6cd7ae909b0ff2bb651c",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-07-03T17:37:27.818Z",
+      "modified": "2020-11-02T22:43:25.888Z",
+      "pipeline_count": 9,
+      "name": "Fortinet PoC",
+      "image_id": "5eff6ce415a26bae66fc6052",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5ef02894a6c1bb4d4b88240b",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-06-22T03:42:12.738Z",
+      "modified": "2020-10-26T21:55:08.404Z",
+      "pipeline_count": 2,
+      "name": "[Deprecated] Checkmarx PoC (See Checkmarx Organization for new Project)",
+      "image_id": "5ef0293f4677ccf440cac344",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    },
+    {
+      "_id": "5e3914daa8f4de004023df87",
+      "organization_id": "5db4b34a5155b30036b6c52e",
+      "created": "2020-02-04T06:53:14.094Z",
+      "modified": "2020-10-21T22:43:17.069Z",
+      "pipeline_count": 7,
+      "name": "Air Force LevelUp Project",
+      "image_id": "5f90b9828cc8f020482c00bb",
+      "organization": {
+        "_id": "5db4b34a5155b30036b6c52e",
+        "name": "Refactr"
+      }
+    }
+  ]
+}
+#+end_example
+
+#+begin_src http
+  GET https://api.refactr.it/v1/projects/5e4f4d258b388200389d81d3/runs/5fb204794245dff34360ff54
+#+end_src
+
+#+RESULTS:
+#+begin_example json
+{
+  "_id": "5fb204794245dff34360ff54",
+  "project_id": "5e4f4d258b388200389d81d3",
+  "job_id": "5fb2040a4245df601760ff4d",
+  "pipeline_id": "5e4f4d578b388200389d81dd",
+  "pipeline_revision_id": "7",
+  "number": 7,
+  "created": "2020-11-16T04:47:53.980Z",
+  "status": "Succeeded",
+  "suppress_vars": false,
+  "suppress_outputs": false,
+  "suppress_events": false,
+  "operations": [
+    {
+      "_id": "5fb2047b1994af24d408900c",
+      "started": "2020-11-16T04:47:55.248Z",
+      "name": "/status/403",
+      "module_id": "http",
+      "status": "Failed",
+      "finished": "2020-11-16T04:47:56.671Z",
+      "message": "Step execution failed (ignored)."
+    },
+    {
+      "_id": "5fb2047b93f8824eff6e7034",
+      "started": "2020-11-16T04:47:55.247Z",
+      "name": "GET /json",
+      "module_id": "http",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:56.757Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047b93f882214f6e7035",
+      "started": "2020-11-16T04:47:55.250Z",
+      "name": "/anything file err",
+      "module_id": "http",
+      "status": "Failed",
+      "finished": "2020-11-16T04:47:55.660Z",
+      "message": "Step execution failed (ignored)."
+    },
+    {
+      "_id": "5fb2047b1994af50c608900d",
+      "started": "2020-11-16T04:47:55.252Z",
+      "name": "binary file",
+      "module_id": "http",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:56.674Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047b1994af4ef008900e",
+      "started": "2020-11-16T04:47:55.249Z",
+      "name": "/anything file",
+      "module_id": "http",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:56.724Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047b93f882272b6e7036",
+      "started": "2020-11-16T04:47:55.252Z",
+      "name": "None",
+      "module_id": "http",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:55.627Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047c93f882beeb6e7037",
+      "started": "2020-11-16T04:47:56.672Z",
+      "name": "Basic",
+      "module_id": "http",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:57.049Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047c1994af18ea08900f",
+      "started": "2020-11-16T04:47:56.695Z",
+      "name": "Binary Result",
+      "module_id": "debug",
+      "status": "Skipped",
+      "finished": null,
+      "message": "Step skipped due to falsy step condition."
+    },
+    {
+      "_id": "5fb2047c1994aff78f089010",
+      "started": "2020-11-16T04:47:56.693Z",
+      "name": "Check File",
+      "module_id": "assert",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:56.783Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047c93f88245f26e7038",
+      "started": "2020-11-16T04:47:56.697Z",
+      "name": "Node.js Script",
+      "module_id": "nodejs_script",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:56.944Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047c1994af2cc9089011",
+      "started": "2020-11-16T04:47:56.748Z",
+      "name": "Check File",
+      "module_id": "nodejs_script",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:57.055Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047c93f88266fc6e7039",
+      "started": "2020-11-16T04:47:56.763Z",
+      "name": "debug cwd",
+      "module_id": "nodejs_script",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:57.109Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047c93f882850b6e703a",
+      "started": "2020-11-16T04:47:56.780Z",
+      "name": "Print Response",
+      "module_id": "debug",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:56.991Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047d1994af4e8f089012",
+      "started": "2020-11-16T04:47:57.023Z",
+      "name": "Node.js Script",
+      "module_id": "nodejs_script",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:57.256Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047d93f8829c0c6e703b",
+      "started": "2020-11-16T04:47:57.080Z",
+      "name": "Bearer",
+      "module_id": "http",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:58.457Z",
+      "message": "Step executed successfully."
+    },
+    {
+      "_id": "5fb2047d1994af1e72089013",
+      "started": "2020-11-16T04:47:57.095Z",
+      "name": "Check PNG",
+      "module_id": "python_script",
+      "status": "Skipped",
+      "finished": null,
+      "message": "Step skipped due to falsy step condition."
+    },
+    {
+      "_id": "5fb2047d1994af0fe9089014",
+      "started": "2020-11-16T04:47:57.145Z",
+      "name": "ls -la",
+      "module_id": "shell_script",
+      "status": "Skipped",
+      "finished": null,
+      "message": "Step skipped due to falsy step condition."
+    },
+    {
+      "_id": "5fb2047d1994af177a089015",
+      "started": "2020-11-16T04:47:57.208Z",
+      "name": "Check File",
+      "module_id": "nodejs_script",
+      "status": "Succeeded",
+      "finished": "2020-11-16T04:47:58.422Z",
+      "message": "Step executed successfully."
+    }
+  ],
+  "events": [
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.183Z",
+      "message": "Executing run.",
+      "code": "BeginRun"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.208Z",
+      "message": "Evaluating project variables.",
+      "code": "BeginEvaluateProjectVariables"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.211Z",
+      "message": "Project variables evaluated successfully.",
+      "code": "EndEvaluateProjectVariables"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.214Z",
+      "message": "Evaluating run variables.",
+      "code": "BeginEvaluateRunVariables"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.214Z",
+      "message": "Run variables evaluated successfully.",
+      "code": "EndEvaluateRunVariables"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.289Z",
+      "message": "Executing pipeline step \"binary file\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047b1994af50c608900d"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.281Z",
+      "message": "Executing pipeline step \"/anything file err\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047b93f882214f6e7035"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.273Z",
+      "message": "Executing pipeline step \"/status/403\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047b1994af24d408900c"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.285Z",
+      "message": "Executing pipeline step \"GET /json\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047b93f8824eff6e7034"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.293Z",
+      "message": "Executing pipeline step \"None\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047b93f882272b6e7036"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.297Z",
+      "message": "Executing pipeline step \"/anything file\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047b1994af4ef008900e"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.347Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/anything\",\n  \"method\": \"POST\",\n  \"timeout\": 30000,\n  \"headers\": {\n    \"Content-Type\": \"text/plain\"\n  },\n  \"data\": \"foo\\nbar\"\n}",
+      "operation_id": "5fb2047b93f882214f6e7035"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.364Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/get\",\n  \"method\": \"GET\",\n  \"timeout\": 30000,\n  \"headers\": {}\n}",
+      "operation_id": "5fb2047b93f882272b6e7036"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.338Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/image/png\",\n  \"method\": \"GET\",\n  \"timeout\": 30000,\n  \"headers\": {}\n}",
+      "operation_id": "5fb2047b1994af50c608900d"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.374Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/json\",\n  \"method\": \"GET\",\n  \"timeout\": 30000,\n  \"headers\": {}\n}",
+      "operation_id": "5fb2047b93f8824eff6e7034"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.354Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/status/403\",\n  \"method\": \"GET\",\n  \"timeout\": 30000,\n  \"headers\": {\n    \"Content-Type\": \"application/json\"\n  }\n}",
+      "operation_id": "5fb2047b1994af24d408900c"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.390Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/anything\",\n  \"method\": \"POST\",\n  \"timeout\": 30000,\n  \"headers\": {\n    \"Content-Type\": \"text/plain\"\n  },\n  \"data\": \"foo\\nbar\"\n}",
+      "operation_id": "5fb2047b1994af4ef008900e"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.552Z",
+      "message": "HTTP request executed successfully.",
+      "code": "StepOutput",
+      "details": "{\n  \"status_code\": 200,\n  \"status_text\": \"OK\",\n  \"body\": {\n    \"args\": {},\n    \"headers\": {\n      \"Accept\": \"application/json, text/plain, */*\",\n      \"Host\": \"httpbin.org\",\n      \"User-Agent\": \"axios/0.19.0\",\n      \"X-Amzn-Trace-Id\": \"Root=1-5fb2047b-2b0efd8a403d31785e617db9\"\n    },\n    \"origin\": \"40.67.170.26\",\n    \"url\": \"https://httpbin.org/get\"\n  },\n  \"headers\": {\n    \"Accept\": \"application/json, text/plain, */*\",\n    \"Host\": \"httpbin.org\",\n    \"User-Agent\": \"axios/0.19.0\",\n    \"X-Amzn-Trace-Id\": \"Root=1-5fb2047b-2b0efd8a403d31785e617db9\"\n  }\n}",
+      "operation_id": "5fb2047b93f882272b6e7036"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.583Z",
+      "message": "Request failed with status code 200.",
+      "code": "StepOutput",
+      "details": "{\n  \"args\": {},\n  \"data\": \"foo\\nbar\",\n  \"files\": {},\n  \"form\": {},\n  \"headers\": {\n    \"Accept\": \"application/json, text/plain, */*\",\n    \"Content-Length\": \"7\",\n    \"Content-Type\": \"text/plain\",\n    \"Host\": \"httpbin.org\",\n    \"User-Agent\": \"axios/0.19.0\",\n    \"X-Amzn-Trace-Id\": \"Root=1-5fb2047b-2f44a3c8787ecf310135fcd9\"\n  },\n  \"json\": null,\n  \"method\": \"POST\",\n  \"origin\": \"40.67.170.26\",\n  \"url\": \"https://httpbin.org/anything\"\n}",
+      "operation_id": "5fb2047b93f882214f6e7035"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.588Z",
+      "message": "HTTP request executed successfully.",
+      "code": "StepOutput",
+      "details": "{\n  \"status_code\": 200,\n  \"status_text\": \"OK\",\n  \"body\": \"�PNG\\r\\n\\u001a\\n\\u0000\\u0000\\u0000\\rIHDR\\u0000\\u0000\\u0000d\\u0000\\u0000\\u0000d\\b\\u0002\\u0000\\u0000\\u0000��\\u0002\\u0003\\u0000\\u0000\\u001faIDATx��}wXS���J#�\\u0017� \\u0002�\\b�J\\u0019\\u0011E\\u0010\\u001c\\u0011\\u0014\\u0010�tl(��FGGT��\\\\�\\u000eVԱ�a�\\n�\\u0011\\u001bEA\\u0014QA�&��B\\u0000EzoI \\u0010���c�\\u0010!�$D\u007fw����99gg�u޳�>{���\\u000e\\u000e�0\\u0000`��ǎ\\u001dKJJ������$��\\u0014\\n��\\u0003UUU\\u001a�fjjjbbbjj�\\u000eTTT`\\u0010�0��������`0\\u0018���r&��b��L&������\\\"000�쁉�\\t�@\\u0018�������ҏ\\u001f?~��\\u0011\\u001d|���fw�����d;;;77��� UUU�ѩ��&&&2����vvvAAAw��mmmŤFyy��3g�O����,߭*))9;;\\u001f;v���Dz����w��\\r\\n\\n������2i411IMM�0\\f�f�������\\u0001���t2������r;��N.\\u0017\\u001d�wu�74|��k���/�@ ���yyy-_����H�������蘘�����WU�d���������:�����\\u0003`r8m���\u007fYC�X�cƌ������\\u001d?~�X���������������x�\\u000bh(+�\\u000e\\u001dj�����D&�($\\u0012�DB\\u0007���i���>~\\u0004\\u0000##���\\u0002ܾ}����\\u0003\\u0000!�\\u0016m��\\u001d�^\\u0000\\u0000hb�J��?�ս)+{��mzQQ'�+����gΜ�z�j///\\u0002�������bbbbbbJJJD�\\u0018��ΰ�\\u0019cdd5|����::8\\u001cN����悪�ª�w\\u0015\\u0015\\u000f��\\n��D�\\u001a\\u001a\\u001a����������H$\\u001e�w�޽?��3!!���\\u000b��I��\\u0016\\u0016��G�566\\u001d:�DOOGMM���11ۯ\\\\\\u0001�}���L����2�F�=|\\u0018Y\\\\���Wr��w��8\\u001c\\u001e����d\\\"���t������6j�\\u0000\\u0000��r�\\u0017\\u0016>~�6177K�\\u000e\\u0003\\u0003\\u0003{{��/_VTT�*���|�����mMM%��E\\u0014TV�dgGgff\\u0014\\u0017�n\\u0017AWW���>77���Zx������f��юt:�D\\u0002�f6;��H/*z�`d\\u0016\\u0017���\\u000b\\u000b�Q�˧N�0s���2\\u0000`\\u0018f�m��O��L�����(**\\n�2%r�z\\u0000���i��\\u001d��j,\\u0000�p8����1c�͘1r�p�Ko���LJ�����f��'\\u0012\\b�VV~\\u0013&��\\u001fo��7H�����%6;;:++9?_��\\u0003����bg��nnc���\\u0019>����9�����(���rڴ��~B�K���RJ���\\u0005\\u0011=\\u0001}--taOT\\u0014bj�����\\u001a���cX\\u000b�]XU��0\\f�\\n*+\\u000b*+�>x�>n�foowkk�ű��^vv�\\u001f\\u000b�\\u0019\\u000e\\u0019�9s�N�$Z\\u0019\\u0015\\u000e}-��nn��ܘ\\u001d\\u001d1��\\u0007n�d��)\\u000e��Z\\u001c�x95u���\\u001f���E�����HW\\u0017����7��\\u000b*+/$'��`\\u0001USSHNuu5���\\u001b\\u0000\\b=/\\b\\u001e�\\u000f\\u0000;��\u007f\\u000e.\\\\(jS[GGVqqzQ��o���1\\fK��K��{\\u0010\\u001c<}ܸ����ȸ�/QaM\\u0015�\\u001d~~����JJ_��~PWV^����1�ѣ}7nԶ�r��~8vl���'�-�jj.��\\u000f>�!󖺸L\\u001f7n���\\u0010u�>rV��y������P\\r\\rt\\u0006���ݍ�R����k��Ϯ\\\\\\t\\u0000,\\u000e�S}�(CC\\t=nQu���ċO��8��������?\\u001f>���\\u0001@�H\\\\����9s�\\u001b�-��p���\\u001d��cq8\\u0000���������K��W��-suU�P����_\u007f�{��J���tzaa���ӕ\\r\\u001bd2�����/:y2��Gd�|G��\\u0016,0�Re���P�ں��Ͱ�$.�\\u0007\\u0000\\u0016Æ�n�f�yW+\\r\\u0016�>}%5�N��555\\u0001@�(F2r>|pݳ\\u00071�<rd����\\u0002\\u0003�{�\\u0002����gV�x{����=\\u0000\\u0014UWOܵ+��+Y�w�����,�w�4�����}�j[[\\u0001`����={ƛ��jķ�Űaw�n=\\u0012\\u0010���Z�۽\u007f��h\\\\�L\\u0012z����\\u0002�&\\u0016K�o������\\u001fϞ���V\\\"\\u0012�׮=�d\\tA�\\tķǖY��v��PV�c��K���9�g�!\\u0001�\\u001c---<��|���<�@hmo�:t��ݻ\\u0000@��|�gϏS�\\u000e�\\u0016�)<mm_��\\u001b�(\\\"�>uݻ������0�Cm-\\u0000\\u0018\\u001b\\u001b㭬�\\u0000������I��Jjk\\u001d��\u007f\\u0013��\\u0000���$���\\u001d����÷�(C�̃\\u0007]G�\\u0006���\\\"��;sKK%\u007f������\\u000b\\u0000�t:��s�E55\\u0012���\\u0014���0qbځ\\u0003FC�(�\\u0006�1���?\\b\\u000e�i�t\\u0000�hl�<tHr-\\u0011��\\u0019Y�ϧ������O�@Lm�5+j�&\\u00152Ya�\u007fs�\\b��V\\u001d\\t\\b\\u0000���f�#GP�\\u0011\\u000b!-t:\\u001dO�RQ\\u001f/�fm�|\\u0019��\\u001f&N<�x�\\u0017=\\u0004�\\bl�5k��\\u0007\\u0000d���x��@�\\u0010-ZZZT*\\u0015\\u000f\\u0000��z�`�-}��\\u0013ԣۘ�D�[�\u007f�)��e˦�\\u001d\\u000b\\u0000ן?���-�e\\u0010-�\\\"<\\u0000���\\u0000@fq1����ya�O\u007f�\\t\\u0000TM�����ѭ�?�\\u0004͛G��\\u0003�;��}\\n0;:2����\\\"<\\u0000L�6\\r\\u0000�y���މ\\u0016-ol�}�(\\u001aO�޲�\\u001fڣK���j���**\\u0018�\\u0005�>����է��!\\u001f\\f�\\b\\u000f\\u0000NNNd2\\u0019\\u0000�޼\\u0011�k���;|\\u0018��ϯZ��\\u001b%H\\u000f����޸��ǳ;;}BB�Z[��\\u0010!d2���\\t\\u0010Y��ʎ��\\u0000�H����/�y�fo�\u007f��S>̰�9�x1\\u0000�54�\\t\\u000b\\u0013�G�8::��\\u0015�4\\u0005U���r4Z-���3)\\t\\u0000�G�DR��c�����\\u0013\\u0000���|^X\\b\\u0000\\u001fjk��ˡ�\\u001c\\u0010�5w�\\\\tp��\\u0013\\u0000�q�j7�����\\u0013�}��р\\u0000�\\u0006�z�2�P\\u0001\\\"�\\b����D�2���g\\u0005\\u0005�32\\u0000`���\u007f�/�k`���FOO\\u0000x^Xx�ŋ��O\\u0001������\\u0012\\u0015�\\t�����+V�\\u0000\\u00005\\n���(\\u0011��O����O}\\u0003�ut��_��dRH$\\u000e�\\u000b\\u0000\\u0017.\\\\X�|9��K\\u0016��\\u001a6l\\u0018��W�����ҥ�W����UT��2{s�Q��\\nl��mmB�z=.�A\\\"�޽M\\u0011\\u0011�XMM���Z�gm\\u0011'����\\u001f/^�\\b\\u0000�**%�O\\u000fҏ���~�}�D|������\\r\\u0000���V��l��\\f�=�4�x\\u0005\\f��'%��ű8��lm\\u0001��Wj\\u0014��Y�ָ�\\rr����M\\u000f\\f,��\\u0007������H�%�h9CCCt���o�L\\u0015UW�;u��¢��000\\u0010�����iŊ\\t��Q\\u001b6X\\f\\u001b&�����Ϸ�p1��[�,�\\u0001@^^����oggG�Yc��-��JD�\\u0005\\u000b\\u0002N�\\u0006\\u0000��3��\\u0016���.]�\\u0004\\u0000�C�\\u0004zzʭ\\f\\u0000�<��S���[\\u0017��PUU�p�Bsssss�\\u000b\\u0017VUU�%$,]�n�S�\\u0001�r%��a�N����x����rE%s��癙�\\u001e\\u001e�N��K�Ȕ\\u0000\u007f''k\\u001a\\r\\u0000�_��\\\"� �m�)))h\\u0006��իW��\\rFY���o::b��;q�Ķm���$\\u0002�H<|��M�|���*+�:\u007f�L��ݽ\\u001b_Z���Ihh�X�\\u001b7ntsu�41\\t��\\u001e�-�fg�\\u001e>\\f\\u0000\\u0011\\u0011\\u0011K�,A'{�\\n\\n\\n:~�8�@�����!wuw�Z�(..++stt�\\u001f�B \\u0010�?\u007fnlll9bDCX�\\u0012�(VN\u007f���!+W�z����^�d===�q�\\u001a��k0o\\u0012.�7t��\\u00166{��ٷz\\u001c\\u0012��bbb\\u0000���j���o��L�����CBB�F��x���\\u0010}}}Sc�7ee�K~[^n��ojj*Y���������r��\\u0001�D x��\\u0002@bb\\\"��A'\\u0005d��磨 �\\t\\u0013\\u0006�\\u0003\\u0000�JJl��\\u0000 ���C\\bt���.��P�/K���J���L��\\u0002�6��줤$tF@Vtt4:�\\u0019 *Lz��|\\u0014�(��\\u000b��x\\u0000@ \\u0010x\\\"�S_\\u0004��QSW�F���:��:ȍ\\u001966d\\u0012\\tD�\\u0011��ڠ5�6����ff�99\\u0000`oo?P\\u0019t)7'�;33�%\u007f��$������c�\\u0000@\\\\\\\\\\u001c���\\u0003@EE\\u0005�^�\\u001d�\\b�amb�()ijjڼy���!\\u000e�ۼysSS\\u0013���F�XV;S��\\f\\u0006�͖,��f�g0�\\u0006\\u001d/\\u0007=-����ŋ\\u0017�Ȋ��\\u0015�6HPH�Unn\\u001b~����e����\\u000b�޽���e��?�rsCqxRB�L�;i��-[$K޾e��I�\\u0014�\\u0001�\\u0019?\\u001e=\\u0015�����&�uu\\u0007\\u001f���ۼy\\u0019ϞEDD�ݻ711�������������\\u0013\\u0013\\u0013���\\u001b\\u0011\\u0011����o���*�D@@ܝ;���\\u0003I�����s�D@�BnD_K�a�\\b�!\\u000b���UUU;::V���{�j��\\u0000��O��<i?y�\\u001f��i�L>���ׯ]���v#0\\u0010��eEZa�ܓ'\\u0017.^�ۡC\\u0014�0+\\u000e��k��k�/�\\b\\f��8'�o�o\\u0007��7\\u0000455\\u0011���;::\\u0000`�\\u0000Q�}��\\r--�b\\u0001�\\u0003<\\u001e\\u0010\\b@���\\u001ahk���ؚF�=th���4#�q�G\u007f7a\\u0002\\u0000���|���S��\\u001e:$w3�L��\\t\\t���E3\\u001a�q���\\u001c\\u001c\\u0000�eF���tg:�MH��Y�t6��0ʲ��\\u0000���\\u0003www\\u0000@\\u0001�_���\\u0006\\u001a\\u001b\\u0001��1\\f0\\fp8@}-\\u001e\\u000f�����������A�H�33SU�zZi}}Vqq�Ǐ\\u0000`ojj?b��W��6����r�M\\u0000\\u0010\\u001e\\u001eNd���~!$�ǃ�2`���\\u0007>\\u001fx<�V��@\\u0000\\f��zho\\u0007\\u001a\\rD�\\u0019�d��ȑ�#G�D�40��3�ӛ;i��m\\u0016�\\u0019�J��y|~AA\\u0001���\\u0010ݒ���$Ӑ���^�|�@+\\u001e\\u000f|>\\u0010\\b��\\u0003�\\r�� cg�����(���okk`2\\u001b�L\\u0000�UW�UW���0�ןdi�!G��\\\"lV\\\"\\u0012M��Jjk\\u000b\\u000b\\u000b�(����'�gVS#���\\r<�@7�@1\\u0000\\u0010\\b\\u0002�\\u0000�dBc#|iE\\u0016ð���[\\u0019\\u0019i���ee��*x\\u001cn���d:}����c�H��S��4=���ں�:\\\"��\\u0004\\u0000Iύ˅�&AMF*��Q�F��@\\u0000\\u001cNP��\\u0016tt`�[�ok����a�\\u001e\\u0015�\\u000bE����\\u001a\\u001a���\\u0000�����ֆ��|\\f{����O��=x0B_\u007fմi?N�*ɏ�P�\\u00119L&��,\\t�p--\\u0002e<��)\\tu����\\u000b�\\\"��\\u0013���\\u000e�'���NH�\\u001d\\u0015%\\f�P�P\\u001cmm'��:���XY�ji��l������܂��^��z��իv\\u000e���f��+�޾�\u007f޼_f�\\u0014�Q��BrX,\\u0016\\u0011�P�K�\\u000bg2\\u0005�]�Aq�����H\\u001f:�a���GqvIɪ\u007f�[\\u0018i7zĈ5��/���\\u00188�\\b��\\u000f��qwttwt\\u0004�6\\u0016+26����o���\\u001d\\u001d�\\\"\\\"\\\"�>\\r��'1�u\\n�\\u0019\\u0001��d2�_�Y��\\u0000=/]�Ϟ��G@\u007f�ŘLQ\\u0019�32�w�FLY�h�����Ĭ����T\u007fh�����Ϗ��?\u007fނF\\u0003���R�ݻ�*��m�ի�\\\" \\u000bu\\n�:Lĺ�\\u0018\\u0001=7��\\u0011{U��>��8��q\\u000e�K\\\"\\u0012\\u000f��˛����_�f`�tv~\\u0013\\u001d}��_HD\\\"�˝{����D��,\\n�� \\u001f���\\u000e\\u0000�/z\u007fP�(� P\\u0005F\\u001d��SD}\\u0001��Ӯ/����p��aꪪ�Ν\\u000b^�����\\u001e��R�5�ΝSWU�cغ\\u000b\\u0017.��*��>@䨫�\\u000b�j��4@&\\u000b����x<\\u0010�@\\\"��\\u0012�H@$\\nN\\n��p��\\u0006\\u0000E��k��\\u0000`��VJd�tGG��\\u0011�鎎)��C��\\u0000`mXX�0�p\\u00106�\\u0007\\\"��,I5KM�W\\u001c\\u0012M \\b�����>eTUy|���P\\u0016����\\\"\\u000e\\u001e���R,S\\b6VV\\u0011\\u0007\\u000f�p8\\u0016�� 4T�z��f�*d�Y::�� ��H\\u0004%����v��\\u0002d��\\f\\u0014�1 ����+\\u0010%����ƀ\\u0000\\u0000���Q���k�X��5\\u000b-\\u0017�54\\fh��\\u0012hk�>\\u001cT�QMFZ�\\u001f�O��\\b\\u0000N߿\\u000f\\u0000:���\\u0006\\u0006*��>�50PGSS�Tn�Ţ��\\u0011\\u0000tuu�(�������y@[��AYY�\\u0004D���>�\\u000b\\u0010\\b0|8�Ho��R߿\\u0007�U?��\\\"Kr�|P�PV��\\u0003\\u0000��\u007f/X^��f���y<\\u0014�gii�\\u0017\\u0006\\u001f\\u0015\\f�4\\u00008\\u001c����\\n\\u0010��?%��*�\\u000e���ᠭ\\r\\u0000�\\u0015s�(�\\u0014\\t\\u0010*\\u0012���f�(��Ga\\u0006VVV�d\\u0015J \\u000b\\u0000\\b\\u000403��C\\u0005\\n�cA\u007f\\u0004\\u0002()��\\nXZB��\\u0002���H$s)}������\\u0012�$T-��b!̸���\\\"���())uuu��|[\\u00011��J�!C��\\u001dZ[��\\u0002\\u001c\\u000e�dPS\\u000355�PDg�%55\\u0000@30�u{\\u000e����i\\u0006\\u0006E�>����e�Y,����t\\\"�@pppHMM}��'�QD\\\"hh��\\\"�P�%�s�6���������?nn��,\\u0019ғ�/%\\u001a[ZB.\\\\������ӷ-_��y�A��\\u0004�Hg�X��W\\u001a�6t�P\\\"\\u0000������\\u0016VU\\u0015TVʑB,\\u0016(m���\\n�0Q�Ӂ��O^�\\u0004\\u0000�JJX���;v�$6�#��\\u0000p$<���\\u001d۶Mx\\tðҪ*�j����Ny�\\u001e\\u0000|||\\u0000-�����k1�6��\\u000f�T*\\u0000tp8\\u0015����o�L�n���I�[\\u000f\\u001e\\b���QB\\u000f*jk;8\\u001c�j���˗(�\\u0002Q�\\u0007\\u000033�1c�\\u0000@��\\u0001\\u0017�B��|�g\\u0005\\u0017�]d��.���}�d���q�\\\"�V�%#:+\\u000b\\u0000����L�\\u0002�X\\u0007�\\\\Fq�4������\\u0002\\u0019}��5�H�Y�5s�O���s�O\\u000f^�FV�;V�\\\\�驦����sW��'\\u0000���>s�\\u001a\\u0000ؘ�8XX(�\\u0006\\u00008\\\\nbn.\\u0000xyy\\u0011�D\\u0010����\\u000b\\u0000\\u0018��*�%�2s&\\u0000T��\\u001d�\\t�\\u0005\\u0000s#����m��7CC�\\u0018U�\\f\\f�\\u001e9Қ�q��\\u0011�H��񈈪�:�R�������N�!\\u0007�d�\\u001f?\\u001eEߢ��\\u0010�;9�0���'�?\u007fՒ���\\u0013�>Ñ�����'\\u0001��JE)%\\n\\u0001��d�\\u00193\\u0004z��P�����?�P>PH��7n$\\u0011\\b�<�­[�%�`ˍ򚚅[�v�x$\\u0002��\\u001be�4�\\u0000>���u�M�&���%\\u000bu[�\\\\�\\u0002߉���\\u0007��\\u0001���r����\\u0001�e��k\\u0006c��\u007fie%\\u0000\\u001c���W\\\\�������6\\u0010\\u0019*�(Y���T*\\u0015\\u0000\\u000eܼ9��Yr ��{��\\u000f\\u0000T��:\\u0007\\u0004\\\\�q�\\u000e\\t�\\u001c\\u0017�\\u001c\\u0010PY[\\u000b\\u0000[}|\\u0006\\u0019��\\u0007���\\u0000�B����V�K\\u0016�DBAO���G�\\u0014�\\u0015��\\u001d^���ҥ8\\u001c���\\nر�uٲ������/*r]�,`ǎ6\\u0016\\u000b�ÝX�T�i�1YY(�nÆ\\rC�\\u000e\\u0015��,\\u001d���\\u001a5������Y|��L�&}\\u0011���k�ª��\\u0001�\\u000e��f�|Ogg�'�|>?>5����\\t��h��@[�ܪU���\\u0015\\u0005��\\u001f\\u001b\\u0014���R[[�Ç\\u000fZ\\\"\\u00132\\\\�]U����ϟ\\u000f\\u0000{���ӓg�(0;:vGE�NH\\u0010��\\u001a��{89M��u���\\u001c`0�(-}�����U�g·\\u0004\\u0001��e�����˻��@������y\\u00008z�hPP�襾da\\u00186a��l5\\n���顚��5\\u0005\\u0000�UT�q�����>�P)S(Cutt��u��\\u0000�������������\\u0001\\re�E���g�\\u0018Փi�@ttuYl�P��D��\\n\\u000b\\u000b����%\\u000b\\u0000���Q���\\u001e\\u001egV�P�A\\b��ο��ned�`0��(\\u0016Z���,-�88,�<YQ\\u0011^��{t�ΫW\\u0001 222�_��\\u0018�\\u0000`ƌ\\u0019���$\\u0002������n\\u0001�ΫW�\\u0015\\u0014\\u0004ϙ�!���\\u001f\\u0018����H+((��\\u0015�\\u001c��\\u0001���� �J�le5Z��z\\u0000p/'g��+>���٭Pz4�X����f[[[�����Lœ���gkk�a������[��m\\u0019\\u0018�\\u0016򖹺\\u001e_����)��f\\u0007��?�RR\\u0000���4'$D>9k���?|\\b\\u0000�������_@�����zѢE\\u0000\\u0010��%�>fB�\\n\\nB��\\u0017�<\\u0019�i�\\u0002'R����\\u001a�i\\u0013b���⚼+I�\\u001f#�����2\\u0005\\u0003�,\\u0000hnnvpp(**��pq;v��\\u001fY���\\u001d���w�&�\\u0006����B\\u0016-RT�\\\\PY���՘�,\\u0000��H������-_&س��i��wuw���eff\\u000e�-��d\\u0001@AA�ĉ\\u0013[[[5��_����7���rŹsh\\u0007\\u001c\\u0002\\u001e�|��}��\\r\\u001bD�iMK˞��\\u000b��h\\b�H���]K\\u0017qBȄ��\\u0006��;�Z[I$ңG��\\u0007\\u000eZ�D\\u0016\\u0000$$$x{{��|3*5��A�s��\\u0018v!9yoT\\u0014\\u001a����k�ݗL�2N����������\\u001e<@Γ�::���_�ꊗw����\\u001c\\u001c���\\t\\u000b\\u000b[�r���_ \\u000b\\u0000�\\u001e=�u�V\\u0000p\\u001d=�Ap�`\\u0012�;��B��\\u000b��\\u0011n^9�����i��ɒ}��L浴�ȧO�ˑ\\u001a��;��6zy\\rf�]\\f�~8~\\u001c��\\u0007\\u0006\\u0006���J.�e�\\u0000`�ҥ(\\t����ϯZ%�q\\bM,ֱ��Ȕ���F�Is*u���\\u0019�jN����S(�55��jFu5���C]�pno�����%h�,�Ao��'*j�͛\\u0000���\\u001e\\u001f\\u001f��\\u001f0�����NWW���t\\u00008\\u0012\\u0010�e֬AZ\\t\\u0000|\\f{��ݕ�ԛ���쒪B&Ϟ0a��˴�c�nt�������\\u0019\\f��tzzz��\\u0014�rR�\\u0005\\u0000555���(\\u000e|��G�e��\\u0004�C'�����\\u0015\\u0015\\u001fjkKjk?�֖54�1l���\\b}}s}}s*�j�p\\u000fkkEM�1\\f�{�Ɓ[�0\\f������\\u0010.�K��d\\u0001@nn���'�\\u0012}�ر76o�J��n\\u001e���}�\\u001d�ٝ�K��\\u0003�SZZZ���.R�C�@\\u0016\\u0000TVV����L�\\u0011��q۷+jQ�۠���'$\\u0004���tzll��u\\nA�!����SRR�\\u000f���f�]�sse���\\u0011�\\n\\n�w�DL��������\\u0014�J\\u0016\\u0000(++����\\u0007\\u000e\\u001c�������/G������G[�\\u0005\\u0006\\u0006���Kӣ��l�P\\u0014w��\\t\\b\\b`��\\u0000���t4 `0��&\\u0016k׵kh�G\\\"�Ξ=+y�)\\u0001�\\u0005\\u0000yyy>>>eee\\u0000�B&o�����'O���AGW������\\u0018�/��ӻu떄��\\u00171(�\\u0000���n͚5w��A\\u001f���\\u0007Ϟ�������|\\r����<~���\\r��nnnaaa��pU\\u001f\\f�,��ϟo۶---\\r}4��;�`����BF��\\\"&+k�ի�++�Gkk됐���.2A1d!DGG�ܹ���\\u0000}����ϟ?��v0�I��ǰ�������*\\u0016\\u0000�h�\\u0003\\u0007\\u000e,Z�HQч�$\\u000b\\u0000x<ޅ\\u000b\\u0017���+�A%-UUO[[?{�\\u001966\\n_�\\u0001\\u0000\\u000e�������̸�/�\\u001a2\\u0000hkk�ڵk���d�z�\\u0015L\\u0016\\u0002��>q���Ç�\\\"yVd\\u0012��1c���}Əח���\\u0007�l�ݗ/���\\u0012ss��\\u0006�B�lذa�Νr�\\f���B\\u0016BKKK\\\\\\\\\\\\LLLbb\\\"K�72p8�È\\u0011��}7���r�03*U��A7�WZ_Ϩ�~WQ���U����1\\u0006\\u0014\\n���������W�+�Ȗ��G�\\u0010�����ɱ�����U�\\u0002�\\tx������+ol�P[�?�VWW���������}�?N)\\r�\\u0005YB`\\u0018���\\u001d\\u001b\\u001b\\u001b\\u0013\\u0013�Fd\\u001fgYaaa�*����7\\u000b\\u001d�oL�(ZZZ\\u0018\\f\\u0006������\\n)\u007ff�����54��\u007f��wSl�\\u0000\\u0000\\u0000\\u0000IEND�B`�\"\n}",
+      "operation_id": "5fb2047b1994af50c608900d"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.591Z",
+      "message": "Pipeline step \"None\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047b93f882272b6e7036"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.618Z",
+      "message": "Response headers:",
+      "code": "StepOutput",
+      "details": "{\n  \"date\": \"Mon, 16 Nov 2020 04:47:55 GMT\",\n  \"content-type\": \"application/json\",\n  \"content-length\": \"445\",\n  \"connection\": \"close\",\n  \"server\": \"gunicorn/19.9.0\",\n  \"access-control-allow-origin\": \"*\",\n  \"access-control-allow-credentials\": \"true\"\n}",
+      "operation_id": "5fb2047b93f882214f6e7035"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.630Z",
+      "message": "Response headers:",
+      "code": "StepOutput",
+      "details": "{\n  \"date\": \"Mon, 16 Nov 2020 04:47:55 GMT\",\n  \"content-type\": \"text/html; charset=utf-8\",\n  \"content-length\": \"0\",\n  \"connection\": \"close\",\n  \"server\": \"gunicorn/19.9.0\",\n  \"access-control-allow-origin\": \"*\",\n  \"access-control-allow-credentials\": \"true\"\n}",
+      "operation_id": "5fb2047b1994af24d408900c"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.624Z",
+      "message": "Pipeline step \"binary file\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047b1994af50c608900d"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.643Z",
+      "message": "HTTP request executed successfully.",
+      "code": "StepOutput",
+      "details": "{\n  \"status_code\": 200,\n  \"status_text\": \"OK\",\n  \"body\": {\n    \"args\": {},\n    \"data\": \"foo\\nbar\",\n    \"files\": {},\n    \"form\": {},\n    \"headers\": {\n      \"Accept\": \"application/json, text/plain, */*\",\n      \"Content-Length\": \"7\",\n      \"Content-Type\": \"text/plain\",\n      \"Host\": \"httpbin.org\",\n      \"User-Agent\": \"axios/0.19.0\",\n      \"X-Amzn-Trace-Id\": \"Root=1-5fb2047b-4999cc96147a519853ed20cc\"\n    },\n    \"json\": null,\n    \"method\": \"POST\",\n    \"origin\": \"40.67.170.26\",\n    \"url\": \"https://httpbin.org/anything\"\n  },\n  \"headers\": {\n    \"Accept\": \"application/json, text/plain, */*\",\n    \"Content-Length\": \"7\",\n    \"Content-Type\": \"text/plain\",\n    \"Host\": \"httpbin.org\",\n    \"User-Agent\": \"axios/0.19.0\",\n    \"X-Amzn-Trace-Id\": \"Root=1-5fb2047b-4999cc96147a519853ed20cc\"\n  }\n}",
+      "operation_id": "5fb2047b1994af4ef008900e"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:55.662Z",
+      "message": "HTTP request executed successfully.",
+      "code": "StepOutput",
+      "details": "{\n  \"status_code\": 200,\n  \"status_text\": \"OK\",\n  \"body\": {\n    \"slideshow\": {\n      \"author\": \"Yours Truly\",\n      \"date\": \"date of publication\",\n      \"slides\": [\n        {\n          \"title\": \"Wake up to WonderWidgets!\",\n          \"type\": \"all\"\n        },\n        {\n          \"items\": [\n            \"Why <em>WonderWidgets</em> are great\",\n            \"Who <em>buys</em> WonderWidgets\"\n          ],\n          \"title\": \"Overview\",\n          \"type\": \"all\"\n        }\n      ],\n      \"title\": \"Sample Slide Show\"\n    }\n  }\n}",
+      "operation_id": "5fb2047b93f8824eff6e7034"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.687Z",
+      "message": "Pipeline step \"/anything file\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047b1994af4ef008900e"
+    },
+    {
+      "level": "error",
+      "occurred": "2020-11-16T04:47:56.692Z",
+      "message": "Invalid response status code. Got 200, expected 204.",
+      "code": "StepError",
+      "operation_id": "5fb2047b93f882214f6e7035"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.692Z",
+      "message": "Ignoring failure in step \"/anything file err\" due to ignore_errors=true.",
+      "code": "ErrorIgnored",
+      "operation_id": "5fb2047b93f882214f6e7035"
+    },
+    {
+      "level": "error",
+      "occurred": "2020-11-16T04:47:56.697Z",
+      "message": "Invalid response status code. Got 403, expected 200.",
+      "code": "StepError",
+      "operation_id": "5fb2047b1994af24d408900c"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.697Z",
+      "message": "Ignoring failure in step \"/status/403\" due to ignore_errors=true.",
+      "code": "ErrorIgnored",
+      "operation_id": "5fb2047b1994af24d408900c"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.710Z",
+      "message": "Executing pipeline step \"Basic\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047c93f882beeb6e7037"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.718Z",
+      "message": "Executing pipeline step \"Check File\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047c1994aff78f089010"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.715Z",
+      "message": "Pipeline step \"GET /json\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047b93f8824eff6e7034"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.728Z",
+      "message": "Executing pipeline step \"Node.js Script\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047c93f88245f26e7038"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.748Z",
+      "message": "Skipping step \"Binary Result\" due to falsy step condition.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047c1994af18ea08900f"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.752Z",
+      "message": "Pipeline step \"Check File\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047c1994aff78f089010"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.775Z",
+      "message": "Executing Node.js script.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047c93f88245f26e7038"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.777Z",
+      "message": "Executing pipeline step \"Check File\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047c1994af2cc9089011"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.782Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/basic-auth/*****/*****\",\n  \"method\": \"GET\",\n  \"timeout\": 30000,\n  \"headers\": {},\n  \"auth\": {\n    \"username\": \"*****\",\n    \"password\": \"*****\"\n  }\n}",
+      "operation_id": "5fb2047c93f882beeb6e7037"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.795Z",
+      "message": "Executing pipeline step \"debug cwd\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047c93f88266fc6e7039"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.822Z",
+      "message": "Executing Node.js script.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047c1994af2cc9089011"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.827Z",
+      "message": "Executing pipeline step \"Print Response\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047c93f882850b6e703a"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.888Z",
+      "message": "Debug message",
+      "code": "StepOutput",
+      "details": "Response body: {\n  \"slideshow\": {\n    \"author\": \"Yours Truly\",\n    \"date\": \"date of publication\",\n    \"slides\": [\n      {\n        \"title\": \"Wake up to WonderWidgets!\",\n        \"type\": \"all\"\n      },\n      {\n        \"items\": [\n          \"Why <em>WonderWidgets</em> are great\",\n          \"Who <em>buys</em> WonderWidgets\"\n        ],\n        \"title\": \"Overview\",\n        \"type\": \"all\"\n      }\n    ],\n    \"title\": \"Sample Slide Show\"\n  }\n}",
+      "operation_id": "5fb2047c93f882850b6e703a"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.853Z",
+      "message": "Executing Node.js script.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047c93f88266fc6e7039"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.905Z",
+      "message": "Pipeline step \"Node.js Script\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047c93f88245f26e7038"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.921Z",
+      "message": "Pipeline step \"Print Response\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047c93f882850b6e703a"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.971Z",
+      "message": "HTTP request executed successfully.",
+      "code": "StepOutput",
+      "details": "{\n  \"status_code\": 200,\n  \"status_text\": \"OK\",\n  \"body\": {\n    \"authenticated\": true,\n    \"user\": \"*****\"\n  }\n}",
+      "operation_id": "5fb2047c93f882beeb6e7037"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:56.975Z",
+      "message": "stdout:",
+      "code": "StepOutput",
+      "details": "{\"dev\":2080,\"mode\":33188,\"nlink\":1,\"uid\":0,\"gid\":0,\"rdev\":0,\"blksize\":4096,\"ino\":524297,\"size\":14798,\"blocks\":32,\"atimeMs\":1605498406246.7664,\"mtimeMs\":1605502075576.7664,\"ctimeMs\":1605502075576.7664,\"birthtimeMs\":1605498406246.7664,\"atime\":\"2020-11-16T03:46:46.247Z\",\"mtime\":\"2020-11-16T04:47:55.577Z\",\"ctime\":\"2020-11-16T04:47:55.577Z\",\"birthtime\":\"2020-11-16T03:46:46.247Z\"}",
+      "operation_id": "5fb2047c1994af2cc9089011"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.007Z",
+      "message": "Pipeline step \"Basic\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047c93f882beeb6e7037"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.014Z",
+      "message": "Pipeline step \"Check File\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047c1994af2cc9089011"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.039Z",
+      "message": "stdout:",
+      "code": "StepOutput",
+      "details": "__dirname:  /tmp\nprocess.cwd():  /workspace/runs/5fb204794245dff34360ff54\nenv:  {\n  AGENT_VERSION: '1.82.6',\n  PIPELINE_NAME: 'T3 - HTTP Requests',\n  RUN_ID: '5fb204794245dff34360ff54',\n  PATH: '/tmp/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',\n  WORKSPACE_PATH: '/workspace',\n  PWD: '/workspace/runs/5fb204794245dff34360ff54',\n  PROJECT_ID: '5e4f4d258b388200389d81d3',\n  RUN_NUMBER: '7',\n  PIPELINE_ID: '5e4f4d578b388200389d81dd',\n  SHLVL: '1',\n  PKG_EXECPATH: '/opt/runner-agent/runner-agent.exe',\n  JOB_ID: '5fb2040a4245df601760ff4d',\n  PIPELINE_REVISION: '7',\n  RUN_PATH: '/workspace/runs/5fb204794245dff34360ff54',\n  _: '/usr/bin/node'\n}",
+      "operation_id": "5fb2047c93f88266fc6e7039"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.061Z",
+      "message": "Executing pipeline step \"Node.js Script\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047d1994af4e8f089012"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.069Z",
+      "message": "Pipeline step \"debug cwd\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047c93f88266fc6e7039"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.092Z",
+      "message": "Executing Node.js script.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047d1994af4e8f089012"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.111Z",
+      "message": "Executing pipeline step \"Bearer\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047d93f8829c0c6e703b"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.164Z",
+      "message": "Skipping step \"Check PNG\" due to falsy step condition.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047d1994af1e72089013"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.187Z",
+      "message": "Executing HTTP request.",
+      "code": "StepOutput",
+      "details": "{\n  \"url\": \"https://httpbin.org/bearer\",\n  \"method\": \"GET\",\n  \"timeout\": 30000,\n  \"headers\": {\n    \"Authorization\": \"Bearer *****\"\n  }\n}",
+      "operation_id": "5fb2047d93f8829c0c6e703b"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.207Z",
+      "message": "Skipping step \"ls -la\" due to falsy step condition.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047d1994af0fe9089014"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.210Z",
+      "message": "stdout:",
+      "code": "StepOutput",
+      "details": "{\"slideshow\":{\"author\":\"Yours Truly\",\"date\":\"date of publication\",\"slides\":[{\"title\":\"Wake up to WonderWidgets!\",\"type\":\"all\"},{\"items\":[\"Why <em>WonderWidgets</em> are great\",\"Who <em>buys</em> WonderWidgets\"],\"title\":\"Overview\",\"type\":\"all\"}],\"title\":\"Sample Slide Show\"}}",
+      "operation_id": "5fb2047d1994af4e8f089012"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.228Z",
+      "message": "Pipeline step \"Node.js Script\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047d1994af4e8f089012"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.231Z",
+      "message": "Executing pipeline step \"Check File\".",
+      "code": "BeginStep",
+      "operation_id": "5fb2047d1994af177a089015"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.271Z",
+      "message": "Executing Node.js script.",
+      "code": "StepOutput",
+      "operation_id": "5fb2047d1994af177a089015"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.371Z",
+      "message": "stdout:",
+      "code": "StepOutput",
+      "details": "\"*****\\n*****\"",
+      "operation_id": "5fb2047d1994af177a089015"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.393Z",
+      "message": "Pipeline step \"Check File\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047d1994af177a089015"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:57.373Z",
+      "message": "HTTP request executed successfully.",
+      "code": "StepOutput",
+      "details": "{\n  \"status_code\": 200,\n  \"status_text\": \"OK\",\n  \"body\": {\n    \"authenticated\": true,\n    \"token\": \"*****\"\n  }\n}",
+      "operation_id": "5fb2047d93f8829c0c6e703b"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:58.424Z",
+      "message": "Pipeline step \"Bearer\" executed successfully.",
+      "code": "EndStep",
+      "operation_id": "5fb2047d93f8829c0c6e703b"
+    },
+    {
+      "level": "info",
+      "occurred": "2020-11-16T04:47:58.484Z",
+      "message": "Run executed successfully.",
+      "code": "RunSucceeded"
+    }
+  ],
+  "agent_id": "5f3ebe676ec0b23c7ee5bf08",
+  "started": "2020-11-16T04:47:55.200Z",
+  "finished": "2020-11-16T04:47:58.534Z",
+  "outputs": {
+    "josh_js1_res": "'{\"slideshow\":{\"author\":\"Yours Truly\",\"date\":\"date of publication\",\"slides\":[{\"title\":\"Wake up to WonderWidgets!\",\"type\":\"all\"},{\"items\":[\"Why <em>WonderWidgets</em> are great\",\"Who <em>buys</em> WonderWidgets\"],\"title\":\"Overview\",\"type\":\"all\"}],\"title\":\"Sample Slide Show\"}}'"
+  }
+}
+#+end_example

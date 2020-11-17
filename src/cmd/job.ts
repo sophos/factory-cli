@@ -16,7 +16,7 @@ const applyCommand = (program: Command) => {
             const accessToken = parent.parent.accessToken ?? process.env.REFACTR_AUTH_TOKEN;
             if (!accessToken) {
                 throw new Error('Auth token is required.');
-            };
+            }
             const basePath = parent.parent.apiUrl;
 
             return list(projectId, accessToken, basePath);
@@ -36,7 +36,7 @@ const applyCommand = (program: Command) => {
             const accessToken = parent.parent.accessToken ?? process.env.REFACTR_AUTH_TOKEN;
             if (!accessToken) {
                 throw new Error('Auth token is required.');
-            };
+            }
             const basePath = parent.parent.apiUrl;
             const variables = cmd.variables;
             const waitUntilFinished = cmd.wait;

@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import job from './job';
 import project from './project';
+import run from './run';
 import { applyCommands } from '../utils/applyCommands';
 import { BASE_PATH } from '../constants';
 
@@ -21,7 +22,7 @@ const createProgram = () => {
         .option('--api-url <url>', 'API endpoint', BASE_PATH);
 
     // @ts-ignore
-    applyCommands(program, [job, project]);
+    applyCommands(program, [job, project, run]);
 
     return program;
 };
