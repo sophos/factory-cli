@@ -1,4 +1,4 @@
-import { render } from 'console-table-printer';
+import { renderSimpleTable as render } from 'console-table-printer/dist/src/internalTable/internal-table-printer';
 
 const formatters = {
     table: (data: any) => {
