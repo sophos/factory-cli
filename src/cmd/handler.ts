@@ -29,6 +29,7 @@ export const handler = <A, R>(
   try {
     return await fn(apiClient, args);
   } catch (err) {
+    // TODO: handle error
     console.error(err);
     return createCommandResult('error', {});
   }

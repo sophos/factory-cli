@@ -2,7 +2,7 @@ import isString from 'lodash/isString';
 import { terminalWidth } from 'yargs';
 import yargs from 'yargs/yargs';
 
-import { FORMATTER } from './formatter';
+import { DATA_FORMATTER, EVENT_FORMATTER } from './formatter';
 
 const parse = (argv: string[], { version }: { version: string }) =>
   yargs(argv)
@@ -26,7 +26,7 @@ const parse = (argv: string[], { version }: { version: string }) =>
     })
     .option('format', {
       describe: 'Specifies output format',
-      default: FORMATTER,
+      default: DATA_FORMATTER,
       choices: ['table', 'json', 'yaml'],
     })
     .option('address', {
@@ -159,6 +159,11 @@ const parse = (argv: string[], { version }: { version: string }) =>
     // Run
     .command('run', 'Execute pipeline-revision, job, etc.', (yargs) =>
       yargs
+        .option('format', {
+          describe: 'Specifies output format',
+          default: EVENT_FORMATTER,
+          choices: ['log'],
+        })
         .option('wait', {
           describe: 'Wait until run execution finishes',
           type: 'boolean',

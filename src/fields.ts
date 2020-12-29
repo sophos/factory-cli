@@ -1,3 +1,9 @@
+/**
+ * Fields of various objects that we'd like to print in human-readable mode
+ * like "log" or "table".
+ *
+ * NOTE: fields MUST be provided in order they will be logged.
+ */
 export default {
   project: [
     '_id',
@@ -28,16 +34,7 @@ export default {
     'suppress_outputs',
     'suppress_vars',
   ],
-  runEvent: [
-    '_id',
-    'operation_id',
-    'occurred',
-    'code',
-    'message',
-    'details',
-    'level',
-    'output',
-  ],
+  runEvent: ['occurred', 'level', 'message', 'details'],
   job: [
     '_id',
     'project_id',

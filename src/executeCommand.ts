@@ -9,11 +9,7 @@ import printer from './printer';
 import filterer from './filter';
 import type { CommandHandler } from './cmd/handler';
 
-type Args = {
-  _: [string, string];
-};
-
-export default async function executeCommand(args: Args) {
+export default async function executeCommand(args: any) {
   const methods = args._;
   const formatType = args.format;
   const filterPath = args.filter;
@@ -35,7 +31,13 @@ export default async function executeCommand(args: Args) {
 
       case 'streaming':
         {
-          for await (const run of payload) view(run);
+          // We cannot log each event separately in JSON/Yaml mode,
+          // as it would otherwise be an invalid JSON/Yaml structure.
+          if (formatType === 'yaml' || formatType === 'json') {
+            view(await asyncGenToArray(payload));
+          } else {
+            for await (const run of payload) view(run);
+          }
         }
         break;
 
@@ -46,4 +48,15 @@ export default async function executeCommand(args: Args) {
   } else {
     throw new Error('Unknown command!');
   }
+}
+
+/**
+ * Convert asynchronous generator to an array.
+ *
+ * @param asyncGen Asynchronous generator
+ */
+async function asyncGenToArray(asyncGen: AsyncGenerator): Promise<Array<any>> {
+  const arr = [];
+  for await (const run of asyncGen) arr.push(run);
+  return arr;
 }
