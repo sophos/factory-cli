@@ -1,29 +1,17 @@
-/* global __VERSION__ */
+import getCommandMap from './get';
+import listCommandMap from './list';
+import runCommandMap from './run';
 
-import { Command } from 'commander';
-import job from './job';
-import project from './project';
-import { applyCommands } from '../utils/applyCommands';
-import { BASE_PATH } from '../constants';
+const commandMap = {
+  login: () => {},
+  invite: () => {},
 
-declare const __VERSION__: string;
-
-const createProgram = () => {
-    const program = new Command();
-
-    program
-        .version(__VERSION__)
-        .name('refactrctl')
-        .option(
-            '--access-token <token>',
-            'API token'
-        )
-        .option('--api-url <url>', 'API endpoint', BASE_PATH);
-
-    // @ts-ignore
-    applyCommands(program, [job, project]);
-
-    return program;
+  // CRUD
+  get: getCommandMap,
+  list: listCommandMap,
+  run: runCommandMap,
 };
 
-export { createProgram };
+export type TopLevelCommand = keyof typeof commandMap;
+
+export default commandMap;

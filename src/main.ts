@@ -1,22 +1,21 @@
-import { createProgram } from './cmd';
-import * as util from './utilities';
+/*! globals __VERSION__ */
 
-const handleError = (err: any) => {
-    util.handleAPIError(err);
+import executeCommand from './executeCommand';
+import parse from './parse';
+
+declare const __VERSION__: string;
+
+async function main(argv: string[]) {
+  const args = parse(argv, { version: __VERSION__ });
+
+  try {
+    await executeCommand(args);
+  } catch (err) {
+    // TODO: remove
+    console.error(err);
     process.exit(1);
-};
-
-function listenGlobalEvents() {
-    process.on('unhandledRejection', handleError);
-    process.on('uncaughtException', handleError);
-}
-
-function main(argv: any[]) {
-    listenGlobalEvents();
-
-    const program = createProgram();
-
-    program.parse(argv);
+  }
 }
 
 export default main;
+export { main };

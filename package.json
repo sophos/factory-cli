@@ -1,35 +1,54 @@
 {
-  "name": "@refactr/cli",
-  "version": "0.12.1",
-  "bin": {
-    "refactrctl": "bin/refactrctl"
-  },
+  "name": "refactr-clix",
+  "version": "1.0.0-alpha.1",
+  "description": "Refactr CLI",
+  "main": "index.js",
+  "author": "Refactr, Inc. (refactr.it)",
   "license": "MIT",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "commander": "^6.0.0",
-    "console-table-printer": "^2.3.3"
+  "files": [
+    "bin",
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=12 <16"
   },
-  "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "@refactr/api-client": "^0.3.0",
-    "@rollup/plugin-babel": "^5.0.4",
-    "@rollup/plugin-commonjs": "^13.0.0",
-    "@rollup/plugin-node-resolve": "^8.1.0",
-    "@rollup/plugin-replace": "^2.3.3",
-    "@types/jest": "^26.0.3",
-    "@types/react": "^16.9.44",
-    "jest": "^26.1.0",
-    "prettier": "^2.0.5",
-    "rollup": "^2.19.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^3.9.6"
+  "bin": {
+    "refactrctl": "./bin/refactrctl.js"
   },
   "scripts": {
-    "watch": "rollup -c -w src/index.ts",
-    "build": "rollup -c"
+    "watch": "rollup -c -w src/main.ts",
+    "build": "rollup -c src/main.ts"
+  },
+  "dependencies": {
+    "@refactr/api-client": "^0.3.0",
+    "cli-table": "^0.3.4",
+    "date-fns": "^2.16.1",
+    "js-yaml": "^3.14.1",
+    "jsonpath-plus": "^4.0.0",
+    "lodash": "^4.17.20",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@types/cli-table": "^0.3.0",
+    "@types/date-fns": "^2.6.0",
+    "@types/flat": "^5.0.1",
+    "@types/js-yaml": "^3.12.5",
+    "@types/lodash": "^4.14.166",
+    "@types/yargs": "^15.0.12",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "rollup": "^2.35.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.1.3"
   }
 }

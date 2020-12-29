@@ -1,0 +1,29 @@
+name: test
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  push:
+    branches:
+      - master
+      - releases/*
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        version: [12.x, 14.x, latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node ${{ matrix.version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.version }}
+      - run: yarn install
+      - run: yarn build
+      - run: yarn test

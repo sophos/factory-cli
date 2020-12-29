@@ -1,10 +1,11 @@
 module.exports = {
-    parser: 'typescript',
-
-    tabWidth: 4,
-    useTabs: false,
-    semi: true,
+    parser: "typescript",
+    trailingComma: "es5",
     singleQuote: true,
-    trailingComma: 'none',
-    arrowParens: 'always'
+    noSemi: false,
+    tabWidth: 2,
+    bracketSpacing: true,
+    arrowParens: "always",
+    preserve: "always",
+    endOfLine: "lf",
 };

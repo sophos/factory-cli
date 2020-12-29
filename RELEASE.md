@@ -14,5 +14,3 @@ and cloned this repository.**
 3. Create a new Git tag/release named with the same version as in `package.json` but with `v` prefix, e.g. `v0.5.0`.
 
 4. Wait until GitHub Action checks finished, if status is successful you are good, otherwise if status is failed, check the error(s), and redo all the steps again, until status is successful.
-
-
