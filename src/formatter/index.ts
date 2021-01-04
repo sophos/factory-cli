@@ -9,7 +9,7 @@ export const EVENT_FORMATTER: FormatType = 'log';
 export default function formatter(
   formatType: FormatType = DATA_FORMATTER,
   fields: string[]
-): Formatter {
+) {
   return (input: any): string => {
     try {
       return formatterMap[formatType](input, fields);

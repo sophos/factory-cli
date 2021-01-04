@@ -4,6 +4,8 @@ import isObject from 'lodash/isObject';
 import isNil from 'lodash/isNil';
 import parseISO from 'date-fns/parseISO';
 import isValid from 'date-fns/isValid';
+import formatDate from 'date-fns/format';
+import localeEN from 'date-fns/locale/en-US';
 
 const tryParseDate = (value: any): any => {
   const maybeDate = parseISO(value);
@@ -31,14 +33,7 @@ export default function humanify(value: any) {
 }
 
 const humanifyDate = (value: Date) =>
-  new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  }).format(value);
+  formatDate(value, 'Pp', { locale: localeEN });
 
 const humanifyObject = (value: { [key: string]: any }) => JSON.stringify(value);
 const humanifyBoolean = (value: boolean) => (value ? 'Yes' : 'No');

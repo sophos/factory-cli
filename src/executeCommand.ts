@@ -8,6 +8,7 @@ import formatter from './formatter';
 import printer from './printer';
 import filterer from './filter';
 import type { CommandHandler } from './cmd/handler';
+import asyncGenToArray from './util/asyncGenToArray';
 
 export default async function executeCommand(args: any) {
   const methods = args._;
@@ -42,21 +43,11 @@ export default async function executeCommand(args: any) {
         break;
 
       case 'error': {
+        console.error(result.payload);
         process.exit(1);
       }
     }
   } else {
     throw new Error('Unknown command!');
   }
-}
-
-/**
- * Convert asynchronous generator to an array.
- *
- * @param asyncGen Asynchronous generator
- */
-async function asyncGenToArray(asyncGen: AsyncGenerator): Promise<Array<any>> {
-  const arr = [];
-  for await (const run of asyncGen) arr.push(run);
-  return arr;
 }

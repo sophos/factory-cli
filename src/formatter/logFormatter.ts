@@ -1,8 +1,9 @@
 import isNil from 'lodash/isNil';
 
 import humanify from './humanify';
+import { Formatter } from './formatter';
 
-export default function logFormatter(
+const logFormatter: Formatter = function logFormatter(
   input: { [key: string]: any },
   fields: string[]
 ): string {
@@ -12,4 +13,6 @@ export default function logFormatter(
     )
     .filter((f) => !isNil(f))
     .join(' ');
-}
+};
+
+export default logFormatter;

@@ -53,4 +53,5 @@ export default {
     'disable_on_failure',
     'variables',
   ],
+  pipelineRevision: ['_id', 'revision', 'pipeline_id'],
 };

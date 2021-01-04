@@ -1,7 +1,7 @@
 /*! globals __VERSION__ */
 
 import executeCommand from './executeCommand';
-import parse from './parse';
+import parse from './parse/parse';
 
 declare const __VERSION__: string;
 

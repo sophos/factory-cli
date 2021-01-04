@@ -1,3 +1,5 @@
+import { AxiosError } from 'axios';
+
 import type Client from '../client';
 
 export type CommandResultType = 'view' | 'error' | 'streaming';
@@ -29,8 +31,17 @@ export const handler = <A, R>(
   try {
     return await fn(apiClient, args);
   } catch (err) {
+    console.info(err);
+
     // TODO: handle error
-    console.error(err);
+    if (err.isAxiosError) {
+      const errors = (err as AxiosError).response?.data?.errors ?? [
+        { message: '' },
+      ];
+      return createCommandResult('error', { errors });
+    }
+
+    // TODO: handle error
     return createCommandResult('error', {});
   }
 };

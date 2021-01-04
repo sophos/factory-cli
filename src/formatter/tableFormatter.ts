@@ -1,11 +1,16 @@
 import isArray from 'lodash/isArray';
 import Table from 'cli-table';
+
 import humanify from './humanify';
+import { Formatter } from './formatter';
 
 type Row = { [key: string]: any };
 type Input = Row | Row[];
 
-export default function tableFormatter(input: Input, fields: string[]): string {
+const tableFormatter: Formatter = function tableFormatter(
+  input: Input,
+  fields: string[]
+): string {
   if (!isArray(input)) {
     input = [input];
   }
@@ -24,4 +29,6 @@ export default function tableFormatter(input: Input, fields: string[]): string {
   table.push(...rows);
 
   return table.toString();
-}
+};
+
+export default tableFormatter;

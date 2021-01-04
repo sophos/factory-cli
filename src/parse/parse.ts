@@ -1,8 +1,32 @@
+import * as path from 'path';
+
+import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
 import { terminalWidth } from 'yargs';
 import yargs from 'yargs/yargs';
 
-import { DATA_FORMATTER, EVENT_FORMATTER } from './formatter';
+import { DATA_FORMATTER, EVENT_FORMATTER } from '../formatter';
+import { parseInput, readFile } from '../util/io';
+
+const coerceInput = (arg: string | string[]) => {
+  if (isArray(arg)) {
+    // TODO: throw err?
+    return;
+  }
+
+  // If input starts with @ treat input as file path.
+  if (arg.startsWith('@')) {
+    try {
+      const filepath = path.resolve(arg.replace('@', ''));
+      return readFile(filepath);
+    } catch (err) {
+      // TODO: handle error
+      console.error(err);
+    }
+  }
+
+  return parseInput(arg);
+};
 
 const parse = (argv: string[], { version }: { version: string }) =>
   yargs(argv)
@@ -35,11 +59,13 @@ const parse = (argv: string[], { version }: { version: string }) =>
       type: 'string',
       default: 'https://api.refactr.it/v1',
       demandOption: true,
+      requiresArg: true,
     })
     .option('auth-token', {
       describe:
         'Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable',
       type: 'string',
+      requiresArg: true,
     })
 
     // Login
@@ -56,6 +82,7 @@ const parse = (argv: string[], { version }: { version: string }) =>
               type: 'string',
               describe: 'Project to get',
               demandOption: true,
+              requiresArg: true,
             })
         )
         .command(
@@ -68,6 +95,7 @@ const parse = (argv: string[], { version }: { version: string }) =>
                 type: 'string',
                 describe: 'Organization to get',
                 demandOption: true,
+                requiresArg: true,
               })
         )
         .command('run <run-id>', 'Get run details', (yargs) =>
@@ -77,16 +105,19 @@ const parse = (argv: string[], { version }: { version: string }) =>
               type: 'string',
               describe: 'Run to get',
               demandOption: true,
+              requiresArg: true,
             })
             .option('project-id', {
               describe: 'Project this run belongs to',
               type: 'string',
               demandOption: true,
+              requiresArg: true,
             })
         )
         .option('filter', {
           describe: 'Filter output based on conditions provided',
           type: 'string',
+          requiresArg: true,
         })
         .demandCommand(1, 'Command must be specified')
         .strict()
@@ -100,6 +131,7 @@ const parse = (argv: string[], { version }: { version: string }) =>
           yargs.usage('$0 projects [options]').option('organization-id', {
             describe: 'Organization projects belong to',
             type: 'string',
+            requiresArg: true,
           })
         )
         .command('organizations', 'List organizations one belongs to')
@@ -108,6 +140,7 @@ const parse = (argv: string[], { version }: { version: string }) =>
             describe: 'Project runs belong to',
             demandOption: true,
             type: 'string',
+            requiresArg: true,
           })
         )
         .command('runs', 'List runs for a project', (yargs) =>
@@ -117,19 +150,23 @@ const parse = (argv: string[], { version }: { version: string }) =>
               describe: 'Project runs belong to',
               demandOption: true,
               type: 'string',
+              requiresArg: true,
             })
             .option('pipeline-id', {
               describe: 'Pipeline runs belong to',
               type: 'string',
+              requiresArg: true,
             })
             .option('job-id', {
               describe: 'Job runs belong to',
               type: 'string',
+              requiresArg: true,
             })
         )
         .option('filter', {
           describe: 'Filter output based on conditions provided',
           type: 'string',
+          requiresArg: true,
         })
         .demandCommand(1, 'Command must be specified')
         .strict()
@@ -146,12 +183,54 @@ const parse = (argv: string[], { version }: { version: string }) =>
           describe: 'Organization to invite the user to',
           type: 'string',
           demandOption: true,
+          requiresArg: true,
         })
         .option('email', {
           describe: 'Email address to invite user to the organization by',
           type: 'string',
           demandOption: true,
+          requiresArg: true,
         })
+        .demandCommand(1, 'Command must be specified.')
+        .strict()
+    )
+
+    // Create
+    .command('create', '', (yargs) =>
+      yargs
+        .option('project-id', {
+          describe: 'Project this pipeline belongs to',
+          type: 'string',
+          demandOption: true,
+          requiresArg: true,
+        })
+        .command('pipeline-revision <input>', '', (yargs) =>
+          yargs
+            .positional('input', {
+              type: 'string',
+              required: true,
+              coerce: coerceInput,
+            })
+            .option('pipeline-id', {
+              describe: 'Pipeline',
+              demandOption: true,
+              requiresArg: true,
+            })
+        )
+        .command('pipeline <input>', '', (yargs) =>
+          yargs
+            .positional('input', {
+              type: 'string',
+              required: true,
+              coerce: coerceInput,
+            })
+            .option('name', {
+              describe: 'Name of the pipeline',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true,
+            })
+        )
         .demandCommand(1, 'Command must be specified.')
         .strict()
     )
@@ -193,46 +272,53 @@ const parse = (argv: string[], { version }: { version: string }) =>
               demandOption: true,
             })
         )
-        .command('pipeline-revision', '', (yargs) =>
-          yargs
-            .option('project-id <project-id>', {
-              describe: 'Project this pipeline revision belongs to',
-              type: 'string',
-              demandOption: true,
-            })
-            .option('pipeline-id <pipeline-id>', {
-              describe: 'Pipeline to execute',
-              type: 'string',
-              demandOption: true,
-            })
-            .option('revision <revision>', {
-              describe: 'Revision number',
-              type: 'number',
-            })
-            .option('var', {
-              describe: 'Pipeline variable in `key:value` format',
-              type: 'string',
-              coerce: (arg: string | string[]) => {
-                if (typeof arg === 'string') {
-                  arg = [arg];
-                }
+        .command(
+          'pipeline-revision',
+          'Executes specified pipeline-revision',
+          (yargs) =>
+            yargs
+              .option('project-id', {
+                describe: 'Project this pipeline belongs to',
+                type: 'string',
+                demandOption: true,
+              })
+              .option('pipeline-id', {
+                describe: 'Pipeline to execute',
+                type: 'string',
+                demandOption: true,
+                requiresArg: true,
+              })
+              .option('revision', {
+                describe: 'Revision number',
+                type: 'number',
+                demandOption: true,
+                requiresArg: true,
+              })
+              .option('var', {
+                describe: 'Pipeline variable in `key:value` format',
+                type: 'string',
+                requiresArg: true,
+                coerce: (arg: string | string[]) => {
+                  if (typeof arg === 'string') {
+                    arg = [arg];
+                  }
 
-                return Object.fromEntries(
-                  arg.map((a) => {
-                    const parts = a.split(':');
+                  return Object.fromEntries(
+                    arg.map((a) => {
+                      const parts = a.split(':');
 
-                    if (parts.length !== 2) {
-                      throw new Error(
-                        'Invalid variable format, expected variable to be specified as `key:value`.'
-                      );
-                    }
+                      if (parts.length !== 2) {
+                        throw new Error(
+                          'Invalid variable format, expected variable to be specified as `key:value`.'
+                        );
+                      }
 
-                    return parts;
-                  })
-                );
-              },
-            })
-            .strict()
+                      return parts;
+                    })
+                  );
+                },
+              })
+              .strict()
         )
         .demandCommand(1, 'Command must be specified.')
         .strict()
