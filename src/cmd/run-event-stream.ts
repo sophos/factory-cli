@@ -1,9 +1,5 @@
-import Client from '../../client';
-
-enum TerminatingState {
-  succeeded = 'Succeeded',
-  failed = 'Failed',
-}
+import { RunStatusEnum } from '@refactr/api-client';
+import type Client from '../client';
 
 export function createStream(
   apiClient: Client,
@@ -21,6 +17,7 @@ export function createStream(
       return {
         events: [],
         done: true,
+        isErrored: true
       };
     }
 
@@ -30,8 +27,9 @@ export function createStream(
     return {
       events,
       done:
-        run?.status === TerminatingState.failed ||
-        run?.status === TerminatingState.succeeded,
+        run?.status === RunStatusEnum.Failed ||
+        run?.status === RunStatusEnum.Succeeded,
+      isErrored: false
     };
   }
 

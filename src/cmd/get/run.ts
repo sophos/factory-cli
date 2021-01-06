@@ -1,6 +1,7 @@
 import { createCommandResult, CommandHandler, handler } from '../handler';
 import fields from '../../fields';
 import type Client from '../../client';
+import { FormatType } from '../../formatter';
 
 type Arguments = {
   projectId: string;
