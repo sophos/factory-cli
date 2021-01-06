@@ -19,6 +19,6 @@ export function readFile(path: string) {
 export function parseInput(input: string, path?: string) {
   return load(input, {
     filename: path,
-    json: true,
+    json: true
   });
 }

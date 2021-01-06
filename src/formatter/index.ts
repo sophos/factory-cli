@@ -1,15 +1,11 @@
 import formatterMap from './formatterMap';
-import { Formatter, FormatType } from './formatter';
+import { Formatter, FormatType, RawFormatType } from './formatter';
 
-export type { Formatter, FormatType };
+export type { Formatter, RawFormatType, FormatType };
 
-export const DATA_FORMATTER: FormatType = 'table';
-export const EVENT_FORMATTER: FormatType = 'log';
+export const DEFAULT_FORMATTER: RawFormatType = 'wide';
 
-export default function formatter(
-  formatType: FormatType = DATA_FORMATTER,
-  fields: string[]
-) {
+export default function formatter(formatType: FormatType, fields: string[]) {
   return (input: any): string => {
     try {
       return formatterMap[formatType](input, fields);
@@ -19,4 +15,15 @@ export default function formatter(
       return input.toString();
     }
   };
+}
+
+export function toFormatType(
+  format: RawFormatType,
+  isLog: boolean = false
+): FormatType {
+  if (format === 'wide') {
+    return isLog ? 'log' : 'table';
+  }
+
+  return format;
 }

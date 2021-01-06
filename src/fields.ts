@@ -54,4 +54,14 @@ export default {
     'variables',
   ],
   pipelineRevision: ['_id', 'revision', 'pipeline_id'],
+  pipeline: [
+    '_id',
+    'name',
+    'organization_id',
+    'project_id',
+    'created',
+    'modified',
+    'step_count',
+    'revision_count',
+  ],
 };

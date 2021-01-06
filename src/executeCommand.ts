@@ -1,31 +1,44 @@
 import isFunction from 'lodash/isFunction';
-import omit from 'lodash/omit';
 import flow from 'lodash/flow';
 
-import commandMap from './cmd';
+import {
+  commandsWithSubcommandsMap,
+  executableCommandsMap,
+  mustHaveSubcommand,
+  TopLevelCommand
+} from './cmd';
 import Client from './client';
 import formatter from './formatter';
 import printer from './printer';
-import filterer from './filter';
-import type { CommandHandler } from './cmd/handler';
+import filterer from './filterer';
 import asyncGenToArray from './util/asyncGenToArray';
 
 export default async function executeCommand(args: any) {
-  const methods = args._;
-  const formatType = args.format;
+  const methods: string[] = args._;
   const filterPath = args.filter;
-  const command: CommandHandler<any, any> =
-    commandMap[methods?.[0]]?.[methods?.[1]];
+  const command = methods[0] as TopLevelCommand;
+  let handler;
 
-  if (isFunction(command)) {
+  if (mustHaveSubcommand(command)) {
+    const subcommand = methods[1];
+    const subcommands = commandsWithSubcommandsMap[command];
+
+    // @ts-expect-error: we relying on yargs here and expect that only known subcommands
+    //                   are passed.
+    handler = subcommands[subcommand];
+  } else {
+    handler = executableCommandsMap[command];
+  }
+
+  if (isFunction(handler)) {
     const apiClient = new Client(args.address, args.authToken);
-    const result = await command(apiClient, omit(args, ['_', '$0']));
-    const { payload, fields } = result;
+    const result = await handler(apiClient, args);
+    const { payload, fields, type, format: formatType } = result;
     const filter = filterer(filterPath, fields!);
     const format = formatter(formatType, fields!);
     const view = flow([filter, format, printer({ level: 'info' })]);
 
-    switch (result.type) {
+    switch (type) {
       case 'view': {
         return view(payload);
       }
@@ -43,8 +56,6 @@ export default async function executeCommand(args: any) {
         break;
 
       case 'error': {
-        console.error(result.payload);
-        process.exit(1);
       }
     }
   } else {

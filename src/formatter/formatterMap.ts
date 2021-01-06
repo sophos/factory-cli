@@ -8,7 +8,7 @@ const formatterMap: Record<FormatType, Formatter> = {
   json: jsonFormatter,
   yaml: yamlFormatter,
   table: tableFormatter,
-  log: logFormatter,
+  log: logFormatter
 };
 
 export default formatterMap;

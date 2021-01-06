@@ -1,9 +1,9 @@
 import isString from 'lodash/isString';
 import { JSONPath as jsonFilter } from 'jsonpath-plus';
 
-type Filter = (input: any) => any;
+type Filterer = (input: any) => any;
 
-export default function filterer(filter: string, fields: string[]): Filter {
+export default function filterer(filter: string, fields: string[]): Filterer {
   return (input: any) => {
     if (isString(filter)) {
       return jsonFilter({
