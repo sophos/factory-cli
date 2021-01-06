@@ -1,12 +1,14 @@
 import type { CommandHandler } from '../handler';
 import pipelineRevision from './pipelineRevision';
 import pipeline from './pipeline';
+import project from './project';
 
-type CreateCommandEntity = 'pipeline' | 'pipelineRevision';
+type CreateCommandEntity = 'pipeline' | 'pipeline-revision' | 'project';
 
 const getCommandMap: Record<CreateCommandEntity, CommandHandler<any, any>> = {
-  pipelineRevision,
+  'pipeline-revision': pipelineRevision,
   pipeline,
+  project
 };
 
 export default getCommandMap;

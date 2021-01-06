@@ -13,18 +13,21 @@ export default handler<Arguments, any>(
     const api = apiClient.pipelines;
     const { data: pipeline } = await api.createPipeline(projectId, {
       name,
-      description,
+      description
     });
     const { data: pipelineRevision } = await api.createPipelineRevision(
       projectId,
-      pipeline._id,
+      pipeline._id!,
       {
-        ...input,
+        ...input
       }
     );
 
     return createCommandResult(
       'view',
+
+      // @ts-expect-error: incorrect types from @refactr/api-client,
+      //                   see gh:refactr/refactr-api-client#12
       { pipeline_id: pipeline._id, ...pipelineRevision },
       fields.pipelineRevision
     );
