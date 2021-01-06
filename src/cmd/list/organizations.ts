@@ -8,6 +8,7 @@ export default handler<Arguments, any>(async (apiClient: Client) => {
   const api = apiClient.organizations;
 
   const { data } = await api.listOrganizations();
+  const organizations = data?.organizations ?? [];
 
-  return createCommandResult('view', data?.organizations, fields.organization);
+  return createCommandResult('view', organizations, fields.organization);
 });
