@@ -1,15 +1,17 @@
-import { createStream } from '../run-event-stream';
-import Client from '../../client';
 import { createCommandResult, handler } from '../handler';
+import { createStream } from '../run-event-stream';
 import fields from '../../fields';
 
 type Arguments = {
   projectId: string;
-  jobId: string;
+  pipelineId: string;
+  revision: number;
+
   wait?: boolean;
   suppressEvents?: boolean;
   suppressOutputs?: boolean;
-  variables?: { [key: string]: string };
+  suppressVariables?: boolean;
+  var?: { [key: string]: string };
 };
 
 export default handler<Arguments, any>(
@@ -17,18 +19,26 @@ export default handler<Arguments, any>(
     apiClient,
     {
       projectId,
-      jobId,
-      wait = false,
+      pipelineId,
+      revision,
       suppressEvents = false,
       suppressOutputs = false,
-      variables = {}
+      suppressVariables = false,
+      var: variables,
+      wait = false
     }
   ) => {
-    const { data: run } = await apiClient.jobs.runJob(projectId, jobId, {
-      variables: { ...variables },
-      suppress_outputs: suppressOutputs,
-      suppress_events: suppressEvents
-    });
+    const { data: run } = await apiClient.pipelines.runPipeline(
+      projectId,
+      pipelineId,
+      revision,
+      {
+        suppress_events: suppressEvents,
+        suppress_outputs: suppressOutputs,
+        suppress_vars: suppressVariables,
+        variables
+      }
+    );
 
     if (wait) {
       const stream = createStream(apiClient, projectId, run._id!);

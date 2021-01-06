@@ -1,12 +1,12 @@
 import { CommandHandler } from '../handler';
 import job from './job';
-import pipelineRevision from './pipeline-revision';
+import pipeline from './pipeline';
 
-type RunCommandEntity = 'job' | 'pipeline-revision';
+type RunCommandEntity = 'job' | 'pipeline';
 
 const runCommandMap: Record<RunCommandEntity, CommandHandler<any, any>> = {
   job,
-  'pipeline-revision': pipelineRevision,
+  pipeline,
 };
 
 export default runCommandMap;
