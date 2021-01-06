@@ -1,8 +1,8 @@
 {
-  "name": "refactr-clix",
+  "name": "refactr-cli",
   "version": "1.0.0-alpha.1",
   "description": "Refactr CLI",
-  "main": "index.js",
+  "main": "dist/main.js",
   "author": "Refactr, Inc. (refactr.it)",
   "license": "MIT",
   "files": [
@@ -19,12 +19,13 @@
     "refactrctl": "./bin/refactrctl.js"
   },
   "scripts": {
+    "format": "prettier -w src/**/*.ts",
     "watch": "rollup -c -w src/main.ts",
     "build": "rollup -c src/main.ts",
     "test": "__REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js) jest"
   },
   "dependencies": {
-    "@refactr/api-client": "^0.3.0",
+    "@refactr/api-client": "^0.4.0",
     "cli-table": "^0.3.4",
     "date-fns": "^2.16.1",
     "debug": "^4.3.1",

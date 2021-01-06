@@ -23,6 +23,7 @@ const readDirectoryDeep = async (path: string): Promise<string[]> => {
 };
 
 export let fixtures: Map<string, string>;
+
 export async function loadFixtures() {
   if (!isNil(fixtures)) {
     return fixtures;
@@ -36,7 +37,7 @@ export async function loadFixtures() {
         .filter((p) => !p.includes(__filename))
         .map<Promise<[string, string]>>(async (p) => [
           p.replace(commonPrefix, ''),
-          await fs.readFile(p, { encoding: 'utf-8' }),
+          await fs.readFile(p, { encoding: 'utf-8' })
         ])
     )
   );
