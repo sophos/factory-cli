@@ -1,11 +1,10 @@
-import type { CommandHandler } from '../handler';
-import pipelineRevision from './pipelineRevision';
+import pipelineRevision from './pipeline-revision';
 import pipeline from './pipeline';
 import project from './project';
+import credential from './credential';
 
-type CreateCommandEntity = 'pipeline' | 'pipeline-revision' | 'project';
-
-const getCommandMap: Record<CreateCommandEntity, CommandHandler<any, any>> = {
+const getCommandMap = {
+  credential,
   'pipeline-revision': pipelineRevision,
   pipeline,
   project

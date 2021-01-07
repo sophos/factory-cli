@@ -1,13 +1,12 @@
-import { createCommandResult, CommandHandler, handler } from '../handler';
+import { createCommandResult, handler } from '../handler';
 import fields from '../../fields';
-import type Client from '../../client';
 
 type Arguments = {
   projectId: string;
 };
 
 export default handler<Arguments, any>(
-  async (apiClient: Client, { projectId }): Promise<any> => {
+  async (apiClient, { projectId }): Promise<any> => {
     const api = apiClient.projects;
     const { data: project } = await api.getProject(projectId);
 

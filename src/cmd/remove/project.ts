@@ -1,5 +1,4 @@
 import { createCommandResult, handler } from '../handler';
-import fields from '../../fields';
 
 type Arguments = {
   projectId: string;

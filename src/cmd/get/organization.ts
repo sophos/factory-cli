@@ -1,13 +1,12 @@
-import { createCommandResult, CommandHandler, handler } from '../handler';
+import { createCommandResult, handler } from '../handler';
 import fields from '../../fields';
-import type Client from '../../client';
 
 type Arguments = {
-  organizationId?: string;
+  organizationId: string;
 };
 
 export default handler<Arguments, any>(
-  async (apiClient: Client, { organizationId }) => {
+  async (apiClient, { organizationId }) => {
     const api = apiClient.organizations;
     const { data: organization } = await api.getOrganization(organizationId);
 

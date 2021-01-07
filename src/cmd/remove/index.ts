@@ -1,17 +1,15 @@
-import type { CommandHandler } from '../handler';
+import credential from './credential';
 import job from './job';
 import pipeline from './pipeline';
 import project from './project';
+import runner from './runner';
 
-type CreateCommandEntity = 'job' | 'pipeline' | 'project';
-
-const removeCommandMap: Record<
-  CreateCommandEntity,
-  CommandHandler<any, any>
-> = {
+const removeCommandMap = {
+  credential,
   job,
   pipeline,
-  project
+  project,
+  runner
 };
 
 export default removeCommandMap;

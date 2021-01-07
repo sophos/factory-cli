@@ -4,7 +4,9 @@ import {
   RunsApi,
   OrganizationsApi,
   PipelinesApi,
+  AgentsApi,
   Configuration,
+  CredentialsApi
 } from '@refactr/api-client';
 
 export default class Client {
@@ -13,6 +15,8 @@ export default class Client {
   public readonly projects: ProjectsApi;
   public readonly organizations: OrganizationsApi;
   public readonly pipelines: PipelinesApi;
+  public readonly runners: AgentsApi;
+  public readonly credentials: CredentialsApi;
 
   constructor(baseUrl: string, accessToken: string) {
     const config = new Configuration({ basePath: baseUrl, accessToken });
@@ -22,5 +26,7 @@ export default class Client {
     this.projects = new ProjectsApi(config);
     this.organizations = new OrganizationsApi(config);
     this.pipelines = new PipelinesApi(config);
+    this.runners = new AgentsApi(config);
+    this.credentials = new CredentialsApi(config);
   }
 }

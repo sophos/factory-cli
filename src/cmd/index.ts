@@ -5,6 +5,7 @@ import createCommandMap from './create';
 import removeCommandMap from './remove';
 
 import rerun from './rerun';
+import { CommandHandler } from './handler';
 
 export const executableCommandsMap = {
   login: () => {},
@@ -12,7 +13,10 @@ export const executableCommandsMap = {
   rerun
 };
 
-export const commandsWithSubcommandsMap = {
+export const commandsWithSubcommandsMap: Record<
+  string,
+  Record<string, CommandHandler<any, any>>
+> = {
   create: createCommandMap,
   get: getCommandMap,
   list: listCommandMap,

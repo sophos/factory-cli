@@ -1,23 +1,21 @@
-import { CommandHandler } from '../handler';
+import credentials from './credentials';
 import projects from './projects';
 import runs from './runs';
 import organizations from './organizations';
 import jobs from './jobs';
 import pipelines from './pipelines';
+import pipelineRevisions from './pipeline-revisions';
+import runners from './runners';
 
-type ListCommandEntity =
-  | 'projects'
-  | 'organizations'
-  | 'runs'
-  | 'jobs'
-  | 'pipelines';
-
-const listCommandMap: Record<ListCommandEntity, CommandHandler<any, any>> = {
+const listCommandMap = {
   projects,
   runs,
   organizations,
   jobs,
+  'pipeline-revisions': pipelineRevisions,
   pipelines,
+  runners,
+  credentials
 };
 
 export default listCommandMap;

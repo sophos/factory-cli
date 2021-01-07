@@ -5,7 +5,6 @@ import yargs from 'yargs/yargs';
 import { DEFAULT_FORMATTER } from '../formatter';
 import create from './create';
 import get from './get';
-import invite from './invite';
 import list from './list';
 import login from './login';
 import run from './run';
@@ -15,7 +14,7 @@ import remove from './remove';
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
-  create(get(invite(list(login(remove(rerun(run(yargs))))))));
+  create(get(list(login(remove(rerun(run(yargs)))))));
 
 const parse = (argv: string[], { version }: { version: string }) => {
   return apply(yargs(argv))

@@ -43,6 +43,50 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
+      .command(
+        'pipeline-revision <revision>',
+        'Get pipeline-revision details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 <revision> [options]')
+            .positional('revision', {
+              type: 'string',
+              describe: 'Pipeline revision to get',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('project-id', {
+              describe: 'Project this pipeline revision belongs to',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('pipeline-id', {
+              describe: 'Pipeline this revision belongs to',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+      )
+      .command(
+        'credential <credential-id>',
+        'Get credential details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 <credential-id> [options]')
+            .positional('credential-id', {
+              type: 'string',
+              describe: 'Credential to get',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('project-id', {
+              describe: 'Project this credential belongs to',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+      )
       .option('filter', {
         describe: 'Filter output based on conditions provided',
         type: 'string',

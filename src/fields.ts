@@ -1,3 +1,9 @@
+import {
+  CredentialTypeEnum,
+  RunnerAgentEvents,
+  RunnerAgentOptions
+} from '@refactr/api-client/types/generated/api';
+
 /**
  * Fields of various objects that we'd like to print in human-readable mode
  * like "log" or "table".
@@ -11,7 +17,7 @@ export default {
     'pipeline_count',
     'organization_id',
     'created',
-    'modified',
+    'modified'
   ],
   organization: [
     '_id',
@@ -20,7 +26,7 @@ export default {
     'contact_email',
     'plan_quotas',
     'created',
-    'modified',
+    'modified'
   ],
   run: [
     '_id',
@@ -32,7 +38,7 @@ export default {
     'finished',
     'suppress_events',
     'suppress_outputs',
-    'suppress_vars',
+    'suppress_vars'
   ],
   runEvent: ['occurred', 'level', 'message', 'details'],
   job: [
@@ -51,7 +57,7 @@ export default {
     'suppress_vars',
     'suppress_events',
     'disable_on_failure',
-    'variables',
+    'variables'
   ],
   pipelineRevision: ['_id', 'revision', 'pipeline_id'],
   pipeline: [
@@ -62,6 +68,24 @@ export default {
     'created',
     'modified',
     'step_count',
-    'revision_count',
+    'revision_count'
   ],
+
+  runner: [
+    '_id',
+    'organization_id',
+    'created',
+    'name',
+    'host_type',
+    'machine_type',
+    'version',
+    'started',
+    'heartbeat',
+    'status',
+    'idle_since',
+    'stop_pending',
+    'events',
+    'options'
+  ],
+  credential: ['_id', 'created', 'name', 'id', 'type', 'data']
 };

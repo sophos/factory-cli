@@ -1,10 +1,9 @@
-import type Client from '../../client';
 import { createCommandResult, handler } from '../handler';
 import fields from '../../fields';
 
 type Arguments = {};
 
-export default handler<Arguments, any>(async (apiClient: Client) => {
+export default handler<Arguments, any>(async (apiClient) => {
   const api = apiClient.organizations;
 
   const { data } = await api.listOrganizations();

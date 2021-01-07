@@ -1,7 +1,5 @@
-import { createCommandResult, CommandHandler, handler } from '../handler';
+import { createCommandResult, handler } from '../handler';
 import fields from '../../fields';
-import type Client from '../../client';
-import { FormatType } from '../../formatter';
 
 type Arguments = {
   projectId: string;
@@ -9,7 +7,7 @@ type Arguments = {
 };
 
 export default handler<Arguments, any>(
-  async (apiClient: Client, { projectId, runId }) => {
+  async (apiClient, { projectId, runId }) => {
     const api = apiClient.runs;
     const { data: run } = await api.getRun(projectId, runId);
 
