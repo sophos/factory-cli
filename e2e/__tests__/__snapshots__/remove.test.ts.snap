@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`refactrctl remove credential throws on missing --project-id option 1`] = `
+"refactrctl remove credential <credential-id>
+
+Delete specified runner
+
+Positionals:
+  credential-id  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  Project this credential belongs to  [string] [required]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl remove credential throws on missing arguments 1`] = `
+"refactrctl remove credential <credential-id>
+
+Delete specified runner
+
+Positionals:
+  credential-id  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  Project this credential belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl remove job throws on missing --project-id option 1`] = `
+"refactrctl remove job <job-id>
+
+Delete specified job
+
+Positionals:
+  job  [string]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  Project this pipeline belongs to  [string] [required]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl remove job throws on missing arguments 1`] = `
+"refactrctl remove job <job-id>
+
+Delete specified job
+
+Positionals:
+  job  [string]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  Project this pipeline belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl remove pipeline throws on missing arguments 1`] = `
+"refactrctl remove pipeline <pipeline-id>
+
+Delete specified pipeline
+
+Positionals:
+  pipeline-id  Pipeline to delete  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  Project this pipeline belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl remove project throws on missing arguments 1`] = `
+"refactrctl remove project <project-id>
+
+Delete specified project
+
+Positionals:
+  project-id  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl remove runner throws on missing arguments 1`] = `
+"refactrctl remove runner <runner-id>
+
+Delete specified runner
+
+Positionals:
+  runner-id  [string] [required]
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address          Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help             Show help  [boolean]
+      --organization-id  Organization this runner belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl remove runner throws on missing organization-id option 1`] = `
+"refactrctl remove runner <runner-id>
+
+Delete specified runner
+
+Positionals:
+  runner-id  [string] [required]
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address          Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help             Show help  [boolean]
+      --organization-id  Organization this runner belongs to  [string] [required]
+
+Missing required argument: organization-id
+"
+`;
+
+exports[`refactrctl remove throws on missing subcommand 1`] = `
+"refactrctl remove
+
+Commands:
+  refactrctl remove pipeline <pipeline-id>      Delete specified pipeline
+  refactrctl remove job <job-id>                Delete specified job
+  refactrctl remove project <project-id>        Delete specified project
+  refactrctl remove runner <runner-id>          Delete specified runner
+  refactrctl remove credential <credential-id>  Delete specified runner
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+
+Command must be specified.
+"
+`;
