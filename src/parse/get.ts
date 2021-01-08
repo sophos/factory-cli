@@ -1,9 +1,45 @@
 import Yargs from 'yargs';
+import { JOB_TRIGGER_TYPE } from '../job-trigger-type';
 
 export default (yargs: Yargs.Argv) =>
   yargs.command('get', 'Get specified resource', (yargs) =>
     yargs
       .usage('Usage: $0 get <command> [options]')
+      .command(
+        'credential <credential-id>',
+        'Get credential details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 <credential-id> [options]')
+            .positional('credential-id', {
+              type: 'string',
+              describe: 'Credential to get',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('project-id', {
+              describe: 'Project this credential belongs to',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+      )
+      .command('job <job-id>', 'Get job details', (yargs) =>
+        yargs
+          .usage('Usage: $0 <job-id> [options]')
+          .positional('job-id', {
+            type: 'string',
+            describe: 'Job to get',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('project-id', {
+            describe: 'Project this job belongs to',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
+      )
       .command('project <project-id>', 'Get project details', (yargs) =>
         yargs
           .usage('Usage: $0 <project-id> [options]')
@@ -63,25 +99,6 @@ export default (yargs: Yargs.Argv) =>
             })
             .option('pipeline-id', {
               describe: 'Pipeline this revision belongs to',
-              type: 'string',
-              demandOption: true,
-              requiresArg: true
-            })
-      )
-      .command(
-        'credential <credential-id>',
-        'Get credential details',
-        (yargs) =>
-          yargs
-            .usage('Usage: $0 <credential-id> [options]')
-            .positional('credential-id', {
-              type: 'string',
-              describe: 'Credential to get',
-              demandOption: true,
-              requiresArg: true
-            })
-            .option('project-id', {
-              describe: 'Project this credential belongs to',
               type: 'string',
               demandOption: true,
               requiresArg: true

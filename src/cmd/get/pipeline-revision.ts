@@ -9,8 +9,6 @@ type Arguments = {
 
 export default handler<Arguments, any>(
   async (apiClient, { projectId, pipelineId, revision }) => {
-    console.info(projectId, pipelineId, revision);
-
     const api = apiClient.pipelines;
     const { data: run } = await api.getPipelineRevision(
       projectId,

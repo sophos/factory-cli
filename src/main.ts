@@ -8,13 +8,7 @@ declare const __VERSION__: string;
 async function main(argv: string[]) {
   const args = parse(argv, { version: __VERSION__ });
 
-  try {
-    await executeCommand(args);
-  } catch (err) {
-    // TODO: remove
-    console.error(err);
-    process.exit(1);
-  }
+  await executeCommand(args);
 }
 
 export default main;

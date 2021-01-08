@@ -1,4 +1,5 @@
 import credential from './credential';
+import job from './job';
 import organization from './organization';
 import project from './project';
 import run from './run';
@@ -7,6 +8,7 @@ import runner from './runner';
 
 const getCommandMap = {
   credential,
+  job,
   organization,
   project,
   'pipeline-revision': pipelineRevision,

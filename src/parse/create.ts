@@ -4,6 +4,7 @@ import * as path from 'path';
 
 import { parseInput, readFile } from '../util/io';
 import { CREDENTIAL_TYPES } from '../credential-type';
+import { JOB_TRIGGER_TYPE } from '../job-trigger-type';
 
 const coerceInput = (arg: string | string[]) => {
   if (isArray(arg)) {
@@ -113,6 +114,58 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true,
             demandOption: true,
             choices: CREDENTIAL_TYPES
+          })
+      )
+      .command('job', 'Get job details', (yargs) =>
+        yargs
+          .usage('Usage: $0 [options]')
+          .option('project-id', {
+            describe: 'Project this job belongs to',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('pipeline-id', {
+            type: 'string',
+            describe: 'Pipeline this job relates to',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('pipeline-revision', {
+            describe: 'Revision of pipeline to set for job',
+            type: 'number',
+            requiresArg: true
+          })
+          .option('name', {
+            describe: 'Job name',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('type', {
+            describe: 'Job trigger type',
+            choices: JOB_TRIGGER_TYPE,
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('suppress-events', {
+            describe: 'Suppress run events',
+            type: 'boolean',
+            default: false
+          })
+          .option('suppress-output', {
+            describe: 'Suppress job run output',
+            type: 'boolean',
+            default: false
+          })
+          .option('suppress-variables', {
+            describe: 'Suppress variables',
+            type: 'boolean',
+            default: false
+          })
+          .option('disable-on-failure', {
+            type: 'boolean',
+            default: false
           })
       )
       .demandCommand(1, 'Command must be specified.')

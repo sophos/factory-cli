@@ -23,8 +23,6 @@ export default async function executeCommand(args: any) {
     const subcommand = methods[1];
     const subcommands = commandsWithSubcommandsMap[command];
 
-    // @ts-expect-error: we relying on yargs here and expect that only known subcommands
-    //                   are passed.
     handler = subcommands[subcommand];
   } else {
     handler = executableCommandsMap[command];
@@ -56,6 +54,20 @@ export default async function executeCommand(args: any) {
         break;
 
       case 'error': {
+        const { kind } = payload as { kind: 'api_error' | 'unknown_error' };
+        const view = flow([
+          formatter('log', ['message']),
+          printer({ level: 'error' })
+        ]);
+
+        switch (kind) {
+          case 'api_error':
+            for (const error of payload.errors) view(error);
+            break;
+          case 'unknown_error':
+            view({ code: 'UnknownError', message: 'Unknown error' });
+            break;
+        }
       }
     }
   } else {

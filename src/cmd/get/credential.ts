@@ -14,8 +14,6 @@ export default handler<Arguments, any>(
       credentialId
     );
 
-    console.info(credential);
-
     return createCommandResult('view', credential, fields.credential);
   }
 );

@@ -32,7 +32,10 @@ const createHandlerResult = <T>(
   cmd: CommandResult<T>,
   format: RawFormatType
 ): CommandResult<T> & { format: FormatType } => ({
-  format: toFormatType(format, cmd.type === 'streaming'),
+  format: toFormatType(
+    format,
+    cmd.type === 'streaming' || cmd.type === 'error'
+  ),
   ...cmd
 });
 
@@ -47,26 +50,23 @@ export const handler = <A, R>(
     const result = await fn(apiClient, args);
     return createHandlerResult(result, format);
   } catch (err) {
-    // console.error(err);
     const stack = err.stack;
     if (err.isAxiosError) {
       const errors = (err as AxiosError).response?.data?.errors;
-      console.error(errors);
+      const payload = {
+        kind: 'api_error',
+        errors,
+        stack
+      };
+
       if (!isNil(errors)) {
         return createHandlerResult(
-          createCommandResult('error', {
-            kind: 'api_error',
-            errors,
-            stack
-          }),
+          createCommandResult('error', payload),
           format
         );
-      } else {
-        // TODO: handle
       }
     }
 
-    // TODO: handle error
     return createHandlerResult(
       createCommandResult('error', {
         kind: 'unknown_error',
