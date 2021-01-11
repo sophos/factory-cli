@@ -27,7 +27,7 @@ export default async function execute(
 
       return resolve({
         stdout,
-        stderr,
+        stderr
       });
     });
   });
@@ -42,3 +42,5 @@ export const executeWithStderrOnly = (
   args: Args,
   { trim }: { trim: boolean } = { trim: false }
 ) => execute(args).then(({ stderr }) => (trim ? stderr.trim() : stderr));
+
+export const getAuthToken = () => process.env.__REFACTR_AUTH_TOKEN__;

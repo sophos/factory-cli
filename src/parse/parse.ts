@@ -6,7 +6,6 @@ import { DEFAULT_FORMATTER } from '../formatter';
 import create from './create';
 import get from './get';
 import list from './list';
-import login from './login';
 import run from './run';
 import rerun from './rerun';
 import remove from './remove';
@@ -14,7 +13,7 @@ import remove from './remove';
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
-  create(get(list(login(remove(rerun(run(yargs)))))));
+  create(get(list(remove(rerun(run(yargs))))));
 
 const parse = (argv: string[], { version }: { version: string }) => {
   return apply(yargs(argv))
@@ -23,11 +22,14 @@ const parse = (argv: string[], { version }: { version: string }) => {
     .version(version)
     .usage('Usage: $0 <command> [options]')
     .middleware((argv) => {
-      if (isString(process.env.REFACTR_ADDRESS)) {
+      if (!isString(argv.address) && isString(process.env.REFACTR_ADDRESS)) {
         argv.address = process.env.REFACTR_ADDRESS;
       }
 
-      if (isString(process.env.REFACTR_AUTH_TOKEN)) {
+      if (
+        !isString(argv.authToken) &&
+        isString(process.env.REFACTR_AUTH_TOKEN)
+      ) {
         argv.authToken = argv['auth-token'] = process.env.REFACTR_AUTH_TOKEN;
       }
     })

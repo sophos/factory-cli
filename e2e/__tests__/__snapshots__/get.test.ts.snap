@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`refactrctl get credential throws on missing arguments 1`] = `
+"Usage: refactrctl <credential-id> [options]
+
+Positionals:
+  credential-id  Credential to get  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --filter      Filter output based on conditions provided  [string]
+      --project-id  Project this credential belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl get job throws on missing arguments 1`] = `
+"Usage: refactrctl <job-id> [options]
+
+Positionals:
+  job-id  Job to get  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --filter      Filter output based on conditions provided  [string]
+      --project-id  Project this job belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl get pipeline throws on missing arguments 1`] = `
+"Usage: refactrctl get <command> [options]
+
+Commands:
+  refactrctl get credential <credential-id>      Get credential details
+  refactrctl get job <job-id>                    Get job details
+  refactrctl get project <project-id>            Get project details
+  refactrctl get organization <organization-id>  Get organization details
+  refactrctl get run <run-id>                    Get run details
+  refactrctl get pipeline-revision <revision>    Get pipeline-revision details
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --filter      Filter output based on conditions provided  [string]
+
+Unknown argument: pipeline
+"
+`;
+
+exports[`refactrctl get pipeline-revision throws on missing arguments 1`] = `
+"Usage: refactrctl <revision> [options]
+
+Positionals:
+  revision  Pipeline revision to get  [string] [required]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address      Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --filter       Filter output based on conditions provided  [string]
+      --project-id   Project this pipeline revision belongs to  [string] [required]
+      --pipeline-id  Pipeline this revision belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl get run throws on missing arguments 1`] = `
+"Usage: refactrctl <run-id> [options]
+
+Positionals:
+  run-id  Run to get  [string] [required]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --filter      Filter output based on conditions provided  [string]
+      --project-id  Project this run belongs to  [string] [required]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
+
+exports[`refactrctl get runner throws on missing arguments 1`] = `
+"Usage: refactrctl get <command> [options]
+
+Commands:
+  refactrctl get credential <credential-id>      Get credential details
+  refactrctl get job <job-id>                    Get job details
+  refactrctl get project <project-id>            Get project details
+  refactrctl get organization <organization-id>  Get organization details
+  refactrctl get run <run-id>                    Get run details
+  refactrctl get pipeline-revision <revision>    Get pipeline-revision details
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --filter      Filter output based on conditions provided  [string]
+
+Unknown argument: runner
+"
+`;
+
+exports[`refactrctl get throws on missing subcommand 1`] = `
+"Usage: refactrctl get <command> [options]
+
+Commands:
+  refactrctl get credential <credential-id>      Get credential details
+  refactrctl get job <job-id>                    Get job details
+  refactrctl get project <project-id>            Get project details
+  refactrctl get organization <organization-id>  Get organization details
+  refactrctl get run <run-id>                    Get run details
+  refactrctl get pipeline-revision <revision>    Get pipeline-revision details
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --address     Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable  [string] [required] [default: \\"https://api.refactr.it/v1\\"]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --filter      Filter output based on conditions provided  [string]
+
+Command must be specified
+"
+`;

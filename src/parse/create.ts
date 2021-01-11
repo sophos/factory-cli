@@ -83,7 +83,7 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('credential', 'Create credential', (yargs) =>
+      .command('credential', 'Create a new credential', (yargs) =>
         yargs
           .option('project-id', {
             describe: 'Project this credential will be created under',
@@ -116,7 +116,7 @@ export default (yargs: Yargs.Argv) =>
             choices: CREDENTIAL_TYPES
           })
       )
-      .command('job', 'Get job details', (yargs) =>
+      .command('job', 'Create a new job', (yargs) =>
         yargs
           .usage('Usage: $0 [options]')
           .option('project-id', {

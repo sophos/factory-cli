@@ -3,7 +3,7 @@
 exports[`refactrctl create credential throws on missing arguments 1`] = `
 "refactrctl create credential
 
-Create credential
+Create a new credential
 
 Options:
       --version     Show version number  [boolean]
@@ -86,7 +86,8 @@ Commands:
   refactrctl create project
   refactrctl create pipeline-revision <input>
   refactrctl create pipeline <input>
-  refactrctl create credential                 Create credential
+  refactrctl create credential                 Create a new credential
+  refactrctl create job                        Create a new job
 
 Options:
       --version     Show version number  [boolean]

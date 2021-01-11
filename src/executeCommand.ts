@@ -35,6 +35,10 @@ export default async function executeCommand(args: any) {
     const filter = filterer(filterPath, fields!);
     const format = formatter(formatType, fields!);
     const view = flow([filter, format, printer({ level: 'info' })]);
+    const viewError = flow([
+      formatter('log', ['message']),
+      printer({ level: 'error' })
+    ]);
 
     switch (type) {
       case 'view': {
@@ -55,17 +59,13 @@ export default async function executeCommand(args: any) {
 
       case 'error': {
         const { kind } = payload as { kind: 'api_error' | 'unknown_error' };
-        const view = flow([
-          formatter('log', ['message']),
-          printer({ level: 'error' })
-        ]);
 
         switch (kind) {
           case 'api_error':
-            for (const error of payload.errors) view(error);
+            for (const error of payload.errors) viewError(error);
             break;
           case 'unknown_error':
-            view({ code: 'UnknownError', message: 'Unknown error' });
+            viewError({ code: 'UnknownError', message: 'Unknown error' });
             break;
         }
       }
