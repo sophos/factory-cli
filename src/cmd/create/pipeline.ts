@@ -18,8 +18,9 @@ export default handler<Arguments, any>(
       description
     });
     let result = { pipeline_id: pipeline._id };
+    const isWithPipelineRevision = !isNil(input);
 
-    if (!isNil(input)) {
+    if (isWithPipelineRevision) {
       const { data: pipelineRevision } = await api.createPipelineRevision(
         projectId,
         pipeline._id!,
@@ -33,6 +34,10 @@ export default handler<Arguments, any>(
       result = { ...result, ...pipelineRevision };
     }
 
-    return createCommandResult('view', result, fields.pipelineRevision);
+    return createCommandResult(
+      'view',
+      result,
+      isWithPipelineRevision ? fields.pipelineRevision : ['_id']
+    );
   }
 );
