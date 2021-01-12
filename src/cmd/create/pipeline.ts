@@ -17,6 +17,7 @@ export default handler<Arguments, any>(
       name,
       description
     });
+    let result = { pipeline_id: pipeline._id };
 
     if (!isNil(input)) {
       const { data: pipelineRevision } = await api.createPipelineRevision(
@@ -26,15 +27,12 @@ export default handler<Arguments, any>(
           ...input
         }
       );
-    }
-
-    return createCommandResult(
-      'view',
 
       // @ts-expect-error: incorrect types from @refactr/api-client,
       //                   see gh:refactr/refactr-api-client#12
-      { pipeline_id: pipeline._id, ...pipelineRevision },
-      fields.pipelineRevision
-    );
+      result = { ...result, ...pipelineRevision };
+    }
+
+    return createCommandResult('view', result, fields.pipelineRevision);
   }
 );
