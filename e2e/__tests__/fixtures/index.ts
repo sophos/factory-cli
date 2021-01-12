@@ -33,7 +33,7 @@ export async function loadFixtures() {
   fixtures = new Map(
     await Promise.all(
       (await readDirectoryDeep(__dirname))
-        // Remove self.
+        // delete self.
         .filter((p) => !p.includes(__filename))
         .map<Promise<[string, string]>>(async (p) => [
           p.replace(commonPrefix, ''),

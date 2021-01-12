@@ -1,8 +1,9 @@
 import Yargs from 'yargs';
 import isArray from 'lodash/isArray';
+import isString from 'lodash/isString';
 import * as path from 'path';
 
-import { parseInput, readFile } from '../util/io';
+import { readStdin, parseInput, readFile } from '../util/io';
 import { CREDENTIAL_TYPES } from '../credential-type';
 import { JOB_TRIGGER_TYPE } from '../job-trigger-type';
 
@@ -10,16 +11,19 @@ const coerceInput = (arg: string | string[]) => {
   if (isArray(arg)) {
     // TODO: throw err?
     return;
+  } else if (!isString(arg)) {
+    return;
   }
 
   // If input starts with @ treat input as file path.
   if (arg.startsWith('@')) {
     try {
-      const filepath = path.resolve(arg.slice(1));
+      const filepath = path.resolve(arg.slice(1).trim());
       return readFile(filepath);
     } catch (err) {
       // TODO: handle error
       console.error(err);
+      throw err;
     }
   }
 
@@ -44,12 +48,11 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true
           })
       )
-      .command('pipeline-revision <input>', '', (yargs) =>
+      .command('pipeline-revision', '', (yargs) =>
         yargs
           .positional('input', {
-            type: 'string',
-            required: true,
-            coerce: coerceInput
+            coerce: coerceInput,
+            default: () => readStdin
           })
           .option('project-id', {
             describe: 'Project this pipeline belongs to',

@@ -5,21 +5,21 @@ beforeAll(async () => {
   return await loadFixtures();
 });
 
-describe('refactrctl remove', () => {
+describe('refactrctl delete', () => {
   test('throws on missing subcommand', async () => {
-    await expect(executeWithStdoutOnly(['remove'])).rejects.toMatchSnapshot();
+    await expect(executeWithStdoutOnly(['delete'])).rejects.toMatchSnapshot();
   });
 
   describe('credential', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'credential'])
+        executeWithStdoutOnly(['delete', 'credential'])
       ).rejects.toMatchSnapshot();
     });
 
     test('throws on missing --project-id option', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'credential', 'credential-id'])
+        executeWithStdoutOnly(['delete', 'credential', 'credential-id'])
       ).rejects.toMatchSnapshot();
     });
   });
@@ -27,13 +27,13 @@ describe('refactrctl remove', () => {
   describe('job', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'job'])
+        executeWithStdoutOnly(['delete', 'job'])
       ).rejects.toMatchSnapshot();
     });
 
     test('throws on missing --project-id option', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'job', 'job-id'])
+        executeWithStdoutOnly(['delete', 'job', 'job-id'])
       ).rejects.toMatchSnapshot();
     });
   });
@@ -41,7 +41,7 @@ describe('refactrctl remove', () => {
   describe('pipeline', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'pipeline'])
+        executeWithStdoutOnly(['delete', 'pipeline'])
       ).rejects.toMatchSnapshot();
     });
   });
@@ -49,7 +49,7 @@ describe('refactrctl remove', () => {
   describe('project', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'project'])
+        executeWithStdoutOnly(['delete', 'project'])
       ).rejects.toMatchSnapshot();
     });
   });
@@ -57,13 +57,13 @@ describe('refactrctl remove', () => {
   describe('runner', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'runner'])
+        executeWithStdoutOnly(['delete', 'runner'])
       ).rejects.toMatchSnapshot();
     });
 
     test('throws on missing organization-id option', async () => {
       await expect(
-        executeWithStdoutOnly(['remove', 'runner', 'runner-id'])
+        executeWithStdoutOnly(['delete', 'runner', 'runner-id'])
       ).rejects.toMatchSnapshot();
     });
   });

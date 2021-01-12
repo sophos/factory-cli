@@ -40,10 +40,10 @@ Missing required arguments: project-id, name
 `;
 
 exports[`refactrctl create pipeline-revision throws on missing arguments 1`] = `
-"refactrctl create pipeline-revision <input>
+"refactrctl create pipeline-revision
 
 Positionals:
-  input  [string] [required]
+  input  [default: (default)]
 
 Options:
       --version      Show version number  [boolean]
@@ -55,7 +55,7 @@ Options:
       --project-id   Project this pipeline belongs to  [string] [required]
       --pipeline-id  Pipeline  [required]
 
-Not enough non-option arguments: got 0, need at least 1
+Missing required arguments: project-id, pipeline-id
 "
 `;
 
@@ -81,10 +81,10 @@ exports[`refactrctl create throws on missing subcommand 1`] = `
 
 Commands:
   refactrctl create project
-  refactrctl create pipeline-revision <input>
+  refactrctl create pipeline-revision
   refactrctl create pipeline [options]
-  refactrctl create credential                 Create a new credential
-  refactrctl create job                        Create a new job
+  refactrctl create credential          Create a new credential
+  refactrctl create job                 Create a new job
 
 Options:
       --version     Show version number  [boolean]

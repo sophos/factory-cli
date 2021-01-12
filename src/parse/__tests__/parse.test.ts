@@ -1,4 +1,4 @@
-import parse from '../parse';
+import index from '../index';
 
 describe('parse', () => {
   test('version', () => {});

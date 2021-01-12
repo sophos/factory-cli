@@ -12,6 +12,7 @@ import formatter from './formatter';
 import printer from './printer';
 import filterer from './filterer';
 import asyncGenToArray from './util/asyncGenToArray';
+import { readStdin } from './util/io';
 
 export default async function executeCommand(args: any) {
   const methods: string[] = args._;
@@ -27,6 +28,10 @@ export default async function executeCommand(args: any) {
   } else {
     handler = executableCommandsMap[command];
   }
+
+  const stdin = readStdin();
+
+  console.info(stdin);
 
   if (isFunction(handler)) {
     const apiClient = new Client(args.address, args.authToken);
@@ -65,8 +70,11 @@ export default async function executeCommand(args: any) {
             for (const error of payload.errors) viewError(error);
             break;
           case 'unknown_error':
-            console.error(payload);
-            viewError({ code: 'UnknownError', message: 'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues' });
+            viewError({
+              code: 'UnknownError',
+              message:
+                'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+            });
             break;
         }
       }

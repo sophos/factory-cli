@@ -22,7 +22,7 @@
     "format": "prettier -w src/**/*.ts",
     "watch": "rollup -c -w src/main.ts",
     "build": "rollup -c src/main.ts",
-    "test": "__REFACTR_AUTH_TOKEN__=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZhMDUzZjhiN2YyYjQ0MGFiNzNmZmI1Iiwia2lkIjoia050bmVXdEtOS09rR21EOFpSakxOIiwibmFtZSI6IkNMSSBUZXN0IiwiaWF0IjoxNjEwMzczNTk1LCJleHAiOjE2NzM0ODg3OTUsImF1ZCI6ImFwaS5kZXZlbC5yZWZhY3RyLml0IiwiaXNzIjoiYXBpLmRldmVsLnJlZmFjdHIuaXQiLCJzdWIiOiI1ZmEwNTNmOGI3ZjJiNDQwYWI3M2ZmYjUifQ.buXuEs1azWeA7N4_rIsbnwldd6gIbudCRYeQUVKRzXe2h0pwefHRey35Y3_DT9BzMJ9WEjQpkLcxryHnERcezg __REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js) jest"
+    "test": "__REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js) jest"
   },
   "dependencies": {
     "@refactr/api-client": "^0.4.0",

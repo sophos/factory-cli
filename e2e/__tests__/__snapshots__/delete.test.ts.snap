@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl remove credential throws on missing --project-id option 1`] = `
-"refactrctl remove credential <credential-id>
+exports[`refactrctl delete credential throws on missing --project-id option 1`] = `
+"refactrctl delete credential <credential-id>
 
 Delete a runner
 
@@ -21,8 +21,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl remove credential throws on missing arguments 1`] = `
-"refactrctl remove credential <credential-id>
+exports[`refactrctl delete credential throws on missing arguments 1`] = `
+"refactrctl delete credential <credential-id>
 
 Delete a runner
 
@@ -42,8 +42,8 @@ Not enough non-option arguments: got 0, need at least 1
 "
 `;
 
-exports[`refactrctl remove job throws on missing --project-id option 1`] = `
-"refactrctl remove job <job-id>
+exports[`refactrctl delete job throws on missing --project-id option 1`] = `
+"refactrctl delete job <job-id>
 
 Delete a job
 
@@ -63,8 +63,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl remove job throws on missing arguments 1`] = `
-"refactrctl remove job <job-id>
+exports[`refactrctl delete job throws on missing arguments 1`] = `
+"refactrctl delete job <job-id>
 
 Delete a job
 
@@ -84,8 +84,8 @@ Not enough non-option arguments: got 0, need at least 1
 "
 `;
 
-exports[`refactrctl remove pipeline throws on missing arguments 1`] = `
-"refactrctl remove pipeline <pipeline-id>
+exports[`refactrctl delete pipeline throws on missing arguments 1`] = `
+"refactrctl delete pipeline <pipeline-id>
 
 Delete a pipeline
 
@@ -105,8 +105,8 @@ Not enough non-option arguments: got 0, need at least 1
 "
 `;
 
-exports[`refactrctl remove project throws on missing arguments 1`] = `
-"refactrctl remove project <project-id>
+exports[`refactrctl delete project throws on missing arguments 1`] = `
+"refactrctl delete project <project-id>
 
 Delete a project
 
@@ -125,8 +125,8 @@ Not enough non-option arguments: got 0, need at least 1
 "
 `;
 
-exports[`refactrctl remove runner throws on missing arguments 1`] = `
-"refactrctl remove runner <runner-id>
+exports[`refactrctl delete runner throws on missing arguments 1`] = `
+"refactrctl delete runner <runner-id>
 
 Delete a runner
 
@@ -146,8 +146,8 @@ Not enough non-option arguments: got 0, need at least 1
 "
 `;
 
-exports[`refactrctl remove runner throws on missing organization-id option 1`] = `
-"refactrctl remove runner <runner-id>
+exports[`refactrctl delete runner throws on missing organization-id option 1`] = `
+"refactrctl delete runner <runner-id>
 
 Delete a runner
 
@@ -167,15 +167,15 @@ Missing required argument: organization-id
 "
 `;
 
-exports[`refactrctl remove throws on missing subcommand 1`] = `
-"refactrctl remove
+exports[`refactrctl delete throws on missing subcommand 1`] = `
+"refactrctl delete
 
 Commands:
-  refactrctl remove pipeline <pipeline-id>      Delete a pipeline
-  refactrctl remove job <job-id>                Delete a job
-  refactrctl remove project <project-id>        Delete a project
-  refactrctl remove runner <runner-id>          Delete a runner
-  refactrctl remove credential <credential-id>  Delete a runner
+  refactrctl delete pipeline <pipeline-id>      Delete a pipeline
+  refactrctl delete job <job-id>                Delete a job
+  refactrctl delete project <project-id>        Delete a project
+  refactrctl delete runner <runner-id>          Delete a runner
+  refactrctl delete credential <credential-id>  Delete a runner
 
 Options:
       --version     Show version number  [boolean]

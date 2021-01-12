@@ -8,12 +8,12 @@ import get from './get';
 import list from './list';
 import run from './run';
 import rerun from './rerun';
-import remove from './remove';
+import del from './delete';
 
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
-  create(get(list(remove(rerun(run(yargs))))));
+  create(get(list(del(rerun(run(yargs))))));
 
 const parse = (argv: string[], { version }: { version: string }) => {
   return apply(yargs(argv))

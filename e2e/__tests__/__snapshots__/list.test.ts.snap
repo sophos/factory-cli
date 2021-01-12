@@ -1,12 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl list credentials should work (--format=json) 1`] = `""`;
+exports[`refactrctl list credentials should work (--format=json) 1`] = `
+"undefined
+[
+    {
+        \\"_id\\": \\"5ffc71a504ea5c3fab201bb8\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-11T15:41:25.326Z\\",
+        \\"name\\": \\"Test CLI Credential 2\\",
+        \\"id\\": \\"cli_test_cred_2\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"5ffc718704ea5c7701201bb6\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-11T15:40:55.242Z\\",
+        \\"name\\": \\"Test CLI Credential 1\\",
+        \\"id\\": \\"cli_test_cred_1\\",
+        \\"type\\": \\"username_password\\"
+    }
+]
+"
+`;
 
-exports[`refactrctl list credentials should work (--format=table) 1`] = `""`;
+exports[`refactrctl list credentials should work (--format=table) 1`] = `
+"undefined
+[31m _id                      [39m[31m created             [39m[31m name                  [39m[31m id              [39m[31m type              [39m[31m data [39m
+ 5ffc71a504ea5c3fab201bb8  01/11/2021, 8:41 PM  Test CLI Credential 2  cli_test_cred_2  generic            -    
+ 5ffc718704ea5c7701201bb6  01/11/2021, 8:40 PM  Test CLI Credential 1  cli_test_cred_1  username_password  -    
+"
+`;
 
-exports[`refactrctl list credentials should work (--format=yaml) 1`] = `""`;
+exports[`refactrctl list credentials should work (--format=yaml) 1`] = `
+"undefined
+-
+    _id: 5ffc71a504ea5c3fab201bb8
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-11T15:41:25.326Z'
+    name: Test CLI Credential 2
+    id: cli_test_cred_2
+    type: generic
+-
+    _id: 5ffc718704ea5c7701201bb6
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-11T15:40:55.242Z'
+    name: Test CLI Credential 1
+    id: cli_test_cred_1
+    type: username_password
 
-exports[`refactrctl list credentials should work (default formatting) 1`] = `""`;
+"
+`;
+
+exports[`refactrctl list credentials should work (default formatting) 1`] = `
+"undefined
+[31m _id                      [39m[31m created             [39m[31m name                  [39m[31m id              [39m[31m type              [39m[31m data [39m
+ 5ffc71a504ea5c3fab201bb8  01/11/2021, 8:41 PM  Test CLI Credential 2  cli_test_cred_2  generic            -    
+ 5ffc718704ea5c7701201bb6  01/11/2021, 8:40 PM  Test CLI Credential 1  cli_test_cred_1  username_password  -    
+"
+`;
 
 exports[`refactrctl list credentials throws on missing arguments 1`] = `
 "refactrctl credentials [options]

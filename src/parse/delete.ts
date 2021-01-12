@@ -5,7 +5,7 @@ import * as path from 'path';
 import { parseInput, readFile } from '../util/io';
 
 export default (yargs: Yargs.Argv) =>
-  yargs.command('remove', '', (yargs) =>
+  yargs.command('delete', '', (yargs) =>
     yargs
       .command('pipeline <pipeline-id>', 'Delete a pipeline', (yargs) =>
         yargs
@@ -48,18 +48,15 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command(
-        'credential <credential-id>',
-        'Delete a runner',
-        (yargs) =>
-          yargs
-            .positional('credential-id', { type: 'string', required: true })
-            .option('project-id', {
-              describe: 'ID of the project containing the credential',
-              type: 'string',
-              demandOption: true,
-              requiresArg: true
-            })
+      .command('credential <credential-id>', 'Delete a runner', (yargs) =>
+        yargs
+          .positional('credential-id', { type: 'string', required: true })
+          .option('project-id', {
+            describe: 'ID of the project containing the credential',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
       )
       .demandCommand(1, 'Command must be specified.')
       .strict()

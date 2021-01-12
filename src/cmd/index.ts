@@ -2,7 +2,7 @@ import getCommandMap from './get';
 import listCommandMap from './list';
 import runCommandMap from './run';
 import createCommandMap from './create';
-import removeCommandMap from './remove';
+import deleteCommandMap from './delete';
 
 import rerun from './rerun';
 import { CommandHandler } from './handler';
@@ -19,13 +19,13 @@ export const commandsWithSubcommandsMap: Record<
   get: getCommandMap,
   list: listCommandMap,
   run: runCommandMap,
-  remove: removeCommandMap
+  delete: deleteCommandMap
 };
 
 export const mustHaveSubcommand = (
   command: string
 ): command is TopLevelCommandWithSubcommand =>
-  ['create', 'get', 'list', 'run', 'remove'].includes(command);
+  ['create', 'get', 'list', 'run', 'delete'].includes(command);
 
 export type TopLevelExecutableCommand = 'rerun';
 export type TopLevelCommandWithSubcommand =
@@ -33,7 +33,7 @@ export type TopLevelCommandWithSubcommand =
   | 'get'
   | 'list'
   | 'run'
-  | 'remove';
+  | 'delete';
 export type TopLevelCommand =
   | TopLevelExecutableCommand
   | TopLevelCommandWithSubcommand;

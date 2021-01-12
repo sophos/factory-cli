@@ -4,7 +4,7 @@ import pipeline from './pipeline';
 import project from './project';
 import runner from './runner';
 
-const removeCommandMap = {
+const deleteCommandMap = {
   credential,
   job,
   pipeline,
@@ -12,4 +12,4 @@ const removeCommandMap = {
   runner
 };
 
-export default removeCommandMap;
+export default deleteCommandMap;

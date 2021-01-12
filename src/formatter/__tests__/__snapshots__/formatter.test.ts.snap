@@ -25,5 +25,5 @@ quuz: {}
 
 exports[`formatter formats to table correctly 1`] = `
 "[31m foo [39m[31m bar [39m[31m baz [39m[31m xyz [39m[31m qux                 [39m[31m quux  [39m[31m quuz [39m
- foo  bar  baz  -    01/04/2021, 5:08 AM  1.234  {}   "
+ foo  bar  baz  -    01/04/2021, 6:08 PM  1.234  {}   "
 `;
