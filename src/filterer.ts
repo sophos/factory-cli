@@ -10,8 +10,7 @@ export default function filterer(filter: string, fields: string[]): Filterer {
         path: filter,
         json: input,
         flatten: false,
-        wrap: false,
-        // resultType: 'all',
+        wrap: false
       });
     }
 

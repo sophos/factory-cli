@@ -24,6 +24,8 @@ const parse = (argv: string[], { version }: { version: string }) => {
     .middleware((argv) => {
       if (!isString(argv.address) && isString(process.env.REFACTR_ADDRESS)) {
         argv.address = process.env.REFACTR_ADDRESS;
+      } else if (!isString(argv.address)) {
+        argv.address = 'https://api.refactr.it/v1';
       }
 
       if (
@@ -45,10 +47,8 @@ const parse = (argv: string[], { version }: { version: string }) => {
     })
     .option('address', {
       describe:
-        'Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable',
+        'Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1',
       type: 'string',
-      default: 'https://api.refactr.it/v1',
-      demandOption: true,
       requiresArg: true
     })
     .option('auth-token', {

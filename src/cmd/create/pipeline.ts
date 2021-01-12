@@ -1,3 +1,5 @@
+import isNil from 'lodash/isNil';
+
 import { createCommandResult, handler } from '../handler';
 import fields from '../../fields';
 
@@ -15,13 +17,16 @@ export default handler<Arguments, any>(
       name,
       description
     });
-    const { data: pipelineRevision } = await api.createPipelineRevision(
-      projectId,
-      pipeline._id!,
-      {
-        ...input
-      }
-    );
+
+    if (!isNil(input)) {
+      const { data: pipelineRevision } = await api.createPipelineRevision(
+        projectId,
+        pipeline._id!,
+        {
+          ...input
+        }
+      );
+    }
 
     return createCommandResult(
       'view',

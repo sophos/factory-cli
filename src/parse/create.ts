@@ -63,11 +63,10 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('pipeline <input>', '', (yargs) =>
+      .command('pipeline [options] [input]', '', (yargs) =>
         yargs
           .positional('input', {
             type: 'string',
-            required: true,
             coerce: coerceInput
           })
           .option('project-id', {

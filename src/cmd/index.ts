@@ -8,8 +8,6 @@ import rerun from './rerun';
 import { CommandHandler } from './handler';
 
 export const executableCommandsMap = {
-  login: () => {},
-  invite: () => {},
   rerun
 };
 
@@ -29,7 +27,7 @@ export const mustHaveSubcommand = (
 ): command is TopLevelCommandWithSubcommand =>
   ['create', 'get', 'list', 'run', 'remove'].includes(command);
 
-export type TopLevelExecutableCommand = 'login' | 'invite' | 'rerun';
+export type TopLevelExecutableCommand = 'rerun';
 export type TopLevelCommandWithSubcommand =
   | 'create'
   | 'get'
