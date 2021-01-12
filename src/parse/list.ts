@@ -10,7 +10,7 @@ export default (yargs: Yargs.Argv) =>
         yargs
           .usage('$0 credentials [options]')
           .option('project-id', {
-            describe: 'Project credentials belong to',
+            describe: 'ID of project containing the credentials',
             demandOption: true,
             type: 'string',
             requiresArg: true
@@ -34,7 +34,7 @@ export default (yargs: Yargs.Argv) =>
       )
       .command('projects', 'List projects from an organization', (yargs) =>
         yargs.usage('$0 projects [options]').option('organization-id', {
-          describe: 'Organization projects belong to',
+          describe: 'ID of the organization containing the projects',
           type: 'string',
           requiresArg: true
         })
@@ -42,7 +42,7 @@ export default (yargs: Yargs.Argv) =>
       .command('organizations', 'List organizations one belongs to')
       .command('jobs', 'List jobs for a project', (yargs) =>
         yargs.usage('$0 jobs [options]').option('project-id', {
-          describe: 'Project runs belong to',
+          describe: 'ID of the project containing the jobs',
           demandOption: true,
           type: 'string',
           requiresArg: true
@@ -52,18 +52,18 @@ export default (yargs: Yargs.Argv) =>
         yargs
           .usage('$0 runs [options]')
           .option('project-id', {
-            describe: 'Project runs belong to',
+            describe: 'ID of the organization containing the runs',
             demandOption: true,
             type: 'string',
             requiresArg: true
           })
           .option('pipeline-id', {
-            describe: 'Pipeline runs belong to',
+            describe: 'ID of a pipeline used to filter the runs',
             type: 'string',
             requiresArg: true
           })
           .option('job-id', {
-            describe: 'Job runs belong to',
+            describe: 'ID of a job used to filter the runs',
             type: 'string',
             requiresArg: true
           })
@@ -72,13 +72,13 @@ export default (yargs: Yargs.Argv) =>
         yargs
           .usage('$0 runs [options]')
           .option('project-id', {
-            describe: 'Project pipelines belong to',
+            describe: 'ID of the project containing the pipeline revision',
             demandOption: true,
             type: 'string',
             requiresArg: true
           })
           .option('pipeline-id', {
-            describe: 'Pipeline revisions belong to',
+            describe: 'ID of the pipeline containing the pipeline revision',
             demandOption: true,
             type: 'string',
             requiresArg: true
@@ -87,12 +87,12 @@ export default (yargs: Yargs.Argv) =>
       .command('runners', 'List runners for an organization', (yargs) =>
         yargs
           .option('project-id', {
-            describe: 'Project runners assigned to',
+            describe: 'ID of the project containing the runners',
             type: 'string',
             requiresArg: true
           })
           .option('organization-id', {
-            describe: 'Organization runners belong to',
+            describe: 'ID of the organization containing the runners',
             type: 'string',
             requiresArg: true
           })
@@ -110,7 +110,7 @@ export default (yargs: Yargs.Argv) =>
       .command('pipelines', 'List pipelines for a project', (yargs) =>
         yargs
           .option('project-id', {
-            describe: 'Project pipelines belong to',
+            describe: 'ID of the project containing the pipelines',
             demandOption: true,
             type: 'string',
             requiresArg: true
@@ -128,7 +128,7 @@ export default (yargs: Yargs.Argv) =>
           .option('search', { type: 'string', requiresArg: true })
       )
       .option('filter', {
-        describe: 'Filter output based on conditions provided',
+        describe: 'Filter output using JsonPath',
         type: 'string',
         requiresArg: true
       })

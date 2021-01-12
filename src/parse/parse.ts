@@ -47,7 +47,7 @@ const parse = (argv: string[], { version }: { version: string }) => {
     })
     .option('address', {
       describe:
-        'Address of the Refactr server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1',
+        'Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1',
       type: 'string',
       requiresArg: true
     })

@@ -4,7 +4,7 @@ exports[`humanify formats boolean 1`] = `"Yes"`;
 
 exports[`humanify formats boolean 2`] = `"No"`;
 
-exports[`humanify formats date 1`] = `"01/04/2021, 5:34 PM"`;
+exports[`humanify formats date 1`] = `"01/04/2021, 4:34 AM"`;
 
 exports[`humanify formats null/undefined 1`] = `"-"`;
 

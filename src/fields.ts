@@ -47,7 +47,7 @@ export default {
     'enabled',
     'trigger_type'
   ],
-  pipelineRevision: ['_id', 'revision', 'pipeline_id'],
+  pipelineRevision: ['_id', 'revision'],
   pipeline: [
     '_id',
     'name',

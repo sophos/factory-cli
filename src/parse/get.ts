@@ -13,12 +13,12 @@ export default (yargs: Yargs.Argv) =>
             .usage('Usage: $0 <credential-id> [options]')
             .positional('credential-id', {
               type: 'string',
-              describe: 'Credential to get',
+              describe: 'ID of the credential to fetch',
               demandOption: true,
               requiresArg: true
             })
             .option('project-id', {
-              describe: 'Project this credential belongs to',
+              describe: 'ID of the project containing the credential',
               type: 'string',
               demandOption: true,
               requiresArg: true
@@ -29,12 +29,12 @@ export default (yargs: Yargs.Argv) =>
           .usage('Usage: $0 <job-id> [options]')
           .positional('job-id', {
             type: 'string',
-            describe: 'Job to get',
+            describe: 'ID of the job to fetch',
             demandOption: true,
             requiresArg: true
           })
           .option('project-id', {
-            describe: 'Project this job belongs to',
+            describe: 'ID of the project containing the job',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -45,7 +45,7 @@ export default (yargs: Yargs.Argv) =>
           .usage('Usage: $0 <project-id> [options]')
           .positional('project-id', {
             type: 'string',
-            describe: 'Project to get',
+            describe: 'ID of the project to fetch',
             demandOption: true,
             requiresArg: true
           })
@@ -58,7 +58,7 @@ export default (yargs: Yargs.Argv) =>
             .usage('Usage: $0 <organization-id> [options]')
             .positional('organization-id', {
               type: 'string',
-              describe: 'Organization to get',
+              describe: 'ID of the organization to fetch',
               demandOption: true,
               requiresArg: true
             })
@@ -68,12 +68,12 @@ export default (yargs: Yargs.Argv) =>
           .usage('Usage: $0 <run-id> [options]')
           .positional('run-id', {
             type: 'string',
-            describe: 'Run to get',
+            describe: 'ID of the run to fetch',
             demandOption: true,
             requiresArg: true
           })
           .option('project-id', {
-            describe: 'Project this run belongs to',
+            describe: 'ID of the project containing the run',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -86,26 +86,26 @@ export default (yargs: Yargs.Argv) =>
           yargs
             .usage('Usage: $0 <revision> [options]')
             .positional('revision', {
-              type: 'string',
-              describe: 'Pipeline revision to get',
+              type: 'number',
+              describe: 'Revision number of the pipeline revision to fetch',
               demandOption: true,
               requiresArg: true
             })
             .option('project-id', {
-              describe: 'Project this pipeline revision belongs to',
+              describe: 'ID of the project containing the pipeline revision',
               type: 'string',
               demandOption: true,
               requiresArg: true
             })
             .option('pipeline-id', {
-              describe: 'Pipeline this revision belongs to',
+              describe: 'ID of the pipeline for the pipeline revision',
               type: 'string',
               demandOption: true,
               requiresArg: true
             })
       )
       .option('filter', {
-        describe: 'Filter output based on conditions provided',
+        describe: 'Filter output using JsonPath',
         type: 'string',
         requiresArg: true
       })

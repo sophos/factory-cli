@@ -4,12 +4,12 @@ export default (yargs: Yargs.Argv) =>
   yargs.command('rerun <run-id>', 'Reschedule pipeline run', (yargs) =>
     yargs
       .positional('run-id', {
-        describe: 'Pipeline run to reschedule',
+        describe: 'ID of the run to reschedule',
         type: 'string',
         demandOption: true
       })
       .option('project-id', {
-        describe: 'Project this pipeline belongs to',
+        describe: 'ID of the project containing the run',
         type: 'string',
         demandOption: true
       })
