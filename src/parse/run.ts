@@ -1,7 +1,7 @@
 import Yargs from 'yargs';
 
 export default (yargs: Yargs.Argv) =>
-  yargs.command('run', 'Execute pipeline-revision, job, etc.', (yargs) =>
+  yargs.command('run', 'Execute pipeline or job', (yargs) =>
     yargs
       .option('wait', {
         describe: 'Wait until run execution finishes',

@@ -8,6 +8,24 @@ import { Formatter } from './formatter';
 type Row = { [key: string]: any };
 type Input = Row | Row[] | null;
 
+const formatterChars = {
+  'top': '',
+  'top-mid': '',
+  'top-left': '',
+  'top-right': '',
+  'bottom': '',
+  'bottom-mid': '',
+  'bottom-left': '',
+  'bottom-right': '',
+  'left': '',
+  'left-mid': '',
+  'mid': '',
+  'mid-mid': '',
+  'right': '',
+  'right-mid': '',
+  'middle': ''
+};
+
 const tableFormatter: Formatter = function tableFormatter(
   input: Input,
   fields: string[]
@@ -29,7 +47,10 @@ const tableFormatter: Formatter = function tableFormatter(
     }, [])
   );
 
-  const table = new Table({ head: fields });
+  const table = new Table({
+    head: fields,
+    chars: formatterChars
+  });
 
   table.push(...rows);
 

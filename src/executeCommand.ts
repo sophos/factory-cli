@@ -65,7 +65,8 @@ export default async function executeCommand(args: any) {
             for (const error of payload.errors) viewError(error);
             break;
           case 'unknown_error':
-            viewError({ code: 'UnknownError', message: 'Unknown error' });
+            console.error(payload);
+            viewError({ code: 'UnknownError', message: 'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues' });
             break;
         }
       }

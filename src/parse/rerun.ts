@@ -1,7 +1,7 @@
 import Yargs from 'yargs';
 
 export default (yargs: Yargs.Argv) =>
-  yargs.command('rerun <run-id>', 'Reschedule pipeline run.', (yargs) =>
+  yargs.command('rerun <run-id>', 'Reschedule pipeline run', (yargs) =>
     yargs
       .positional('run-id', {
         describe: 'Pipeline run to reschedule',
