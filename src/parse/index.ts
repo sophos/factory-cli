@@ -1,6 +1,5 @@
 import isString from 'lodash/isString';
-import Yargs, { terminalWidth } from 'yargs';
-import yargs from 'yargs/yargs';
+import type Yargs from 'yargs';
 
 import { DEFAULT_FORMATTER } from '../formatter';
 import create from './create';
@@ -9,6 +8,10 @@ import list from './list';
 import run from './run';
 import rerun from './rerun';
 import del from './delete';
+
+// NOTE: using commonjs import here as rollup cannot correctly resolve
+//       yargs for some reason when importing with ES6 imports.
+const yargs = require('yargs');
 
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
@@ -59,7 +62,7 @@ const parse = (argv: string[], { version }: { version: string }) => {
     })
     .demandCommand(1, 'Command must be specified.')
     .help()
-    .wrap(Math.min(120, terminalWidth())).argv;
+    .wrap(Math.min(120, yargs.terminalWidth())).argv;
 };
 
 export default parse;

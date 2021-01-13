@@ -33,8 +33,6 @@ export default handler<Arguments, any>(
       data
     });
 
-    console.info(credential);
-
     return createCommandResult('view', credential, ['_id']);
   }
 );

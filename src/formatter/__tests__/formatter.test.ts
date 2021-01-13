@@ -1,4 +1,4 @@
-import formatter from '../index';
+import formatter from '..';
 import yamlFormatter from '../yamlFormatter';
 import jsonFormatter from '../jsonFormatter';
 import tableFormatter from '../tableFormatter';
@@ -11,7 +11,7 @@ const data = {
   xyz: null,
   qux: new Date('2021-01-04T13:08:25.618Z'),
   quux: 1.234,
-  quuz: {},
+  quuz: {}
 };
 
 describe('formatter', () => {

@@ -29,10 +29,6 @@ export default async function executeCommand(args: any) {
     handler = executableCommandsMap[command];
   }
 
-  const stdin = readStdin();
-
-  console.info(stdin);
-
   if (isFunction(handler)) {
     const apiClient = new Client(args.address, args.authToken);
     const result = await handler(apiClient, args);
