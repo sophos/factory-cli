@@ -6,6 +6,7 @@
   "author": "Refactr, Inc. (refactr.it)",
   "license": "MIT",
   "files": [
+    "bin",
     "dist/refactrctl.js",
     "package.json",
     "LICENSE",
@@ -21,7 +22,11 @@
     "format": "prettier -w src/**/*.ts",
     "watch": "NODE_ENV=development BUILD_TARGET=runtime rollup -c -w src/main.ts",
     "build:runtime": "BUILD_TARGET=runtime rollup -c",
-    "build:aot": "BUILD_TARGET=aot rollup -c && pkg dist/main.bundled.js -o dist/refactrctl -t node14-alpine,node14-linux-x64,node14-win-x64,node14-macos-x64",
+    "build:aot": "BUILD_TARGET=aot rollup -c",
+    "build:exe:alpine": "pkg dist/main.bundled.js -o dist/refactrctl-alpine -t node14-alpine-x64",
+    "build:exe:win": "pkg dist/main.bundled.js -o dist/win/refactrctl -t node14-win-x64",
+    "build:exe:linux": "pkg dist/main.bundled.js -o dist/linux/refactrctl -t node14-linux-x64",
+    "build:exe:macos": "pkg dist/main.bundled.js -o dist/macos/refactrctl -t node14-macos-x64",
     "test": "__REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js) jest"
   },
   "dependencies": {

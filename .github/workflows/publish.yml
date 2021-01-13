@@ -1,41 +1,77 @@
-name: Publish image to Docker Hub & npm
+name: Publish executables
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  push_to_registry:
-    name: Push image
-    runs-on: ubuntu-latest
+  test:
+    name: Test
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        version: [12.x, 14.x, latest]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name:  Setup Node.js
-        uses: actions/setup-node@v2.1.1
+      - uses: actions/checkout@v2
+      - name: Setup node ${{ matrix.version }}
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
-          registry-url: https://registry.npmjs.org/
+          node-version: ${{ matrix.version }}
+
+      - id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - run: yarn install
-      - run: yarn build
+      - run: yarn test
+
+  deploy_docker:
+    name: Deploy to Docker Hub
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+
+      - id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install
+      - run: yarn build:aot
+      - run: yarn build:exe:alpine
 
       # Docker
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Login to DockerHub
+
+      - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      -
-        name: Build and push
+      - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -44,7 +80,100 @@ jobs:
           tags: |
             refactr/cli:latest
 
+  deploy_npm:
+    name: Deploy to npm
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install
+      - run: yarn build:runtime
+
       - name: Publish to npm registry
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # GitHub Release
+  create_gh_release:
+    name: Create release
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        id: release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+    # Publish Windows, macOS and Linux x64 build
+  deploy_win_release:
+    name: Deploy executables
+
+    needs: create_release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [win, linux, macos]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+
+      - id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install
+
+      - run: |
+        yarn build:aot
+        yarn build:exe:${{ matrix.operating-system }}
+
+      # Windows
+      - if: ${{ matrix.operating-system == 'win' }}
+        run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/refactrctl.exe ./LICENSE
+
+      # macOS, Linux
+      - if: ${{ matrix.operating-system != 'win' }}
+        run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/refactrctl ./LICENSE
+
+      - name: Upload Release Asset (${{ matrix.operating-system }})
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ jobs.create_gh_release.steps.release.outputs.upload_url }}
+          asset_path: ./refactr-${{ matrix.operating-system }}-x64.zip
+          asset_name: refactr-${{ matrix.operating-system }}-x64.zip
+          asset_content_type: application/zip
