@@ -1,5 +1,6 @@
 import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
+import isString from 'lodash/isString';
 import Table from 'cli-table';
 
 import humanify from './humanify';
@@ -23,7 +24,7 @@ const formatterChars = {
   'mid-mid': '',
   'right': '',
   'right-mid': '',
-  'middle': ''
+  'middle': '  '
 };
 
 const tableFormatter: Formatter = function tableFormatter(
@@ -49,7 +50,9 @@ const tableFormatter: Formatter = function tableFormatter(
 
   const table = new Table({
     head: fields,
-    chars: formatterChars
+    chars: formatterChars,
+    style: { 'padding-left': 0, 'padding-right': 0 },
+    colors: !isString(process.env.NO_COLOR) && process.env.NO_COLOR !== ''
   });
 
   table.push(...rows);

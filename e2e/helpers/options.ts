@@ -7,7 +7,7 @@ export const withAddress = (args: string[]): string[] => {
 
 export const withFormat = (
   args: string[],
-  format: 'json' | 'yaml' | 'table'
+  format: 'json' | 'yaml' | 'wide'
 ) => {
   const ret = [...args];
   ret.push('--format', format);

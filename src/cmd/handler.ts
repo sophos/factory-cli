@@ -28,7 +28,7 @@ export const createCommandResult = <T>(
   fields
 });
 
-const createHandlerResult = <T>(
+const createHandlerResult = <T extends any>(
   cmd: CommandResult<T>,
   format: RawFormatType
 ): CommandResult<T> & { format: FormatType } => ({
@@ -39,10 +39,8 @@ const createHandlerResult = <T>(
   ...cmd
 });
 
-export const handler = <A, R>(
-  fn: CommandHandler<A, R>
-): CommandHandler<A & { format: RawFormatType }, R> => async (
-  apiClient,
+export const handler = <A, R>(fn: CommandHandler<A, R>) => async (
+  apiClient: Client,
   args: A & { format: RawFormatType }
 ) => {
   const format = args.format;

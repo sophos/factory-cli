@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl get credential accepts id as argument 1`] = `
-"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
- cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
+"id               name                   type               data  created            
+cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
 "
 `;
 
 exports[`refactrctl get credential accepts id from stdin 1`] = `
-"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
- cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
+"id               name                   type               data  created            
+cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
 "
 `;
 
@@ -240,14 +240,14 @@ name: Test Pipeline
 `;
 
 exports[`refactrctl get job accepts id as argument 1`] = `
-"[31m _id                      [39m[31m name     [39m[31m enabled [39m[31m trigger_type [39m[31m created              [39m
- 6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM 
+"_id                       name      enabled  trigger_type  created             
+6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
 "
 `;
 
 exports[`refactrctl get job accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m name     [39m[31m enabled [39m[31m trigger_type [39m[31m created              [39m
- 6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM 
+"_id                       name      enabled  trigger_type  created             
+6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
 "
 `;
 
@@ -292,14 +292,14 @@ Job ID must be provided
 `;
 
 exports[`refactrctl get organization accepts id as argument 1`] = `
-"[31m _id                      [39m[31m name    [39m[31m contact_name     [39m[31m contact_email      [39m[31m created             [39m
- 5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM 
+"_id                       name     contact_name      contact_email       created            
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
 "
 `;
 
 exports[`refactrctl get organization accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m name    [39m[31m contact_name     [39m[31m contact_email      [39m[31m created             [39m
- 5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM 
+"_id                       name     contact_name      contact_email       created            
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
 "
 `;
 
@@ -323,14 +323,14 @@ Organization ID must be provided
 `;
 
 exports[`refactrctl get pipeline accepts id as argument 1`] = `
-"[31m _id                      [39m[31m organization_id          [39m[31m project_id               [39m[31m name          [39m[31m step_count [39m[31m revision_count [39m[31m created             [39m
- 5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM 
+"_id                       organization_id           project_id                name           step_count  revision_count  created            
+5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
 "
 `;
 
 exports[`refactrctl get pipeline accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m organization_id          [39m[31m project_id               [39m[31m name          [39m[31m step_count [39m[31m revision_count [39m[31m created             [39m
- 5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM 
+"_id                       organization_id           project_id                name           step_count  revision_count  created            
+5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
 "
 `;
 
@@ -375,14 +375,14 @@ Pipeline ID must be provided
 `;
 
 exports[`refactrctl get pipeline-revision accepts id as argument 1`] = `
-"[31m _id                      [39m[31m revision [39m
- 5ffdecc804ea5c1c58201bbf  4        
+"_id                       revision
+5ffdecc804ea5c1c58201bbf  4       
 "
 `;
 
 exports[`refactrctl get pipeline-revision accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m revision [39m
- 5ffdecc804ea5c1c58201bbf  4        
+"_id                       revision
+5ffdecc804ea5c1c58201bbf  4       
 "
 `;
 
@@ -429,14 +429,14 @@ Revision must be provided
 `;
 
 exports[`refactrctl get project accepts id as argument 1`] = `
-"[31m _id                      [39m[31m name                                [39m[31m pipeline_count [39m[31m organization_id          [39m[31m created             [39m
- 5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM 
+"_id                       name                                 pipeline_count  organization_id           created            
+5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
 "
 `;
 
 exports[`refactrctl get project accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m name                                [39m[31m pipeline_count [39m[31m organization_id          [39m[31m created             [39m
- 5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM 
+"_id                       name                                 pipeline_count  organization_id           created            
+5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
 "
 `;
 
@@ -460,14 +460,14 @@ Project ID must be provided
 `;
 
 exports[`refactrctl get run accepts id as argument 1`] = `
-"[31m _id                      [39m[31m number [39m[31m organization_id [39m[31m job_id                   [39m[31m status    [39m[31m started              [39m[31m finished             [39m[31m suppress_events [39m[31m suppress_outputs [39m[31m suppress_vars [39m[31m created              [39m
- 600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM 
+"_id                       number  organization_id  job_id                    status     started               finished              suppress_events  suppress_outputs  suppress_vars  created             
+600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM
 "
 `;
 
 exports[`refactrctl get run accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m number [39m[31m organization_id [39m[31m job_id                   [39m[31m status    [39m[31m started              [39m[31m finished             [39m[31m suppress_events [39m[31m suppress_outputs [39m[31m suppress_vars [39m[31m created              [39m
- 600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM 
+"_id                       number  organization_id  job_id                    status     started               finished              suppress_events  suppress_outputs  suppress_vars  created             
+600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM
 "
 `;
 
@@ -512,14 +512,14 @@ Run ID must be provided
 `;
 
 exports[`refactrctl get runner accepts id as argument 1`] = `
-"[31m _id                      [39m[31m organization_id          [39m[31m name                 [39m[31m host_type [39m[31m machine_type [39m[31m version [39m[31m started [39m[31m heartbeat [39m[31m status  [39m[31m idle_since [39m[31m stop_pending [39m[31m created              [39m
- 600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Running  -           -             01/15/2021, 12:17 PM 
+"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
+600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
 "
 `;
 
 exports[`refactrctl get runner accepts id from stdin 1`] = `
-"[31m _id                      [39m[31m organization_id          [39m[31m name                 [39m[31m host_type [39m[31m machine_type [39m[31m version [39m[31m started [39m[31m heartbeat [39m[31m status  [39m[31m idle_since [39m[31m stop_pending [39m[31m created              [39m
- 600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Running  -           -             01/15/2021, 12:17 PM 
+"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
+600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
 "
 `;
 

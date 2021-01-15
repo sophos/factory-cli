@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl list credentials should work (--format=json) 1`] = `
+exports[`refactrctl list credentials should work (default formatting) 1`] = `
+"id               name                   type               data  created            
+cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM
+cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"
+`;
+
+exports[`refactrctl list credentials should work 1`] = `
+"id               name                   type               data  created            
+cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM
+cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"
+`;
+
+exports[`refactrctl list credentials should work 2`] = `
 "[
     {
         \\"_id\\": \\"5ffc71a504ea5c3fab201bb8\\",
@@ -22,14 +36,7 @@ exports[`refactrctl list credentials should work (--format=json) 1`] = `
 "
 `;
 
-exports[`refactrctl list credentials should work (--format=table) 1`] = `
-"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
- cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM 
- cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
-"
-`;
-
-exports[`refactrctl list credentials should work (--format=yaml) 1`] = `
+exports[`refactrctl list credentials should work 3`] = `
 "-
     _id: 5ffc71a504ea5c3fab201bb8
     project_id: 5ffc715d04ea5ca71d201bb3
@@ -45,13 +52,6 @@ exports[`refactrctl list credentials should work (--format=yaml) 1`] = `
     id: cli_test_cred_1
     type: username_password
 
-"
-`;
-
-exports[`refactrctl list credentials should work (default formatting) 1`] = `
-"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
- cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM 
- cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
 "
 `;
 
@@ -76,6 +76,62 @@ Missing required argument: project-id
 "
 `;
 
+exports[`refactrctl list jobs should work (default formatting) 1`] = `
+"_id                       name      enabled  trigger_type  created             
+6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"
+`;
+
+exports[`refactrctl list jobs should work 1`] = `
+"_id                       name      enabled  trigger_type  created             
+6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"
+`;
+
+exports[`refactrctl list jobs should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"6001773304ea5cdf12201bc9\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-15T11:06:27.007Z\\",
+        \\"disable_on_failure\\": true,
+        \\"enabled\\": true,
+        \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+        \\"pipeline_revision_id\\": 4,
+        \\"name\\": \\"Test job\\",
+        \\"trigger_type\\": \\"manual\\",
+        \\"suppress_vars\\": true,
+        \\"suppress_outputs\\": true,
+        \\"suppress_events\\": true,
+        \\"last_run\\": \\"2021-01-15T12:17:37.278Z\\",
+        \\"last_status\\": \\"Succeeded\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list jobs should work 3`] = `
+"-
+    _id: 6001773304ea5cdf12201bc9
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-15T11:06:27.007Z'
+    disable_on_failure: true
+    enabled: true
+    pipeline_id: 5ffde06a04ea5cf045201bbc
+    pipeline_revision_id: 4
+    name: Test job
+    trigger_type: manual
+    suppress_vars: true
+    suppress_outputs: true
+    suppress_events: true
+    last_run: '2021-01-15T12:17:37.278Z'
+    last_status: Succeeded
+
+"
+`;
+
 exports[`refactrctl list jobs throws on missing arguments 1`] = `
 "refactrctl jobs [options]
 
@@ -90,6 +146,67 @@ Options:
       --project-id  ID of the project containing the jobs  [string] [required]
 
 Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl list organizations should work (default formatting) 1`] = `
+"_id                       name     contact_name      contact_email       created            
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"
+`;
+
+exports[`refactrctl list organizations should work 1`] = `
+"_id                       name     contact_name      contact_email       created            
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"
+`;
+
+exports[`refactrctl list organizations should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"name\\": \\"Refactr\\",
+        \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
+        \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
+        \\"contact_email\\": \\"anthony@refactr.it\\",
+        \\"contact_name\\": \\"Anthony Rowlands\\",
+        \\"city\\": \\"Seattle\\",
+        \\"state\\": \\"WA\\",
+        \\"zip\\": \\"12345\\",
+        \\"plan\\": \\"admin\\",
+        \\"plan_quotas\\": {
+            \\"project_count\\": -1,
+            \\"user_count\\": -1,
+            \\"agent_count\\": -1,
+            \\"run_minutes\\": -1,
+            \\"support_hours\\": 0
+        },
+        \\"address\\": \\"123 Main St.\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list organizations should work 3`] = `
+"-
+    _id: 5f9f2d08e2f1bb2436e6f5b0
+    name: Refactr
+    created: '2020-10-10T07:07:53.294Z'
+    modified: '2020-11-01T23:15:21.605Z'
+    contact_email: anthony@refactr.it
+    contact_name: Anthony Rowlands
+    city: Seattle
+    state: WA
+    zip: '12345'
+    plan: admin
+    plan_quotas:
+        project_count: -1
+        user_count: -1
+        agent_count: -1
+        run_minutes: -1
+        support_hours: 0
+    address: 123 Main St.
+
 "
 `;
 
@@ -108,6 +225,51 @@ Options:
       --pipeline-id  ID of the pipeline containing the pipeline revision  [string] [required]
 
 Missing required arguments: project-id, pipeline-id
+"
+`;
+
+exports[`refactrctl list pipelines should work 1`] = `
+"_id                       organization_id           project_id                name           step_count  revision_count  created            
+5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
+"
+`;
+
+exports[`refactrctl list pipelines should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+        \\"feature_tags\\": [
+            \\"install\\",
+            \\"script\\"
+        ],
+        \\"catalog_tags\\": [],
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-12T17:46:18.200Z\\",
+        \\"modified\\": \\"2021-01-12T18:39:04.282Z\\",
+        \\"step_count\\": 2,
+        \\"revision_count\\": 4,
+        \\"name\\": \\"Test Pipeline\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list pipelines should work 3`] = `
+"-
+    _id: 5ffde06a04ea5cf045201bbc
+    feature_tags:
+        - install
+        - script
+    catalog_tags: []
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-12T17:46:18.200Z'
+    modified: '2021-01-12T18:39:04.282Z'
+    step_count: 2
+    revision_count: 4
+    name: Test Pipeline
+
 "
 `;
 
@@ -134,6 +296,149 @@ Missing required argument: project-id
 "
 `;
 
+exports[`refactrctl list projects should work 1`] = `
+"_id                       name                                 pipeline_count  organization_id           created             
+5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM 
+5fda3431f00c8ba848f49f45  Vault Deploy                         2               5f9f2d08e2f1bb2436e6f5b0  12/16/2020, 4:22 PM 
+5f9f3b02233d0b9e290b3122  Scratch                              15              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
+5fa4dba223b4e0703b95c465  Kitchen Sink Suite                   13              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
+5fd905d6c19c061d80e304fb  Vault Demo                           1               5f9f2d08e2f1bb2436e6f5b0  12/15/2020, 6:52 PM 
+"
+`;
+
+exports[`refactrctl list projects should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-11T15:40:13.848Z\\",
+        \\"modified\\": \\"2021-01-15T11:06:27.030Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\"
+    },
+    {
+        \\"_id\\": \\"5fda3431f00c8ba848f49f45\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-12-16T16:22:09.374Z\\",
+        \\"modified\\": \\"2021-01-15T01:42:50.305Z\\",
+        \\"pipeline_count\\": 2,
+        \\"name\\": \\"Vault Deploy\\",
+        \\"image_id\\": \\"5fda3442b486804ec421ce2e\\"
+    },
+    {
+        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
+        \\"modified\\": \\"2021-01-13T20:36:51.039Z\\",
+        \\"pipeline_count\\": 15,
+        \\"name\\": \\"Scratch\\"
+    },
+    {
+        \\"_id\\": \\"5fa4dba223b4e0703b95c465\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-11-06T05:14:10.990Z\\",
+        \\"modified\\": \\"2021-01-01T10:58:27.958Z\\",
+        \\"pipeline_count\\": 13,
+        \\"name\\": \\"Kitchen Sink Suite\\",
+        \\"image_id\\": \\"5feeecacb5297d642e1938da\\"
+    },
+    {
+        \\"_id\\": \\"5fd905d6c19c061d80e304fb\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-12-15T18:52:06.550Z\\",
+        \\"modified\\": \\"2020-12-16T18:42:22.870Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"Vault Demo\\",
+        \\"image_id\\": \\"5fd905f06890485c998cdb65\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list projects should work 3`] = `
+"-
+    _id: 5ffc715d04ea5ca71d201bb3
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-11T15:40:13.848Z'
+    modified: '2021-01-15T11:06:27.030Z'
+    pipeline_count: 1
+    name: 'CLI tests [STATIC ONLY] (LIST, GET)'
+-
+    _id: 5fda3431f00c8ba848f49f45
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-12-16T16:22:09.374Z'
+    modified: '2021-01-15T01:42:50.305Z'
+    pipeline_count: 2
+    name: Vault Deploy
+    image_id: 5fda3442b486804ec421ce2e
+-
+    _id: 5f9f3b02233d0b9e290b3122
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-11-01T22:47:30.770Z'
+    modified: '2021-01-13T20:36:51.039Z'
+    pipeline_count: 15
+    name: Scratch
+-
+    _id: 5fa4dba223b4e0703b95c465
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-11-06T05:14:10.990Z'
+    modified: '2021-01-01T10:58:27.958Z'
+    pipeline_count: 13
+    name: Kitchen Sink Suite
+    image_id: 5feeecacb5297d642e1938da
+-
+    _id: 5fd905d6c19c061d80e304fb
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-12-15T18:52:06.550Z'
+    modified: '2020-12-16T18:42:22.870Z'
+    pipeline_count: 1
+    name: Vault Demo
+    image_id: 5fd905f06890485c998cdb65
+
+"
+`;
+
+exports[`refactrctl list runners should work (by project) 1`] = `
+"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
+600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
+"
+`;
+
+exports[`refactrctl list runners should work (by project) 2`] = `
+"[
+    {
+        \\"_id\\": \\"600187ce44a454482f23890b\\",
+        \\"project_ids\\": [
+            \\"5ffc715d04ea5ca71d201bb3\\"
+        ],
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-15T12:17:18.961Z\\",
+        \\"name\\": \\"CLI Test (container)\\",
+        \\"type\\": \\"hosted_container_centos7\\",
+        \\"hosted\\": true,
+        \\"status\\": \\"Stopped\\",
+        \\"idle\\": true
+    }
+]
+"
+`;
+
+exports[`refactrctl list runners should work (by project) 3`] = `
+"-
+    _id: 600187ce44a454482f23890b
+    project_ids:
+        - 5ffc715d04ea5ca71d201bb3
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-15T12:17:18.961Z'
+    name: CLI Test (container)
+    type: hosted_container_centos7
+    hosted: true
+    status: Stopped
+    idle: true
+
+"
+`;
+
 exports[`refactrctl list runners throws on missing arguments 1`] = `
 "refactrctl list runners
 
@@ -151,6 +456,54 @@ Options:
       --organization-id  ID of the organization containing the runners  [string]
 
 Missing required argument: either organization-id or project-id
+"
+`;
+
+exports[`refactrctl list runs should work 1`] = `
+"_id                       number  organization_id  job_id                    status     started               finished              suppress_events  suppress_outputs  suppress_vars  created             
+600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM
+"
+`;
+
+exports[`refactrctl list runs should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"600187e104ea5c3077201bcb\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"job_id\\": \\"6001773304ea5cdf12201bc9\\",
+        \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+        \\"pipeline_revision_id\\": \\"4\\",
+        \\"number\\": 1,
+        \\"created\\": \\"2021-01-15T12:17:37.256Z\\",
+        \\"status\\": \\"Succeeded\\",
+        \\"suppress_vars\\": false,
+        \\"suppress_outputs\\": false,
+        \\"suppress_events\\": false,
+        \\"agent_id\\": \\"600187ce44a454482f23890b\\",
+        \\"started\\": \\"2021-01-15T12:17:47.553Z\\",
+        \\"finished\\": \\"2021-01-15T12:17:52.988Z\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list runs should work 3`] = `
+"-
+    _id: 600187e104ea5c3077201bcb
+    project_id: 5ffc715d04ea5ca71d201bb3
+    job_id: 6001773304ea5cdf12201bc9
+    pipeline_id: 5ffde06a04ea5cf045201bbc
+    pipeline_revision_id: '4'
+    number: 1
+    created: '2021-01-15T12:17:37.256Z'
+    status: Succeeded
+    suppress_vars: false
+    suppress_outputs: false
+    suppress_events: false
+    agent_id: 600187ce44a454482f23890b
+    started: '2021-01-15T12:17:47.553Z'
+    finished: '2021-01-15T12:17:52.988Z'
+
 "
 `;
 
