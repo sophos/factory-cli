@@ -27,7 +27,8 @@
     "build:exe:win": "pkg dist/main.bundled.js -o dist/win/refactrctl -t node14-win-x64",
     "build:exe:linux": "pkg dist/main.bundled.js -o dist/linux/refactrctl -t node14-linux-x64",
     "build:exe:macos": "pkg dist/main.bundled.js -o dist/macos/refactrctl -t node14-macos-x64",
-    "test": "__REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js) jest"
+    "test:unit": "jest --testRegex='src/.*\\.test\\.(js|ts)$'",
+    "test:e2e": "__REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js) jest --testRegex='e2e/.*\\.test\\.(js|ts)$'"
   },
   "dependencies": {
     "@refactr/api-client": "^0.4.0",
@@ -40,6 +41,7 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
+    "@refactr/cli": "./",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",

@@ -1,4 +1,4 @@
-import { executeWithStdoutOnly } from '../helpers/execute';
+import { execute } from '../helpers/execute';
 import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
@@ -7,63 +7,53 @@ beforeAll(async () => {
 
 describe('refactrctl delete', () => {
   test('throws on missing subcommand', async () => {
-    await expect(executeWithStdoutOnly(['delete'])).rejects.toMatchSnapshot();
+    await expect(execute(['delete'])).rejects.toMatchSnapshot();
   });
 
   describe('credential', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['delete', 'credential'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['delete', 'credential'])).rejects.toMatchSnapshot();
     });
 
     test('throws on missing --project-id option', async () => {
       await expect(
-        executeWithStdoutOnly(['delete', 'credential', 'credential-id'])
+        execute(['delete', 'credential', 'credential-id'])
       ).rejects.toMatchSnapshot();
     });
   });
 
   describe('job', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['delete', 'job'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['delete', 'job'])).rejects.toMatchSnapshot();
     });
 
     test('throws on missing --project-id option', async () => {
       await expect(
-        executeWithStdoutOnly(['delete', 'job', 'job-id'])
+        execute(['delete', 'job', 'job-id'])
       ).rejects.toMatchSnapshot();
     });
   });
 
   describe('pipeline', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['delete', 'pipeline'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['delete', 'pipeline'])).rejects.toMatchSnapshot();
     });
   });
 
   describe('project', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['delete', 'project'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['delete', 'project'])).rejects.toMatchSnapshot();
     });
   });
 
   describe('runner', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['delete', 'runner'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['delete', 'runner'])).rejects.toMatchSnapshot();
     });
 
     test('throws on missing organization-id option', async () => {
       await expect(
-        executeWithStdoutOnly(['delete', 'runner', 'runner-id'])
+        execute(['delete', 'runner', 'runner-id'])
       ).rejects.toMatchSnapshot();
     });
   });

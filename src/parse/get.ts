@@ -12,7 +12,7 @@ export default (yargs: Yargs.Argv) =>
         'Get credential details',
         (yargs) =>
           yargs
-            .usage('Usage: $0 credential <credential-id> [options]')
+            .usage('Usage: $0 get credential <credential-id> [options]')
             .positional('credential-id', {
               type: 'string',
               describe: 'ID of the credential to fetch',
@@ -36,7 +36,7 @@ export default (yargs: Yargs.Argv) =>
       )
       .command('job [job-id]', 'Get job details', (yargs) =>
         yargs
-          .usage('Usage: $0 <job-id> [options]')
+          .usage('Usage: $0 get job <job-id> [options]')
           .positional('job-id', {
             type: 'string',
             describe: 'ID of the job to fetch',
@@ -60,7 +60,7 @@ export default (yargs: Yargs.Argv) =>
       )
       .command('project [project-id]', 'Get project details', (yargs) =>
         yargs
-          .usage('Usage: $0 project <project-id> [options]')
+          .usage('Usage: $0 get project <project-id> [options]')
           .positional('project-id', {
             type: 'string',
             describe: 'ID of the project to fetch',
@@ -78,7 +78,7 @@ export default (yargs: Yargs.Argv) =>
       )
       .command('pipeline [pipeline-id]', 'Get pipeline details', (yargs) =>
         yargs
-          .usage('Usage: $0 pipeline <pipeline-id> [options]')
+          .usage('Usage: $0 get pipeline <pipeline-id> [options]')
           .positional('pipeline-id', {
             type: 'string',
             describe: 'ID of the pipeline to fetch',
@@ -105,7 +105,7 @@ export default (yargs: Yargs.Argv) =>
         'Get organization details',
         (yargs) =>
           yargs
-            .usage('Usage: $0 <organization-id> [options]')
+            .usage('Usage: $0 get organization <organization-id> [options]')
             .positional('organization-id', {
               type: 'string',
               describe: 'ID of the organization to fetch',
@@ -121,9 +121,9 @@ export default (yargs: Yargs.Argv) =>
               return true;
             }, false)
       )
-      .command('run', 'Get run details', (yargs) =>
+      .command('run [run-id]', 'Get run details', (yargs) =>
         yargs
-          .usage('Usage: $0 <run-id> [options]')
+          .usage('Usage: $0 get run <run-id> [options]')
           .positional('run-id', {
             type: 'string',
             describe: 'ID of the run to fetch',
@@ -145,31 +145,58 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('pipeline-revision', 'Get pipeline-revision details', (yargs) =>
+      .command(
+        'pipeline-revision [revision]',
+        'Get pipeline-revision details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 get pipeline-revision <revision> [options]')
+            .positional('revision', {
+              type: 'number',
+              describe: 'Revision number of the pipeline revision to fetch',
+              demandOption: true,
+              requiresArg: true
+            })
+            .default('revision', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.revision)) {
+                throw new Error('Revision must be provided');
+              }
+
+              return true;
+            }, false)
+            .option('project-id', {
+              describe: 'ID of the project containing the pipeline revision',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('pipeline-id', {
+              describe: 'ID of the pipeline for the pipeline revision',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+      )
+      .command('runner [runner-id]', 'Get runner details', (yargs) =>
         yargs
-          .usage('Usage: $0 <revision> [options]')
-          .positional('revision', {
-            type: 'number',
-            describe: 'Revision number of the pipeline revision to fetch',
+          .usage('Usage: $0 get runner <runner-id> [options]')
+          .positional('runner-id', {
+            type: 'string',
+            describe: 'ID of the runner to fetch',
             demandOption: true,
             requiresArg: true
           })
-          .default('revision', () => readStdin(), 'read from stdin')
+          .default('runner-id', () => readStdin(), 'read from stdin')
           .check((argv) => {
-            if (isNil(argv.revision)) {
-              throw new Error('Revision must be provided');
+            if (isNil(argv.runnerId)) {
+              throw new Error('Runner ID must be provided');
             }
 
             return true;
           }, false)
-          .option('project-id', {
-            describe: 'ID of the project containing the pipeline revision',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
-          .option('pipeline-id', {
-            describe: 'ID of the pipeline for the pipeline revision',
+          .option('organization-id', {
+            describe: 'ID of the organization containing the runner',
             type: 'string',
             demandOption: true,
             requiresArg: true

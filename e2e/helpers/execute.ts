@@ -11,36 +11,27 @@ type Options = {
   trimStderr?: boolean;
 };
 
-export default async function execute(
-  args: Args,
+export async function executeAsIs(
+  cmd: string,
   options: Options = { trimStdout: false, trimStderr: false }
-): Promise<{
-  stderr: string;
-  stdout: string;
-}> {
-  return new Promise((resolve, reject) => {
-    exec(`${command} ${args.join(' ')}`, (err, stdout, stderr) => {
+) {
+  return new Promise<string>((resolve, reject) => {
+    exec(cmd, (err, stdout, stderr) => {
+      stdout = options?.trimStdout ? stdout.trim() : stdout;
+      stderr = options?.trimStderr ? stderr.trim() : stderr;
+
       if (!isNil(err)) {
         // Assuming all errors are forwarded to stderr.
         return reject(stderr);
       }
 
-      return resolve({
-        stdout,
-        stderr
-      });
+      return resolve(stdout);
     });
   });
 }
 
-export const executeWithStdoutOnly = (
-  args: Args,
-  { trim }: { trim: boolean } = { trim: false }
-) => execute(args).then(({ stdout }) => (trim ? stdout.trim() : stdout));
-
-export const executeWithStderrOnly = (
-  args: Args,
-  { trim }: { trim: boolean } = { trim: false }
-) => execute(args).then(({ stderr }) => (trim ? stderr.trim() : stderr));
+export async function execute(args: Args, options?: Options): Promise<string> {
+  return executeAsIs(`${command} ${args.join(' ')}`, options);
+}
 
 export const getAuthToken = () => process.env.__REFACTR_AUTH_TOKEN__;

@@ -1082,6 +1082,18 @@
     axios "^0.21.1"
     native-url "^0.3.4"
 
+"@refactr/cli@./":
+  version "1.0.0-alpha.1"
+  dependencies:
+    "@refactr/api-client" "^0.4.0"
+    cli-table "^0.3.4"
+    date-fns "^2.16.1"
+    debug "^4.3.1"
+    js-yaml "^3.14.1"
+    jsonpath-plus "^4.0.0"
+    lodash "^4.17.20"
+    yargs "^16.2.0"
+
 "@rollup/plugin-babel@^5.2.2":
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.2.2.tgz#e5623a01dd8e37e004ba87f2de218c611727d9b2"

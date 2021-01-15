@@ -1,4 +1,4 @@
-import { executeWithStdoutOnly } from '../helpers/execute';
+import { execute } from '../helpers/execute';
 import { loadFixtures } from './fixtures';
 import { withAddress, withFormat } from '../helpers/options';
 
@@ -8,19 +8,17 @@ beforeAll(async () => {
 
 describe('refactrctl list', () => {
   test('throws on missing subcommand', async () => {
-    await expect(executeWithStdoutOnly(['list'])).rejects.toMatchSnapshot();
+    await expect(execute(['list'])).rejects.toMatchSnapshot();
   });
 
   describe('credentials', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['list', 'credentials'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['list', 'credentials'])).rejects.toMatchSnapshot();
     });
 
     test('should work (default formatting)', async () => {
       await expect(
-        executeWithStdoutOnly(
+        execute(
           withAddress([
             'list',
             'credentials',
@@ -33,7 +31,7 @@ describe('refactrctl list', () => {
 
     test('should work (--format=table)', async () => {
       await expect(
-        executeWithStdoutOnly(
+        execute(
           withAddress([
             'list',
             'credentials',
@@ -46,7 +44,7 @@ describe('refactrctl list', () => {
 
     test('should work (--format=json)', async () => {
       await expect(
-        executeWithStdoutOnly(
+        execute(
           withFormat(
             withAddress([
               'list',
@@ -62,7 +60,7 @@ describe('refactrctl list', () => {
 
     test('should work (--format=yaml)', async () => {
       await expect(
-        executeWithStdoutOnly(
+        execute(
           withFormat(
             withAddress([
               'list',
@@ -79,41 +77,33 @@ describe('refactrctl list', () => {
 
   describe('jobs', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['list', 'jobs'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['list', 'jobs'])).rejects.toMatchSnapshot();
     });
   });
 
   describe('pipeline-revisions', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        executeWithStdoutOnly(['list', 'pipeline-revisions'])
+        execute(['list', 'pipeline-revisions'])
       ).rejects.toMatchSnapshot();
     });
   });
 
   describe('pipelines', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['list', 'pipelines'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['list', 'pipelines'])).rejects.toMatchSnapshot();
     });
   });
 
   describe('runners', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['list', 'runners'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['list', 'runners'])).rejects.toMatchSnapshot();
     });
   });
 
   describe('runs', () => {
     test('throws on missing arguments', async () => {
-      await expect(
-        executeWithStdoutOnly(['list', 'runs'])
-      ).rejects.toMatchSnapshot();
+      await expect(execute(['list', 'runs'])).rejects.toMatchSnapshot();
     });
   });
 });

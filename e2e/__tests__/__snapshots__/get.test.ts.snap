@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`refactrctl get credential accepts id as argument 1`] = `
+"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
+ cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
+"
+`;
+
+exports[`refactrctl get credential accepts id from stdin 1`] = `
+"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
+ cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
+"
+`;
+
 exports[`refactrctl get credential throws on missing arguments 1`] = `
-"Usage: refactrctl credential <credential-id> [options]
+"Usage: refactrctl get credential <credential-id> [options]
 
 Positionals:
   credential-id  ID of the credential to fetch  [string] [default: read from stdin]
@@ -20,8 +32,227 @@ Missing required argument: project-id
 "
 `;
 
+exports[`refactrctl get credential throws on missing arguments 2`] = `
+"Usage: refactrctl get credential <credential-id> [options]
+
+Positionals:
+  credential-id  ID of the credential to fetch  [string] [default: read from stdin]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the credential  [string] [required]
+
+Credential ID must be provided
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
+"{
+    \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+    \\"name\\": \\"Refactr\\",
+    \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
+    \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
+    \\"contact_email\\": \\"anthony@refactr.it\\",
+    \\"contact_name\\": \\"Anthony Rowlands\\",
+    \\"city\\": \\"Seattle\\",
+    \\"state\\": \\"WA\\",
+    \\"zip\\": \\"12345\\",
+    \\"plan\\": \\"admin\\",
+    \\"plan_quotas\\": {
+        \\"project_count\\": -1,
+        \\"user_count\\": -1,
+        \\"agent_count\\": -1,
+        \\"run_minutes\\": -1,
+        \\"support_hours\\": 0
+    },
+    \\"address\\": \\"123 Main St.\\",
+    \\"access\\": {
+        \\"default_project_role\\": \\"admin\\",
+        \\"default_project_run\\": true,
+        \\"create_projects\\": true,
+        \\"organization_admin\\": true
+    }
+}
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=json is passed 2`] = `
+"{
+    \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+    \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+    \\"created\\": \\"2021-01-11T15:40:13.848Z\\",
+    \\"modified\\": \\"2021-01-15T11:06:27.030Z\\",
+    \\"pipeline_count\\": 1,
+    \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\",
+    \\"access\\": {
+        \\"role\\": \\"admin\\",
+        \\"run\\": true
+    }
+}
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=json is passed 3`] = `
+"{
+    \\"_id\\": \\"5ffc718704ea5c7701201bb6\\",
+    \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+    \\"created\\": \\"2021-01-11T15:40:55.242Z\\",
+    \\"name\\": \\"Test CLI Credential 1\\",
+    \\"id\\": \\"cli_test_cred_1\\",
+    \\"type\\": \\"username_password\\"
+}
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=json is passed 4`] = `
+"{
+    \\"_id\\": \\"6001773304ea5cdf12201bc9\\",
+    \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+    \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+    \\"created\\": \\"2021-01-15T11:06:27.007Z\\",
+    \\"disable_on_failure\\": true,
+    \\"enabled\\": true,
+    \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+    \\"pipeline_revision_id\\": 4,
+    \\"name\\": \\"Test job\\",
+    \\"trigger_type\\": \\"manual\\",
+    \\"suppress_vars\\": true,
+    \\"suppress_outputs\\": true,
+    \\"suppress_events\\": true,
+    \\"last_run\\": \\"2021-01-15T12:17:37.278Z\\",
+    \\"last_status\\": \\"Succeeded\\"
+}
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=json is passed 5`] = `
+"{
+    \\"_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+    \\"feature_tags\\": [
+        \\"install\\",
+        \\"script\\"
+    ],
+    \\"catalog_tags\\": [],
+    \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+    \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+    \\"created\\": \\"2021-01-12T17:46:18.200Z\\",
+    \\"modified\\": \\"2021-01-12T18:39:04.282Z\\",
+    \\"step_count\\": 2,
+    \\"revision_count\\": 4,
+    \\"name\\": \\"Test Pipeline\\"
+}
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=yaml is passed 1`] = `
+"_id: 5f9f2d08e2f1bb2436e6f5b0
+name: Refactr
+created: '2020-10-10T07:07:53.294Z'
+modified: '2020-11-01T23:15:21.605Z'
+contact_email: anthony@refactr.it
+contact_name: Anthony Rowlands
+city: Seattle
+state: WA
+zip: '12345'
+plan: admin
+plan_quotas:
+    project_count: -1
+    user_count: -1
+    agent_count: -1
+    run_minutes: -1
+    support_hours: 0
+address: 123 Main St.
+access:
+    default_project_role: admin
+    default_project_run: true
+    create_projects: true
+    organization_admin: true
+
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=yaml is passed 2`] = `
+"_id: 5ffc715d04ea5ca71d201bb3
+organization_id: 5f9f2d08e2f1bb2436e6f5b0
+created: '2021-01-11T15:40:13.848Z'
+modified: '2021-01-15T11:06:27.030Z'
+pipeline_count: 1
+name: 'CLI tests [STATIC ONLY] (LIST, GET)'
+access:
+    role: admin
+    run: true
+
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=yaml is passed 3`] = `
+"_id: 5ffc718704ea5c7701201bb6
+project_id: 5ffc715d04ea5ca71d201bb3
+created: '2021-01-11T15:40:55.242Z'
+name: Test CLI Credential 1
+id: cli_test_cred_1
+type: username_password
+
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=yaml is passed 4`] = `
+"_id: 6001773304ea5cdf12201bc9
+organization_id: 5f9f2d08e2f1bb2436e6f5b0
+project_id: 5ffc715d04ea5ca71d201bb3
+created: '2021-01-15T11:06:27.007Z'
+disable_on_failure: true
+enabled: true
+pipeline_id: 5ffde06a04ea5cf045201bbc
+pipeline_revision_id: 4
+name: Test job
+trigger_type: manual
+suppress_vars: true
+suppress_outputs: true
+suppress_events: true
+last_run: '2021-01-15T12:17:37.278Z'
+last_status: Succeeded
+
+"
+`;
+
+exports[`refactrctl get formats as JSON when --format=yaml is passed 5`] = `
+"_id: 5ffde06a04ea5cf045201bbc
+feature_tags:
+    - install
+    - script
+catalog_tags: []
+organization_id: 5f9f2d08e2f1bb2436e6f5b0
+project_id: 5ffc715d04ea5ca71d201bb3
+created: '2021-01-12T17:46:18.200Z'
+modified: '2021-01-12T18:39:04.282Z'
+step_count: 2
+revision_count: 4
+name: Test Pipeline
+
+"
+`;
+
+exports[`refactrctl get job accepts id as argument 1`] = `
+"[31m _id                      [39m[31m name     [39m[31m enabled [39m[31m trigger_type [39m[31m created              [39m
+ 6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM 
+"
+`;
+
+exports[`refactrctl get job accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m name     [39m[31m enabled [39m[31m trigger_type [39m[31m created              [39m
+ 6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM 
+"
+`;
+
 exports[`refactrctl get job throws on missing arguments 1`] = `
-"Usage: refactrctl <job-id> [options]
+"Usage: refactrctl get job <job-id> [options]
 
 Positionals:
   job-id  ID of the job to fetch  [string] [default: read from stdin]
@@ -40,8 +271,71 @@ Missing required argument: project-id
 "
 `;
 
+exports[`refactrctl get job throws on missing arguments 2`] = `
+"Usage: refactrctl get job <job-id> [options]
+
+Positionals:
+  job-id  ID of the job to fetch  [string] [default: read from stdin]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the job  [string] [required]
+
+Job ID must be provided
+"
+`;
+
+exports[`refactrctl get organization accepts id as argument 1`] = `
+"[31m _id                      [39m[31m name    [39m[31m contact_name     [39m[31m contact_email      [39m[31m created             [39m
+ 5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM 
+"
+`;
+
+exports[`refactrctl get organization accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m name    [39m[31m contact_name     [39m[31m contact_email      [39m[31m created             [39m
+ 5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM 
+"
+`;
+
+exports[`refactrctl get organization throws on missing arguments 1`] = `
+"Usage: refactrctl get organization <organization-id> [options]
+
+Positionals:
+  organization-id  ID of the organization to fetch  [string] [default: read from stdin]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+
+Organization ID must be provided
+"
+`;
+
+exports[`refactrctl get pipeline accepts id as argument 1`] = `
+"[31m _id                      [39m[31m organization_id          [39m[31m project_id               [39m[31m name          [39m[31m step_count [39m[31m revision_count [39m[31m created             [39m
+ 5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM 
+"
+`;
+
+exports[`refactrctl get pipeline accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m organization_id          [39m[31m project_id               [39m[31m name          [39m[31m step_count [39m[31m revision_count [39m[31m created             [39m
+ 5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM 
+"
+`;
+
 exports[`refactrctl get pipeline throws on missing arguments 1`] = `
-"Usage: refactrctl pipeline <pipeline-id> [options]
+"Usage: refactrctl get pipeline <pipeline-id> [options]
 
 Positionals:
   pipeline-id  ID of the pipeline to fetch  [string] [default: read from stdin]
@@ -60,8 +354,40 @@ Missing required argument: project-id
 "
 `;
 
+exports[`refactrctl get pipeline throws on missing arguments 2`] = `
+"Usage: refactrctl get pipeline <pipeline-id> [options]
+
+Positionals:
+  pipeline-id  ID of the pipeline to fetch  [string] [default: read from stdin]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of the project to fetch  [string] [required]
+
+Pipeline ID must be provided
+"
+`;
+
+exports[`refactrctl get pipeline-revision accepts id as argument 1`] = `
+"[31m _id                      [39m[31m revision [39m
+ 5ffdecc804ea5c1c58201bbf  4        
+"
+`;
+
+exports[`refactrctl get pipeline-revision accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m revision [39m
+ 5ffdecc804ea5c1c58201bbf  4        
+"
+`;
+
 exports[`refactrctl get pipeline-revision throws on missing arguments 1`] = `
-"Usage: refactrctl <revision> [options]
+"Usage: refactrctl get pipeline-revision <revision> [options]
 
 Positionals:
   revision  Revision number of the pipeline revision to fetch  [number] [default: read from stdin]
@@ -81,8 +407,72 @@ Missing required arguments: project-id, pipeline-id
 "
 `;
 
+exports[`refactrctl get pipeline-revision throws on missing arguments 2`] = `
+"Usage: refactrctl get pipeline-revision <revision> [options]
+
+Positionals:
+  revision  Revision number of the pipeline revision to fetch  [number] [default: read from stdin]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --project-id   ID of the project containing the pipeline revision  [string] [required]
+      --pipeline-id  ID of the pipeline for the pipeline revision  [string] [required]
+
+Revision must be provided
+"
+`;
+
+exports[`refactrctl get project accepts id as argument 1`] = `
+"[31m _id                      [39m[31m name                                [39m[31m pipeline_count [39m[31m organization_id          [39m[31m created             [39m
+ 5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM 
+"
+`;
+
+exports[`refactrctl get project accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m name                                [39m[31m pipeline_count [39m[31m organization_id          [39m[31m created             [39m
+ 5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM 
+"
+`;
+
+exports[`refactrctl get project throws on missing arguments 1`] = `
+"Usage: refactrctl get project <project-id> [options]
+
+Positionals:
+  project-id  ID of the project to fetch  [string] [default: read from stdin]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+
+Project ID must be provided
+"
+`;
+
+exports[`refactrctl get run accepts id as argument 1`] = `
+"[31m _id                      [39m[31m number [39m[31m organization_id [39m[31m job_id                   [39m[31m status    [39m[31m started              [39m[31m finished             [39m[31m suppress_events [39m[31m suppress_outputs [39m[31m suppress_vars [39m[31m created              [39m
+ 600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM 
+"
+`;
+
+exports[`refactrctl get run accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m number [39m[31m organization_id [39m[31m job_id                   [39m[31m status    [39m[31m started              [39m[31m finished             [39m[31m suppress_events [39m[31m suppress_outputs [39m[31m suppress_vars [39m[31m created              [39m
+ 600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM 
+"
+`;
+
 exports[`refactrctl get run throws on missing arguments 1`] = `
-"Usage: refactrctl <run-id> [options]
+"Usage: refactrctl get run <run-id> [options]
 
 Positionals:
   run-id  ID of the run to fetch  [string] [default: read from stdin]
@@ -101,17 +491,11 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl get runner throws on missing arguments 1`] = `
-"Usage: refactrctl get <command> [options]
+exports[`refactrctl get run throws on missing arguments 2`] = `
+"Usage: refactrctl get run <run-id> [options]
 
-Commands:
-  refactrctl get credential [credential-id]      Get credential details
-  refactrctl get job [job-id]                    Get job details
-  refactrctl get project [project-id]            Get project details
-  refactrctl get pipeline [pipeline-id]          Get pipeline details
-  refactrctl get organization [organization-id]  Get organization details
-  refactrctl get run                             Get run details
-  refactrctl get pipeline-revision               Get pipeline-revision details
+Positionals:
+  run-id  ID of the run to fetch  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]
@@ -121,8 +505,61 @@ Options:
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
+      --project-id  ID of the project containing the run  [string] [required]
 
-Unknown argument: runner
+Run ID must be provided
+"
+`;
+
+exports[`refactrctl get runner accepts id as argument 1`] = `
+"[31m _id                      [39m[31m organization_id          [39m[31m name                 [39m[31m host_type [39m[31m machine_type [39m[31m version [39m[31m started [39m[31m heartbeat [39m[31m status  [39m[31m idle_since [39m[31m stop_pending [39m[31m created              [39m
+ 600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Running  -           -             01/15/2021, 12:17 PM 
+"
+`;
+
+exports[`refactrctl get runner accepts id from stdin 1`] = `
+"[31m _id                      [39m[31m organization_id          [39m[31m name                 [39m[31m host_type [39m[31m machine_type [39m[31m version [39m[31m started [39m[31m heartbeat [39m[31m status  [39m[31m idle_since [39m[31m stop_pending [39m[31m created              [39m
+ 600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Running  -           -             01/15/2021, 12:17 PM 
+"
+`;
+
+exports[`refactrctl get runner throws on missing arguments 1`] = `
+"Usage: refactrctl get runner <runner-id> [options]
+
+Positionals:
+  runner-id  ID of the runner to fetch  [string] [default: read from stdin]
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner  [string] [required]
+
+Missing required argument: organization-id
+"
+`;
+
+exports[`refactrctl get runner throws on missing arguments 2`] = `
+"Usage: refactrctl get runner <runner-id> [options]
+
+Positionals:
+  runner-id  ID of the runner to fetch  [string] [default: read from stdin]
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner  [string] [required]
+
+Runner ID must be provided
 "
 `;
 
@@ -135,8 +572,9 @@ Commands:
   refactrctl get project [project-id]            Get project details
   refactrctl get pipeline [pipeline-id]          Get pipeline details
   refactrctl get organization [organization-id]  Get organization details
-  refactrctl get run                             Get run details
-  refactrctl get pipeline-revision               Get pipeline-revision details
+  refactrctl get run [run-id]                    Get run details
+  refactrctl get pipeline-revision [revision]    Get pipeline-revision details
+  refactrctl get runner [runner-id]              Get runner details
 
 Options:
       --version     Show version number  [boolean]

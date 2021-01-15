@@ -24,8 +24,8 @@ exports[`refactrctl list credentials should work (--format=json) 1`] = `
 
 exports[`refactrctl list credentials should work (--format=table) 1`] = `
 "[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
- cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 8:41 PM 
- cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 8:40 PM 
+ cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM 
+ cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
 "
 `;
 
@@ -50,8 +50,8 @@ exports[`refactrctl list credentials should work (--format=yaml) 1`] = `
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
 "[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
- cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 8:41 PM 
- cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 8:40 PM 
+ cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM 
+ cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM 
 "
 `;
 

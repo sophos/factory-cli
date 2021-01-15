@@ -41,7 +41,7 @@ const createHandlerResult = <T>(
 
 export const handler = <A, R>(
   fn: CommandHandler<A, R>
-): CommandHandler<A & { format: RawFormatType }, R | {}> => async (
+): CommandHandler<A & { format: RawFormatType }, R> => async (
   apiClient,
   args: A & { format: RawFormatType }
 ) => {
@@ -70,6 +70,7 @@ export const handler = <A, R>(
     return createHandlerResult(
       createCommandResult('error', {
         kind: 'unknown_error',
+        error: err,
         stack
       }),
       format
