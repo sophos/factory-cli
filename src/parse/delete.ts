@@ -1,15 +1,26 @@
 import Yargs from 'yargs';
+import { readStdin } from '../util/io';
+import isNil from 'lodash/isNil';
 
 export default (yargs: Yargs.Argv) =>
   yargs.command('delete', 'Delete specified resource', (yargs) =>
     yargs
-      .command('pipeline <pipeline-id>', 'Delete a pipeline', (yargs) =>
+      .command('pipeline [pipeline-id]', 'Delete a pipeline', (yargs) =>
         yargs
           .positional('pipeline-id', {
-            describe: 'ID pipeline to delete',
+            describe: 'ID of the pipeline to delete',
             type: 'string',
-            required: true
+            required: true,
+            demandOption: true
           })
+          .default('pipeline-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.pipelineId)) {
+              throw new Error('Pipeline ID must be provided');
+            }
+
+            return true;
+          }, false)
           .option('project-id', {
             describe: 'ID of the project containing the pipeline',
             type: 'string',
@@ -17,9 +28,22 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('job <job-id>', 'Delete a job', (yargs) =>
+      .command('job [job-id]', 'Delete a job', (yargs) =>
         yargs
-          .positional('job', { type: 'string', required: true })
+          .positional('job', {
+            describe: 'ID of the job to delete',
+            type: 'string',
+            required: true,
+            demandOption: true
+          })
+          .default('job-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.jobId)) {
+              throw new Error('Job ID must be provided');
+            }
+
+            return true;
+          }, false)
           .option('project-id', {
             describe: 'ID of the project containing the job',
             type: 'string',
@@ -27,16 +51,39 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('project <project-id>', 'Delete a project', (yargs) =>
-        yargs.positional('project-id', {
-          describe: 'ID of the project',
-          type: 'string',
-          required: true
-        })
-      )
-      .command('runner <runner-id>', 'Delete a runner', (yargs) =>
+      .command('project [project-id]', 'Delete a project', (yargs) =>
         yargs
-          .positional('runner-id', { type: 'string', required: true })
+          .positional('project-id', {
+            describe: 'ID of the project to delete',
+            type: 'string',
+            required: true,
+            demandOption: true
+          })
+          .default('project-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.projectId)) {
+              throw new Error('Project ID must be provided');
+            }
+
+            return true;
+          }, false)
+      )
+      .command('runner [runner-id]', 'Delete a runner', (yargs) =>
+        yargs
+          .positional('runner-id', {
+            describe: 'ID of the runner to delete',
+            type: 'string',
+            required: true,
+            demandOption: true
+          })
+          .default('runner-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.runnerId)) {
+              throw new Error('Runner ID must be provided');
+            }
+
+            return true;
+          }, false)
           .option('organization-id', {
             describe: 'ID of the organization containing the runner',
             type: 'string',
@@ -44,9 +91,22 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('credential <credential-id>', 'Delete a runner', (yargs) =>
+      .command('credential [credential-id]', 'Delete a runner', (yargs) =>
         yargs
-          .positional('credential-id', { type: 'string', required: true })
+          .positional('credential-id', {
+            describe: 'ID of the credential to deleted',
+            type: 'string',
+            required: true,
+            demandOption: true
+          })
+          .default('credential-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.credentialId)) {
+              throw new Error('Project ID must be provided');
+            }
+
+            return true;
+          }, false)
           .option('project-id', {
             describe: 'ID of the project containing the credential',
             type: 'string',

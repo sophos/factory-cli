@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl delete credential throws on missing --project-id option 1`] = `
-"refactrctl delete credential <credential-id>
+"refactrctl delete credential [credential-id]
 
 Delete a runner
 
 Positionals:
-  credential-id  [string] [required]
+  credential-id  ID of the credential to deleted  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]
@@ -23,12 +23,12 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl delete credential throws on missing arguments 1`] = `
-"refactrctl delete credential <credential-id>
+"refactrctl delete credential [credential-id]
 
 Delete a runner
 
 Positionals:
-  credential-id  [string] [required]
+  credential-id  ID of the credential to deleted  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]
@@ -40,17 +40,17 @@ Options:
       --help        Show help  [boolean]
       --project-id  ID of the project containing the credential  [string] [required]
 
-Not enough non-option arguments: got 0, need at least 1
+Missing required argument: project-id
 "
 `;
 
 exports[`refactrctl delete job throws on missing --project-id option 1`] = `
-"refactrctl delete job <job-id>
+"refactrctl delete job [job-id]
 
 Delete a job
 
 Positionals:
-  job  [string]
+  job  ID of the job to delete  [string]
 
 Options:
       --version     Show version number  [boolean]
@@ -61,18 +61,19 @@ Options:
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the job  [string] [required]
+      --job-id  [default: read from stdin]
 
 Missing required argument: project-id
 "
 `;
 
 exports[`refactrctl delete job throws on missing arguments 1`] = `
-"refactrctl delete job <job-id>
+"refactrctl delete job [job-id]
 
 Delete a job
 
 Positionals:
-  job  [string]
+  job  ID of the job to delete  [string]
 
 Options:
       --version     Show version number  [boolean]
@@ -83,18 +84,19 @@ Options:
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the job  [string] [required]
+      --job-id  [default: read from stdin]
 
-Not enough non-option arguments: got 0, need at least 1
+Missing required argument: project-id
 "
 `;
 
 exports[`refactrctl delete pipeline throws on missing arguments 1`] = `
-"refactrctl delete pipeline <pipeline-id>
+"refactrctl delete pipeline [pipeline-id]
 
 Delete a pipeline
 
 Positionals:
-  pipeline-id  ID pipeline to delete  [string] [required]
+  pipeline-id  ID of the pipeline to delete  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]
@@ -106,17 +108,17 @@ Options:
       --help        Show help  [boolean]
       --project-id  ID of the project containing the pipeline  [string] [required]
 
-Not enough non-option arguments: got 0, need at least 1
+Missing required argument: project-id
 "
 `;
 
 exports[`refactrctl delete project throws on missing arguments 1`] = `
-"refactrctl delete project <project-id>
+"refactrctl delete project [project-id]
 
 Delete a project
 
 Positionals:
-  project-id  ID of the project  [string] [required]
+  project-id  ID of the project to delete  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]
@@ -127,17 +129,17 @@ Options:
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
 
-Not enough non-option arguments: got 0, need at least 1
+Project ID must be provided
 "
 `;
 
 exports[`refactrctl delete runner throws on missing arguments 1`] = `
-"refactrctl delete runner <runner-id>
+"refactrctl delete runner [runner-id]
 
 Delete a runner
 
 Positionals:
-  runner-id  [string] [required]
+  runner-id  ID of the runner to delete  [string] [default: read from stdin]
 
 Options:
       --version          Show version number  [boolean]
@@ -149,17 +151,17 @@ Options:
       --help             Show help  [boolean]
       --organization-id  ID of the organization containing the runner  [string] [required]
 
-Not enough non-option arguments: got 0, need at least 1
+Missing required argument: organization-id
 "
 `;
 
 exports[`refactrctl delete runner throws on missing organization-id option 1`] = `
-"refactrctl delete runner <runner-id>
+"refactrctl delete runner [runner-id]
 
 Delete a runner
 
 Positionals:
-  runner-id  [string] [required]
+  runner-id  ID of the runner to delete  [string] [default: read from stdin]
 
 Options:
       --version          Show version number  [boolean]
@@ -181,11 +183,11 @@ exports[`refactrctl delete throws on missing subcommand 1`] = `
 Delete specified resource
 
 Commands:
-  refactrctl delete pipeline <pipeline-id>      Delete a pipeline
-  refactrctl delete job <job-id>                Delete a job
-  refactrctl delete project <project-id>        Delete a project
-  refactrctl delete runner <runner-id>          Delete a runner
-  refactrctl delete credential <credential-id>  Delete a runner
+  refactrctl delete pipeline [pipeline-id]      Delete a pipeline
+  refactrctl delete job [job-id]                Delete a job
+  refactrctl delete project [project-id]        Delete a project
+  refactrctl delete runner [runner-id]          Delete a runner
+  refactrctl delete credential [credential-id]  Delete a runner
 
 Options:
       --version     Show version number  [boolean]
