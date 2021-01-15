@@ -154,10 +154,8 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn install
-
-      - run: |
-        yarn build:aot
-        yarn build:exe:${{ matrix.operating-system }}
+      - run: yarn build:aot
+      - run: yarn build:exe:${{ matrix.operating-system }}
 
       # Windows
       - if: ${{ matrix.operating-system == 'win' }}
