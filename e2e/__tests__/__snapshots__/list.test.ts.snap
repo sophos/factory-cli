@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl list credentials should work (--format=json) 1`] = `
-"undefined
-[
+"[
     {
         \\"_id\\": \\"5ffc71a504ea5c3fab201bb8\\",
         \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
@@ -24,16 +23,14 @@ exports[`refactrctl list credentials should work (--format=json) 1`] = `
 `;
 
 exports[`refactrctl list credentials should work (--format=table) 1`] = `
-"undefined
-[31m _id                      [39m[31m created             [39m[31m name                  [39m[31m id              [39m[31m type              [39m[31m data [39m
- 5ffc71a504ea5c3fab201bb8  01/11/2021, 8:41 PM  Test CLI Credential 2  cli_test_cred_2  generic            -    
- 5ffc718704ea5c7701201bb6  01/11/2021, 8:40 PM  Test CLI Credential 1  cli_test_cred_1  username_password  -    
+"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
+ cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 8:41 PM 
+ cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 8:40 PM 
 "
 `;
 
 exports[`refactrctl list credentials should work (--format=yaml) 1`] = `
-"undefined
--
+"-
     _id: 5ffc71a504ea5c3fab201bb8
     project_id: 5ffc715d04ea5ca71d201bb3
     created: '2021-01-11T15:41:25.326Z'
@@ -52,10 +49,9 @@ exports[`refactrctl list credentials should work (--format=yaml) 1`] = `
 `;
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
-"undefined
-[31m _id                      [39m[31m created             [39m[31m name                  [39m[31m id              [39m[31m type              [39m[31m data [39m
- 5ffc71a504ea5c3fab201bb8  01/11/2021, 8:41 PM  Test CLI Credential 2  cli_test_cred_2  generic            -    
- 5ffc718704ea5c7701201bb6  01/11/2021, 8:40 PM  Test CLI Credential 1  cli_test_cred_1  username_password  -    
+"[31m id              [39m[31m name                  [39m[31m type              [39m[31m data [39m[31m created             [39m
+ cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 8:41 PM 
+ cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 8:40 PM 
 "
 `;
 
@@ -65,11 +61,11 @@ exports[`refactrctl list credentials throws on missing arguments 1`] = `
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
-      --filter      Filter output using JsonPath  [string]
       --project-id  ID of project containing the credentials  [string] [required]
       --type  [string] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\"]
       --sort        Sort order  [string] [choices: \\"created_asc\\", \\"created_desc\\"]
@@ -86,11 +82,11 @@ exports[`refactrctl list jobs throws on missing arguments 1`] = `
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
-      --filter      Filter output using JsonPath  [string]
       --project-id  ID of the project containing the jobs  [string] [required]
 
 Missing required argument: project-id
@@ -103,11 +99,11 @@ exports[`refactrctl list pipeline-revisions throws on missing arguments 1`] = `
 Options:
       --version      Show version number  [boolean]
   -v, --verbose      Print detailed output  [boolean]
-      --format       Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
       --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help         Show help  [boolean]
-      --filter       Filter output using JsonPath  [string]
       --project-id   ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id  ID of the pipeline containing the pipeline revision  [string] [required]
 
@@ -123,11 +119,11 @@ List pipelines for a project
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
-      --filter      Filter output using JsonPath  [string]
       --project-id  ID of the project containing the pipelines  [string] [required]
       --sort        Order in which returned pipelines should be sorted  [choices: \\"modified_asc\\", \\"modified_desc\\", \\"name_asc\\", \\"name_desc\\"]
       --limit  [number]
@@ -141,16 +137,16 @@ Missing required argument: project-id
 exports[`refactrctl list runners throws on missing arguments 1`] = `
 "refactrctl list runners
 
-List runners for an organization
+List runners for an organization or a project
 
 Options:
       --version          Show version number  [boolean]
   -v, --verbose          Print detailed output  [boolean]
-      --format           Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
       --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help             Show help  [boolean]
-      --filter           Filter output using JsonPath  [string]
       --project-id       ID of the project containing the runners  [string]
       --organization-id  ID of the organization containing the runners  [string]
 
@@ -164,11 +160,11 @@ exports[`refactrctl list runs throws on missing arguments 1`] = `
 Options:
       --version      Show version number  [boolean]
   -v, --verbose      Print detailed output  [boolean]
-      --format       Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
       --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help         Show help  [boolean]
-      --filter       Filter output using JsonPath  [string]
       --project-id   ID of the organization containing the runs  [string] [required]
       --pipeline-id  ID of a pipeline used to filter the runs  [string]
       --job-id       ID of a job used to filter the runs  [string]
@@ -183,21 +179,21 @@ exports[`refactrctl list throws on missing subcommand 1`] = `
 Commands:
   refactrctl list credentials         List credentials from a project
   refactrctl list projects            List projects from an organization
-  refactrctl list organizations       List organizations one belongs to
+  refactrctl list organizations       List organizations to which authenticated user belongs
   refactrctl list jobs                List jobs for a project
   refactrctl list runs                List runs for a project
   refactrctl list pipeline-revisions  List runs for a project
-  refactrctl list runners             List runners for an organization
+  refactrctl list runners             List runners for an organization or a project
   refactrctl list pipelines           List pipelines for a project
 
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
-      --filter      Filter output using JsonPath  [string]
 
 Command must be specified
 "

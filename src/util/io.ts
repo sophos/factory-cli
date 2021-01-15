@@ -54,5 +54,5 @@ export function readStdin() {
     chunks.push(chunk);
   }
 
-  return Buffer.concat(chunks).toString('utf-8');
+  return Buffer.concat(chunks).toString('utf-8').trim();
 }

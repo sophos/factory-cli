@@ -1,4 +1,5 @@
 import isString from 'lodash/isString';
+import isNil from 'lodash/isNil';
 import type Yargs from 'yargs';
 
 import { DEFAULT_FORMATTER } from '../formatter';
@@ -44,9 +45,14 @@ const parse = (argv: string[], { version }: { version: string }) => {
       type: 'boolean'
     })
     .option('format', {
-      describe: 'Specifies output format',
+      describe: 'Output format',
       default: DEFAULT_FORMATTER,
       choices: ['wide', 'json', 'yaml']
+    })
+    .option('filter', {
+      describe: 'Filter output using JsonPath',
+      type: 'string',
+      requiresArg: true
     })
     .option('address', {
       describe:
@@ -59,6 +65,15 @@ const parse = (argv: string[], { version }: { version: string }) => {
         'Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable',
       type: 'string',
       requiresArg: true
+    })
+    .check((argv) => {
+      if (!isNil(argv.filter) && argv.format === 'wide') {
+        throw new Error(
+          'Filter option cannot be used in conjunction with format option set to `wide`'
+        );
+      }
+
+      return true;
     })
     .demandCommand(1, 'Command must be specified.')
     .help()

@@ -10,12 +10,16 @@ type Arguments = {
 export default handler<Arguments, any>(
   async (apiClient, { projectId, pipelineId, revision }) => {
     const api = apiClient.pipelines;
-    const { data: run } = await api.getPipelineRevision(
+    const { data: pipelineRevision } = await api.getPipelineRevision(
       projectId,
       pipelineId,
       revision
     );
 
-    return createCommandResult('view', run, fields.pipelineRevision);
+    return createCommandResult(
+      'view',
+      pipelineRevision,
+      fields.pipelineRevision
+    );
   }
 );

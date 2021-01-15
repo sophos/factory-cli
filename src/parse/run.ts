@@ -4,30 +4,30 @@ export default (yargs: Yargs.Argv) =>
   yargs.command('run', 'Execute pipeline or job', (yargs) =>
     yargs
       .option('wait', {
-        describe: 'Wait until run execution finishes',
+        describe: 'Wait until run execution is finished',
         type: 'boolean'
       })
       .option('suppress-events', {
-        describe: 'Suppress run events',
+        describe: 'Suppress run events during pipeline or job run',
         type: 'boolean'
       })
-      .option('suppress-output', {
-        describe: 'Suppress run output',
+      .option('suppress-outputs', {
+        describe: 'Suppress outputs during pipeline or job run',
         type: 'boolean'
       })
       .option('suppress-variables', {
-        describe: 'Suppress variables',
+        describe: 'Suppress variables during pipeline or job run',
         type: 'boolean'
       })
       .command('job <job-id>', '', (yargs) =>
         yargs
           .positional('job-id', {
-            describe: 'Job to run',
+            describe: 'ID of the job to be run',
             type: 'string',
             demandOption: true
           })
           .option('project-id', {
-            describe: 'Project this job belongs to',
+            describe: 'ID of the project containing the job',
             type: 'string',
             demandOption: true
           })
@@ -35,18 +35,18 @@ export default (yargs: Yargs.Argv) =>
       .command('pipeline', 'Executes specified pipeline', (yargs) =>
         yargs
           .option('project-id', {
-            describe: 'Project this pipeline belongs to',
+            describe: 'ID of the project containing the pipeline',
             type: 'string',
             demandOption: true
           })
           .option('pipeline-id', {
-            describe: 'Pipeline to execute',
+            describe: 'ID of the pipeline to be executed',
             type: 'string',
             demandOption: true,
             requiresArg: true
           })
           .option('revision', {
-            describe: 'Revision number',
+            describe: 'Revision number of the pipeline',
             type: 'number',
             demandOption: true,
             requiresArg: true

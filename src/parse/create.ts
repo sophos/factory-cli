@@ -1,7 +1,9 @@
+import * as path from 'path';
+
 import Yargs from 'yargs';
 import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
-import * as path from 'path';
+import isNil from 'lodash/isNil';
 
 import { readStdin, parseInput, readFile } from '../util/io';
 import { CREDENTIAL_TYPES } from '../credential-type';
@@ -31,12 +33,13 @@ const coerceInput = (arg: string | string[]) => {
 };
 
 export default (yargs: Yargs.Argv) =>
-  yargs.command('create', '', (yargs) =>
+  yargs.command('create', 'Create specified resource', (yargs) =>
     yargs
-      .command('project', '', (yargs) =>
+      .command('project', 'Create a new project', (yargs) =>
         yargs
           .option('organization-id', {
-            describe: 'Project this pipeline belongs to',
+            describe:
+              'ID of organization under which the project will be created',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -48,28 +51,43 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true
           })
       )
-      .command('pipeline-revision', '', (yargs) =>
-        yargs
-          .positional('input', {
-            coerce: coerceInput,
-            default: () => readStdin
-          })
-          .option('project-id', {
-            describe: 'Project this pipeline belongs to',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
-          .option('pipeline-id', {
-            describe: 'Pipeline',
-            demandOption: true,
-            requiresArg: true
-          })
+      .command(
+        'pipeline-revision [input]',
+        'Create a new pipeline-revision',
+        (yargs) =>
+          yargs
+            .positional('input', {
+              description:
+                'Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats',
+              coerce: coerceInput
+            })
+            .default('input', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.input)) {
+                throw new Error('Input data must be provided');
+              }
+
+              return true;
+            }, false)
+            .option('project-id', {
+              describe: 'ID of the project containing the pipeline',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('pipeline-id', {
+              describe: 'ID of the pipeline for the pipeline-revision',
+              demandOption: true,
+              requiresArg: true
+            })
       )
-      .command('pipeline [options]', '', (yargs) =>
+      .command('pipeline [options]', 'Creates a new pipeline', (yargs) =>
         yargs
+          .usage(
+            '$0 pipeline --project-id <project-id> --name <name> [options]'
+          )
           .option('project-id', {
-            describe: 'Project this pipeline belongs to',
+            describe: 'ID of the project under which pipeline will be created',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -84,13 +102,14 @@ export default (yargs: Yargs.Argv) =>
       .command('credential', 'Create a new credential', (yargs) =>
         yargs
           .option('project-id', {
-            describe: 'Project this credential will be created under',
+            describe:
+              'ID of the project under which the credential will be created',
             type: 'string',
             demandOption: true,
             requiresArg: true
           })
           .option('name', {
-            describe: 'Name of the project',
+            describe: 'Name of the credential',
             type: 'string',
             requiresArg: true,
             demandOption: true
@@ -116,52 +135,53 @@ export default (yargs: Yargs.Argv) =>
       )
       .command('job', 'Create a new job', (yargs) =>
         yargs
-          .usage('Usage: $0 [options]')
+          .usage('Usage: $0 job [options]')
           .option('project-id', {
-            describe: 'Project this job belongs to',
+            describe: 'ID of the project under which job will be created',
             type: 'string',
             demandOption: true,
             requiresArg: true
           })
           .option('pipeline-id', {
             type: 'string',
-            describe: 'Pipeline this job relates to',
+            describe: 'ID of the pipeline from which job will be created',
             demandOption: true,
             requiresArg: true
           })
           .option('pipeline-revision', {
-            describe: 'Revision of pipeline to set for job',
+            describe: 'Number of the pipeline revision',
             type: 'number',
             requiresArg: true
           })
           .option('name', {
-            describe: 'Job name',
+            describe: 'Name of the jbo',
             type: 'string',
             demandOption: true,
             requiresArg: true
           })
           .option('type', {
-            describe: 'Job trigger type',
+            describe: 'Trigger type of the job',
             choices: JOB_TRIGGER_TYPE,
             demandOption: true,
             requiresArg: true
           })
           .option('suppress-events', {
-            describe: 'Suppress run events',
+            describe: 'Suppress run events during job run',
             type: 'boolean',
             default: false
           })
-          .option('suppress-output', {
-            describe: 'Suppress job run output',
+          .option('suppress-outputs', {
+            describe: 'Suppress outputs during job run',
             type: 'boolean',
             default: false
           })
           .option('suppress-variables', {
-            describe: 'Suppress variables',
+            describe: 'Suppress variables during job run',
             type: 'boolean',
             default: false
           })
           .option('disable-on-failure', {
+            describe: 'Specifies whether job will be disabled on failed run',
             type: 'boolean',
             default: false
           })

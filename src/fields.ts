@@ -1,9 +1,3 @@
-import {
-  CredentialTypeEnum,
-  RunnerAgentEvents,
-  RunnerAgentOptions
-} from '@refactr/api-client/types/generated/api';
-
 /**
  * Fields of various objects that we'd like to print in human-readable mode
  * like "log" or "table".
@@ -11,58 +5,36 @@ import {
  * NOTE: fields MUST be provided in order they will be logged.
  */
 export default {
-  project: [
-    '_id',
-    'name',
-    'pipeline_count',
-    'organization_id',
-    'created',
-    'modified'
-  ],
-  organization: [
-    '_id',
-    'name',
-    'contact_name',
-    'contact_email',
-    'created'
-  ],
+  // Table
+  project: ['_id', 'name', 'pipeline_count', 'organization_id', 'created'],
+  organization: ['_id', 'name', 'contact_name', 'contact_email', 'created'],
   run: [
     '_id',
     'number',
     'organization_id',
     'job_id',
     'status',
-    'created',
     'started',
     'finished',
     'suppress_events',
     'suppress_outputs',
-    'suppress_vars'
+    'suppress_vars',
+    'created'
   ],
-  runEvent: ['occurred', 'level', 'message', 'details'],
-  job: [
-    '_id',
-    'created',
-    'name',
-    'enabled',
-    'trigger_type'
-  ],
+  job: ['_id', 'name', 'enabled', 'trigger_type', 'created'],
   pipelineRevision: ['_id', 'revision'],
   pipeline: [
     '_id',
-    'name',
     'organization_id',
     'project_id',
-    'created',
-    'modified',
+    'name',
     'step_count',
-    'revision_count'
+    'revision_count',
+    'created'
   ],
-
   runner: [
     '_id',
     'organization_id',
-    'created',
     'name',
     'host_type',
     'machine_type',
@@ -72,8 +44,10 @@ export default {
     'status',
     'idle_since',
     'stop_pending',
-    'events',
-    'options'
+    'created'
   ],
-  credential: ['_id', 'created', 'name', 'id', 'type', 'data']
+  credential: ['id', 'name', 'type', 'data', 'created'],
+
+  // Log
+  runEvent: ['occurred', 'level', 'message', 'details']
 };

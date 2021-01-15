@@ -11,7 +11,8 @@ Positionals:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
@@ -32,7 +33,8 @@ Positionals:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
@@ -53,7 +55,8 @@ Positionals:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
@@ -74,7 +77,8 @@ Positionals:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
@@ -95,7 +99,8 @@ Positionals:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
@@ -116,7 +121,8 @@ Positionals:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]
@@ -136,7 +142,8 @@ Positionals:
 Options:
       --version          Show version number  [boolean]
   -v, --verbose          Print detailed output  [boolean]
-      --format           Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
       --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help             Show help  [boolean]
@@ -157,7 +164,8 @@ Positionals:
 Options:
       --version          Show version number  [boolean]
   -v, --verbose          Print detailed output  [boolean]
-      --format           Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
       --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help             Show help  [boolean]
@@ -170,6 +178,8 @@ Missing required argument: organization-id
 exports[`refactrctl delete throws on missing subcommand 1`] = `
 "refactrctl delete
 
+Delete specified resource
+
 Commands:
   refactrctl delete pipeline <pipeline-id>      Delete a pipeline
   refactrctl delete job <job-id>                Delete a job
@@ -180,7 +190,8 @@ Commands:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Specifies output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
       --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
       --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
       --help        Show help  [boolean]

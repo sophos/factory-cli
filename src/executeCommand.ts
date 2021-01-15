@@ -12,7 +12,6 @@ import formatter from './formatter';
 import printer from './printer';
 import filterer from './filterer';
 import asyncGenToArray from './util/asyncGenToArray';
-import { readStdin } from './util/io';
 
 export default async function executeCommand(args: any) {
   const methods: string[] = args._;
@@ -29,6 +28,11 @@ export default async function executeCommand(args: any) {
     handler = executableCommandsMap[command];
   }
 
+  const viewError = flow([
+    formatter('log', ['message']),
+    printer({ level: 'error' })
+  ]);
+
   if (isFunction(handler)) {
     const apiClient = new Client(args.address, args.authToken);
     const result = await handler(apiClient, args);
@@ -36,10 +40,6 @@ export default async function executeCommand(args: any) {
     const filter = filterer(filterPath, fields!);
     const format = formatter(formatType, fields!);
     const view = flow([filter, format, printer({ level: 'info' })]);
-    const viewError = flow([
-      formatter('log', ['message']),
-      printer({ level: 'error' })
-    ]);
 
     switch (type) {
       case 'view': {
@@ -76,6 +76,10 @@ export default async function executeCommand(args: any) {
       }
     }
   } else {
-    throw new Error('Unknown command!');
+    viewError({
+      code: 'UnknownError',
+      message:
+        'Unknown command! It is likely a problem with our CLI itself. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+    });
   }
 }

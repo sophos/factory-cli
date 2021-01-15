@@ -1,11 +1,7 @@
 import Yargs from 'yargs';
-import isArray from 'lodash/isArray';
-import * as path from 'path';
-
-import { parseInput, readFile } from '../util/io';
 
 export default (yargs: Yargs.Argv) =>
-  yargs.command('delete', '', (yargs) =>
+  yargs.command('delete', 'Delete specified resource', (yargs) =>
     yargs
       .command('pipeline <pipeline-id>', 'Delete a pipeline', (yargs) =>
         yargs

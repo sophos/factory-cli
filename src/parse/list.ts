@@ -3,7 +3,7 @@ import isNil from 'lodash/isNil';
 import { CREDENTIAL_TYPES } from '../credential-type';
 
 export default (yargs: Yargs.Argv) =>
-  yargs.command('list', 'List resources of specified type', (yargs) =>
+  yargs.command('list', 'List specified resources', (yargs) =>
     yargs
       .usage('Usage: $0 list <command> [options]')
       .command('credentials', 'List credentials from a project', (yargs) =>
@@ -39,7 +39,10 @@ export default (yargs: Yargs.Argv) =>
           requiresArg: true
         })
       )
-      .command('organizations', 'List organizations one belongs to')
+      .command(
+        'organizations',
+        'List organizations to which authenticated user belongs'
+      )
       .command('jobs', 'List jobs for a project', (yargs) =>
         yargs.usage('$0 jobs [options]').option('project-id', {
           describe: 'ID of the project containing the jobs',
@@ -84,28 +87,31 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('runners', 'List runners for an organization', (yargs) =>
-        yargs
-          .option('project-id', {
-            describe: 'ID of the project containing the runners',
-            type: 'string',
-            requiresArg: true
-          })
-          .option('organization-id', {
-            describe: 'ID of the organization containing the runners',
-            type: 'string',
-            requiresArg: true
-          })
-          .check((args) => {
-            if (isNil(args.projectId || args.organizationId)) {
-              throw new Error(
-                'Missing required argument: either organization-id or project-id'
-              );
-            }
+      .command(
+        'runners',
+        'List runners for an organization or a project',
+        (yargs) =>
+          yargs
+            .option('project-id', {
+              describe: 'ID of the project containing the runners',
+              type: 'string',
+              requiresArg: true
+            })
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runners',
+              type: 'string',
+              requiresArg: true
+            })
+            .check((args) => {
+              if (isNil(args.projectId || args.organizationId)) {
+                throw new Error(
+                  'Missing required argument: either organization-id or project-id'
+                );
+              }
 
-            return true;
-          })
-          .conflicts('project-id', 'organization-id')
+              return true;
+            })
+            .conflicts('project-id', 'organization-id')
       )
       .command('pipelines', 'List pipelines for a project', (yargs) =>
         yargs

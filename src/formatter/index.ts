@@ -1,3 +1,5 @@
+import isNil from 'lodash/isNil';
+
 import formatterMap from './formatterMap';
 import { Formatter, FormatType, RawFormatType } from './formatter';
 
@@ -7,12 +9,14 @@ export const DEFAULT_FORMATTER: RawFormatType = 'wide';
 
 export default function formatter(formatType: FormatType, fields: string[]) {
   return (input: any): string => {
+    if (isNil(input)) {
+      input = null;
+    }
+
     try {
       return formatterMap[formatType](input, fields);
     } catch (err) {
-      // TODO(.): should we print warning in all modes, or only human-readable one?
-      console.warn('Unable to format provided value!');
-      return input.toString();
+      return isNil(input) ? 'null' : input!.toString();
     }
   };
 }
