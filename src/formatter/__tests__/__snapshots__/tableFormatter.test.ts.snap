@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`tableFormatter formats data as ASCII table 1`] = `
-"[31m a [39m[31m b [39m[31m c [39m
- 1  2  3 
- 4  5  6 "
+"a  b  c
+1  2  3
+4  5  6"
 `;
 
 exports[`tableFormatter formats data as ASCII table 2`] = `
-"[31m a [39m[31m b [39m[31m c [39m
- 1  2  3 "
+"a  b  c
+1  2  3"
 `;
 
 exports[`tableFormatter omits data fields if not presented in \`fields\` argument 1`] = `
-"[31m foo [39m[31m bar [39m
- foo  bar "
+"foo  bar
+foo  bar"
 `;
