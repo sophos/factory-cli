@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
-        version: [12.x, 14.x, latest]
+        version: [12.x, 14.x, 15.x]
     steps:
       - uses: actions/checkout@v2
       - name: Setup node ${{ matrix.version }}
@@ -36,4 +36,5 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn install
-      - run: yarn test
+      - run: yarn test:unit
+      - run: yarn test:e2e
