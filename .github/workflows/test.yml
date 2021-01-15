@@ -36,5 +36,6 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn install
+      - run: yarn build:runtime
       - run: yarn test:unit
       - run: yarn test:e2e
