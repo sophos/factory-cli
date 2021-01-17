@@ -39,3 +39,6 @@ jobs:
       - run: yarn build:runtime
       - run: yarn test:unit
       - run: yarn test:e2e
+        env:
+          REFACTR_ADDRESS: ${{ secrets.REFACTR_ADDRESS }}
+          REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
