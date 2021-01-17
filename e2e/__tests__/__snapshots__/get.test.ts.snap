@@ -73,10 +73,9 @@ exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
     },
     \\"address\\": \\"123 Main St.\\",
     \\"access\\": {
-        \\"default_project_role\\": \\"admin\\",
-        \\"default_project_run\\": true,
+        \\"default_project_run\\": false,
         \\"create_projects\\": true,
-        \\"organization_admin\\": true
+        \\"organization_admin\\": false
     }
 }
 "
@@ -91,7 +90,7 @@ exports[`refactrctl get formats as JSON when --format=json is passed 2`] = `
     \\"pipeline_count\\": 1,
     \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\",
     \\"access\\": {
-        \\"role\\": \\"admin\\",
+        \\"role\\": \\"write\\",
         \\"run\\": true
     }
 }
@@ -169,10 +168,9 @@ plan_quotas:
     support_hours: 0
 address: 123 Main St.
 access:
-    default_project_role: admin
-    default_project_run: true
+    default_project_run: false
     create_projects: true
-    organization_admin: true
+    organization_admin: false
 
 "
 `;
@@ -185,7 +183,7 @@ modified: '2021-01-15T11:06:27.030Z'
 pipeline_count: 1
 name: 'CLI tests [STATIC ONLY] (LIST, GET)'
 access:
-    role: admin
+    role: write
     run: true
 
 "

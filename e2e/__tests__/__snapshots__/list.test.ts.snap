@@ -297,12 +297,8 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name                                 pipeline_count  organization_id           created             
-5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM 
-5fda3431f00c8ba848f49f45  Vault Deploy                         2               5f9f2d08e2f1bb2436e6f5b0  12/16/2020, 4:22 PM 
-5f9f3b02233d0b9e290b3122  Scratch                              15              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
-5fa4dba223b4e0703b95c465  Kitchen Sink Suite                   13              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
-5fd905d6c19c061d80e304fb  Vault Demo                           1               5f9f2d08e2f1bb2436e6f5b0  12/15/2020, 6:52 PM 
+"_id                       name                                 pipeline_count  organization_id           created            
+5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
 "
 `;
 
@@ -315,41 +311,6 @@ exports[`refactrctl list projects should work 2`] = `
         \\"modified\\": \\"2021-01-15T11:06:27.030Z\\",
         \\"pipeline_count\\": 1,
         \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\"
-    },
-    {
-        \\"_id\\": \\"5fda3431f00c8ba848f49f45\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-12-16T16:22:09.374Z\\",
-        \\"modified\\": \\"2021-01-15T01:42:50.305Z\\",
-        \\"pipeline_count\\": 2,
-        \\"name\\": \\"Vault Deploy\\",
-        \\"image_id\\": \\"5fda3442b486804ec421ce2e\\"
-    },
-    {
-        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
-        \\"modified\\": \\"2021-01-13T20:36:51.039Z\\",
-        \\"pipeline_count\\": 15,
-        \\"name\\": \\"Scratch\\"
-    },
-    {
-        \\"_id\\": \\"5fa4dba223b4e0703b95c465\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-11-06T05:14:10.990Z\\",
-        \\"modified\\": \\"2021-01-01T10:58:27.958Z\\",
-        \\"pipeline_count\\": 13,
-        \\"name\\": \\"Kitchen Sink Suite\\",
-        \\"image_id\\": \\"5feeecacb5297d642e1938da\\"
-    },
-    {
-        \\"_id\\": \\"5fd905d6c19c061d80e304fb\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-12-15T18:52:06.550Z\\",
-        \\"modified\\": \\"2020-12-16T18:42:22.870Z\\",
-        \\"pipeline_count\\": 1,
-        \\"name\\": \\"Vault Demo\\",
-        \\"image_id\\": \\"5fd905f06890485c998cdb65\\"
     }
 ]
 "
@@ -363,37 +324,6 @@ exports[`refactrctl list projects should work 3`] = `
     modified: '2021-01-15T11:06:27.030Z'
     pipeline_count: 1
     name: 'CLI tests [STATIC ONLY] (LIST, GET)'
--
-    _id: 5fda3431f00c8ba848f49f45
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-12-16T16:22:09.374Z'
-    modified: '2021-01-15T01:42:50.305Z'
-    pipeline_count: 2
-    name: Vault Deploy
-    image_id: 5fda3442b486804ec421ce2e
--
-    _id: 5f9f3b02233d0b9e290b3122
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-11-01T22:47:30.770Z'
-    modified: '2021-01-13T20:36:51.039Z'
-    pipeline_count: 15
-    name: Scratch
--
-    _id: 5fa4dba223b4e0703b95c465
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-11-06T05:14:10.990Z'
-    modified: '2021-01-01T10:58:27.958Z'
-    pipeline_count: 13
-    name: Kitchen Sink Suite
-    image_id: 5feeecacb5297d642e1938da
--
-    _id: 5fd905d6c19c061d80e304fb
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-12-15T18:52:06.550Z'
-    modified: '2020-12-16T18:42:22.870Z'
-    pipeline_count: 1
-    name: Vault Demo
-    image_id: 5fd905f06890485c998cdb65
 
 "
 `;
