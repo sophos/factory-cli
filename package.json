@@ -20,9 +20,9 @@
   },
   "scripts": {
     "format": "prettier -w src/**/*.ts",
-    "watch": "NODE_ENV=development BUILD_TARGET=runtime rollup -c -w src/main.ts",
-    "build:runtime": "BUILD_TARGET=runtime rollup -c",
-    "build:aot": "BUILD_TARGET=aot rollup -c",
+    "watch": "cross-env NODE_ENV=development BUILD_TARGET=runtime rollup -c -w src/main.ts",
+    "build:runtime": "cross-env BUILD_TARGET=runtime rollup -c",
+    "build:aot": "cross-env BUILD_TARGET=aot rollup -c",
     "build:exe:alpine": "pkg dist/main.bundled.js -o dist/refactrctl-alpine -t node14-alpine-x64",
     "build:exe:win": "pkg dist/main.bundled.js -o dist/win/refactrctl -t node14-win-x64",
     "build:exe:linux": "pkg dist/main.bundled.js -o dist/linux/refactrctl -t node14-linux-x64",
@@ -41,7 +41,6 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "@refactr/cli": "./",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
@@ -60,6 +59,7 @@
     "@types/js-yaml": "^3.12.5",
     "@types/lodash": "^4.14.166",
     "@types/yargs": "^15.0.12",
+    "cross-env": "^7.0.3",
     "jest": "^26.6.3",
     "pkg": "^4.4.9",
     "prettier": "^2.2.1",
