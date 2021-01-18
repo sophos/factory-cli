@@ -13,8 +13,8 @@ Starting from version `1.0.0` the CLI is primarily distributed via binary builds
 Currently, we provide official binaries for Linux, Windows and macOS. Get the
 latest version from [this page](https://github.com/refactr/refactr-cli/releases/latest),
 and download the archive file for your operating system/architecture.
-Unpack the archive, and put the binary somewhere in your `$PATH` (on UNIX-y systems, e.g. `/usr/local/bin`).
-Make sure it has execution permission turned on.
+Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`).
+Make sure it has execution permission granted.
 
 ### npm
 

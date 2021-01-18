@@ -16,5 +16,5 @@ export const withFormat = (
 };
 
 export const withCmd = (args: string) => {
-  return `${process.env.__REFACTR_COMMAND__} ${args}`;
+  return `${process.env.__REFACTR_COMMAND__!} ${args}`;
 };
