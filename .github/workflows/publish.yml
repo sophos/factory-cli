@@ -153,6 +153,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+
       - run: yarn install
       - run: yarn build:aot
       - run: yarn build:exe:${{ matrix.operating-system }}

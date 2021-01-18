@@ -35,14 +35,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+
       - run: yarn install
       - run: yarn build:runtime
       - run: yarn test:unit
-
-      - run: echo "__REFACTR_COMMAND__=$(realpath ./bin/refactrctl.js)" >> $GITHUB_ENV
-        shell: bash
-
-      - run: echo $__REFACTR_COMMAND__
 
       - run: yarn test:e2e
         env:
