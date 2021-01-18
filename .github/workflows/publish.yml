@@ -6,19 +6,47 @@ on:
       - 'v*'
 
 jobs:
+  generate_tags:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/github-script@v3
+        id: set-tags
+        with:
+          script: |
+            const version = `${process.env.GITHUB_REF}`.replace('/refs/tags/v', '');
+            const tags = [version];
+
+            if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
+              const parts = versions.split('.');
+              for (let i = 1; i <= parts.length; i++) {
+                tags.push(parts.slice(0, i).join('.'));
+              }
+
+              tags.push('latest');
+            }
+
+            console.info('Produced tags: ', tags);
+
+            return {
+              tags,
+              docker_tags: tags.map((tag) => `refactr/cli:${tag}`);
+            };
+
   test:
+    needs: generate_tags
     name: Test
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
-        version: [12.x, 14.x, latest]
+        operating-system: [ubuntu-latest, macos-latest]
+        node-version: [12.x, 14.x, 15.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node ${{ matrix.version }}
+      - name: Setup node ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.version }}
+          node-version: ${{ matrix.node-version }}
 
       - id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -30,8 +58,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+
       - run: yarn install
-      - run: yarn test
+      - run: yarn test:unit
+      - run: yarn test:e2e
 
   deploy_docker:
     name: Deploy to Docker Hub
@@ -77,8 +108,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            refactr/cli:latest
+          tags: ${{ jobs.generate_tags.steps.set-tags.result.docker_tags }}
 
   deploy_npm:
     name: Deploy to npm
@@ -135,7 +165,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        operating-system: [win, linux, macos]
+        # TODO: add win
+        operating-system: [linux, macos]
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
@@ -152,8 +183,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
-      - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
 
       - run: yarn install
       - run: yarn build:aot

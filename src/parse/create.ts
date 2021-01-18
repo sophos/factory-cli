@@ -19,14 +19,9 @@ const coerceInput = (arg: string | string[]) => {
 
   // If input starts with @ treat input as file path.
   if (arg.startsWith('@')) {
-    try {
-      const filepath = path.resolve(arg.slice(1).trim());
-      return readFile(filepath);
-    } catch (err) {
-      // TODO: handle error
-      console.error(err);
-      throw err;
-    }
+    // TODO: handle error
+    const filepath = path.resolve(arg.slice(1).trim());
+    return readFile(filepath);
   }
 
   return parseInput(arg);

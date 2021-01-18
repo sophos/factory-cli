@@ -72,10 +72,10 @@ export default handler<Arguments, any>(
 
       schedule: !isNil(schedule)
         ? {
-            start_day: schedule?.startDay,
-            start_time: schedule?.startTime,
-            offset: schedule?.offset,
-            interval: schedule?.interval,
+            start_day: schedule.startDay,
+            start_time: schedule.startTime,
+            offset: schedule.offset,
+            interval: schedule.interval,
             interval_type: !isNil(schedule.intervalType)
               ? intervalType[schedule.intervalType]
               : undefined
