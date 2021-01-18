@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatter formats to JSON correctly 1`] = `
+"{
+    \\"foo\\": \\"foo\\",
+    \\"bar\\": \\"bar\\",
+    \\"baz\\": \\"baz\\",
+    \\"xyz\\": null,
+    \\"qux\\": \\"2021-01-04T13:08:25.618Z\\",
+    \\"quux\\": 1.234,
+    \\"quuz\\": {}
+}"
+`;
+
+exports[`formatter formats to YAML correctly 1`] = `
+"foo: foo
+bar: bar
+baz: baz
+xyz: null
+qux: 2021-01-04T13:08:25.618Z
+quux: 1.234
+quuz: {}
+"
+`;
+
+exports[`formatter formats to table correctly 1`] = `
+"foo  bar  baz  xyz  qux                  quux   quuz
+foo  bar  baz  -    01/04/2021, 1:08 PM  1.234  {}  "
+`;

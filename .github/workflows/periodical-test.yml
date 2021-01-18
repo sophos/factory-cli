@@ -1,0 +1,31 @@
+# TODO: run blackbox tests
+name: test
+
+on:
+  schedule:
+    #        ┌───────────── minute (0 - 59)
+    #        │ ┌───────────── hour (0 - 23)
+    #        │ │ ┌───────────── day of the month (1 - 31)
+    #        │ │ │ ┌───────────── month (1 - 12)
+    #        │ │ │ │ ┌───────────── day of the week (0 - 6)
+    #        │ │ │ │ │
+    #        │ │ │ │ │
+    #        │ │ │ │ │
+    #        * * * * *
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        version: [12.x, 14.x, latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node ${{ matrix.version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.version }}
+      - run: yarn global add @refactr/cli
+      - run: yarn

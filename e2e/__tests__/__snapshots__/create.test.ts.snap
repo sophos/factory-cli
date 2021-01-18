@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`refactrctl create credential throws on missing arguments 1`] = `
+"refactrctl create credential
+
+Create a new credential
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of the project under which the credential will be created  [string] [required]
+      --name        Name of the credential  [string] [required]
+      --data        Credential data. Must be valid JSON value.  [string] [required]
+      --id          Credential reference id  [required]
+      --type        Credential type  [required] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\"]
+
+Missing required arguments: project-id, name, data, id, type
+"
+`;
+
+exports[`refactrctl create pipeline throws on missing arguments 1`] = `
+"refactrctl pipeline --project-id <project-id> --name <name> [options]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --project-id   ID of the project under which pipeline will be created  [string] [required]
+      --name         Name of the pipeline  [string] [required]
+      --description  Description of the pipeline  [string]
+      --summary      Summary of the pipeline  [string]
+
+Missing required arguments: project-id, name
+"
+`;
+
+exports[`refactrctl create pipeline-revision throws on missing arguments 1`] = `
+"refactrctl create pipeline-revision [input]
+
+Create a new pipeline-revision
+
+Positionals:
+  input  Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats  [default: read from stdin]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --project-id   ID of the project containing the pipeline  [string] [required]
+      --pipeline-id  ID of the pipeline for the pipeline-revision  [required]
+
+Missing required arguments: project-id, pipeline-id
+"
+`;
+
+exports[`refactrctl create project throws on missing arguments 1`] = `
+"refactrctl create project
+
+Create a new project
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help             Show help  [boolean]
+      --organization-id  ID of organization under which the project will be created  [string] [required]
+      --name             Name of the project  [string] [required]
+
+Missing required arguments: organization-id, name
+"
+`;
+
+exports[`refactrctl create throws on missing subcommand 1`] = `
+"refactrctl create
+
+Create specified resource
+
+Commands:
+  refactrctl create project                    Create a new project
+  refactrctl create pipeline-revision [input]  Create a new pipeline-revision
+  refactrctl create pipeline [options]         Creates a new pipeline
+  refactrctl create credential                 Create a new credential
+  refactrctl create job                        Create a new job
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+
+Command must be specified.
+"
+`;

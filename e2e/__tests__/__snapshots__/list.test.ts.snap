@@ -1,0 +1,483 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`refactrctl list credentials should work (default formatting) 1`] = `
+"id               name                   type               data  created            
+cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM
+cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"
+`;
+
+exports[`refactrctl list credentials should work 1`] = `
+"id               name                   type               data  created            
+cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM
+cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"
+`;
+
+exports[`refactrctl list credentials should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5ffc71a504ea5c3fab201bb8\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-11T15:41:25.326Z\\",
+        \\"name\\": \\"Test CLI Credential 2\\",
+        \\"id\\": \\"cli_test_cred_2\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"5ffc718704ea5c7701201bb6\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-11T15:40:55.242Z\\",
+        \\"name\\": \\"Test CLI Credential 1\\",
+        \\"id\\": \\"cli_test_cred_1\\",
+        \\"type\\": \\"username_password\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list credentials should work 3`] = `
+"-
+    _id: 5ffc71a504ea5c3fab201bb8
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-11T15:41:25.326Z'
+    name: Test CLI Credential 2
+    id: cli_test_cred_2
+    type: generic
+-
+    _id: 5ffc718704ea5c7701201bb6
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-11T15:40:55.242Z'
+    name: Test CLI Credential 1
+    id: cli_test_cred_1
+    type: username_password
+
+"
+`;
+
+exports[`refactrctl list credentials throws on missing arguments 1`] = `
+"refactrctl credentials [options]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of project containing the credentials  [string] [required]
+      --type  [string] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\"]
+      --sort        Sort order  [string] [choices: \\"created_asc\\", \\"created_desc\\"]
+      --limit  [number]
+      --offset  [number]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl list jobs should work (default formatting) 1`] = `
+"_id                       name      enabled  trigger_type  created             
+6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"
+`;
+
+exports[`refactrctl list jobs should work 1`] = `
+"_id                       name      enabled  trigger_type  created             
+6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"
+`;
+
+exports[`refactrctl list jobs should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"6001773304ea5cdf12201bc9\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-15T11:06:27.007Z\\",
+        \\"disable_on_failure\\": true,
+        \\"enabled\\": true,
+        \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+        \\"pipeline_revision_id\\": 4,
+        \\"name\\": \\"Test job\\",
+        \\"trigger_type\\": \\"manual\\",
+        \\"suppress_vars\\": true,
+        \\"suppress_outputs\\": true,
+        \\"suppress_events\\": true,
+        \\"last_run\\": \\"2021-01-15T12:17:37.278Z\\",
+        \\"last_status\\": \\"Succeeded\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list jobs should work 3`] = `
+"-
+    _id: 6001773304ea5cdf12201bc9
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-15T11:06:27.007Z'
+    disable_on_failure: true
+    enabled: true
+    pipeline_id: 5ffde06a04ea5cf045201bbc
+    pipeline_revision_id: 4
+    name: Test job
+    trigger_type: manual
+    suppress_vars: true
+    suppress_outputs: true
+    suppress_events: true
+    last_run: '2021-01-15T12:17:37.278Z'
+    last_status: Succeeded
+
+"
+`;
+
+exports[`refactrctl list jobs throws on missing arguments 1`] = `
+"refactrctl jobs [options]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the jobs  [string] [required]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl list organizations should work (default formatting) 1`] = `
+"_id                       name     contact_name      contact_email       created            
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"
+`;
+
+exports[`refactrctl list organizations should work 1`] = `
+"_id                       name     contact_name      contact_email       created            
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"
+`;
+
+exports[`refactrctl list organizations should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"name\\": \\"Refactr\\",
+        \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
+        \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
+        \\"contact_email\\": \\"anthony@refactr.it\\",
+        \\"contact_name\\": \\"Anthony Rowlands\\",
+        \\"city\\": \\"Seattle\\",
+        \\"state\\": \\"WA\\",
+        \\"zip\\": \\"12345\\",
+        \\"plan\\": \\"admin\\",
+        \\"plan_quotas\\": {
+            \\"project_count\\": -1,
+            \\"user_count\\": -1,
+            \\"agent_count\\": -1,
+            \\"run_minutes\\": -1,
+            \\"support_hours\\": 0
+        },
+        \\"address\\": \\"123 Main St.\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list organizations should work 3`] = `
+"-
+    _id: 5f9f2d08e2f1bb2436e6f5b0
+    name: Refactr
+    created: '2020-10-10T07:07:53.294Z'
+    modified: '2020-11-01T23:15:21.605Z'
+    contact_email: anthony@refactr.it
+    contact_name: Anthony Rowlands
+    city: Seattle
+    state: WA
+    zip: '12345'
+    plan: admin
+    plan_quotas:
+        project_count: -1
+        user_count: -1
+        agent_count: -1
+        run_minutes: -1
+        support_hours: 0
+    address: 123 Main St.
+
+"
+`;
+
+exports[`refactrctl list pipeline-revisions throws on missing arguments 1`] = `
+"refactrctl runs [options]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --project-id   ID of the project containing the pipeline revision  [string] [required]
+      --pipeline-id  ID of the pipeline containing the pipeline revision  [string] [required]
+
+Missing required arguments: project-id, pipeline-id
+"
+`;
+
+exports[`refactrctl list pipelines should work 1`] = `
+"_id                       organization_id           project_id                name           step_count  revision_count  created            
+5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
+"
+`;
+
+exports[`refactrctl list pipelines should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+        \\"feature_tags\\": [
+            \\"install\\",
+            \\"script\\"
+        ],
+        \\"catalog_tags\\": [],
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"created\\": \\"2021-01-12T17:46:18.200Z\\",
+        \\"modified\\": \\"2021-01-12T18:39:04.282Z\\",
+        \\"step_count\\": 2,
+        \\"revision_count\\": 4,
+        \\"name\\": \\"Test Pipeline\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list pipelines should work 3`] = `
+"-
+    _id: 5ffde06a04ea5cf045201bbc
+    feature_tags:
+        - install
+        - script
+    catalog_tags: []
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    project_id: 5ffc715d04ea5ca71d201bb3
+    created: '2021-01-12T17:46:18.200Z'
+    modified: '2021-01-12T18:39:04.282Z'
+    step_count: 2
+    revision_count: 4
+    name: Test Pipeline
+
+"
+`;
+
+exports[`refactrctl list pipelines throws on missing arguments 1`] = `
+"refactrctl list pipelines
+
+List pipelines for a project
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the pipelines  [string] [required]
+      --sort        Order in which returned pipelines should be sorted  [choices: \\"modified_asc\\", \\"modified_desc\\", \\"name_asc\\", \\"name_desc\\"]
+      --limit  [number]
+      --offset  [number]
+      --search  [string]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl list projects should work 1`] = `
+"_id                       name                                 pipeline_count  organization_id           created            
+5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
+"
+`;
+
+exports[`refactrctl list projects should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-11T15:40:13.848Z\\",
+        \\"modified\\": \\"2021-01-18T16:15:11.338Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list projects should work 3`] = `
+"-
+    _id: 5ffc715d04ea5ca71d201bb3
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-11T15:40:13.848Z'
+    modified: '2021-01-18T16:15:11.338Z'
+    pipeline_count: 1
+    name: 'CLI tests [STATIC ONLY] (LIST, GET)'
+
+"
+`;
+
+exports[`refactrctl list runners should work (by project) 1`] = `
+"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
+600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
+"
+`;
+
+exports[`refactrctl list runners should work (by project) 2`] = `
+"[
+    {
+        \\"_id\\": \\"600187ce44a454482f23890b\\",
+        \\"project_ids\\": [
+            \\"5ffc715d04ea5ca71d201bb3\\"
+        ],
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-15T12:17:18.961Z\\",
+        \\"name\\": \\"CLI Test (container)\\",
+        \\"type\\": \\"hosted_container_centos7\\",
+        \\"hosted\\": true,
+        \\"status\\": \\"Stopped\\",
+        \\"idle\\": true
+    }
+]
+"
+`;
+
+exports[`refactrctl list runners should work (by project) 3`] = `
+"-
+    _id: 600187ce44a454482f23890b
+    project_ids:
+        - 5ffc715d04ea5ca71d201bb3
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-15T12:17:18.961Z'
+    name: CLI Test (container)
+    type: hosted_container_centos7
+    hosted: true
+    status: Stopped
+    idle: true
+
+"
+`;
+
+exports[`refactrctl list runners throws on missing arguments 1`] = `
+"refactrctl list runners
+
+List runners for an organization or a project
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token       Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help             Show help  [boolean]
+      --project-id       ID of the project containing the runners  [string]
+      --organization-id  ID of the organization containing the runners  [string]
+
+Missing required argument: either organization-id or project-id
+"
+`;
+
+exports[`refactrctl list runs should work 1`] = `
+"_id                       number  organization_id  job_id                    status     started               finished              suppress_events  suppress_outputs  suppress_vars  created             
+600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM
+"
+`;
+
+exports[`refactrctl list runs should work 2`] = `
+"[
+    {
+        \\"_id\\": \\"600187e104ea5c3077201bcb\\",
+        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"job_id\\": \\"6001773304ea5cdf12201bc9\\",
+        \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
+        \\"pipeline_revision_id\\": \\"4\\",
+        \\"number\\": 1,
+        \\"created\\": \\"2021-01-15T12:17:37.256Z\\",
+        \\"status\\": \\"Succeeded\\",
+        \\"suppress_vars\\": false,
+        \\"suppress_outputs\\": false,
+        \\"suppress_events\\": false,
+        \\"agent_id\\": \\"600187ce44a454482f23890b\\",
+        \\"started\\": \\"2021-01-15T12:17:47.553Z\\",
+        \\"finished\\": \\"2021-01-15T12:17:52.988Z\\"
+    }
+]
+"
+`;
+
+exports[`refactrctl list runs should work 3`] = `
+"-
+    _id: 600187e104ea5c3077201bcb
+    project_id: 5ffc715d04ea5ca71d201bb3
+    job_id: 6001773304ea5cdf12201bc9
+    pipeline_id: 5ffde06a04ea5cf045201bbc
+    pipeline_revision_id: '4'
+    number: 1
+    created: '2021-01-15T12:17:37.256Z'
+    status: Succeeded
+    suppress_vars: false
+    suppress_outputs: false
+    suppress_events: false
+    agent_id: 600187ce44a454482f23890b
+    started: '2021-01-15T12:17:47.553Z'
+    finished: '2021-01-15T12:17:52.988Z'
+
+"
+`;
+
+exports[`refactrctl list runs throws on missing arguments 1`] = `
+"refactrctl runs [options]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --project-id   ID of the organization containing the runs  [string] [required]
+      --pipeline-id  ID of a pipeline used to filter the runs  [string]
+      --job-id       ID of a job used to filter the runs  [string]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl list throws on missing subcommand 1`] = `
+"Usage: refactrctl list <command> [options]
+
+Commands:
+  refactrctl list credentials         List credentials from a project
+  refactrctl list projects            List projects from an organization
+  refactrctl list organizations       List organizations to which authenticated user belongs
+  refactrctl list jobs                List jobs for a project
+  refactrctl list runs                List runs for a project
+  refactrctl list pipeline-revisions  List runs for a project
+  refactrctl list runners             List runners for an organization or a project
+  refactrctl list pipelines           List pipelines for a project
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help        Show help  [boolean]
+
+Command must be specified
+"
+`;

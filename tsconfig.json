@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "lib": [
+      "es2020"
+    ],
+    "strict": true,
+    "esModuleInterop": true,
     "module": "commonjs",
     "noImplicitAny": true,
     "strictNullChecks": true,

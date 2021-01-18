@@ -1,29 +1,39 @@
-/* global __VERSION__ */
+import getCommandMap from './get';
+import listCommandMap from './list';
+import runCommandMap from './run';
+import createCommandMap from './create';
+import deleteCommandMap from './delete';
 
-import { Command } from 'commander';
-import job from './job';
-import project from './project';
-import { applyCommands } from '../utils/applyCommands';
-import { BASE_PATH } from '../constants';
+import rerun from './rerun';
+import { CommandHandler } from './handler';
 
-declare const __VERSION__: string;
-
-const createProgram = () => {
-    const program = new Command();
-
-    program
-        .version(__VERSION__)
-        .name('refactrctl')
-        .option(
-            '--access-token <token>',
-            'API token'
-        )
-        .option('--api-url <url>', 'API endpoint', BASE_PATH);
-
-    // @ts-ignore
-    applyCommands(program, [job, project]);
-
-    return program;
+export const executableCommandsMap = {
+  rerun
 };
 
-export { createProgram };
+export const commandsWithSubcommandsMap: Record<
+  string,
+  Record<string, CommandHandler<any, any>>
+> = {
+  create: createCommandMap,
+  get: getCommandMap,
+  list: listCommandMap,
+  run: runCommandMap,
+  delete: deleteCommandMap
+};
+
+export const mustHaveSubcommand = (
+  command: string
+): command is TopLevelCommandWithSubcommand =>
+  ['create', 'get', 'list', 'run', 'delete'].includes(command);
+
+export type TopLevelExecutableCommand = 'rerun';
+export type TopLevelCommandWithSubcommand =
+  | 'create'
+  | 'get'
+  | 'list'
+  | 'run'
+  | 'delete';
+export type TopLevelCommand =
+  | TopLevelExecutableCommand
+  | TopLevelCommandWithSubcommand;

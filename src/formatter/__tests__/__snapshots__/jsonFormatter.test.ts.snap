@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsonFormatter formats data as YAML 1`] = `"0"`;
+
+exports[`jsonFormatter formats data as YAML 2`] = `"\\"foobarbaz\\""`;
+
+exports[`jsonFormatter formats data as YAML 3`] = `"true"`;
+
+exports[`jsonFormatter formats data as YAML 4`] = `"false"`;
+
+exports[`jsonFormatter formats data as YAML 5`] = `
+"[
+    {
+        \\"a\\": 1,
+        \\"b\\": 2,
+        \\"c\\": 3
+    },
+    {
+        \\"a\\": 4,
+        \\"b\\": 5,
+        \\"c\\": 6
+    }
+]"
+`;
+
+exports[`jsonFormatter formats data as YAML 6`] = `
+"{
+    \\"a\\": 1,
+    \\"b\\": 2,
+    \\"c\\": 3
+}"
+`;

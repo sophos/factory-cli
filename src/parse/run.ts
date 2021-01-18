@@ -1,0 +1,82 @@
+import Yargs from 'yargs';
+
+export default (yargs: Yargs.Argv) =>
+  yargs.command('run', 'Execute pipeline or job', (yargs) =>
+    yargs
+      .option('wait', {
+        describe: 'Wait until run execution is finished',
+        type: 'boolean'
+      })
+      .option('suppress-events', {
+        describe: 'Suppress run events during pipeline or job run',
+        type: 'boolean'
+      })
+      .option('suppress-outputs', {
+        describe: 'Suppress outputs during pipeline or job run',
+        type: 'boolean'
+      })
+      .option('suppress-variables', {
+        describe: 'Suppress variables during pipeline or job run',
+        type: 'boolean'
+      })
+      .command('job <job-id>', '', (yargs) =>
+        yargs
+          .positional('job-id', {
+            describe: 'ID of the job to be run',
+            type: 'string',
+            demandOption: true
+          })
+          .option('project-id', {
+            describe: 'ID of the project containing the job',
+            type: 'string',
+            demandOption: true
+          })
+      )
+      .command('pipeline', 'Executes specified pipeline', (yargs) =>
+        yargs
+          .option('project-id', {
+            describe: 'ID of the project containing the pipeline',
+            type: 'string',
+            demandOption: true
+          })
+          .option('pipeline-id', {
+            describe: 'ID of the pipeline to be executed',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('revision', {
+            describe: 'Revision number of the pipeline',
+            type: 'number',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('var', {
+            describe: 'Pipeline variable in `key:value` format',
+            type: 'string',
+            requiresArg: true,
+            coerce: (arg: string | string[]) => {
+              if (typeof arg === 'string') {
+                arg = [arg];
+              }
+
+              return Object.fromEntries(
+                arg.map((a) => {
+                  const parts = a.split(':');
+
+                  if (parts.length !== 2) {
+                    throw new Error(
+                      'Invalid variable format, expected variable to be specified as `key:value`.'
+                    );
+                  }
+
+                  return parts;
+                })
+              );
+            }
+          })
+          .strict()
+      )
+      .demandCommand(1, 'Command must be specified.')
+      .strict()
+  );
