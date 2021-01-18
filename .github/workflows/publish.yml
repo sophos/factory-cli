@@ -18,11 +18,11 @@ jobs:
           result-encoding: string
           script: |
             const version = `${process.env.GITHUB_REF}`.replace('/refs/tags/v', '');
-            const tags = [];
+            const tags = [version];
 
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
               const parts = versions.split('.');
-              for (let i = 1; i <= parts.length; i++) {
+              for (let i = 1; i < parts.length; i++) {
                 tags.push(parts.slice(0, i).join('.'));
               }
 
@@ -37,7 +37,6 @@ jobs:
             });
 
   test:
-    needs: generate_tags
     name: Test
     runs-on: ${{ matrix.operating-system }}
     strategy:
@@ -64,12 +63,19 @@ jobs:
       - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
 
       - run: yarn install
+      - run: yarn build:runtime
+
       - run: yarn test:unit
       - run: yarn test:e2e
+        env:
+          REFACTR_ADDRESS: ${{ secrets.REFACTR_ADDRESS }}
+          REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
 
 #  deploy_docker:
 #    name: Deploy to Docker Hub
-#    needs: test
+#    needs:
+#      - test
+#      - generate_tags
 #    runs-on: ubuntu-latest
 #
 #    steps:
