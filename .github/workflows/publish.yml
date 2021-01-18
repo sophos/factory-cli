@@ -33,7 +33,7 @@ jobs:
 
             return JSON.stringify({
               tags,
-              docker_tags: tags.map((tag) => `refactr/cli:${tag}`);
+              docker_tags: tags.map((tag) => `refactr/cli:${tag}`)
             });
 
   test:
