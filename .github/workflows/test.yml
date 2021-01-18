@@ -36,6 +36,8 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+        shell: bash
+      - run: node -e "console.log(process.env.__REFACTR_COMMAND__)"
 
       - run: yarn install
       - run: yarn build:runtime
