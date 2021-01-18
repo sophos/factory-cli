@@ -163,11 +163,11 @@ jobs:
           draft: false
           prerelease: false
 
-    # Publish Windows, macOS and Linux x64 build
-  deploy_win_release:
-    name: Deploy executables
+  # Publish macOS and Linux x64 build
+  deploy_binary:
+    name: Deploy executables ${{ matrix.operating-system }}
 
-    needs: create_release
+    needs: create_gh_release
     runs-on: ubuntu-latest
     strategy:
       matrix:
