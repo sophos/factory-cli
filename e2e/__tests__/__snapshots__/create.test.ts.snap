@@ -27,15 +27,17 @@ exports[`refactrctl create pipeline throws on missing arguments 1`] = `
 "refactrctl pipeline --project-id <project-id> --name <name> [options]
 
 Options:
-      --version     Show version number  [boolean]
-  -v, --verbose     Print detailed output  [boolean]
-      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
-      --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
-      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
-      --help        Show help  [boolean]
-      --project-id  ID of the project under which pipeline will be created  [string] [required]
-      --name        Name of the pipeline  [string] [required]
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1  [string]
+      --auth-token   Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable  [string]
+      --help         Show help  [boolean]
+      --project-id   ID of the project under which pipeline will be created  [string] [required]
+      --name         Name of the pipeline  [string] [required]
+      --description  Description of the pipeline  [string]
+      --summary      Summary of the pipeline  [string]
 
 Missing required arguments: project-id, name
 "

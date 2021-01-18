@@ -1,5 +1,6 @@
 import { execute } from '../helpers/execute';
 import { loadFixtures } from './fixtures';
+import * as faker from 'faker';
 
 beforeAll(async () => {
   return await loadFixtures();
@@ -33,6 +34,12 @@ describe('refactrctl create', () => {
   describe('project', () => {
     test('throws on missing arguments', async () => {
       await expect(execute(['create', 'project'])).rejects.toMatchSnapshot();
+    });
+
+    test.skip('should create project', async () => {
+      await expect(
+        execute(['create', 'project', '--name', faker.name.title()])
+      );
     });
   });
 });

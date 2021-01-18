@@ -98,6 +98,16 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true,
             requiresArg: true
           })
+          .option('description', {
+            describe: 'Description of the pipeline',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('summary', {
+            describe: 'Summary of the pipeline',
+            type: 'string',
+            requiresArg: true
+          })
       )
       .command('credential', 'Create a new credential', (yargs) =>
         yargs
@@ -154,7 +164,7 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
           .option('name', {
-            describe: 'Name of the jbo',
+            describe: 'Name of the job',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -163,6 +173,28 @@ export default (yargs: Yargs.Argv) =>
             describe: 'Trigger type of the job',
             choices: JOB_TRIGGER_TYPE,
             demandOption: true,
+            requiresArg: true
+          })
+
+          .option('schedule', { hidden: true })
+          .option('schedule.start-day', {
+            type: 'string',
+            requiresArg: true
+          })
+          .option('schedule.start-time', {
+            type: 'string',
+            requiresArg: true
+          })
+          .option('schedule.offset', {
+            type: 'string',
+            requiresArg: true
+          })
+          .option('schedule.interval', {
+            type: 'number',
+            requiresArg: true
+          })
+          .option('schedule.interval-type', {
+            choices: ['minute', 'hour', 'day', 'week', 'month'],
             requiresArg: true
           })
           .option('suppress-events', {

@@ -1,5 +1,10 @@
+import isNil from 'lodash/isNil';
+import {
+  JobScheduleIntervalTypeEnum,
+  JobTriggerTypeEnum
+} from '@refactr/api-client';
+
 import { createCommandResult, handler } from '../handler';
-import { JobTriggerTypeEnum } from '@refactr/api-client';
 import { JobTriggerType } from '../../job-trigger-type';
 
 type Arguments = {
@@ -14,12 +19,27 @@ type Arguments = {
   suppressEvents: boolean;
   suppressVariables: boolean;
   disableOnFailure: boolean;
+
+  schedule?: {
+    startDay: string;
+    startTime: string;
+    offset: string;
+    interval: number;
+    intervalType: 'minute' | 'hour' | 'day' | 'week' | 'month';
+  };
 };
 
-// TODO: implement scheduled data.
 const triggerType = {
-  'manual': JobTriggerTypeEnum.Manual,
-  'scheduled': JobTriggerTypeEnum.Scheduled
+  manual: JobTriggerTypeEnum.Manual,
+  scheduled: JobTriggerTypeEnum.Scheduled
+};
+
+const intervalType = {
+  minute: JobScheduleIntervalTypeEnum.Minute,
+  hour: JobScheduleIntervalTypeEnum.Hour,
+  day: JobScheduleIntervalTypeEnum.Day,
+  week: JobScheduleIntervalTypeEnum.Week,
+  month: JobScheduleIntervalTypeEnum.Month
 };
 
 export default handler<Arguments, any>(
@@ -34,7 +54,8 @@ export default handler<Arguments, any>(
       suppressEvents,
       suppressOutputs,
       suppressVariables,
-      disableOnFailure
+      disableOnFailure,
+      schedule
     }
   ) => {
     const api = apiClient.jobs;
@@ -47,7 +68,19 @@ export default handler<Arguments, any>(
       suppress_events: suppressEvents,
       suppress_outputs: suppressOutputs,
       suppress_vars: suppressVariables,
-      disable_on_failure: disableOnFailure
+      disable_on_failure: disableOnFailure,
+
+      schedule: !isNil(schedule)
+        ? {
+            start_day: schedule?.startDay,
+            start_time: schedule?.startTime,
+            offset: schedule?.offset,
+            interval: schedule?.interval,
+            interval_type: !isNil(schedule.intervalType)
+              ? intervalType[schedule.intervalType]
+              : undefined
+          }
+        : null
     });
 
     return createCommandResult('view', job, ['_id']);

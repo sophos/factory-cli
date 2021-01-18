@@ -1,4 +1,5 @@
 import flow from 'lodash/flow';
+import isNil from 'lodash/isNil';
 import isFunction from 'lodash/isFunction';
 
 import {
@@ -33,9 +34,12 @@ export default async function executeCommand(args: any) {
     printer({ level: 'error' })
   ]);
 
+  let isUnknownCmd = true;
   let error = null;
   try {
     if (isFunction(handler)) {
+      isUnknownCmd = false;
+
       const apiClient = new Client(args.address, args.authToken);
       const result = await handler(apiClient, args);
       const { payload, fields, type, format: formatType } = result;
@@ -82,10 +86,20 @@ export default async function executeCommand(args: any) {
     error = err;
   }
 
-  viewError({
-    code: 'UnknownError',
-    error,
-    message:
-      'Unknown command! It is likely a problem with our CLI itself. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
-  });
+  if (isUnknownCmd) {
+    viewError({
+      code: 'UnknownCommand',
+      error,
+      message:
+        'Unknown command! It is likely a problem with our CLI itself. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+    });
+  }
+
+  if (!isNil(error)) {
+    viewError({
+      code: 'UnknownError',
+      message:
+        'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+    });
+  }
 }
