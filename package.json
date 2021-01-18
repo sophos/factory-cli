@@ -1,16 +1,17 @@
 {
   "name": "@refactr/cli",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Refactr CLI",
   "main": "dist/main.js",
   "author": "Refactr, Inc. (refactr.it)",
   "license": "MIT",
   "files": [
     "bin",
-    "dist/refactrctl.js",
+    "dist/main.runtime.js",
     "package.json",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "yarn.lock"
   ],
   "engines": {
     "node": ">=12 <16"
