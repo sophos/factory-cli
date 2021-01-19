@@ -208,6 +208,8 @@ jobs:
       - if: ${{ matrix.operating-system != 'win' }}
         run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/refactrctl ./LICENSE
 
+      - run: sha256sum ./refactr-${{ matrix.operating-system }}-x64.zip -b | awk '{ print $1 }' >> ./refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
+
       - name: Upload Release Asset (${{ matrix.operating-system }})
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
@@ -218,3 +220,14 @@ jobs:
           asset_path: ./refactr-${{ matrix.operating-system }}-x64.zip
           asset_name: refactr-${{ matrix.operating-system }}-x64.zip
           asset_content_type: application/zip
+
+      - name: Upload SHA256 Sum (${{ matrix.operating-system }})
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_gh_release.outputs.upload_url }}
+          asset_path: ./refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
+          asset_name: refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
+          asset_content_type: plain/text
