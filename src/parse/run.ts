@@ -19,7 +19,7 @@ export default (yargs: Yargs.Argv) =>
         describe: 'Suppress variables during pipeline or job run',
         type: 'boolean'
       })
-      .command('job <job-id>', '', (yargs) =>
+      .command('job <job-id>', 'Executes specified job', (yargs) =>
         yargs
           .positional('job-id', {
             describe: 'ID of the job to be run',
@@ -32,50 +32,53 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true
           })
       )
-      .command('pipeline', 'Executes specified pipeline', (yargs) =>
-        yargs
-          .option('project-id', {
-            describe: 'ID of the project containing the pipeline',
-            type: 'string',
-            demandOption: true
-          })
-          .option('pipeline-id', {
-            describe: 'ID of the pipeline to be executed',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
-          .option('revision', {
-            describe: 'Revision number of the pipeline',
-            type: 'number',
-            demandOption: true,
-            requiresArg: true
-          })
-          .option('var', {
-            describe: 'Pipeline variable in `key:value` format',
-            type: 'string',
-            requiresArg: true,
-            coerce: (arg: string | string[]) => {
-              if (typeof arg === 'string') {
-                arg = [arg];
+      .command(
+        'pipeline <pipeline-id>',
+        'Executes specified pipeline',
+        (yargs) =>
+          yargs
+            .option('project-id', {
+              describe: 'ID of the project containing the pipeline',
+              type: 'string',
+              demandOption: true
+            })
+            .option('pipeline-id', {
+              describe: 'ID of the pipeline to be executed',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('revision', {
+              describe: 'Revision number of the pipeline',
+              type: 'number',
+              demandOption: true,
+              requiresArg: true
+            })
+            .option('var', {
+              describe: 'Pipeline variable in `key:value` format',
+              type: 'string',
+              requiresArg: true,
+              coerce: (arg: string | string[]) => {
+                if (typeof arg === 'string') {
+                  arg = [arg];
+                }
+
+                return Object.fromEntries(
+                  arg.map((a) => {
+                    const parts = a.split(':');
+
+                    if (parts.length !== 2) {
+                      throw new Error(
+                        'Invalid variable format, expected variable to be specified as `key:value`.'
+                      );
+                    }
+
+                    return parts;
+                  })
+                );
               }
-
-              return Object.fromEntries(
-                arg.map((a) => {
-                  const parts = a.split(':');
-
-                  if (parts.length !== 2) {
-                    throw new Error(
-                      'Invalid variable format, expected variable to be specified as `key:value`.'
-                    );
-                  }
-
-                  return parts;
-                })
-              );
-            }
-          })
-          .strict()
+            })
+            .strict()
       )
       .demandCommand(1, 'Command must be specified.')
       .strict()

@@ -98,6 +98,8 @@ export default async function executeCommand(args: any) {
   if (!isNil(error)) {
     viewError({
       code: 'UnknownError',
+      error,
+      stack: error!.stack,
       message:
         'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
     });

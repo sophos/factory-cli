@@ -1,4 +1,5 @@
-import isString from 'lodash/isString';
+import { URL } from 'url';
+
 import isNil from 'lodash/isNil';
 import type Yargs from 'yargs';
 
@@ -14,6 +15,8 @@ import del from './delete';
 //       yargs for some reason when importing with ES6 imports.
 const yargs = require('yargs');
 
+const DEFAULT_ADDRESS = 'https://api.refactr.it/v1';
+
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
@@ -25,20 +28,6 @@ const parse = (argv: string[], { version }: { version: string }) => {
     .scriptName('refactrctl')
     .version(version)
     .usage('Usage: $0 <command> [options]')
-    .middleware((argv) => {
-      if (!isString(argv.address) && isString(process.env.REFACTR_ADDRESS)) {
-        argv.address = process.env.REFACTR_ADDRESS;
-      } else if (!isString(argv.address)) {
-        argv.address = 'https://api.refactr.it/v1';
-      }
-
-      if (
-        !isString(argv.authToken) &&
-        isString(process.env.REFACTR_AUTH_TOKEN)
-      ) {
-        argv.authToken = argv['auth-token'] = process.env.REFACTR_AUTH_TOKEN;
-      }
-    })
     .option('verbose', {
       alias: 'v',
       describe: 'Print detailed output',
@@ -55,22 +44,51 @@ const parse = (argv: string[], { version }: { version: string }) => {
       requiresArg: true
     })
     .option('address', {
-      describe:
-        'Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment variable. Defaults to https://api.refactr.it/v1',
+      describe: 'Address of the Refactr API server',
       type: 'string',
-      requiresArg: true
+      requiresArg: true,
+      coerce: (address: string) => {
+        if (
+          !(address.startsWith('http://') || address.startsWith('https://'))
+        ) {
+          address = `https://${address}`;
+        }
+
+        try {
+          const url = new URL(address);
+
+          address = url.toString();
+        } catch (err) {
+          throw new Error('Invalid API address provided!');
+        }
+
+        return address;
+      }
     })
+    .default(
+      'address',
+      () => process.env.REFACTR_ADDRESS ?? DEFAULT_ADDRESS,
+      `REFACTR_ADDRESS environment variable if set, otherwise ${DEFAULT_ADDRESS}`
+    )
     .option('auth-token', {
-      describe:
-        'Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable',
+      describe: 'Authentication token',
       type: 'string',
       requiresArg: true
     })
+    .default(
+      'auth-token',
+      () => process.env.REFACTR_AUTH_TOKEN,
+      'REFACTR_AUTH_TOKEN environment variable'
+    )
     .check((argv) => {
       if (!isNil(argv.filter) && argv.format === 'wide') {
         throw new Error(
           'Filter option cannot be used in conjunction with format option set to `wide`'
         );
+      }
+
+      if (isNil(argv.authToken)) {
+        throw new Error('Authentication token must be specified!');
       }
 
       return true;
