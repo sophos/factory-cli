@@ -5,7 +5,7 @@ import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
 import isNil from 'lodash/isNil';
 
-import { readStdin, parseInput, readFile } from '../util/io';
+import { readStdin, parsePipelineFile, readPipelineFile } from '../util/io';
 import { CREDENTIAL_TYPES } from '../credential-type';
 import { JOB_TRIGGER_TYPE } from '../job-trigger-type';
 
@@ -19,12 +19,11 @@ const coerceInput = (arg: string | string[]) => {
 
   // If input starts with @ treat input as file path.
   if (arg.startsWith('@')) {
-    // TODO: handle error
     const filepath = path.resolve(arg.slice(1).trim());
-    return readFile(filepath);
+    return readPipelineFile(filepath);
   }
 
-  return parseInput(arg);
+  return parsePipelineFile(arg);
 };
 
 export default (yargs: Yargs.Argv) =>
