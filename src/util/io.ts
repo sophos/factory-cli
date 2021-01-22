@@ -27,7 +27,20 @@ export function parseInput(input: string, path?: string) {
  * Read data from stdin.
  */
 export function readStdin() {
-  if (process.stdin.isTTY) {
+  const fd = process.stdin.fd;
+
+  // https://unix.stackexchange.com/questions/382849/determine-if-process-is-connected-to-another-process-via-pipes
+  let isPiped = false;
+  try {
+    const stat = fs.fstatSync(fd);
+    isPiped = stat.isFIFO();
+  } catch (_) {
+    // if error is occurred `isPipe` is set to false and if-block next to current
+    // will handle the case.
+  }
+
+  // Do not try to read from stdin if isn't piped.
+  if (!isPiped) {
     return;
   }
 
@@ -38,10 +51,14 @@ export function readStdin() {
   while (1) {
     let readBytes = 0;
     try {
-      readBytes = fs.readSync(process.stdin.fd, buf, 0, bufferSize, null);
+      readBytes = fs.readSync(fd, buf, 0, bufferSize, null);
     } catch (err) {
-      // If we cannot read from the stdin, just skip it.
-      return;
+      if (err.code === 'EAGAIN') {
+        continue;
+      } else {
+        // Ignore stdin on error.
+        return;
+      }
     }
 
     if (readBytes === 0) {
@@ -54,5 +71,15 @@ export function readStdin() {
     chunks.push(chunk);
   }
 
-  return Buffer.concat(chunks).toString('utf-8').trim();
+  const data = Buffer.concat(chunks);
+  const input = data.toString('utf-8').trim();
+
+  try {
+    // Try to parse as file.
+    return JSON.parse(input);
+  } catch (err) {
+    // empty
+  }
+
+  return input;
 }
