@@ -1,4 +1,6 @@
 import Yargs from 'yargs';
+import { readStdin } from '../util/io';
+import isNil from 'lodash/isNil';
 
 export default (yargs: Yargs.Argv) =>
   yargs.command('run', 'Execute pipeline or job', (yargs) =>
@@ -19,13 +21,22 @@ export default (yargs: Yargs.Argv) =>
         describe: 'Suppress variables during pipeline or job run',
         type: 'boolean'
       })
-      .command('job <job-id>', 'Executes specified job', (yargs) =>
+      .command('job [job-id]', 'Executes specified job', (yargs) =>
         yargs
           .positional('job-id', {
             describe: 'ID of the job to be run',
             type: 'string',
             demandOption: true
           })
+          .default('job-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.jobId)) {
+              throw new Error('Job ID must be provided');
+            }
+
+            return true;
+          }, false)
+
           .option('project-id', {
             describe: 'ID of the project containing the job',
             type: 'string',
@@ -33,7 +44,7 @@ export default (yargs: Yargs.Argv) =>
           })
       )
       .command(
-        'pipeline <pipeline-id>',
+        'pipeline [pipeline-id]',
         'Executes specified pipeline',
         (yargs) =>
           yargs
@@ -42,12 +53,20 @@ export default (yargs: Yargs.Argv) =>
               type: 'string',
               demandOption: true
             })
-            .option('pipeline-id', {
+            .positional('pipeline-id', {
               describe: 'ID of the pipeline to be executed',
               type: 'string',
               demandOption: true,
               requiresArg: true
             })
+            .default('pipeline-id', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.pipelineId)) {
+                throw new Error('Pipeline ID must be provided');
+              }
+
+              return true;
+            }, false)
             .option('revision', {
               describe: 'Revision number of the pipeline',
               type: 'number',

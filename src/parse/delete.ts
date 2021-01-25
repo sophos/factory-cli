@@ -91,7 +91,7 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('credential [credential-id]', 'Delete a runner', (yargs) =>
+      .command('credential [credential-id]', 'Delete a credential', (yargs) =>
         yargs
           .positional('credential-id', {
             describe: 'ID of the credential to deleted',

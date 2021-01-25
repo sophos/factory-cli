@@ -52,7 +52,8 @@ export default (yargs: Yargs.Argv) =>
           yargs
             .positional('input', {
               description:
-                'Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats',
+                'Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats. ' +
+                'If supplied argument is starting with at symbol (`@`) argument is treated as path to configuration file.',
               coerce: coerceInput
             })
             .default('input', () => readStdin(), 'read from stdin')

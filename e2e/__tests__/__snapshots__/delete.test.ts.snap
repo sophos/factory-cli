@@ -3,7 +3,7 @@
 exports[`refactrctl delete credential throws on missing --project-id option 1`] = `
 "refactrctl delete credential [credential-id]
 
-Delete a runner
+Delete a credential
 
 Positionals:
   credential-id  ID of the credential to deleted  [string] [default: read from stdin]
@@ -25,7 +25,7 @@ Missing required argument: project-id
 exports[`refactrctl delete credential throws on missing arguments 1`] = `
 "refactrctl delete credential [credential-id]
 
-Delete a runner
+Delete a credential
 
 Positionals:
   credential-id  ID of the credential to deleted  [string] [default: read from stdin]
@@ -187,7 +187,7 @@ Commands:
   refactrctl delete job [job-id]                Delete a job
   refactrctl delete project [project-id]        Delete a project
   refactrctl delete runner [runner-id]          Delete a runner
-  refactrctl delete credential [credential-id]  Delete a runner
+  refactrctl delete credential [credential-id]  Delete a credential
 
 Options:
       --version     Show version number  [boolean]
