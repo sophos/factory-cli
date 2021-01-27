@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`authentication rejects if token is not provided 1`] = `
+"refactrctl projects [options]
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token       Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the projects  [string]
+
+Authentication token must be specified!
+"
+`;
