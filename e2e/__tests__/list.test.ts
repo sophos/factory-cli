@@ -11,18 +11,30 @@ describe('refactrctl list', () => {
   jest.setTimeout(15000);
 
   test('throws on missing subcommand', async () => {
-    await expect(execute(['list'])).rejects.toMatchSnapshot();
+    await expect(
+      execute(['list'], { token: process.env.STATIC_REFACTR_AUTH_TOKEN! })
+    ).rejects.toMatchSnapshot();
   });
 
   describe('credentials', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['list', 'credentials'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['list', 'credentials'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
     });
 
     test('should work (default formatting)', async () => {
       await expect(
         execute(
-          withAddress(['list', 'credentials', '--project-id', knownIds.project])
+          withAddress([
+            'list',
+            'credentials',
+            '--project-id',
+            knownIds.static.project
+          ]),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -35,10 +47,11 @@ describe('refactrctl list', () => {
               'list',
               'credentials',
               '--project-id',
-              knownIds.project
+              knownIds.static.project
             ]),
             'wide'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
@@ -49,10 +62,11 @@ describe('refactrctl list', () => {
               'list',
               'credentials',
               '--project-id',
-              knownIds.project
+              knownIds.static.project
             ]),
             'json'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
@@ -63,10 +77,11 @@ describe('refactrctl list', () => {
               'list',
               'credentials',
               '--project-id',
-              knownIds.project
+              knownIds.static.project
             ]),
             'yaml'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -74,12 +89,18 @@ describe('refactrctl list', () => {
 
   describe('jobs', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['list', 'jobs'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['list', 'jobs'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
     });
 
     test('should work (default formatting)', async () => {
       await expect(
-        execute(['list', 'jobs', '--project-id', knownIds.project])
+        execute(['list', 'jobs', '--project-id', knownIds.static.project], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
     });
 
@@ -87,27 +108,45 @@ describe('refactrctl list', () => {
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'jobs', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'jobs',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'wide'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'jobs', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'jobs',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'json'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'jobs', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'jobs',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'yaml'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -116,21 +155,29 @@ describe('refactrctl list', () => {
   describe('organizations', () => {
     test('should work (default formatting)', async () => {
       await expect(
-        execute(['list', 'organizations'])
+        execute(['list', 'organizations'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
     });
 
     test('should work', async () => {
       await expect(
-        execute(withFormat(withAddress(['list', 'organizations']), 'wide'))
+        execute(withFormat(withAddress(['list', 'organizations']), 'wide'), {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
 
       await expect(
-        execute(withFormat(withAddress(['list', 'organizations']), 'json'))
+        execute(withFormat(withAddress(['list', 'organizations']), 'json'), {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
 
       await expect(
-        execute(withFormat(withAddress(['list', 'organizations']), 'yaml'))
+        execute(withFormat(withAddress(['list', 'organizations']), 'yaml'), {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
     });
   });
@@ -138,14 +185,20 @@ describe('refactrctl list', () => {
   describe('pipeline-revisions', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        execute(['list', 'pipeline-revisions'])
+        execute(['list', 'pipeline-revisions'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).rejects.toMatchSnapshot();
     });
   });
 
   describe('pipelines', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['list', 'pipelines'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['list', 'pipelines'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
     });
 
     test('should work', async () => {
@@ -156,10 +209,11 @@ describe('refactrctl list', () => {
               'list',
               'pipelines',
               '--project-id',
-              knownIds.project
+              knownIds.static.project
             ]),
             'wide'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
@@ -170,10 +224,11 @@ describe('refactrctl list', () => {
               'list',
               'pipelines',
               '--project-id',
-              knownIds.project
+              knownIds.static.project
             ]),
             'json'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
@@ -184,10 +239,11 @@ describe('refactrctl list', () => {
               'list',
               'pipelines',
               '--project-id',
-              knownIds.project
+              knownIds.static.project
             ]),
             'yaml'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -196,15 +252,21 @@ describe('refactrctl list', () => {
   describe('projects', () => {
     test('should work', async () => {
       await expect(
-        execute(withFormat(withAddress(['list', 'projects']), 'wide'))
+        execute(withFormat(withAddress(['list', 'projects']), 'wide'), {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
 
       await expect(
-        execute(withFormat(withAddress(['list', 'projects']), 'json'))
+        execute(withFormat(withAddress(['list', 'projects']), 'json'), {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
 
       await expect(
-        execute(withFormat(withAddress(['list', 'projects']), 'yaml'))
+        execute(withFormat(withAddress(['list', 'projects']), 'yaml'), {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
     });
   });
@@ -212,34 +274,56 @@ describe('refactrctl list', () => {
   // TODO: implement tests for organizations.
   describe('runners', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['list', 'runners'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['list', 'runners'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
     });
 
     test('should work (by project)', async () => {
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'runners', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'runners',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'wide'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'runners', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'runners',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'json'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'runners', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'runners',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'yaml'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -247,7 +331,11 @@ describe('refactrctl list', () => {
 
   describe('runs', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['list', 'runs'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['list', 'runs'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
     });
 
     test('should work', async () => {
@@ -258,12 +346,13 @@ describe('refactrctl list', () => {
               'list',
               'runs',
               '--project-id',
-              knownIds.project,
+              knownIds.static.project,
               '--pipeline-id',
-              knownIds.pipeline
+              knownIds.static.pipeline
             ]),
             'wide'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
@@ -274,21 +363,28 @@ describe('refactrctl list', () => {
               'list',
               'runs',
               '--project-id',
-              knownIds.project,
+              knownIds.static.project,
               '--pipeline-id',
-              knownIds.pipeline
+              knownIds.static.pipeline
             ]),
             'json'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
 
       await expect(
         execute(
           withFormat(
-            withAddress(['list', 'runs', '--project-id', knownIds.project]),
+            withAddress([
+              'list',
+              'runs',
+              '--project-id',
+              knownIds.static.project
+            ]),
             'yaml'
-          )
+          ),
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });

@@ -11,6 +11,6 @@ export default handler<Arguments, any>(
 
     await api.deleteCredential(projectId, credentialId);
 
-    return createCommandResult('view', { _id: credentialId }, ['_id']);
+    return createCommandResult('view', { id: credentialId }, ['id']);
   }
 );

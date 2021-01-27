@@ -18,7 +18,7 @@ export default (yargs: Yargs.Argv) =>
               describe:
                 'ID of the credential to fetch. ' +
                 'Unlike IDs for other resources (which are mechanically generated), ' +
-                'credential ID is user-provided reference ID.',
+                'credential ID is user-provided reference ID',
               demandOption: true,
               requiresArg: true
             })

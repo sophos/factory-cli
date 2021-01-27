@@ -16,7 +16,7 @@ exports[`refactrctl get credential throws on missing arguments 1`] = `
 "Usage: refactrctl get credential <credential-id> [options]
 
 Positionals:
-  credential-id  ID of the credential to fetch  [string] [default: read from stdin]
+  credential-id  ID of the credential to fetch. Unlike IDs for other resources (which are mechanically generated), credential ID is user-provided reference ID  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]
@@ -36,7 +36,7 @@ exports[`refactrctl get credential throws on missing arguments 2`] = `
 "Usage: refactrctl get credential <credential-id> [options]
 
 Positionals:
-  credential-id  ID of the credential to fetch  [string] [default: read from stdin]
+  credential-id  ID of the credential to fetch. Unlike IDs for other resources (which are mechanically generated), credential ID is user-provided reference ID  [string] [default: read from stdin]
 
 Options:
       --version     Show version number  [boolean]

@@ -1,6 +1,12 @@
+import * as assert from 'assert';
+
+import isNil from 'lodash/isNil';
+
 export const withAddress = (args: string[]): string[] => {
+  assert.ok(!isNil(process.env.REFACTR_ADDRESS));
+
   const ret = [...args];
-  ret.push('--address', 'http://api.devel.refactr.it/v1');
+  ret.push('--address', process.env.REFACTR_ADDRESS!);
 
   return ret;
 };

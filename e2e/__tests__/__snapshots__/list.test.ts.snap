@@ -67,7 +67,7 @@ Options:
       --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of project containing the credentials  [string] [required]
-      --type  [string] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\"]
+      --type  [string] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\", \\"google_service_account\\"]
       --sort        Sort order  [string] [choices: \\"created_asc\\", \\"created_desc\\"]
       --limit  [number]
       --offset  [number]

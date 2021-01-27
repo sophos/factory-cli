@@ -6,120 +6,159 @@ describe('refactrctl get', () => {
   jest.setTimeout(15000);
 
   test('throws on missing subcommand', async () => {
-    await expect(execute(['get'])).rejects.toMatchSnapshot();
+    await expect(
+      execute(['get'], { token: process.env.STATIC_REFACTR_AUTH_TOKEN! })
+    ).rejects.toMatchSnapshot();
   });
 
   test('formats as JSON when --format=json is passed', async () => {
     await expect(
-      execute([
-        'get',
-        'organization',
-        knownIds.organization,
-        '--format',
-        'json'
-      ])
+      execute(
+        [
+          'get',
+          'organization',
+          knownIds.static.organization,
+          '--format',
+          'json'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
     await expect(
-      execute(['get', 'project', knownIds.project, '--format', 'json'])
+      execute(['get', 'project', knownIds.static.project, '--format', 'json'], {
+        token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+      })
     ).resolves.toMatchSnapshot();
     await expect(
-      execute([
-        'get',
-        'credential',
-        knownIds.credential,
-        '--project-id',
-        knownIds.project,
-        '--format',
-        'json'
-      ])
+      execute(
+        [
+          'get',
+          'credential',
+          knownIds.static.credential,
+          '--project-id',
+          knownIds.static.project,
+          '--format',
+          'json'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
     await expect(
-      execute([
-        'get',
-        'job',
-        knownIds.job,
-        '--project-id',
-        knownIds.project,
-        '--format',
-        'json'
-      ])
+      execute(
+        [
+          'get',
+          'job',
+          knownIds.static.job,
+          '--project-id',
+          knownIds.static.project,
+          '--format',
+          'json'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
     await expect(
-      execute([
-        'get',
-        'pipeline',
-        knownIds.pipeline,
-        '--project-id',
-        knownIds.project,
-        '--format',
-        'json'
-      ])
+      execute(
+        [
+          'get',
+          'pipeline',
+          knownIds.static.pipeline,
+          '--project-id',
+          knownIds.static.project,
+          '--format',
+          'json'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
   });
 
   test('formats as JSON when --format=yaml is passed', async () => {
     await expect(
-      execute([
-        'get',
-        'organization',
-        knownIds.organization,
-        '--format',
-        'yaml'
-      ])
+      execute(
+        [
+          'get',
+          'organization',
+          knownIds.static.organization,
+          '--format',
+          'yaml'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
     await expect(
-      execute(['get', 'project', knownIds.project, '--format', 'yaml'])
+      execute(['get', 'project', knownIds.static.project, '--format', 'yaml'], {
+        token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+      })
     ).resolves.toMatchSnapshot();
     await expect(
-      execute([
-        'get',
-        'credential',
-        knownIds.credential,
-        '--project-id',
-        knownIds.project,
-        '--format',
-        'yaml'
-      ])
+      execute(
+        [
+          'get',
+          'credential',
+          knownIds.static.credential,
+          '--project-id',
+          knownIds.static.project,
+          '--format',
+          'yaml'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
     await expect(
-      execute([
-        'get',
-        'job',
-        knownIds.job,
-        '--project-id',
-        knownIds.project,
-        '--format',
-        'yaml'
-      ])
+      execute(
+        [
+          'get',
+          'job',
+          knownIds.static.job,
+          '--project-id',
+          knownIds.static.project,
+          '--format',
+          'yaml'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
     await expect(
-      execute([
-        'get',
-        'pipeline',
-        knownIds.pipeline,
-        '--project-id',
-        knownIds.project,
-        '--format',
-        'yaml'
-      ])
+      execute(
+        [
+          'get',
+          'pipeline',
+          knownIds.static.pipeline,
+          '--project-id',
+          knownIds.static.project,
+          '--format',
+          'yaml'
+        ],
+        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+      )
     ).resolves.toMatchSnapshot();
   });
 
   describe('organization', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'organization'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['get', 'organization'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute(['get', 'organization', knownIds.organization])
+        execute(['get', 'organization', knownIds.static.organization], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.organization} | ${withCmd('get organization')}`
+          `echo ${knownIds.static.organization} | ${withCmd(
+            'get organization'
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -127,50 +166,70 @@ describe('refactrctl get', () => {
 
   describe('project', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'project'])).rejects.toMatchSnapshot();
-    });
-
-    test('accepts id as argument', async () => {
       await expect(
-        execute(['get', 'project', knownIds.project])
-      ).resolves.toMatchSnapshot();
-    });
-
-    test('accepts id from stdin', async () => {
-      await expect(
-        executeAsIs(`echo ${knownIds.project} | ${withCmd('get project')}`)
-      ).resolves.toMatchSnapshot();
-    });
-  });
-
-  describe('credential', () => {
-    test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'credential'])).rejects.toMatchSnapshot();
-
-      // Missing positional
-      await expect(
-        execute(['get', 'credential', '--project-id', knownIds.project])
+        execute(['get', 'project'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute([
-          'get',
-          'credential',
-          '--project-id',
-          knownIds.project,
-          knownIds.credential
-        ])
+        execute(['get', 'project', knownIds.static.project], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.credential} | ${withCmd(
-            `get credential --project-id ${knownIds.project}`
-          )}`
+          `echo ${knownIds.static.project} | ${withCmd('get project')}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
+      ).resolves.toMatchSnapshot();
+    });
+  });
+
+  describe('credential', () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['get', 'credential'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+
+      // Missing positional
+      await expect(
+        execute(
+          ['get', 'credential', '--project-id', knownIds.static.project],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
+      ).rejects.toMatchSnapshot();
+    });
+
+    test('accepts id as argument', async () => {
+      await expect(
+        execute(
+          [
+            'get',
+            'credential',
+            '--project-id',
+            knownIds.static.project,
+            knownIds.static.credential
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
+      ).resolves.toMatchSnapshot();
+    });
+
+    test('accepts id from stdin', async () => {
+      await expect(
+        executeAsIs(
+          `echo ${knownIds.static.credential} | ${withCmd(
+            `get credential --project-id ${knownIds.static.project}`
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -178,26 +237,42 @@ describe('refactrctl get', () => {
 
   describe('job', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'job'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['get', 'job'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
 
       // Missing positional
       await expect(
-        execute(['get', 'job', '--project-id', knownIds.project])
+        execute(['get', 'job', '--project-id', knownIds.static.project], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute(['get', 'job', '--project-id', knownIds.project, knownIds.job])
+        execute(
+          [
+            'get',
+            'job',
+            '--project-id',
+            knownIds.static.project,
+            knownIds.static.job
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.job} | ${withCmd(
-            `get job --project-id ${knownIds.project}`
-          )}`
+          `echo ${knownIds.static.job} | ${withCmd(
+            `get job --project-id ${knownIds.static.project}`
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -206,42 +281,51 @@ describe('refactrctl get', () => {
   describe('pipeline-revision', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        execute(['get', 'pipeline-revision'])
+        execute(['get', 'pipeline-revision'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).rejects.toMatchSnapshot();
 
       // Missing positional
       await expect(
-        execute([
-          'get',
-          'pipeline-revision',
-          '--project-id',
-          knownIds.project,
-          '--pipeline-id',
-          knownIds.pipeline
-        ])
+        execute(
+          [
+            'get',
+            'pipeline-revision',
+            '--project-id',
+            knownIds.static.project,
+            '--pipeline-id',
+            knownIds.static.pipeline
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute([
-          'get',
-          'pipeline-revision',
-          '--project-id',
-          knownIds.project,
-          '--pipeline-id',
-          knownIds.pipeline,
-          `${knownIds.pipelineRevision}`
-        ])
+        execute(
+          [
+            'get',
+            'pipeline-revision',
+            '--project-id',
+            knownIds.static.project,
+            '--pipeline-id',
+            knownIds.static.pipeline,
+            `${knownIds.static.pipelineRevision}`
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.pipelineRevision} | ${withCmd(
-            `get pipeline-revision --project-id ${knownIds.project} --pipeline-id ${knownIds.pipeline}`
-          )}`
+          `echo ${knownIds.static.pipelineRevision} | ${withCmd(
+            `get pipeline-revision --project-id ${knownIds.static.project} --pipeline-id ${knownIds.static.pipeline}`
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -249,31 +333,41 @@ describe('refactrctl get', () => {
 
   describe('pipeline', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'pipeline'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['get', 'pipeline'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
 
       await expect(
-        execute(['get', 'pipeline', '--project-id', knownIds.project])
+        execute(['get', 'pipeline', '--project-id', knownIds.static.project], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute([
-          'get',
-          'pipeline',
-          '--project-id',
-          knownIds.project,
-          knownIds.pipeline
-        ])
+        execute(
+          [
+            'get',
+            'pipeline',
+            '--project-id',
+            knownIds.static.project,
+            knownIds.static.pipeline
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.pipeline} | ${withCmd(
-            `get pipeline --project-id ${knownIds.project}`
-          )}`
+          `echo ${knownIds.static.pipeline} | ${withCmd(
+            `get pipeline --project-id ${knownIds.static.project}`
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -281,32 +375,43 @@ describe('refactrctl get', () => {
 
   describe('runner', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'runner'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['get', 'runner'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
 
       // Missing positional
       await expect(
-        execute(['get', 'runner', '--organization-id', knownIds.organization])
+        execute(
+          ['get', 'runner', '--organization-id', knownIds.static.organization],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute([
-          'get',
-          'runner',
-          '--organization-id',
-          knownIds.organization,
-          knownIds.runner
-        ])
+        execute(
+          [
+            'get',
+            'runner',
+            '--organization-id',
+            knownIds.static.organization,
+            knownIds.static.runner
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.runner} | ${withCmd(
-            `get runner --organization-id ${knownIds.organization}`
-          )}`
+          `echo ${knownIds.static.runner} | ${withCmd(
+            `get runner --organization-id ${knownIds.static.organization}`
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -314,26 +419,42 @@ describe('refactrctl get', () => {
 
   describe('run', () => {
     test('throws on missing arguments', async () => {
-      await expect(execute(['get', 'run'])).rejects.toMatchSnapshot();
+      await expect(
+        execute(['get', 'run'], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
 
       // Missing positional
       await expect(
-        execute(['get', 'run', '--project-id', knownIds.project])
+        execute(['get', 'run', '--project-id', knownIds.static.project], {
+          token: process.env.STATIC_REFACTR_AUTH_TOKEN!
+        })
       ).rejects.toMatchSnapshot();
     });
 
     test('accepts id as argument', async () => {
       await expect(
-        execute(['get', 'run', '--project-id', knownIds.project, knownIds.run])
+        execute(
+          [
+            'get',
+            'run',
+            '--project-id',
+            knownIds.static.project,
+            knownIds.static.run
+          ],
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        )
       ).resolves.toMatchSnapshot();
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.run} | ${withCmd(
-            `get run --project-id ${knownIds.project}`
-          )}`
+          `echo ${knownIds.static.run} | ${withCmd(
+            `get run --project-id ${knownIds.static.project}`
+          )}`,
+          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });

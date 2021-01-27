@@ -8,4 +8,13 @@ describe('authentication', () => {
       execute(withAddress(['list', 'projects']), { token: undefined })
     ).rejects.toMatchSnapshot();
   });
+
+  test('accepts if token is provided with --auth-token', async () => {
+    await expect(
+      execute(withAddress(['list', 'projects', '--auth-token', 'tokenabc']), {
+        // @ts-expect-error
+        token: undefined
+      })
+    ).resolves;
+  });
 });

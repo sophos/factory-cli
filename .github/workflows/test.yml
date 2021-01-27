@@ -46,4 +46,5 @@ jobs:
       - run: yarn test:e2e
         env:
           REFACTR_ADDRESS: ${{ secrets.REFACTR_ADDRESS }}
-          REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
+          STATIC_REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
+          DYNAMIC_REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN2 }}
