@@ -92,7 +92,17 @@ export default (yargs: Yargs.Argv) =>
                       );
                     }
 
-                    return parts;
+                    const [key, rawValue] = parts;
+                    let value;
+                    try {
+                      value = JSON.parse(rawValue);
+                    } catch (err) {
+                      throw new Error(
+                        'Variable value must be valid JSON data.'
+                      );
+                    }
+
+                    return [key, value];
                   })
                 );
               }
