@@ -11,8 +11,7 @@ import { JOB_TRIGGER_TYPE } from '../job-trigger-type';
 
 const coerceInput = (arg: string | string[]) => {
   if (isArray(arg)) {
-    // TODO: throw err?
-    return;
+    throw new Error('It is not possible to provide multiple data as input!');
   } else if (!isString(arg)) {
     return;
   }
