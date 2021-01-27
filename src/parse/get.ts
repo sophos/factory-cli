@@ -15,7 +15,10 @@ export default (yargs: Yargs.Argv) =>
             .usage('Usage: $0 get credential <credential-id> [options]')
             .positional('credential-id', {
               type: 'string',
-              describe: 'ID of the credential to fetch',
+              describe:
+                'ID of the credential to fetch. ' +
+                'Unlike IDs for other resources (which are mechanically generated), ' +
+                'credential ID is user-provided reference ID.',
               demandOption: true,
               requiresArg: true
             })
