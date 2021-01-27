@@ -1,4 +1,5 @@
 export type CredentialType =
+  | 'google_service_account'
   | 'api_token'
   | 'aws_access_key'
   | 'azure_service_principal'
@@ -16,5 +17,6 @@ export const CREDENTIAL_TYPES = [
   'generic',
   'ssh_key',
   'username_password',
-  'vault_app_role'
+  'vault_app_role',
+  'google_service_account'
 ];

@@ -124,7 +124,106 @@ export default (yargs: Yargs.Argv) =>
             type: 'string',
             requiresArg: true,
             demandOption: true,
-            coerce: (arg) => JSON.parse(arg)
+            hidden: true
+          })
+
+          // username_password
+          .option('data.username', {
+            describe: 'Username for "username_password" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('data.password', {
+            describe: 'Password for "username_password" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // api_token
+          .option('data.token', {
+            describe: 'API token for "api_token" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // aws_access_key
+          .option('data.access-key', {
+            describe: 'Access key for "aws_access_key" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('data.secret-key', {
+            describe: 'Secret key for "aws_access_key" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // azure_service_principal
+          .option('data.subscription-id', {
+            describe:
+              'Subscription ID for "azure_service_principal" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('data.domain', {
+            describe: 'Domain for "azure_service_principal" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('data.client-id', {
+            describe: 'Client ID for "azure_service_principal" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('data.client-key', {
+            describe:
+              'Client key for "azure_service_principal" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('data.tenant-id', {
+            describe:
+              'Domain key for "azure_service_principal" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // google_service_account
+          .option('data.json', {
+            describe: 'JSON key for "google_service_account" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // vault_app_role
+          .option('data.role-id', {
+            describe: 'Role ID for "vault_app_role" credential type',
+            requiresArg: true
+          })
+          .option('data.secret-id', {
+            describe: 'Secret ID for "vault_app_role" credential type',
+            requiresArg: true
+          })
+
+          // ssh_key
+          .option('data.private-key', {
+            describe: 'SSH key for "ssh_key" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // bearer token
+          .option('data.token', {
+            describe: 'Token for "bearer_token" credential type',
+            type: 'string',
+            requiresArg: true
+          })
+
+          // generic
+          .option('data.text', {
+            describe: 'Text for "generic" credential type',
+            type: 'string',
+            requiresArg: true
           })
           .option('id', {
             describe: 'Credential reference id',
