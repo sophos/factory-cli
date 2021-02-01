@@ -337,56 +337,5 @@ describe('refactrctl list', () => {
         })
       ).rejects.toMatchSnapshot();
     });
-
-    test('should work', async () => {
-      await expect(
-        execute(
-          withFormat(
-            withAddress([
-              'list',
-              'runs',
-              '--project-id',
-              knownIds.static.project,
-              '--pipeline-id',
-              knownIds.static.pipeline
-            ]),
-            'wide'
-          ),
-          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
-        )
-      ).resolves.toMatchSnapshot();
-
-      await expect(
-        execute(
-          withFormat(
-            withAddress([
-              'list',
-              'runs',
-              '--project-id',
-              knownIds.static.project,
-              '--pipeline-id',
-              knownIds.static.pipeline
-            ]),
-            'json'
-          ),
-          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
-        )
-      ).resolves.toMatchSnapshot();
-
-      await expect(
-        execute(
-          withFormat(
-            withAddress([
-              'list',
-              'runs',
-              '--project-id',
-              knownIds.static.project
-            ]),
-            'yaml'
-          ),
-          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
-        )
-      ).resolves.toMatchSnapshot();
-    });
   });
 });

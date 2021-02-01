@@ -457,18 +457,6 @@ Project ID must be provided
 "
 `;
 
-exports[`refactrctl get run accepts id as argument 1`] = `
-"_id                       number  organization_id  job_id                    status     started               finished              suppress_events  suppress_outputs  suppress_vars  created             
-600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM
-"
-`;
-
-exports[`refactrctl get run accepts id from stdin 1`] = `
-"_id                       number  organization_id  job_id                    status     started               finished              suppress_events  suppress_outputs  suppress_vars  created             
-600187e104ea5c3077201bcb  1       -                6001773304ea5cdf12201bc9  Succeeded  01/15/2021, 12:17 PM  01/15/2021, 12:17 PM  No               No                No             01/15/2021, 12:17 PM
-"
-`;
-
 exports[`refactrctl get run throws on missing arguments 1`] = `
 "Usage: refactrctl get run <run-id> [options]
 

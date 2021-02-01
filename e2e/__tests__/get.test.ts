@@ -432,31 +432,5 @@ describe('refactrctl get', () => {
         })
       ).rejects.toMatchSnapshot();
     });
-
-    test('accepts id as argument', async () => {
-      await expect(
-        execute(
-          [
-            'get',
-            'run',
-            '--project-id',
-            knownIds.static.project,
-            knownIds.static.run
-          ],
-          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
-        )
-      ).resolves.toMatchSnapshot();
-    });
-
-    test('accepts id from stdin', async () => {
-      await expect(
-        executeAsIs(
-          `echo ${knownIds.static.run} | ${withCmd(
-            `get run --project-id ${knownIds.static.project}`
-          )}`,
-          { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
-        )
-      ).resolves.toMatchSnapshot();
-    });
   });
 });
