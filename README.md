@@ -2,13 +2,14 @@
 
 The Refactr command line tool is used to interact with the Refactr Platform API from the command line.
 
-For instance, CLI can be used to integrate with other CI/CD platforms, like GitLab Pipelines, etc.
+Basic usage and installation is described below. [Click here for complete Refactr CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
 
 **NOTE**: version `1.x` has been redone from scratch is not compatible with `0.12.x`.
 
-**CAUTION**: The CLI is in beta stage, if you encountered any problem, please open issue at https://github.com/refactr/refactr-cli/issues/new
+**CAUTION**: The CLI is in beta stage. If you encountered any problem, please open an issue at https://github.com/refactr/refactr-cli/issues/new
 
-## Example
+## Usage
+
 ```shell
 $ refactrctl --help   
 Usage: refactrctl <command> [options]
@@ -36,6 +37,7 @@ Options:
 ## Installation
 
 ### Binary
+
 Starting from version `1.0.0` the CLI is primarily distributed via binary builds.
 Currently, we provide official binaries for Linux and macOS. Get the
 latest version from [this page](https://github.com/refactr/refactr-cli/releases/latest),
