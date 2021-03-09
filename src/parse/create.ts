@@ -238,7 +238,6 @@ export default (yargs: Yargs.Argv) =>
       )
       .command('job', 'Create a new job', (yargs) =>
         yargs
-          .usage('Usage: $0 job [options]')
           .option('project-id', {
             describe: 'ID of the project under which job will be created',
             type: 'string',
@@ -251,9 +250,10 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true,
             requiresArg: true
           })
-          .option('pipeline-revision', {
-            describe: 'Number of the pipeline revision',
-            type: 'number',
+          .option('revision-id', {
+            describe: 'ID of the pipeline revision',
+            demandOption: true,
+            type: 'string',
             requiresArg: true
           })
           .option('name', {

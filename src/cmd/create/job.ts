@@ -10,8 +10,8 @@ import { JobTriggerType } from '../../job-trigger-type';
 type Arguments = {
   projectId: string;
   pipelineId: string;
+  revisionId: string;
   name: string;
-  pipelineRevision?: number;
   type: JobTriggerType;
   data?: any;
 
@@ -48,7 +48,7 @@ export default handler<Arguments, any>(
     {
       projectId,
       pipelineId,
-      pipelineRevision,
+      revisionId,
       name,
       type,
       suppressEvents,
@@ -62,7 +62,7 @@ export default handler<Arguments, any>(
 
     const { data: job } = await api.createJob(projectId, {
       pipeline_id: pipelineId,
-      pipeline_revision_id: pipelineRevision,
+      pipeline_revision_id: revisionId,
       trigger_type: triggerType[type],
       name,
       suppress_events: suppressEvents,
@@ -80,7 +80,7 @@ export default handler<Arguments, any>(
               ? intervalType[schedule.intervalType]
               : undefined
           }
-        : null
+        : undefined
     });
 
     return createCommandResult('view', job, ['_id']);

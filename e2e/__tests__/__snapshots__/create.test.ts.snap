@@ -37,6 +37,38 @@ Missing required arguments: project-id, name, data, id, type
 "
 `;
 
+exports[`refactrctl create job throws on missing arguments 1`] = `
+"refactrctl create job
+
+Create a new job
+
+Options:
+      --version                 Show version number  [boolean]
+  -v, --verbose                 Print detailed output  [boolean]
+      --format                  Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter                  Filter output using JsonPath  [string]
+      --address                 Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token              Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --help                    Show help  [boolean]
+      --project-id              ID of the project under which job will be created  [string] [required]
+      --pipeline-id             ID of the pipeline from which job will be created  [string] [required]
+      --revision-id             ID of the pipeline revision  [string] [required]
+      --name                    Name of the job  [string] [required]
+      --type                    Trigger type of the job  [required] [choices: \\"manual\\", \\"scheduled\\"]
+      --schedule.start-day  [string]
+      --schedule.start-time  [string]
+      --schedule.offset  [string]
+      --schedule.interval  [number]
+      --schedule.interval-type  [choices: \\"minute\\", \\"hour\\", \\"day\\", \\"week\\", \\"month\\"]
+      --suppress-events         Suppress run events during job run  [boolean] [default: false]
+      --suppress-outputs        Suppress outputs during job run  [boolean] [default: false]
+      --suppress-variables      Suppress variables during job run  [boolean] [default: false]
+      --disable-on-failure      Specifies whether job will be disabled on failed run  [boolean] [default: false]
+
+Missing required arguments: project-id, pipeline-id, revision-id, name, type
+"
+`;
+
 exports[`refactrctl create pipeline throws on missing arguments 1`] = `
 "refactrctl pipeline --project-id <project-id> --name <name> [options]
 

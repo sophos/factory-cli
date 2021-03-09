@@ -10,7 +10,10 @@ const knownIds = {
   },
   dynamic: {
     project: '6010f6e2a830874a04689246',
-    organization: '5f9f2d08e2f1bb2436e6f5b0'
+    organization: '5f9f2d08e2f1bb2436e6f5b0',
+
+    pipeline: '6047b2750a563e6839955fd3',
+    pipelineRevision: '6047b2750a563e1af2955fd4'
   }
 };
 
