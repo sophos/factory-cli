@@ -4,16 +4,16 @@ import fields from '../../fields';
 type Arguments = {
   projectId: string;
   pipelineId: string;
-  revision: number;
+  revisionId: string;
 };
 
 export default handler<Arguments, any>(
-  async (apiClient, { projectId, pipelineId, revision }) => {
+  async (apiClient, { projectId, pipelineId, revisionId }) => {
     const api = apiClient.pipelines;
     const { data: pipelineRevision } = await api.getPipelineRevision(
       projectId,
       pipelineId,
-      revision
+      revisionId
     );
 
     return createCommandResult(

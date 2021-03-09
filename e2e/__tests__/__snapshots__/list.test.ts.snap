@@ -98,7 +98,7 @@ exports[`refactrctl list jobs should work 2`] = `
         \\"disable_on_failure\\": true,
         \\"enabled\\": true,
         \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
-        \\"pipeline_revision_id\\": 4,
+        \\"pipeline_revision_id\\": \\"5ffdecc804ea5c1c58201bbf\\",
         \\"name\\": \\"Test job\\",
         \\"trigger_type\\": \\"manual\\",
         \\"suppress_vars\\": true,
@@ -120,7 +120,7 @@ exports[`refactrctl list jobs should work 3`] = `
     disable_on_failure: true
     enabled: true
     pipeline_id: 5ffde06a04ea5cf045201bbc
-    pipeline_revision_id: 4
+    pipeline_revision_id: 5ffdecc804ea5c1c58201bbf
     name: Test job
     trigger_type: manual
     suppress_vars: true
@@ -181,7 +181,12 @@ exports[`refactrctl list organizations should work 2`] = `
             \\"run_minutes\\": -1,
             \\"support_hours\\": 0
         },
-        \\"address\\": \\"123 Main St.\\"
+        \\"address\\": \\"123 Main St.\\",
+        \\"image_id\\": \\"6036851a545c5e5481871c88\\",
+        \\"capabilities\\": {
+            \\"publish_catalogs\\": true
+        },
+        \\"public\\": true
     }
 ]
 "
@@ -206,6 +211,10 @@ exports[`refactrctl list organizations should work 3`] = `
         run_minutes: -1
         support_hours: 0
     address: 123 Main St.
+    image_id: 6036851a545c5e5481871c88
+    capabilities:
+        publish_catalogs: true
+    public: true
 
 "
 `;

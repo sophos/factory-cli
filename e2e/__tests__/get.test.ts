@@ -312,7 +312,7 @@ describe('refactrctl get', () => {
             knownIds.static.project,
             '--pipeline-id',
             knownIds.static.pipeline,
-            `${knownIds.static.pipelineRevision}`
+            knownIds.static.pipelineRevision
           ],
           { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
         )

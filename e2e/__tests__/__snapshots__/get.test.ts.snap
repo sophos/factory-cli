@@ -72,6 +72,11 @@ exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
         \\"support_hours\\": 0
     },
     \\"address\\": \\"123 Main St.\\",
+    \\"image_id\\": \\"6036851a545c5e5481871c88\\",
+    \\"capabilities\\": {
+        \\"publish_catalogs\\": true
+    },
+    \\"public\\": true,
     \\"access\\": {
         \\"default_project_run\\": false,
         \\"create_projects\\": true,
@@ -118,7 +123,7 @@ exports[`refactrctl get formats as JSON when --format=json is passed 4`] = `
     \\"disable_on_failure\\": true,
     \\"enabled\\": true,
     \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
-    \\"pipeline_revision_id\\": 4,
+    \\"pipeline_revision_id\\": \\"5ffdecc804ea5c1c58201bbf\\",
     \\"name\\": \\"Test job\\",
     \\"trigger_type\\": \\"manual\\",
     \\"suppress_vars\\": true,
@@ -167,6 +172,10 @@ plan_quotas:
     run_minutes: -1
     support_hours: 0
 address: 123 Main St.
+image_id: 6036851a545c5e5481871c88
+capabilities:
+    publish_catalogs: true
+public: true
 access:
     default_project_run: false
     create_projects: true
@@ -208,7 +217,7 @@ created: '2021-01-15T11:06:27.007Z'
 disable_on_failure: true
 enabled: true
 pipeline_id: 5ffde06a04ea5cf045201bbc
-pipeline_revision_id: 4
+pipeline_revision_id: 5ffdecc804ea5c1c58201bbf
 name: Test job
 trigger_type: manual
 suppress_vars: true
@@ -373,14 +382,14 @@ Pipeline ID must be provided
 `;
 
 exports[`refactrctl get pipeline-revision accepts id as argument 1`] = `
-"_id                       revision
-5ffdecc804ea5c1c58201bbf  4       
+"_id                       revision  created            
+5ffdecc804ea5c1c58201bbf  4         01/12/2021, 6:39 PM
 "
 `;
 
 exports[`refactrctl get pipeline-revision accepts id from stdin 1`] = `
-"_id                       revision
-5ffdecc804ea5c1c58201bbf  4       
+"_id                       revision  created            
+5ffdecc804ea5c1c58201bbf  4         01/12/2021, 6:39 PM
 "
 `;
 
@@ -388,7 +397,7 @@ exports[`refactrctl get pipeline-revision throws on missing arguments 1`] = `
 "Usage: refactrctl get pipeline-revision <revision> [options]
 
 Positionals:
-  revision  Revision number of the pipeline revision to fetch  [number] [default: read from stdin]
+  revision-id  ID of the pipeline revision to fetch  [string] [default: read from stdin]
 
 Options:
       --version      Show version number  [boolean]
@@ -409,7 +418,7 @@ exports[`refactrctl get pipeline-revision throws on missing arguments 2`] = `
 "Usage: refactrctl get pipeline-revision <revision> [options]
 
 Positionals:
-  revision  Revision number of the pipeline revision to fetch  [number] [default: read from stdin]
+  revision-id  ID of the pipeline revision to fetch  [string] [default: read from stdin]
 
 Options:
       --version      Show version number  [boolean]
@@ -553,14 +562,14 @@ exports[`refactrctl get throws on missing subcommand 1`] = `
 "Usage: refactrctl get <command> [options]
 
 Commands:
-  refactrctl get credential [credential-id]      Get credential details
-  refactrctl get job [job-id]                    Get job details
-  refactrctl get project [project-id]            Get project details
-  refactrctl get pipeline [pipeline-id]          Get pipeline details
-  refactrctl get organization [organization-id]  Get organization details
-  refactrctl get run [run-id]                    Get run details
-  refactrctl get pipeline-revision [revision]    Get pipeline-revision details
-  refactrctl get runner [runner-id]              Get runner details
+  refactrctl get credential [credential-id]       Get credential details
+  refactrctl get job [job-id]                     Get job details
+  refactrctl get project [project-id]             Get project details
+  refactrctl get pipeline [pipeline-id]           Get pipeline details
+  refactrctl get organization [organization-id]   Get organization details
+  refactrctl get run [run-id]                     Get run details
+  refactrctl get pipeline-revision [revision-id]  Get pipeline-revision details
+  refactrctl get runner [runner-id]               Get runner details
 
 Options:
       --version     Show version number  [boolean]
