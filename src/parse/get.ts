@@ -149,20 +149,20 @@ export default (yargs: Yargs.Argv) =>
           })
       )
       .command(
-        'pipeline-revision [revision]',
+        'pipeline-revision [revision-id]',
         'Get pipeline-revision details',
         (yargs) =>
           yargs
             .usage('Usage: $0 get pipeline-revision <revision> [options]')
-            .positional('revision', {
-              type: 'number',
-              describe: 'Revision number of the pipeline revision to fetch',
+            .positional('revision-id', {
+              type: 'string',
+              describe: 'ID of the pipeline revision to fetch',
               demandOption: true,
               requiresArg: true
             })
-            .default('revision', () => readStdin(), 'read from stdin')
+            .default('revision-id', () => readStdin(), 'read from stdin')
             .check((argv) => {
-              if (isNil(argv.revision)) {
+              if (isNil(argv.revisionId)) {
                 throw new Error('Revision must be provided');
               }
 

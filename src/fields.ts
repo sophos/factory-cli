@@ -22,7 +22,7 @@ export default {
     'created'
   ],
   job: ['_id', 'name', 'enabled', 'trigger_type', 'created'],
-  pipelineRevision: ['_id', 'revision'],
+  pipelineRevision: ['_id', 'revision', 'created'],
   pipeline: [
     '_id',
     'organization_id',

@@ -121,6 +121,57 @@ describe('refactrctl create', () => {
     });
   });
 
+  describe('job', () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['create', 'job'], {
+          token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+    });
+
+    test('create & delete job', async () => {
+      const createResult = JSON.parse(
+        await execute(
+          [
+            'create',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--pipeline-id',
+            knownIds.dynamic.pipeline,
+            '--revision-id',
+            knownIds.dynamic.pipelineRevision,
+            '--name',
+            faker.random.word(),
+            '--type',
+            'manual',
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        )
+      );
+
+      expect(createResult).toHaveProperty('_id');
+
+      const deleteResult = JSON.parse(
+        await execute(
+          [
+            'delete',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            createResult._id,
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        )
+      );
+
+      expect(deleteResult).toHaveProperty('_id', createResult._id);
+    });
+  });
+
   describe('project', () => {
     test('throws on missing arguments', async () => {
       await expect(
