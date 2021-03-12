@@ -16,7 +16,7 @@ import asyncGenToArray from './util/asyncGenToArray';
 
 export default async function executeCommand(args: any) {
   const methods: string[] = args._;
-  const filterPath = args.filter;
+  const filterPath = args.filter ?? null;
   const command = methods[0] as TopLevelCommand;
   let handler;
 
@@ -30,7 +30,7 @@ export default async function executeCommand(args: any) {
   }
 
   const viewError = flow([
-    formatter('log', ['message']),
+    formatter('log', ['code', 'message']),
     printer({ level: 'error' })
   ]);
 
@@ -43,9 +43,15 @@ export default async function executeCommand(args: any) {
       const apiClient = new Client(args.address, args.authToken);
       const result = await handler(apiClient, args);
       const { payload, fields, type, format: formatType } = result;
-      const filter = filterer(filterPath, fields!);
+      const isJsonOrYamlFormat = formatType === 'json' || formatType === 'yaml';
+      const isError = type === 'error';
+      const filter = filterer(filterPath, fields!, type);
       const format = formatter(formatType, fields!);
-      const view = flow([filter, format, printer({ level: 'info' })]);
+      const view = flow([
+        filter,
+        format,
+        printer({ level: isError ? 'error' : 'info' })
+      ]);
 
       switch (type) {
         case 'view': {
@@ -56,7 +62,7 @@ export default async function executeCommand(args: any) {
           {
             // We cannot log each event separately in JSON/Yaml mode,
             // as it would otherwise be an invalid JSON/Yaml structure.
-            if (formatType === 'yaml' || formatType === 'json') {
+            if (isJsonOrYamlFormat) {
               view(await asyncGenToArray(payload));
             } else {
               for await (const run of payload) view(run);
@@ -69,15 +75,24 @@ export default async function executeCommand(args: any) {
 
           switch (kind) {
             case 'api_error':
-              for (const error of payload.errors) viewError(error);
+              if (isJsonOrYamlFormat) {
+                view(payload.errors);
+              } else {
+                for (const error of payload.errors) view(error);
+              }
               break;
-            case 'unknown_error':
+            case 'unknown_error': {
+              const message =
+                payload.possiblyWrongAddress ?? false
+                  ? 'Seems like provided API address is not correct, please verify it. ' +
+                    'If error is repeated, please report it on https://github.com/refactr/refactr-cli/issues'
+                  : 'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues';
               viewError({
                 code: 'UnknownError',
-                message:
-                  'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+                message: message
               });
               break;
+            }
           }
         }
       }
@@ -91,7 +106,8 @@ export default async function executeCommand(args: any) {
       code: 'UnknownCommand',
       error,
       message:
-        'Unknown command! It is likely a problem with our CLI itself. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+        'Unknown command! It is likely a problem with our CLI itself. ' +
+        'To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
     });
   }
 

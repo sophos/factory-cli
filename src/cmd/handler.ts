@@ -15,8 +15,21 @@ export type CommandResult<T> = {
 
 export type CommandHandler<A, R> = (
   apiClient: Client,
-  args: A
-) => Promise<CommandResult<R>>;
+  args: A & { format: RawFormatType }
+) => Promise<
+  | HandlerResult<R>
+  | HandlerResult<{
+      stack: string;
+      kind: ErrorKind;
+      errors: any[];
+    }>
+  | HandlerResult<{
+      stack: string;
+      kind: ErrorKind;
+      possiblyWrongAddress: boolean;
+      error: any;
+    }>
+>;
 
 export const createCommandResult = <T>(
   type: CommandResultType,
@@ -25,7 +38,7 @@ export const createCommandResult = <T>(
 ): CommandResult<T> => ({
   type,
   payload,
-  fields
+  fields: type === 'error' ? ['code', 'message'] : fields
 });
 
 const createHandlerResult = <T extends any>(
@@ -39,27 +52,28 @@ const createHandlerResult = <T extends any>(
   ...cmd
 });
 
-export const handler = <A, R>(fn: CommandHandler<A, R>) => async (
-  apiClient: Client,
-  args: A & { format: RawFormatType }
-) => {
+type HandlerResult<R> = CommandResult<R> & { format: FormatType };
+export type ErrorKind = 'api_error' | 'unknown_error';
+
+export const handler = <A, R>(
+  fn: (apiClient: Client, args: A) => Promise<CommandResult<R>>
+): CommandHandler<A, R> => async (apiClient, args) => {
   const format = args.format;
   try {
     const result = await fn(apiClient, args);
     return createHandlerResult(result, format);
   } catch (err) {
-    const stack = err.stack;
-    if (err.isAxiosError) {
+    const stack: string = err.stack;
+    const isAxiosError: boolean = err.isAxiosError ?? false;
+    if (isAxiosError) {
       const errors = (err as AxiosError).response?.data?.errors;
-      const payload = {
-        kind: 'api_error',
-        errors,
-        stack
-      };
-
       if (!isNil(errors)) {
         return createHandlerResult(
-          createCommandResult('error', payload),
+          createCommandResult('error', {
+            kind: 'api_error' as ErrorKind,
+            errors,
+            stack
+          }),
           format
         );
       }
@@ -67,9 +81,10 @@ export const handler = <A, R>(fn: CommandHandler<A, R>) => async (
 
     return createHandlerResult(
       createCommandResult('error', {
-        kind: 'unknown_error',
+        kind: 'unknown_error' as ErrorKind,
         error: err,
-        stack
+        stack,
+        possiblyWrongAddress: isAxiosError
       }),
       format
     );
