@@ -130,7 +130,7 @@ describe('refactrctl create', () => {
       ).rejects.toMatchSnapshot();
     });
 
-    test('create & delete job', async () => {
+    test('create & delete job (type: manual)', async () => {
       const createResult = JSON.parse(
         await execute(
           [
@@ -147,6 +147,67 @@ describe('refactrctl create', () => {
             '--type',
             'manual',
             '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        )
+      );
+
+      expect(createResult).toHaveProperty('_id');
+
+      const deleteResult = JSON.parse(
+        await execute(
+          [
+            'delete',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            createResult._id,
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        )
+      );
+
+      expect(deleteResult).toHaveProperty('_id', createResult._id);
+    });
+
+    test('create & delete job (type: scheduled)', async () => {
+      const schedule = {
+        startDay: new Date().toLocaleString('en-US', {
+          month: 'numeric',
+          day: 'numeric',
+          year: 'numeric'
+        }),
+        startTime: '12:00',
+        interval: 1,
+        intervalType: 'day',
+        offset: '-08:00'
+      };
+      const createResult = JSON.parse(
+        await execute(
+          [
+            'create',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--pipeline-id',
+            knownIds.dynamic.pipeline,
+            '--revision-id',
+            knownIds.dynamic.pipelineRevision,
+            '--name',
+            faker.random.word(),
+            '--type=scheduled',
+            '--format=json',
+            '--schedule.start-day',
+            schedule.startDay,
+            '--schedule.start-time',
+            schedule.startTime,
+            '--schedule.interval',
+            schedule.interval.toString(),
+            '--schedule.interval-type',
+            schedule.intervalType,
+            '--schedule.offset',
+            schedule.offset
           ],
           { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
         )
