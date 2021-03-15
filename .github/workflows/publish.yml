@@ -20,7 +20,7 @@ jobs:
             const tags = [version];
 
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
-              const parts = versions.split('.');
+              const parts = version.split('.');
               for (let i = 1; i < parts.length; i++) {
                 tags.push(parts.slice(0, i).join('.'));
               }
