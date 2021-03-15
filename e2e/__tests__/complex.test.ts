@@ -18,7 +18,7 @@ describe('complex', () => {
     ).resolves.toHaveProperty('_id', knownIds.static.project);
   });
 
-  test('create -> get -> delete (project)', async () => {
+  test('create -> get -> delete (pipeline)', async () => {
     await expect(
       executeAsIs(
         `${withCmd(

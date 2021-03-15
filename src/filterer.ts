@@ -1,11 +1,14 @@
 import isString from 'lodash/isString';
 import { JSONPath as jsonFilter } from 'jsonpath-plus';
+import { CommandResultType } from './cmd/handler';
 
-type Filterer = (input: any) => any;
-
-export default function filterer(filter: string, fields: string[]): Filterer {
+export default function filterer(
+  filter: string | null,
+  fields: string[],
+  type: CommandResultType
+): Filterer {
   return (input: any) => {
-    if (isString(filter)) {
+    if (type !== 'error' && isString(filter)) {
       return jsonFilter({
         path: filter,
         json: input,
@@ -17,3 +20,5 @@ export default function filterer(filter: string, fields: string[]): Filterer {
     return input;
   };
 }
+
+type Filterer = (input: any) => any;

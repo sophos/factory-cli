@@ -1,0 +1,56 @@
+{
+  "variables": [],
+  "steps": [
+    {
+      "id": "java_install",
+      "name": "Install Java",
+      "type": "java_install",
+      "depends": [],
+      "properties": {
+        "version": "latest",
+        "tool_options": {
+          "package": "jdk"
+        }
+      }
+    },
+    {
+      "id": "shell",
+      "name": "Print version",
+      "type": "shell_script",
+      "depends": [
+        "java_install"
+      ],
+      "properties": {
+        "content": "java -version"
+      }
+    }
+  ],
+  "outputs": [],
+  "layout": {
+    "elements": [
+      {
+        "id": "java_install",
+        "position": {
+          "x": -181,
+          "y": -11
+        },
+        "links": []
+      },
+      {
+        "id": "shell",
+        "position": {
+          "x": -25,
+          "y": 50
+        },
+        "links": [
+          {
+            "sourceId": "java_install",
+            "sourcePort": "bottom",
+            "targetPort": "left",
+            "vertices": []
+          }
+        ]
+      }
+    ]
+  }
+}

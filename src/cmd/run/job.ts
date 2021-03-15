@@ -9,7 +9,7 @@ type Arguments = {
   wait?: boolean;
   suppressEvents?: boolean;
   suppressOutputs?: boolean;
-  variables?: { [key: string]: string };
+  var?: { [key: string]: string };
 };
 
 export default handler<Arguments, any>(
@@ -21,11 +21,11 @@ export default handler<Arguments, any>(
       wait = false,
       suppressEvents = false,
       suppressOutputs = false,
-      variables = {}
+      var: variables
     }
   ) => {
     const { data: run } = await apiClient.jobs.runJob(projectId, jobId, {
-      variables: { ...variables },
+      variables,
       suppress_outputs: suppressOutputs,
       suppress_events: suppressEvents
     });

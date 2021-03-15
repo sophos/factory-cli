@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`refactrctl run job throws on missing arguments 1`] = `
+"refactrctl run job [job-id]
+
+Executes specified job
+
+Positionals:
+  job-id  ID of the job to be run  [string] [default: read from stdin]
+
+Options:
+      --version             Show version number  [boolean]
+  -v, --verbose             Print detailed output  [boolean]
+      --format              Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter              Filter output using JsonPath  [string]
+      --address             Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token          Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --help                Show help  [boolean]
+      --wait                Wait until run execution is finished  [boolean]
+      --suppress-events     Suppress run events during pipeline or job run  [boolean]
+      --suppress-outputs    Suppress outputs during pipeline or job run  [boolean]
+      --suppress-variables  Suppress variables during pipeline or job run  [boolean]
+      --var                 Pipeline variable in \`key:value\` format. The value must be valid JSON data.  [string]
+      --project-id          ID of the project containing the job  [string] [required]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`refactrctl run pipeline throws on missing arguments 1`] = `
+"refactrctl run pipeline [pipeline-id]
+
+Executes specified pipeline
+
+Positionals:
+  pipeline-id  ID of the pipeline to be executed  [string] [default: read from stdin]
+
+Options:
+      --version             Show version number  [boolean]
+  -v, --verbose             Print detailed output  [boolean]
+      --format              Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter              Filter output using JsonPath  [string]
+      --address             Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token          Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --help                Show help  [boolean]
+      --wait                Wait until run execution is finished  [boolean]
+      --suppress-events     Suppress run events during pipeline or job run  [boolean]
+      --suppress-outputs    Suppress outputs during pipeline or job run  [boolean]
+      --suppress-variables  Suppress variables during pipeline or job run  [boolean]
+      --var                 Pipeline variable in \`key:value\` format. The value must be valid JSON data.  [string]
+      --project-id          ID of the project containing the pipeline  [string] [required]
+      --revision-id         ID of the pipeline revision to be executed  [string] [required]
+
+Missing required arguments: project-id, revision-id
+"
+`;

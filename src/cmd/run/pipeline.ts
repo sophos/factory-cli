@@ -5,7 +5,7 @@ import fields from '../../fields';
 type Arguments = {
   projectId: string;
   pipelineId: string;
-  revision: number;
+  revisionId: string;
 
   wait?: boolean;
   suppressEvents?: boolean;
@@ -20,7 +20,7 @@ export default handler<Arguments, any>(
     {
       projectId,
       pipelineId,
-      revision,
+      revisionId,
       suppressEvents = false,
       suppressOutputs = false,
       suppressVariables = false,
@@ -31,7 +31,7 @@ export default handler<Arguments, any>(
     const { data: run } = await apiClient.pipelines.runPipeline(
       projectId,
       pipelineId,
-      revision,
+      revisionId,
       {
         suppress_events: suppressEvents,
         suppress_outputs: suppressOutputs,

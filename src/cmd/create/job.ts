@@ -19,7 +19,7 @@ type Arguments = {
   suppressEvents: boolean;
   suppressVariables: boolean;
   disableOnFailure: boolean;
-
+  var?: { [key: string]: string };
   schedule?: {
     startDay: string;
     startTime: string;
@@ -55,6 +55,7 @@ export default handler<Arguments, any>(
       suppressOutputs,
       suppressVariables,
       disableOnFailure,
+      var: variables,
       schedule
     }
   ) => {
@@ -69,6 +70,7 @@ export default handler<Arguments, any>(
       suppress_outputs: suppressOutputs,
       suppress_vars: suppressVariables,
       disable_on_failure: disableOnFailure,
+      variables,
 
       schedule: !isNil(schedule)
         ? {

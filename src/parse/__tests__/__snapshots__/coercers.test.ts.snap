@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coercers coercePipelineCreateInput throws when array is passed 1`] = `"It is not possible to provide multiple data as input!"`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid format 1`] = `"Invalid variable key-value pair received \`foo\`, expected variable to be specified as \`key:value\`, where value must be valid JSON data."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid format 2`] = `"Invalid variable key-value pair received \`foo:\`, expected variable to be specified as \`key:value\`, where value must be valid JSON data."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid format 3`] = `"Invalid variable key-value pair received \`\`, expected variable to be specified as \`key:value\`, where value must be valid JSON data."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid value format 1`] = `"Invalid variable value received in \`foo:bar:\` pair, expected value to be valid JSON."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid value format 2`] = `"Invalid variable value received in \`foo::\` pair, expected value to be valid JSON."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid value format 3`] = `"Invalid variable value received in \`foo:bar:baz\` pair, expected value to be valid JSON."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid value format 4`] = `"Invalid variable value received in \`foo:bar:baz\` pair, expected value to be valid JSON."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid value format 5`] = `"Invalid variable value received in \`foo:bar\` pair, expected value to be valid JSON."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid value format 6`] = `"Invalid variable value received in \`foo:{baz}\` pair, expected value to be valid JSON."`;
