@@ -75,9 +75,9 @@ export default (yargs: Yargs.Argv) =>
 
               return true;
             }, false)
-            .option('revision', {
-              describe: 'Revision number of the pipeline',
-              type: 'number',
+            .option('revision-id', {
+              describe: 'ID of the pipeline revision to be executed',
+              type: 'string',
               demandOption: true,
               requiresArg: true
             })
