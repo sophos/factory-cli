@@ -8,7 +8,62 @@ describe('refactrctl run', () => {
   // Give platform time to bootstrap runner.
   jest.setTimeout(60 * 1000);
   describe('pipeline', () => {
-    test('it should correctly run with variables', async () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['run', 'pipeline'], {
+          token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+    });
+
+    test('returns run object without --wait flag', async () => {
+      await expect(
+        execute(
+          [
+            'run',
+            'pipeline',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--revision-id',
+            knownIds.dynamic.pipelineRevision,
+            '--var',
+            '\'string_array_variable:["string", "array"]\'',
+            '--var',
+            '\'string_variable:"string"\'',
+            '--var',
+            "'number_array_variable:[100, 123]'",
+            '--var',
+            "'number_variable:123'",
+            '--var',
+            "'boolean_variable:true'",
+            knownIds.dynamic.pipeline,
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        ).then((value) => JSON.parse(value))
+      ).resolves.toHaveProperty('status', 'Queued');
+    });
+
+    test('returns an array of events with --wait flag', async () => {
+      await expect(
+        execute(
+          [
+            'run',
+            'pipeline',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--revision-id',
+            knownIds.dynamic.pipelineRevision,
+            knownIds.dynamic.pipeline,
+            '--wait',
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        ).then((value) => isArray(JSON.parse(value)))
+      ).resolves.toBeTruthy();
+    });
+
+    test('correctly runs with variables', async () => {
       await expect(
         (async () => {
           const result = JSON.parse(
@@ -63,7 +118,58 @@ describe('refactrctl run', () => {
   });
 
   describe('job', () => {
-    test('it should correctly run with variables', async () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['run', 'job'], {
+          token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+    });
+
+    test('returns run object without --wait flag', async () => {
+      await expect(
+        execute(
+          [
+            'run',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--var',
+            '\'string_array_variable:["string", "array"]\'',
+            '--var',
+            '\'string_variable:"string"\'',
+            '--var',
+            "'number_array_variable:[100, 123]'",
+            '--var',
+            "'number_variable:123'",
+            '--var',
+            "'boolean_variable:true'",
+            knownIds.dynamic.job,
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        ).then((value) => JSON.parse(value))
+      ).resolves.toHaveProperty('status', 'Queued');
+    });
+
+    test('returns an array of events with --wait flag', async () => {
+      await expect(
+        execute(
+          [
+            'run',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--wait',
+            knownIds.dynamic.job,
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        ).then((value) => isArray(JSON.parse(value)))
+      ).resolves.toBeTruthy();
+    });
+
+    test('correctly runs with variables', async () => {
       await expect(
         (async () => {
           const result = JSON.parse(

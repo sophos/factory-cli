@@ -12,6 +12,7 @@ const knownIds = {
     job: '604f464f192b5c8167a4415a',
     project: '6010f6e2a830874a04689246',
     organization: '5f9f2d08e2f1bb2436e6f5b0',
+    run: '604f4abe192b5c3200a4416b',
 
     pipeline: '6047b2750a563e6839955fd3',
     pipelineRevision: '604f3276a34be15756d7d24d'
