@@ -252,7 +252,13 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true,
             requiresArg: true
           })
-
+          .option('var', {
+            describe:
+              'Pipeline variable in `key:value` format. The value must be valid JSON data.',
+            type: 'string',
+            requiresArg: true,
+            coerce: coerceRunPipelineVariables
+          })
           .option('schedule', { hidden: true })
           .option('schedule.start-day', {
             type: 'string',
