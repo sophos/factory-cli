@@ -55,6 +55,7 @@ Options:
       --revision-id             ID of the pipeline revision  [string] [required]
       --name                    Name of the job  [string] [required]
       --type                    Trigger type of the job  [required] [choices: \\"manual\\", \\"scheduled\\"]
+      --var                     Pipeline variable in \`key:value\` format. The value must be valid JSON data.  [string]
       --schedule.start-day  [string]
       --schedule.start-time  [string]
       --schedule.offset  [string]

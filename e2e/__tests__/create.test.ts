@@ -171,6 +171,59 @@ describe('refactrctl create', () => {
       expect(deleteResult).toHaveProperty('_id', createResult._id);
     });
 
+    test('create & delete job with variables', async () => {
+      // TODO: ensure that variables are assigned.
+
+      const createResult = JSON.parse(
+        await execute(
+          [
+            'create',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--pipeline-id',
+            knownIds.dynamic.pipeline,
+            '--revision-id',
+            knownIds.dynamic.pipelineRevision,
+            '--name',
+            faker.random.word(),
+            '--type',
+            'manual',
+            '--var',
+            '\'string_array_variable:["string", "array"]\'',
+            '--var',
+            '\'string_variable:"string"\'',
+            '--var',
+            "'number_array_variable:[100, 123]'",
+            '--var',
+            "'number_variable:123'",
+            '--var',
+            "'boolean_variable:true'",
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        )
+      );
+
+      expect(createResult).toHaveProperty('_id');
+
+      const deleteResult = JSON.parse(
+        await execute(
+          [
+            'delete',
+            'job',
+            '--project-id',
+            knownIds.dynamic.project,
+            createResult._id,
+            '--format=json'
+          ],
+          { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        )
+      );
+
+      expect(deleteResult).toHaveProperty('_id', createResult._id);
+    });
+
     test('create & delete job (type: scheduled)', async () => {
       const schedule = {
         startDay: new Date().toLocaleString('en-US', {
