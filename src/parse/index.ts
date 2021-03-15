@@ -12,7 +12,7 @@ import rerun from './rerun';
 import del from './delete';
 
 // NOTE: using commonjs import here as rollup cannot correctly resolve
-//       yargs for some reason when importing with ES6 imports.
+//       yargs when importing with ES6 imports for some reason.
 const yargs = require('yargs');
 
 const DEFAULT_ADDRESS = 'https://api.refactr.it/v1';

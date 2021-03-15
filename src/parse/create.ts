@@ -1,29 +1,13 @@
-import * as path from 'path';
-
 import Yargs from 'yargs';
-import isArray from 'lodash/isArray';
-import isString from 'lodash/isString';
 import isNil from 'lodash/isNil';
 
-import { readStdin, parsePipelineFile, readPipelineFile } from '../util/io';
+import { readStdin } from '../util/io';
 import { CREDENTIAL_TYPES } from '../credential-type';
 import { JOB_TRIGGER_TYPE } from '../job-trigger-type';
-
-const coerceInput = (arg: string | string[]) => {
-  if (isArray(arg)) {
-    throw new Error('It is not possible to provide multiple data as input!');
-  } else if (!isString(arg)) {
-    return;
-  }
-
-  // If input starts with @ treat input as file path.
-  if (arg.startsWith('@')) {
-    const filepath = path.resolve(arg.slice(1).trim());
-    return readPipelineFile(filepath);
-  }
-
-  return parsePipelineFile(arg);
-};
+import {
+  coercePipelineCreateInput,
+  coerceRunPipelineVariables
+} from './coercers';
 
 export default (yargs: Yargs.Argv) =>
   yargs.command('create', 'Create specified resource', (yargs) =>
@@ -53,7 +37,7 @@ export default (yargs: Yargs.Argv) =>
               description:
                 'Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats. ' +
                 'If supplied argument is starting with at symbol (`@`) argument is treated as path to configuration file.',
-              coerce: coerceInput
+              coerce: coercePipelineCreateInput
             })
             .default('input', () => readStdin(), 'read from stdin')
             .check((argv) => {
