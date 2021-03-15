@@ -1,6 +1,7 @@
 import Yargs from 'yargs';
 import { readStdin } from '../util/io';
 import isNil from 'lodash/isNil';
+import { coerceRunPipelineVariables } from './coercers';
 
 export default (yargs: Yargs.Argv) =>
   yargs.command('run', 'Execute pipeline or job', (yargs) =>
@@ -20,6 +21,13 @@ export default (yargs: Yargs.Argv) =>
       .option('suppress-variables', {
         describe: 'Suppress variables during pipeline or job run',
         type: 'boolean'
+      })
+      .option('var', {
+        describe:
+          'Pipeline variable in `key:value` format. The value must be valid JSON data.',
+        type: 'string',
+        requiresArg: true,
+        coerce: coerceRunPipelineVariables
       })
       .command('job [job-id]', 'Executes specified job', (yargs) =>
         yargs
@@ -72,40 +80,6 @@ export default (yargs: Yargs.Argv) =>
               type: 'number',
               demandOption: true,
               requiresArg: true
-            })
-            .option('var', {
-              describe: 'Pipeline variable in `key:value` format',
-              type: 'string',
-              requiresArg: true,
-              coerce: (arg: string | string[]) => {
-                if (typeof arg === 'string') {
-                  arg = [arg];
-                }
-
-                return Object.fromEntries(
-                  arg.map((a) => {
-                    const parts = a.split(':');
-
-                    if (parts.length !== 2) {
-                      throw new Error(
-                        'Invalid variable format, expected variable to be specified as `key:value`.'
-                      );
-                    }
-
-                    const [key, rawValue] = parts;
-                    let value;
-                    try {
-                      value = JSON.parse(rawValue);
-                    } catch (err) {
-                      throw new Error(
-                        'Variable value must be valid JSON data.'
-                      );
-                    }
-
-                    return [key, value];
-                  })
-                );
-              }
             })
             .strict()
       )
