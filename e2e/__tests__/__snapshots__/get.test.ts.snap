@@ -91,7 +91,7 @@ exports[`refactrctl get formats as JSON when --format=json is passed 2`] = `
     \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
     \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
     \\"created\\": \\"2021-01-11T15:40:13.848Z\\",
-    \\"modified\\": \\"2021-01-18T16:15:11.338Z\\",
+    \\"modified\\": \\"2021-03-19T12:16:17.965Z\\",
     \\"pipeline_count\\": 1,
     \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\",
     \\"access\\": {
@@ -188,7 +188,7 @@ exports[`refactrctl get formats as JSON when --format=yaml is passed 2`] = `
 "_id: 5ffc715d04ea5ca71d201bb3
 organization_id: 5f9f2d08e2f1bb2436e6f5b0
 created: '2021-01-11T15:40:13.848Z'
-modified: '2021-01-18T16:15:11.338Z'
+modified: '2021-03-19T12:16:17.965Z'
 pipeline_count: 1
 name: 'CLI tests [STATIC ONLY] (LIST, GET)'
 access:

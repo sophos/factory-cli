@@ -1074,10 +1074,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@refactr/api-client@~0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@refactr/api-client/-/api-client-0.6.0.tgz#627548cbf2ab24f723c7870f1068f002a47d42bb"
-  integrity sha512-Y4ug/btnVnWYsZ2BfJVfP7A4T9pRjEL++fFoJK6XekobJy9Jflw8KW0tXzT1YPzdfd0nl8VFEL7aYXDEc4rIzw==
+"@refactr/api-client@~0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@refactr/api-client/-/api-client-0.7.0.tgz#e99cdb7c06c2c7118452cf50747378a118001c47"
+  integrity sha512-rdmQD0yOgC9ErZdhuYjkxKaOXDoI5WAmTX7D6g2AhcVE9Zwf4jQXjuentcp+0Pe60oN3krBGxQCX7s8acSWuUw==
   dependencies:
     axios "^0.21.1"
 
