@@ -5,8 +5,8 @@ type Arguments = {
   credentialId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, credentialId }) => {
+export default handler(
+  async (apiClient, { projectId, credentialId }: Arguments) => {
     const api = apiClient.credentials;
 
     await api.deleteCredential(projectId, credentialId);

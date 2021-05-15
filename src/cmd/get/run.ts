@@ -6,11 +6,9 @@ type Arguments = {
   runId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, runId }) => {
-    const api = apiClient.runs;
-    const { data: run } = await api.getRun(projectId, runId);
+export default handler(async (apiClient, { projectId, runId }: Arguments) => {
+  const api = apiClient.runs;
+  const { data: run } = await api.getRun(projectId, runId);
 
-    return createCommandResult('view', run, fields.run);
-  }
-);
+  return createCommandResult('view', run, fields.run);
+});

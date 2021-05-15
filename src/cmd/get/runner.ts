@@ -6,8 +6,8 @@ type Arguments = {
   runnerId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { organizationId, runnerId }) => {
+export default handler(
+  async (apiClient, { organizationId, runnerId }: Arguments) => {
     const api = apiClient.runners;
     const { data: run } = await api.getRunnerAgent(organizationId, runnerId);
 

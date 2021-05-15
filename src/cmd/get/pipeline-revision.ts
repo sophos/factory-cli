@@ -7,8 +7,8 @@ type Arguments = {
   revisionId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, pipelineId, revisionId }) => {
+export default handler(
+  async (apiClient, { projectId, pipelineId, revisionId }: Arguments) => {
     const api = apiClient.pipelines;
     const { data: pipelineRevision } = await api.getPipelineRevision(
       projectId,

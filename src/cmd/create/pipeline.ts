@@ -7,11 +7,8 @@ type Arguments = {
   summary?: string;
 };
 
-export default handler<Arguments, any>(
-  async (
-    apiClient,
-    { projectId, name, description, summary }
-  ): Promise<any> => {
+export default handler(
+  async (apiClient, { projectId, name, description, summary }: Arguments) => {
     const api = apiClient.pipelines;
     const { data: pipeline } = await api.createPipeline(projectId, {
       name,

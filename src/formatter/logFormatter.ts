@@ -4,7 +4,7 @@ import humanify from './humanify';
 import { Formatter } from './formatter';
 
 const logFormatter: Formatter = function logFormatter(
-  input: { [key: string]: any },
+  input: { [key: string]: unknown },
   fields: string[]
 ): string {
   return fields

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
 
@@ -98,7 +99,7 @@ describe('refactrctl run', () => {
           }
 
           const ret = result.find(
-            (entry: any) =>
+            (entry) =>
               entry.message === 'Debug message' && entry.code === 'StepOutput'
           );
           if (isNil(ret)) {
@@ -202,7 +203,7 @@ describe('refactrctl run', () => {
           }
 
           const ret = result.find(
-            (entry: any) =>
+            (entry) =>
               entry.message === 'Debug message' && entry.code === 'StepOutput'
           );
           if (isNil(ret)) {

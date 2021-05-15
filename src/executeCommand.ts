@@ -10,12 +10,13 @@ import {
 } from './cmd';
 import Client from './client';
 import formatter from './formatter';
+import type { Args } from './parse';
 import printer from './printer';
 import filterer from './filterer';
 import asyncGenToArray from './util/asyncGenToArray';
 
-export default async function executeCommand(args: any) {
-  const methods: string[] = args._;
+export default async function executeCommand(args: Args) {
+  const methods: string[] = args._ as string[];
   const filterPath = args.filter ?? null;
   const command = methods[0] as TopLevelCommand;
   let handler;
@@ -40,12 +41,18 @@ export default async function executeCommand(args: any) {
     if (isFunction(handler)) {
       isUnknownCmd = false;
 
-      const apiClient = new Client(args.address, args.authToken);
+      const apiClient = new Client(
+        (args.address as unknown) as string,
+        args.authToken as string
+      );
+      // @ts-expect-error: TODO: correctly resolve Args type.
       const result = await handler(apiClient, args);
       const { payload, fields, type, format: formatType } = result;
       const isJsonOrYamlFormat = formatType === 'json' || formatType === 'yaml';
       const isError = type === 'error';
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const filter = filterer(filterPath, fields!, type);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const format = formatter(formatType, fields!);
       const view = flow([
         filter,
@@ -115,7 +122,7 @@ export default async function executeCommand(args: any) {
     viewError({
       code: 'UnknownError',
       error,
-      stack: error!.stack,
+      stack: error.stack,
       message:
         'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
     });

@@ -5,12 +5,10 @@ type Arguments = {
   jobId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, jobId }) => {
-    const api = apiClient.jobs;
+export default handler(async (apiClient, { projectId, jobId }: Arguments) => {
+  const api = apiClient.jobs;
 
-    await api.deleteJob(projectId, jobId);
+  await api.deleteJob(projectId, jobId);
 
-    return createCommandResult('view', { _id: jobId }, ['_id']);
-  }
-);
+  return createCommandResult('view', { _id: jobId }, ['_id']);
+});

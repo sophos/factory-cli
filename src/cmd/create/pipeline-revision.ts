@@ -5,18 +5,18 @@ type Arguments = {
   projectId: string;
   pipelineId: string;
   inputFile?: string;
-  input?: { [key: string]: any };
+  input?: { [key: string]: unknown };
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, pipelineId, input }) => {
+export default handler(
+  async (apiClient, { projectId, pipelineId, input }: Arguments) => {
     const api = apiClient.pipelines;
 
     const { data: pipelineRevision } = await api.createPipelineRevision(
       projectId,
       pipelineId,
       {
-        ...input,
+        ...input
       }
     );
 

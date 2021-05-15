@@ -1,20 +1,22 @@
-import { createCommandResult, handler, CommandResult } from '../handler';
+import isString from 'lodash/isString';
+import { CredentialType } from '../../credential-type';
 import fields from '../../fields';
+import { createCommandResult, handler } from '../handler';
 
 type Arguments = {
   projectId: string;
-  type?: string;
+  type?: CredentialType | CredentialType[];
   sort?: 'created_asc' | 'created_desc';
   limit?: number;
   offset?: number;
 };
 
-export default handler<any, Arguments>(
-  async (
-    apiClient,
-    { projectId, type, sort, limit, offset }
-  ): Promise<CommandResult<any>> => {
+export default handler(
+  async (apiClient, { projectId, sort, type, limit, offset }: Arguments) => {
     const api = apiClient.credentials;
+    if (isString(type)) {
+      type = [type];
+    }
 
     const { data } = await api.listCredentials(
       projectId,
@@ -23,8 +25,6 @@ export default handler<any, Arguments>(
       offset,
       limit
     );
-
-    // @ts-expect-error: invalid types from `@refactr/api-client`.
     const list = data?.credentials ?? [];
 
     return createCommandResult('view', list, fields.credential);

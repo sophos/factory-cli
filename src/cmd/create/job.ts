@@ -13,7 +13,7 @@ type Arguments = {
   revisionId: string;
   name: string;
   type: JobTriggerType;
-  data?: any;
+  data?: unknown;
 
   suppressOutputs: boolean;
   suppressEvents: boolean;
@@ -42,7 +42,7 @@ const intervalType = {
   month: JobScheduleIntervalTypeEnum.Month
 };
 
-export default handler<Arguments, any>(
+export default handler(
   async (
     apiClient,
     {
@@ -57,7 +57,7 @@ export default handler<Arguments, any>(
       disableOnFailure,
       var: variables,
       schedule
-    }
+    }: Arguments
   ) => {
     const api = apiClient.jobs;
 

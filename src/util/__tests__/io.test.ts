@@ -1,10 +1,10 @@
 import { join } from 'path';
 
-import { readPipelineFile, readStdin } from '../io';
+import { readPipelineFile } from '../io';
 
 describe('io', () => {
   describe('readFile', () => {
-    let expected: object;
+    let expected: Record<string, unknown>;
     beforeAll(() => {
       expected = require('./fixtures/readFile/extected.json');
     });

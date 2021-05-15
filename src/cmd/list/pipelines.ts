@@ -1,5 +1,5 @@
-import { createCommandResult, handler } from '../handler';
 import fields from '../../fields';
+import { createCommandResult, handler } from '../handler';
 
 type Arguments = {
   projectId: string;
@@ -9,8 +9,8 @@ type Arguments = {
   search?: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, sort, limit, offset, search }) => {
+export default handler(
+  async (apiClient, { projectId, sort, limit, offset, search }: Arguments) => {
     const api = apiClient.pipelines;
 
     const { data } = await api.listPipelines(
