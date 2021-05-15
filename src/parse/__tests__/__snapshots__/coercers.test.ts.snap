@@ -2,11 +2,19 @@
 
 exports[`coercers coercePipelineCreateInput throws when array is passed 1`] = `"It is not possible to provide multiple data as input!"`;
 
-exports[`coercers coerceRunPipelineVariables throws on invalid format 1`] = `"Invalid variable key-value pair received \`foo\`, expected variable to be specified as \`key:value\`, where value must be valid JSON data."`;
+exports[`coercers coerceRunPipelineVariables rejects any JSON except object 1`] = `"Invalid variable received \`123\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
 
-exports[`coercers coerceRunPipelineVariables throws on invalid format 2`] = `"Invalid variable key-value pair received \`foo:\`, expected variable to be specified as \`key:value\`, where value must be valid JSON data."`;
+exports[`coercers coerceRunPipelineVariables rejects any JSON except object 2`] = `"Invalid variable received \`false\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
 
-exports[`coercers coerceRunPipelineVariables throws on invalid format 3`] = `"Invalid variable key-value pair received \`\`, expected variable to be specified as \`key:value\`, where value must be valid JSON data."`;
+exports[`coercers coerceRunPipelineVariables rejects any JSON except object 3`] = `"Invalid variable received \`true\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
+
+exports[`coercers coerceRunPipelineVariables rejects any JSON except object 4`] = `"Invalid variable received \`[]\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid format 1`] = `"Invalid variable received \`foo\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid format 2`] = `"Invalid variable received \`foo:\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
+
+exports[`coercers coerceRunPipelineVariables throws on invalid format 3`] = `"Invalid variable received \`\`, expected variable to be specified as \`key:value\` where value must be valid JSON data or valid JSON object."`;
 
 exports[`coercers coerceRunPipelineVariables throws on invalid value format 1`] = `"Invalid variable value received in \`foo:bar:\` pair, expected value to be valid JSON."`;
 

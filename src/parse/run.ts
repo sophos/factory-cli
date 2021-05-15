@@ -24,7 +24,7 @@ export default (yargs: Yargs.Argv) =>
       })
       .option('var', {
         describe:
-          'Pipeline variable in `key:value` format. The value must be valid JSON data.',
+          'Pipeline variable in `key:value` format, where value is JSON data or valid JSON object.',
         type: 'string',
         requiresArg: true,
         coerce: coerceRunPipelineVariables
