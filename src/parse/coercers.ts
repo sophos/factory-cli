@@ -2,24 +2,34 @@ import path from 'path';
 import isArray from 'lodash/isArray';
 import isString from 'lodash/isString';
 import { parsePipelineFile, readPipelineFile } from '../util/io';
+import { isPOJO } from '../util/isPOJO';
 
 export function coerceRunPipelineVariables(arg: string | string[]) {
   if (!isString(arg) && !isArray(arg)) {
     return;
   }
 
-  if (typeof arg === 'string') {
+  if (isString(arg)) {
     arg = [arg];
   }
 
   return Object.fromEntries(
-    arg.map((a) => {
+    arg.flatMap((a) => {
+      try {
+        const obj = JSON.parse(a);
+        if (isPOJO(obj)) {
+          return Object.entries(obj as Record<string, unknown>);
+        }
+      } catch (_) {
+        // empty
+      }
+
       const splitIdx = a.indexOf(':');
       if (splitIdx === -1 || a.length - 1 === splitIdx) {
         throw new Error(
-          `Invalid variable key-value pair received \`${a}\`, ` +
-            'expected variable to be specified as `key:value`, ' +
-            'where value must be valid JSON data.'
+          `Invalid variable received \`${a}\`, ` +
+            'expected variable to be specified as `key:value` ' +
+            'where value must be valid JSON data or valid JSON object.'
         );
       }
 
@@ -34,7 +44,7 @@ export function coerceRunPipelineVariables(arg: string | string[]) {
         );
       }
 
-      return [key, value];
+      return [[key, value]];
     })
   );
 }

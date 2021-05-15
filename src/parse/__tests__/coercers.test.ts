@@ -81,6 +81,34 @@ describe('coercers', () => {
       ).toThrowErrorMatchingSnapshot();
     });
 
+    test('accepts JSON object', () => {
+      expect(coerceRunPipelineVariables('{}')).toStrictEqual({});
+      expect(coerceRunPipelineVariables('{ "foo": 123 }')).toStrictEqual({
+        foo: 123
+      });
+      expect(
+        coerceRunPipelineVariables('{ "foo": "bar", "bar": "baz" }')
+      ).toStrictEqual({
+        foo: 'bar',
+        bar: 'baz'
+      });
+    });
+
+    test('rejects any JSON except object', () => {
+      expect(() =>
+        coerceRunPipelineVariables('123')
+      ).toThrowErrorMatchingSnapshot();
+      expect(() =>
+        coerceRunPipelineVariables('false')
+      ).toThrowErrorMatchingSnapshot();
+      expect(() =>
+        coerceRunPipelineVariables('true')
+      ).toThrowErrorMatchingSnapshot();
+      expect(() =>
+        coerceRunPipelineVariables('[]')
+      ).toThrowErrorMatchingSnapshot();
+    });
+
     test('accepts valid JSON value', () => {
       expect(coerceRunPipelineVariables('foo:"bar"')).toStrictEqual({
         foo: 'bar'
@@ -100,6 +128,38 @@ describe('coercers', () => {
         bar: 123,
         baz: 'xyz',
         xyz: ['foo', 'bar', 'baz']
+      });
+    });
+
+    test('merges JSON objects and key:value pairs', () => {
+      expect(
+        coerceRunPipelineVariables(['{"foo": "bar"}', 'baz:123'])
+      ).toStrictEqual({
+        foo: 'bar',
+        baz: 123
+      });
+      expect(
+        coerceRunPipelineVariables(['{"foo": "bar"}', '{"bar":"baz"}'])
+      ).toStrictEqual({
+        foo: 'bar',
+        bar: 'baz'
+      });
+      expect(
+        coerceRunPipelineVariables([
+          '{"foo": "bar"}',
+          'xyz:"qwe"',
+          '{"bar":"baz"}'
+        ])
+      ).toStrictEqual({
+        foo: 'bar',
+        bar: 'baz',
+        xyz: 'qwe'
+      });
+
+      expect(
+        coerceRunPipelineVariables(['{"foo": "bar"}', 'foo:123'])
+      ).toStrictEqual({
+        foo: 123
       });
     });
   });
