@@ -27,7 +27,7 @@ describe('humanify', () => {
       humanify({
         foo: ['foo', 'bar', 'baz'],
         bar: true,
-        baz: { xyz: { qux: 'quux' } },
+        baz: { xyz: { qux: 'quux' } }
       })
     ).toMatchSnapshot();
   });

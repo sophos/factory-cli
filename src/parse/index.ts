@@ -13,6 +13,7 @@ import del from './delete';
 
 // NOTE: using commonjs import here as rollup cannot correctly resolve
 //       yargs when importing with ES6 imports for some reason.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const yargs = require('yargs');
 
 const DEFAULT_ADDRESS = 'https://api.refactr.it/v1';
@@ -98,4 +99,5 @@ const parse = (argv: string[], { version }: { version: string }) => {
     .wrap(Math.min(120, yargs.terminalWidth())).argv;
 };
 
+export type Args = ReturnType<typeof parse>;
 export default parse;

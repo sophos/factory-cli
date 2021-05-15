@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import * as faker from 'faker';
 
 import { execute } from '../helpers/execute';
-import { loadFixtures } from './fixtures';
 import knownIds from '../helpers/knowIds';
+import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
   return await loadFixtures();
@@ -293,14 +295,6 @@ describe('refactrctl create', () => {
           token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
-    });
-
-    test.skip('should create project', async () => {
-      const result = JSON.parse(
-        await execute(['create', 'project', '--name', faker.name.title()], {
-          token: process.env.DYNAMIC_AUTH_TOKEN!
-        })
-      );
     });
   });
 });

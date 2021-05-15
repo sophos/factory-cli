@@ -5,8 +5,8 @@ type Arguments = {
   name: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { organizationId, name }) => {
+export default handler(
+  async (apiClient, { organizationId, name }: Arguments) => {
     const api = apiClient.projects;
 
     const { data: project } = await api.createOrganizationProject(

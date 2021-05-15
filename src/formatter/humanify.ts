@@ -1,31 +1,34 @@
-import isDate from 'lodash/isDate';
-import isBoolean from 'lodash/isBoolean';
-import isObject from 'lodash/isObject';
-import isNil from 'lodash/isNil';
-import parseISO from 'date-fns/parseISO';
-import isValid from 'date-fns/isValid';
 import formatDate from 'date-fns/format';
+import isValid from 'date-fns/isValid';
 import localeEN from 'date-fns/locale/en-US';
+import parseISO from 'date-fns/parseISO';
+import isBoolean from 'lodash/isBoolean';
+import isDate from 'lodash/isDate';
+import isNil from 'lodash/isNil';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
 
-const tryParseDate = (value: any): any => {
-  const maybeDate = parseISO(value);
-  if (isValid(maybeDate)) {
-    return maybeDate;
+const tryParseDate = <T = unknown>(value: T): T | Date => {
+  if (isString(value)) {
+    const maybeDate = parseISO(value);
+    if (isValid(maybeDate)) {
+      return maybeDate;
+    }
   }
 
   return value;
 };
 
-export default function humanify(value: any) {
-  value = tryParseDate(value);
+export default function humanify<T = unknown>(value: T): T | string {
+  const maybeDateValue = tryParseDate(value);
 
-  if (isDate(value)) {
-    return humanifyDate(value);
+  if (isDate(maybeDateValue)) {
+    return humanifyDate(maybeDateValue);
   } else if (isBoolean(value)) {
     return humanifyBoolean(value);
   } else if (isObject(value)) {
-    return humanifyObject(value);
-  } else if (isNil(value) || value === '') {
+    return humanifyObject(value as Record<string, unknown>);
+  } else if (isNil(value) || (isString(value) && value === '')) {
     return '-';
   }
 
@@ -35,5 +38,6 @@ export default function humanify(value: any) {
 const humanifyDate = (value: Date) =>
   formatDate(value, 'Pp', { locale: localeEN });
 
-const humanifyObject = (value: { [key: string]: any }) => JSON.stringify(value);
+const humanifyObject = (value: { [key: string]: unknown }) =>
+  JSON.stringify(value);
 const humanifyBoolean = (value: boolean) => (value ? 'Yes' : 'No');

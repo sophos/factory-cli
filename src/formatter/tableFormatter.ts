@@ -6,7 +6,7 @@ import Table from 'cli-table';
 import humanify from './humanify';
 import { Formatter } from './formatter';
 
-type Row = { [key: string]: any };
+type Row = { [key: string]: unknown };
 type Input = Row | Row[] | null;
 
 const formatterChars = {
@@ -40,7 +40,7 @@ const tableFormatter: Formatter = function tableFormatter(
   }
 
   const rows = (input as Row[]).map((row) =>
-    fields.reduce<any[]>((acc, field) => {
+    fields.reduce<unknown[]>((acc, field) => {
       const value = row[field];
       acc.push(humanify(value));
 

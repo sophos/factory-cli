@@ -6,7 +6,7 @@ import { load } from 'js-yaml';
  * Reads and parses input file either as YAML or JSON.
  * @param path
  */
-export function readPipelineFile(path: string) {
+export function readPipelineFile(path: string): unknown {
   try {
     const stat = fs.statSync(path);
     if (stat.isDirectory()) {
@@ -30,7 +30,7 @@ export function readPipelineFile(path: string) {
  * @param input
  * @param path
  */
-export function parsePipelineFile(input: string, path?: string) {
+export function parsePipelineFile(input: string, path?: string): unknown {
   try {
     return load(input, {
       filename: path,
@@ -46,7 +46,7 @@ export function parsePipelineFile(input: string, path?: string) {
 /**
  * Read data from stdin.
  */
-export function readStdin() {
+export function readStdin(): undefined | string {
   const fd = process.stdin.fd;
 
   // https://unix.stackexchange.com/questions/382849/determine-if-process-is-connected-to-another-process-via-pipes

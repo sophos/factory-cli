@@ -7,7 +7,7 @@ export default function filterer(
   fields: string[],
   type: CommandResultType
 ): Filterer {
-  return (input: any) => {
+  return (input) => {
     if (type !== 'error' && isString(filter)) {
       return jsonFilter({
         path: filter,
@@ -21,4 +21,5 @@ export default function filterer(
   };
 }
 
-type Filterer = (input: any) => any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Filterer = (input: any) => unknown;

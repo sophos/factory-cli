@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import * as faker from 'faker';
 
 import { executeAsIs } from '../helpers/execute';

@@ -21,13 +21,13 @@ export type CommandHandler<A, R> = (
   | HandlerResult<{
       stack: string;
       kind: ErrorKind;
-      errors: any[];
+      errors: unknown[];
     }>
   | HandlerResult<{
       stack: string;
       kind: ErrorKind;
       possiblyWrongAddress: boolean;
-      error: any;
+      error: unknown;
     }>
 >;
 
@@ -41,7 +41,7 @@ export const createCommandResult = <T>(
   fields: type === 'error' ? ['code', 'message'] : fields
 });
 
-const createHandlerResult = <T extends any>(
+const createHandlerResult = <T = unknown>(
   cmd: CommandResult<T>,
   format: RawFormatType
 ): CommandResult<T> & { format: FormatType } => ({

@@ -7,7 +7,7 @@ type Options = {
 const printerMap: Record<Level, 'info' | 'warn' | 'error'> = {
   info: 'info',
   warning: 'warn',
-  error: 'error',
+  error: 'error'
 };
 
 export default function printer({ level }: Options) {
