@@ -20,7 +20,7 @@ Options:
       --suppress-events     Suppress run events during pipeline or job run  [boolean]
       --suppress-outputs    Suppress outputs during pipeline or job run  [boolean]
       --suppress-variables  Suppress variables during pipeline or job run  [boolean]
-      --var                 Pipeline variable in \`key:value\` format. The value must be valid JSON data.  [string]
+      --var                 Pipeline variable in \`key:value\` format, where value is JSON data or valid JSON object.  [string]
       --project-id          ID of the project containing the job  [string] [required]
 
 Missing required argument: project-id
@@ -47,7 +47,7 @@ Options:
       --suppress-events     Suppress run events during pipeline or job run  [boolean]
       --suppress-outputs    Suppress outputs during pipeline or job run  [boolean]
       --suppress-variables  Suppress variables during pipeline or job run  [boolean]
-      --var                 Pipeline variable in \`key:value\` format. The value must be valid JSON data.  [string]
+      --var                 Pipeline variable in \`key:value\` format, where value is JSON data or valid JSON object.  [string]
       --project-id          ID of the project containing the pipeline  [string] [required]
       --revision-id         ID of the pipeline revision to be executed  [string] [required]
 
