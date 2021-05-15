@@ -11,7 +11,7 @@ describe('coercers', () => {
       json: join(__dirname, './fixtures/coercePipelineCreateInput/test.json'),
       yaml: join(__dirname, './fixtures/coercePipelineCreateInput/test.yaml')
     };
-    let expected: object;
+    let expected: Record<string, unknown>;
     beforeAll(() => {
       expected = require('./fixtures/coercePipelineCreateInput/extected.json');
     });

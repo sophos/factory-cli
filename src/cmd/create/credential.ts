@@ -65,8 +65,8 @@ type Arguments = {
   id: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, name, type, data, id }) => {
+export default handler(
+  async (apiClient, { projectId, name, type, data, id }: Arguments) => {
     const api = apiClient.credentials;
 
     const { data: credential } = await api.createCredential(projectId, {

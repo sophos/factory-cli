@@ -5,8 +5,8 @@ type Arguments = {
   pipelineId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, pipelineId }) => {
+export default handler(
+  async (apiClient, { projectId, pipelineId }: Arguments) => {
     const api = apiClient.pipelines;
 
     await api.deletePipeline(projectId, pipelineId);

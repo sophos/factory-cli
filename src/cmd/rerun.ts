@@ -1,3 +1,4 @@
+import { InlineResponse201, RunEvents } from '@refactr/api-client';
 import { createCommandResult, handler } from './handler';
 import { createStream } from './run-event-stream';
 import fields from '../fields';
@@ -8,15 +9,17 @@ type Arguments = {
   wait?: boolean;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, runId, wait = false }) => {
-    const { data: run } = await apiClient.runs.rerunRun(projectId, runId);
+export default handler<
+  Arguments,
+  AsyncGenerator<RunEvents> | InlineResponse201
+>(async (apiClient, { projectId, runId, wait = false }) => {
+  const { data: run } = await apiClient.runs.rerunRun(projectId, runId);
 
-    if (wait) {
-      const stream = createStream(apiClient, projectId, run._id!);
-      return createCommandResult('streaming', stream, fields.runEvent);
-    }
-
-    return createCommandResult('view', run, fields.run);
+  if (wait) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const stream = createStream(apiClient, projectId, run._id!);
+    return createCommandResult('streaming', stream, fields.runEvent);
   }
-);
+
+  return createCommandResult('view', run, fields.run);
+});

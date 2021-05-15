@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { executeAsIs, execute } from '../helpers/execute';
 import { withCmd } from '../helpers/options';
 import knownIds from '../helpers/knowIds';

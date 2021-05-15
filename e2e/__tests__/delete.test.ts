@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { execute } from '../helpers/execute';
 import { loadFixtures } from './fixtures';
 

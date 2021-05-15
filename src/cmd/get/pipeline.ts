@@ -6,8 +6,8 @@ type Arguments = {
   pipelineId: string;
 };
 
-export default handler<Arguments, any>(
-  async (apiClient, { projectId, pipelineId }) => {
+export default handler(
+  async (apiClient, { projectId, pipelineId }: Arguments) => {
     const api = apiClient.pipelines;
     const { data: pipeline } = await api.getPipeline(projectId, pipelineId);
 

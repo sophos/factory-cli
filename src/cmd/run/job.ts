@@ -1,7 +1,7 @@
-import { createStream } from '../run-event-stream';
-import Client from '../../client';
-import { createCommandResult, handler } from '../handler';
+import { InlineResponse201, RunEvents } from '@refactr/api-client';
 import fields from '../../fields';
+import { createCommandResult, handler } from '../handler';
+import { createStream } from '../run-event-stream';
 
 type Arguments = {
   projectId: string;
@@ -12,7 +12,10 @@ type Arguments = {
   var?: { [key: string]: string };
 };
 
-export default handler<Arguments, any>(
+export default handler<
+  Arguments,
+  AsyncGenerator<RunEvents> | InlineResponse201
+>(
   async (
     apiClient,
     {
@@ -22,7 +25,7 @@ export default handler<Arguments, any>(
       suppressEvents = false,
       suppressOutputs = false,
       var: variables
-    }
+    }: Arguments
   ) => {
     const { data: run } = await apiClient.jobs.runJob(projectId, jobId, {
       variables,
@@ -31,6 +34,7 @@ export default handler<Arguments, any>(
     });
 
     if (wait) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const stream = createStream(apiClient, projectId, run._id!);
       return createCommandResult('streaming', stream, fields.runEvent);
     }

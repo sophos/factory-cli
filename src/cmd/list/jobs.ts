@@ -1,17 +1,15 @@
-import { createCommandResult, handler, CommandResult } from '../handler';
 import fields from '../../fields';
+import { createCommandResult, handler } from '../handler';
 
 type Arguments = {
   projectId: string;
 };
 
-export default handler<any, Arguments>(
-  async (apiClient, { projectId }): Promise<CommandResult<any>> => {
-    const api = apiClient.jobs;
+export default handler(async (apiClient, { projectId }: Arguments) => {
+  const api = apiClient.jobs;
 
-    const { data } = await api.listJobs(projectId);
-    const list = data?.jobs ?? [];
+  const { data } = await api.listJobs(projectId);
+  const list = data?.jobs ?? [];
 
-    return createCommandResult('view', list, fields.job);
-  }
-);
+  return createCommandResult('view', list, fields.job);
+});

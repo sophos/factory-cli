@@ -13,6 +13,7 @@ export const executableCommandsMap = {
 
 export const commandsWithSubcommandsMap: Record<
   string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Record<string, CommandHandler<any, any>>
 > = {
   create: createCommandMap,

@@ -1,6 +1,6 @@
 import { Formatter } from './formatter';
 
-const jsonFormatter: Formatter = function jsonFormatter(input: any): string {
+const jsonFormatter: Formatter = <T = unknown>(input: T): T | string => {
   try {
     return JSON.stringify(input, null, 4);
   } catch (_) {
