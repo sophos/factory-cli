@@ -174,8 +174,6 @@ describe('refactrctl create', () => {
     });
 
     test('create & delete job with variables', async () => {
-      // TODO: ensure that variables are assigned.
-
       const createResult = JSON.parse(
         await execute(
           [

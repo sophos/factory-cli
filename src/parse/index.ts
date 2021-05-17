@@ -99,5 +99,11 @@ const parse = (argv: string[], { version }: { version: string }) => {
     .wrap(Math.min(120, yargs.terminalWidth())).argv;
 };
 
-export type Args = ReturnType<typeof parse>;
+export type Args = Omit<ReturnType<typeof parse>, 'address'> & {
+  address: string;
+  authToken: string;
+
+  // TODO: yargs should infer this.
+  filter?: string;
+};
 export default parse;

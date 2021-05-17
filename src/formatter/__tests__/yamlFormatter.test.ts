@@ -40,7 +40,7 @@ describe('yamlFormatter', () => {
     ).toMatchSnapshot();
   });
 
-  // TODO(.): should be implement field omit functionality for YAML formatter?
+  // TODO(.): should we implement field omitting functionality for YAML formatter?
   test.skip('omits data fields if not presented in `fields` argument', () => {
     expect(
       yamlFormatter([{ foo: 'foo', bar: 'bar', baz: 'baz' }], ['foo', 'bar'])

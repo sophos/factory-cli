@@ -68,7 +68,7 @@ export function readStdin(): undefined | string {
   const buf = Buffer.alloc(bufferSize);
   const chunks = [];
 
-  while (1) {
+  for (;;) {
     let readBytes = 0;
     try {
       readBytes = fs.readSync(fd, buf, 0, bufferSize, null);

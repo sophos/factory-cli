@@ -14,7 +14,7 @@
     "yarn.lock"
   ],
   "engines": {
-    "node": ">=12 <16"
+    "node": ">=12 <17"
   },
   "bin": {
     "refactrctl": "./bin/refactrctl.js"

@@ -40,7 +40,7 @@ describe('jsonFormatter', () => {
     ).toMatchSnapshot();
   });
 
-  // TODO(.): should be implement field omit functionality for JSON formatter?
+  // TODO(.): should we implement field omitting functionality for JSON formatter?
   test.skip('omits data fields if not presented in `fields` argument', () => {
     expect(
       jsonFormatter([{ foo: 'foo', bar: 'bar', baz: 'baz' }], ['foo', 'bar'])
