@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
+import isArray from 'lodash/isArray';
 import { execute } from '../helpers/execute';
 import knownIds from '../helpers/knowIds';
-import isArray from 'lodash/isArray';
 
-describe('refactrctl rerun', () => {
+describe('refactrctl wait-run', () => {
   // Give platform time to bootstrap runner.
   jest.setTimeout(60 * 1000);
 
@@ -27,46 +27,24 @@ describe('refactrctl rerun', () => {
     );
 
     runId = data._id;
-
-    // Wait until run is finished.
-    return await execute(
-      ['wait-run', '--project-id', knownIds.dynamic.project, runId],
-      { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
-    );
   });
 
   test('throws on missing arguments', async () => {
     await expect(
-      execute(['run', 'pipeline'], {
+      execute(['wait-run'], {
         token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN!
       })
     ).rejects.toMatchSnapshot();
   });
 
-  test('returns run object with rerunning without --wait flag', async () => {
+  test('should work', async () => {
     await expect(
       execute(
         [
-          'rerun',
+          'wait-run',
           '--project-id',
           knownIds.dynamic.project,
           runId,
-          '--format=json'
-        ],
-        { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
-      ).then((value) => JSON.parse(value))
-    ).resolves.toHaveProperty('status', 'Queued');
-  });
-
-  test('returns array of events when running with --wait flag', async () => {
-    await expect(
-      execute(
-        [
-          'rerun',
-          '--project-id',
-          knownIds.dynamic.project,
-          runId,
-          '--wait',
           '--format=json'
         ],
         { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }

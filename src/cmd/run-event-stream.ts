@@ -1,4 +1,4 @@
-import { RunStatusEnum } from '@refactr/api-client';
+import { Run, RunStatusEnum } from '@refactr/api-client';
 import type Client from '../client';
 
 export function createStream(
@@ -10,7 +10,7 @@ export function createStream(
   let offset = 0;
 
   async function getRunEvents() {
-    let run;
+    let run: Run;
     try {
       run = (await api.getRun(projectId, runId)).data;
     } catch (err) {

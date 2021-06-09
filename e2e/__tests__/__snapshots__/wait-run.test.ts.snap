@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`refactrctl wait-run throws on missing arguments 1`] = `
+"refactrctl wait-run [run-id]
+
+Wait until run execution is finished
+
+Positionals:
+  run-id  ID of the run to wait  [string] [default: read from stdin]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the run  [string] [required]
+
+Missing required argument: project-id
+"
+`;

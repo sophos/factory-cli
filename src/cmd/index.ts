@@ -3,16 +3,21 @@ import listCommandMap from './list';
 import runCommandMap from './run';
 import createCommandMap from './create';
 import deleteCommandMap from './delete';
+import waitRun from './wait-run';
 
 import rerun from './rerun';
 import { CommandHandler } from './handler';
 
-export const executableCommandsMap = {
-  rerun
+export const executableCommandsMap: Record<
+  TopLevelExecutableCommand,
+  CommandHandler<any, any>
+> = {
+  rerun,
+  'wait-run': waitRun
 };
 
 export const commandsWithSubcommandsMap: Record<
-  string,
+  TopLevelCommandWithSubcommand,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Record<string, CommandHandler<any, any>>
 > = {
@@ -28,7 +33,7 @@ export const mustHaveSubcommand = (
 ): command is TopLevelCommandWithSubcommand =>
   ['create', 'get', 'list', 'run', 'delete'].includes(command);
 
-export type TopLevelExecutableCommand = 'rerun';
+export type TopLevelExecutableCommand = 'rerun' | 'wait-run';
 export type TopLevelCommandWithSubcommand =
   | 'create'
   | 'get'

@@ -45,7 +45,6 @@ export default async function executeCommand(args: Args) {
         (args.address as unknown) as string,
         args.authToken as string
       );
-      // @ts-expect-error: TODO: correctly resolve Args type.
       const result = await handler(apiClient, args);
       const { payload, fields, type, format: formatType } = result;
       const isJsonOrYamlFormat = formatType === 'json' || formatType === 'yaml';
