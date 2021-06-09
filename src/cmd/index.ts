@@ -7,12 +7,15 @@ import deleteCommandMap from './delete';
 import rerun from './rerun';
 import { CommandHandler } from './handler';
 
-export const executableCommandsMap = {
+export const executableCommandsMap: Record<
+  TopLevelExecutableCommand,
+  CommandHandler<any, any>
+> = {
   rerun
 };
 
 export const commandsWithSubcommandsMap: Record<
-  string,
+  TopLevelCommandWithSubcommand,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Record<string, CommandHandler<any, any>>
 > = {
