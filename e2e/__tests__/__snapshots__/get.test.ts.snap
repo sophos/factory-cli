@@ -481,6 +481,7 @@ Options:
       --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the run  [string] [required]
+      --wait        Wait until run execution is finished if it is in progress  [boolean]
 
 Missing required argument: project-id
 "
@@ -501,6 +502,7 @@ Options:
       --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the run  [string] [required]
+      --wait        Wait until run execution is finished if it is in progress  [boolean]
 
 Run ID must be provided
 "

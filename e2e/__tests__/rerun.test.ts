@@ -8,6 +8,33 @@ describe('refactrctl rerun', () => {
   // Give platform time to bootstrap runner.
   jest.setTimeout(60 * 1000);
 
+  let runId: string;
+  beforeAll(async () => {
+    const data = JSON.parse(
+      await execute(
+        [
+          'run',
+          'pipeline',
+          '--project-id',
+          knownIds.dynamic.project,
+          '--revision-id',
+          knownIds.dynamic.pipelineRevision,
+          knownIds.dynamic.pipeline,
+          '--format=json'
+        ],
+        { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+      )
+    );
+
+    runId = data._id;
+
+    // Wait until run is finished.
+    return await execute(
+      ['get', 'run', '--project-id', knownIds.dynamic.project, '--wait', runId],
+      { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+    );
+  });
+
   test('throws on missing arguments', async () => {
     await expect(
       execute(['run', 'pipeline'], {
@@ -23,7 +50,7 @@ describe('refactrctl rerun', () => {
           'rerun',
           '--project-id',
           knownIds.dynamic.project,
-          knownIds.dynamic.run,
+          runId,
           '--format=json'
         ],
         { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
@@ -38,7 +65,7 @@ describe('refactrctl rerun', () => {
           'rerun',
           '--project-id',
           knownIds.dynamic.project,
-          knownIds.dynamic.run,
+          runId,
           '--wait',
           '--format=json'
         ],
