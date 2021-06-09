@@ -34,7 +34,7 @@
     "test:e2e": "jest --testRegex=\"e2e/.*\\.test\\.(js|ts)$\" --runInBand"
   },
   "dependencies": {
-    "@refactr/api-client": "~0.8.0",
+    "@refactr/api-client": "~0.8.1",
     "cli-table": "^0.3.4",
     "date-fns": "^2.16.1",
     "debug": "^4.3.1",

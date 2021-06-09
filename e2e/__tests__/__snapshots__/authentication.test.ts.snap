@@ -12,6 +12,9 @@ Options:
       --auth-token       Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
       --help             Show help  [boolean]
       --organization-id  ID of the organization containing the projects  [string]
+      --sort             Sort order  [string] [choices: \\"modified_asc\\", \\"modified_desc\\", \\"name_asc\\", \\"name_desc\\"]
+      --limit  [number]
+      --offset  [number]
 
 Authentication token must be specified!
 "

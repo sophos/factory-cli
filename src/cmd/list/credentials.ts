@@ -1,14 +1,13 @@
 import isString from 'lodash/isString';
+import { SharedArguments } from './shared-arguments';
 import { CredentialType } from '../../credential-type';
 import fields from '../../fields';
 import { createCommandResult, handler } from '../handler';
 
-type Arguments = {
+type Arguments = SharedArguments & {
   projectId: string;
   type?: CredentialType | CredentialType[];
   sort?: 'created_asc' | 'created_desc';
-  limit?: number;
-  offset?: number;
 };
 
 export default handler(
