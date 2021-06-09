@@ -147,6 +147,11 @@ export default (yargs: Yargs.Argv) =>
             demandOption: true,
             requiresArg: true
           })
+          .option('wait', {
+            describe:
+              'Wait until run execution is finished if it is in progress',
+            type: 'boolean'
+          })
       )
       .command(
         'pipeline-revision [revision-id]',

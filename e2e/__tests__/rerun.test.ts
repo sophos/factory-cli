@@ -30,7 +30,7 @@ describe('refactrctl rerun', () => {
 
     // Wait until run is finished.
     return await execute(
-      ['wait-run', '--project-id', knownIds.dynamic.project, runId],
+      ['get', 'run', '--project-id', knownIds.dynamic.project, '--wait', runId],
       { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
     );
   });

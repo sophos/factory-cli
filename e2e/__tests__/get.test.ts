@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
+import isArray from 'lodash/isArray';
 import { executeAsIs, execute } from '../helpers/execute';
 import { withCmd } from '../helpers/options';
 import knownIds from '../helpers/knowIds';
 
 describe('refactrctl get', () => {
-  jest.setTimeout(15000);
+  jest.setTimeout(60 * 1000);
 
   test('throws on missing subcommand', async () => {
     await expect(
@@ -433,6 +434,46 @@ describe('refactrctl get', () => {
           token: process.env.STATIC_REFACTR_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
+    });
+
+    describe('with --wait', () => {
+      let runId: string;
+      beforeAll(async () => {
+        const data = JSON.parse(
+          await execute(
+            [
+              'run',
+              'pipeline',
+              '--project-id',
+              knownIds.dynamic.project,
+              '--revision-id',
+              knownIds.dynamic.pipelineRevision,
+              knownIds.dynamic.pipeline,
+              '--format=json'
+            ],
+            { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+          )
+        );
+
+        runId = data._id;
+      });
+
+      test('waits until run is finished', async () => {
+        await expect(
+          execute(
+            [
+              'get',
+              'run',
+              '--project-id',
+              knownIds.dynamic.project,
+              '--wait',
+              runId,
+              '--format=json'
+            ],
+            { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+          ).then((value) => isArray(JSON.parse(value)))
+        ).resolves.toBeTruthy();
+      });
     });
   });
 });

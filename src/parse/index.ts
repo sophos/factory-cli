@@ -10,7 +10,6 @@ import list from './list';
 import run from './run';
 import rerun from './rerun';
 import del from './delete';
-import waitRun from './wait-run';
 
 // NOTE: using commonjs import here as rollup cannot correctly resolve
 //       yargs when importing with ES6 imports for some reason.
@@ -22,7 +21,7 @@ const DEFAULT_ADDRESS = 'https://api.refactr.it/v1';
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
-  create(get(list(del(rerun(run(waitRun(yargs)))))));
+  create(get(list(del(rerun(run(yargs))))));
 
 const parse = (argv: string[], { version }: { version: string }) => {
   return apply(yargs(argv))
