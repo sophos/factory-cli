@@ -4,7 +4,7 @@ The Refactr command line tool is used to interact with the Refactr Platform API 
 
 Basic usage and installation is described below. [Click here for complete Refactr CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
 
-**NOTE**: version `1.x` has been redone from scratch is not compatible with `0.12.x`.
+**NOTE**: version `1.x` has been redone from scratch and is not compatible with `0.12.x`.
 
 ## Usage
 
@@ -14,7 +14,7 @@ Usage: refactrctl <command> [options]
 
 Commands:
   refactrctl run             Execute pipeline or job
-  refactrctl rerun <run-id>  Reschedule pipeline run
+  refactrctl rerun [run-id]  Reschedule pipeline run
   refactrctl delete          Delete specified resource
   refactrctl list            List specified resources
   refactrctl get             Get specified resource
@@ -25,10 +25,9 @@ Options:
   -v, --verbose     Print detailed output                                                                      [boolean]
       --format      Output format                                    [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath                                                                [string]
-      --address     Address of the Refactr API server. This can also be specified via the REFACTR_ADDRESS environment
-                    variable. Defaults to https://api.refactr.it/v1                                             [string]
-      --auth-token  Authentication token. This can also be specified via the REFACTR_AUTH_TOKEN environment variable
-                                                                                                                [string]
+      --address     Address of the Refactr API server
+                    [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token                     [string] [default: REFACTR_AUTH_TOKEN environment variable]
       --help        Show help                                                                                  [boolean]
 ```
 
