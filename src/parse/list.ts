@@ -33,11 +33,24 @@ export default (yargs: Yargs.Argv) =>
           .option('offset', { type: 'number', requiresArg: true })
       )
       .command('projects', 'List projects from an organization', (yargs) =>
-        yargs.usage('$0 projects [options]').option('organization-id', {
-          describe: 'ID of the organization containing the projects',
-          type: 'string',
-          requiresArg: true
-        })
+        yargs
+          .usage('$0 projects [options]')
+          .option('organization-id', {
+            describe: 'ID of the organization containing the projects',
+            type: 'string',
+            requiresArg: true
+          })
+          .option('sort', {
+            describe: 'Sort order',
+            requiresArg: true,
+            type: 'string',
+            choices: ['modified_asc', 'modified_desc', 'name_asc', 'name_desc']
+          })
+          .option('limit', {
+            type: 'number',
+            requiresArg: true
+          })
+          .option('offset', { type: 'number', requiresArg: true })
       )
       .command(
         'organizations',
@@ -70,22 +83,41 @@ export default (yargs: Yargs.Argv) =>
             type: 'string',
             requiresArg: true
           })
+          .option('sort', {
+            describe: 'Sort order',
+            requiresArg: true,
+            type: 'string',
+            choices: ['created_asc', 'created_desc']
+          })
+          .option('limit', {
+            type: 'number',
+            requiresArg: true
+          })
+          .option('offset', { type: 'number', requiresArg: true })
       )
-      .command('pipeline-revisions', 'List runs for a project', (yargs) =>
-        yargs
-          .usage('$0 runs [options]')
-          .option('project-id', {
-            describe: 'ID of the project containing the pipeline revision',
-            demandOption: true,
-            type: 'string',
-            requiresArg: true
-          })
-          .option('pipeline-id', {
-            describe: 'ID of the pipeline containing the pipeline revision',
-            demandOption: true,
-            type: 'string',
-            requiresArg: true
-          })
+      .command(
+        'pipeline-revisions',
+        'List pipeline revisions for a pipeline',
+        (yargs) =>
+          yargs
+            .usage('$0 pipeline-revisions [options]')
+            .option('project-id', {
+              describe: 'ID of the project containing the pipeline revision',
+              demandOption: true,
+              type: 'string',
+              requiresArg: true
+            })
+            .option('pipeline-id', {
+              describe: 'ID of the pipeline containing the pipeline revision',
+              demandOption: true,
+              type: 'string',
+              requiresArg: true
+            })
+            .option('limit', {
+              type: 'number',
+              requiresArg: true
+            })
+            .option('offset', { type: 'number', requiresArg: true })
       )
       .command(
         'runners',
@@ -122,7 +154,7 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
           .option('sort', {
-            describe: 'Order in which returned pipelines should be sorted',
+            describe: 'Sort order',
             choices: ['modified_asc', 'modified_desc', 'name_asc', 'name_desc'],
             requiresArg: true
           })
@@ -131,7 +163,6 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
           .option('offset', { type: 'number', requiresArg: true })
-          .option('search', { type: 'string', requiresArg: true })
       )
       .option('filter', {
         describe: 'Filter output using JsonPath',
