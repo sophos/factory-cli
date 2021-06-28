@@ -22,7 +22,7 @@ describe('refactrctl rerun', () => {
           knownIds.dynamic.pipeline,
           '--format=json'
         ],
-        { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
       )
     );
 
@@ -31,14 +31,14 @@ describe('refactrctl rerun', () => {
     // Wait until run is finished.
     return await execute(
       ['get', 'run', '--project-id', knownIds.dynamic.project, '--wait', runId],
-      { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+      { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
     );
   });
 
   test('throws on missing arguments', async () => {
     await expect(
       execute(['run', 'pipeline'], {
-        token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN!
+        token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
       })
     ).rejects.toMatchSnapshot();
   });
@@ -53,7 +53,7 @@ describe('refactrctl rerun', () => {
           runId,
           '--format=json'
         ],
-        { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
       ).then((value) => JSON.parse(value))
     ).resolves.toHaveProperty('status', 'Queued');
   });
@@ -69,7 +69,7 @@ describe('refactrctl rerun', () => {
           '--wait',
           '--format=json'
         ],
-        { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
       ).then((value) => isArray(JSON.parse(value)))
     ).resolves.toBeTruthy();
   });

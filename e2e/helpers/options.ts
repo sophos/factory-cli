@@ -24,4 +24,4 @@ export const withFormat = (
 
 export const withCmd = (args: string) =>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  `${process.env.__REFACTR_COMMAND__!} ${args}`;
+  `${process.env.REFACTR_CLI_PATH!} ${args}`;

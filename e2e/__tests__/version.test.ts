@@ -9,7 +9,7 @@ describe('refactrctl --version', () => {
   test('prints correct version', async () => {
     await expect(
       execute(['--version'], {
-        token: process.env.STATIC_REFACTR_AUTH_TOKEN!,
+        token: process.env.REFACTR_STATIC_AUTH_TOKEN!,
         trimStdout: true
       })
     ).resolves.toBe(pkg.version);

@@ -56,7 +56,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: node -e "console.log('__REFACTR_COMMAND__'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+      - run: node -e "console.log('REFACTR_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
 
       - run: yarn install
       - run: yarn build:runtime
@@ -66,8 +66,8 @@ jobs:
       - run: yarn test:e2e
         env:
           REFACTR_ADDRESS: ${{ secrets.REFACTR_ADDRESS }}
-          STATIC_REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
-          DYNAMIC_REFACTR_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN2 }}
+          REFACTR_STATIC_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
+          REFACTR_DYNAMIC_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN2 }}
 
   deploy_docker:
     name: Deploy to Docker Hub

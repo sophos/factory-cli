@@ -5,7 +5,7 @@ import isString from 'lodash/isString';
 
 type Args = string[];
 
-const command = process.env.__REFACTR_COMMAND__ ?? 'refactrctl';
+const command = process.env.REFACTR_CLI_PATH ?? 'refactrctl';
 
 type Options = {
   token: string;

@@ -15,7 +15,7 @@ describe('complex', () => {
         `echo $(${withCmd(
           `get project --filter _id --format yaml ${knownIds.static.project}`
         )}) | ${withCmd('get project --format json')}`,
-        { token: process.env.STATIC_REFACTR_AUTH_TOKEN! }
+        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
       ).then((str) => JSON.parse(str))
     ).resolves.toHaveProperty('_id', knownIds.static.project);
   });
@@ -32,7 +32,7 @@ describe('complex', () => {
         )} | ${withCmd(
           `delete pipeline --project-id ${knownIds.dynamic.project} --format=json`
         )}`,
-        { token: process.env.DYNAMIC_REFACTR_AUTH_TOKEN! }
+        { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
       ).then((data) => JSON.parse(data))
     ).resolves.toHaveProperty('_id');
   });
