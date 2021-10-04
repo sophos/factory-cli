@@ -51,9 +51,12 @@ $ npm install @refactr/cli -g
 ```
 
 or with `yarn`:
+
 ```shell
 $ yarn global add @refactr/cli
 ```
+
+Global installation is required.
 
 ### Docker
 

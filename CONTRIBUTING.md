@@ -2,6 +2,8 @@
 
 This section is for anyone wishing to contribute code to Refactr CLI project.
 
+Ensure you've installed the CLI globally. See [Installation](https://github.com/refactr/refactr-cli#installation).
+
 ## Clone
 
 Clone the repository: 
