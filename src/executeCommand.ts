@@ -42,7 +42,7 @@ export default async function executeCommand(args: Args) {
       isUnknownCmd = false;
 
       const apiClient = new Client(
-        (args.address as unknown) as string,
+        args.address as unknown as string,
         args.authToken as string
       );
       const result = await handler(apiClient, args);
