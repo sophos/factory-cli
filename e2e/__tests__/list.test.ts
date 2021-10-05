@@ -3,7 +3,7 @@
 import { execute } from '../helpers/execute';
 import { loadFixtures } from './fixtures';
 import { withAddress, withFormat } from '../helpers/options';
-import knownIds from '../helpers/knowIds';
+import knownIds from '../helpers/knownIds';
 
 beforeAll(async () => {
   return await loadFixtures();

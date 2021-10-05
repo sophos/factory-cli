@@ -9,6 +9,7 @@ import { CommandHandler } from './handler';
 
 export const executableCommandsMap: Record<
   TopLevelExecutableCommand,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   CommandHandler<any, any>
 > = {
   rerun

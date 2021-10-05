@@ -55,38 +55,40 @@ const createHandlerResult = <T = unknown>(
 type HandlerResult<R> = CommandResult<R> & { format: FormatType };
 export type ErrorKind = 'api_error' | 'unknown_error';
 
-export const handler = <A, R>(
-  fn: (apiClient: Client, args: A) => Promise<CommandResult<R>>
-): CommandHandler<A, R> => async (apiClient, args) => {
-  const format = args.format;
-  try {
-    const result = await fn(apiClient, args);
-    return createHandlerResult(result, format);
-  } catch (err) {
-    const stack: string = err.stack;
-    const isAxiosError: boolean = err.isAxiosError ?? false;
-    if (isAxiosError) {
-      const errors = (err as AxiosError).response?.data?.errors;
-      if (!isNil(errors)) {
-        return createHandlerResult(
-          createCommandResult('error', {
-            kind: 'api_error' as ErrorKind,
-            errors,
-            stack
-          }),
-          format
-        );
+export const handler =
+  <A, R>(
+    fn: (apiClient: Client, args: A) => Promise<CommandResult<R>>
+  ): CommandHandler<A, R> =>
+  async (apiClient, args) => {
+    const format = args.format;
+    try {
+      const result = await fn(apiClient, args);
+      return createHandlerResult(result, format);
+    } catch (err) {
+      const stack: string = err.stack;
+      const isAxiosError: boolean = err.isAxiosError ?? false;
+      if (isAxiosError) {
+        const errors = (err as AxiosError).response?.data?.errors;
+        if (!isNil(errors)) {
+          return createHandlerResult(
+            createCommandResult('error', {
+              kind: 'api_error' as ErrorKind,
+              errors,
+              stack
+            }),
+            format
+          );
+        }
       }
-    }
 
-    return createHandlerResult(
-      createCommandResult('error', {
-        kind: 'unknown_error' as ErrorKind,
-        error: err,
-        stack,
-        possiblyWrongAddress: isAxiosError
-      }),
-      format
-    );
-  }
-};
+      return createHandlerResult(
+        createCommandResult('error', {
+          kind: 'unknown_error' as ErrorKind,
+          error: err,
+          stack,
+          possiblyWrongAddress: isAxiosError
+        }),
+        format
+      );
+    }
+  };

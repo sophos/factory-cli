@@ -3,7 +3,7 @@
 import * as faker from 'faker';
 
 import { execute } from '../helpers/execute';
-import knownIds from '../helpers/knowIds';
+import knownIds from '../helpers/knownIds';
 import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
@@ -28,7 +28,7 @@ describe('refactrctl create', () => {
     });
 
     test('create & delete credential', async () => {
-      const id = faker.random.uuid();
+      const id = faker.datatype.uuid();
       const createResult = JSON.parse(
         await execute(
           [

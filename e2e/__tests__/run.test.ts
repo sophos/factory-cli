@@ -3,7 +3,7 @@ import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
 
 import { execute } from '../helpers/execute';
-import knownIds from '../helpers/knowIds';
+import knownIds from '../helpers/knownIds';
 
 describe('refactrctl run', () => {
   // Give platform time to bootstrap runner.

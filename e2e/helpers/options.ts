@@ -1,4 +1,5 @@
 import * as assert from 'assert';
+import { List } from 'lodash';
 
 import isNil from 'lodash/isNil';
 
@@ -15,13 +16,13 @@ export const withAddress = (args: string[]): string[] => {
 export const withFormat = (
   args: string[],
   format: 'json' | 'yaml' | 'wide'
-) => {
+): List<string> => {
   const ret = [...args];
   ret.push('--format', format);
 
   return ret;
 };
 
-export const withCmd = (args: string) =>
+export const withCmd = (args: string): string =>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   `${process.env.REFACTR_CLI_PATH!} ${args}`;

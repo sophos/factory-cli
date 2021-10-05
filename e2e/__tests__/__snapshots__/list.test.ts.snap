@@ -307,13 +307,22 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name                                 pipeline_count  organization_id           created            
-5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
+"_id                       name                                           pipeline_count  organization_id           created            
+6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  6               5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM
+5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)            1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
 "
 `;
 
 exports[`refactrctl list projects should work 2`] = `
 "[
+    {
+        \\"_id\\": \\"6010f6e2a830874a04689246\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
+        \\"modified\\": \\"2021-10-08T14:19:04.633Z\\",
+        \\"pipeline_count\\": 6,
+        \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
+    },
     {
         \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
@@ -328,6 +337,13 @@ exports[`refactrctl list projects should work 2`] = `
 
 exports[`refactrctl list projects should work 3`] = `
 "-
+    _id: 6010f6e2a830874a04689246
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-27T05:15:14.584Z'
+    modified: '2021-10-08T14:19:04.633Z'
+    pipeline_count: 6
+    name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
+-
     _id: 5ffc715d04ea5ca71d201bb3
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-01-11T15:40:13.848Z'
