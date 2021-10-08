@@ -54,20 +54,24 @@ Run unit tests with:
 npm run test:unit
 ```
 
-In order to run end-to-end CLI tests, first set up these environment variables:
+In order to run end-to-end CLI tests locally, do the following:
+
+1. Ensure you have executed a build.
+2. Pass the below environment variables prior to the `npm run` command. If you are using Mac OS, first ensure `realpath` is installed: `brew install coreutils`.
+
+Full example for running end-to-end tests:
 
 ```sh
+# Use the development api for tests.
+REFACTR_ADDRESS="https://api.devel.refactr.it/v1" \
 # Set CLI executable path for tests.
-# Run this from the root of the project tree.
-# If using Mac OS, first ensure realpath is installed: brew install coreutils
-export REFACTR_CLI_PATH=$(realpath ./bin/refactrctl.js)
+REFACTR_CLI_PATH=$(realpath ./bin/refactrctl.js) \
 # Refactr platform auth token for "dynamic" test suite
-export REFACTR_DYNAMIC_AUTH_TOKEN="<refactr-auth-token>"
+REFACTR_DYNAMIC_AUTH_TOKEN="<your-refactr-auth-token>" \
 # Refactr platform auth token for "static" test suite
-export REFACTR_STATIC_AUTH_TOKEN="<refactr-auth-token>"
+REFACTR_STATIC_AUTH_TOKEN="<your-refactr-auth-token>" \
+npm run test:e2e -- -u
  ```
-
-Ensure you have executed a build.
 
 End-to-end tests are split into two types: static and dynamic.
 
@@ -76,9 +80,3 @@ Dynamic tests cover create, delete, and update operations.
 Static tests are for verifying get and list operations. They require data on the server to be unchanged for the whole lifecycle. If you made any changes to corresponding entities on the development server, make sure to update tests first.
 
 All requests are issued against [Refactr Platform API](https://api.devel.refactr.it/v1) endpoints. List of IDs of operational entities can be found in `e2e/helpers/knownIds.js`.
-
-Run end-to-end tests with:
-
-```sh
-npm run test:e2e -u
-```
