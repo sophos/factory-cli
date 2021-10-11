@@ -319,7 +319,7 @@ exports[`refactrctl list projects should work 2`] = `
         \\"_id\\": \\"6010f6e2a830874a04689246\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
-        \\"modified\\": \\"2021-10-08T14:19:04.633Z\\",
+        \\"modified\\": \\"2021-10-11T15:54:40.640Z\\",
         \\"pipeline_count\\": 6,
         \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
     },
@@ -340,7 +340,7 @@ exports[`refactrctl list projects should work 3`] = `
     _id: 6010f6e2a830874a04689246
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-01-27T05:15:14.584Z'
-    modified: '2021-10-08T14:19:04.633Z'
+    modified: '2021-10-11T15:54:40.640Z'
     pipeline_count: 6
     name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
 -
