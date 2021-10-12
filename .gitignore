@@ -1,3 +1,7 @@
+# dotenv
+.env
+
+
 # macOS
 .DS_Store
 ._*
@@ -14,9 +18,11 @@
 .idea
 .project
 
-node_modules
 
+# Node
+node_modules
 dist
+
 
 # Node.js
 *.log

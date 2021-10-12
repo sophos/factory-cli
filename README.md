@@ -65,3 +65,7 @@ $ docker pull refactr/cli
 
 ## License
 Refactr CLI is [MIT](./LICENSE) licensed.
+
+## End User License Agreement
+
+Please see [End User License Agreement & Terms of Use](https://www.refactr.it/terms-privacy-security).

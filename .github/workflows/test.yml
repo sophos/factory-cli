@@ -26,25 +26,15 @@ jobs:
         with:
           node-version: ${{ matrix.version }}
 
-      - id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - run: node -e "console.log('REFACTR_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
         shell: bash
 
-      - run: yarn install
-      - run: yarn lint
-      - run: yarn build:runtime
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build:runtime
 
-      - run: yarn test:unit
-      - run: yarn test:e2e
+      - run: npm run test:unit
+      - run: npm run test:e2e -- -u
         env:
           REFACTR_ADDRESS: ${{ secrets.REFACTR_ADDRESS }}
           REFACTR_STATIC_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
