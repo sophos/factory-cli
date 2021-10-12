@@ -3,7 +3,7 @@
 import isArray from 'lodash/isArray';
 import { executeAsIs, execute } from '../helpers/execute';
 import { withCmd } from '../helpers/options';
-import knownIds from '../helpers/knowIds';
+import knownIds from '../helpers/knownIds';
 
 describe('refactrctl get', () => {
   jest.setTimeout(60 * 1000);

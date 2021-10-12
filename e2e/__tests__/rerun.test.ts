@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import { execute } from '../helpers/execute';
-import knownIds from '../helpers/knowIds';
+import knownIds from '../helpers/knownIds';
 import isArray from 'lodash/isArray';
 
 describe('refactrctl rerun', () => {

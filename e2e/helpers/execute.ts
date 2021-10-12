@@ -14,7 +14,10 @@ type Options = {
   trimStderr?: boolean;
 };
 
-export async function executeAsIs(cmd: string, options: Options) {
+export async function executeAsIs(
+  cmd: string,
+  options: Options
+): Promise<string> {
   const env: { [key: string]: string | undefined } = {
     // inherit from parent process
     ...process.env,

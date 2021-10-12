@@ -4,7 +4,7 @@ import * as faker from 'faker';
 
 import { executeAsIs } from '../helpers/execute';
 import { withCmd } from '../helpers/options';
-import knownIds from '../helpers/knowIds';
+import knownIds from '../helpers/knownIds';
 
 describe('complex', () => {
   jest.setTimeout(20000);

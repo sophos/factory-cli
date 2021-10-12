@@ -102,7 +102,7 @@ export default (yargs: Yargs.Argv) =>
           .default('credential-id', () => readStdin(), 'read from stdin')
           .check((argv) => {
             if (isNil(argv.credentialId)) {
-              throw new Error('Project ID must be provided');
+              throw new Error('Credential ID must be provided');
             }
 
             return true;

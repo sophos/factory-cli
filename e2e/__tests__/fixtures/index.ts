@@ -24,7 +24,7 @@ const readDirectoryDeep = async (path: string): Promise<string[]> => {
 
 export let fixtures: Map<string, string>;
 
-export async function loadFixtures() {
+export async function loadFixtures(): Promise<Map<string, string>> {
   if (!isNil(fixtures)) {
     return fixtures;
   }
