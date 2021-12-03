@@ -23,8 +23,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the credential  [string] [required]
 
@@ -43,19 +43,19 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the credential  [string] [required]
 
-Credential ID must be provided
+Authentication token must be specified!
 "
 `;
 
 exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
 "{
     \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-    \\"name\\": \\"Refactr\\",
+    \\"name\\": \\"Sophos Factory\\",
     \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
     \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
     \\"contact_email\\": \\"anthony@refactr.it\\",
@@ -156,7 +156,7 @@ exports[`refactrctl get formats as JSON when --format=json is passed 5`] = `
 
 exports[`refactrctl get formats as JSON when --format=yaml is passed 1`] = `
 "_id: 5f9f2d08e2f1bb2436e6f5b0
-name: Refactr
+name: Sophos Factory
 created: '2020-10-10T07:07:53.294Z'
 modified: '2020-11-01T23:15:21.605Z'
 contact_email: anthony@refactr.it
@@ -269,8 +269,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the job  [string] [required]
 
@@ -289,24 +289,24 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the job  [string] [required]
 
-Job ID must be provided
+Authentication token must be specified!
 "
 `;
 
 exports[`refactrctl get organization accepts id as argument 1`] = `
 "_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+5f9f2d08e2f1bb2436e6f5b0  Sophos Factory  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
 "
 `;
 
 exports[`refactrctl get organization accepts id from stdin 1`] = `
 "_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+5f9f2d08e2f1bb2436e6f5b0  Sophos Factory  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
 "
 `;
 
@@ -321,11 +321,11 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
-Organization ID must be provided
+Authentication token must be specified!
 "
 `;
 
@@ -352,8 +352,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project to fetch  [string] [required]
 
@@ -372,12 +372,12 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project to fetch  [string] [required]
 
-Pipeline ID must be provided
+Authentication token must be specified!
 "
 `;
 
@@ -404,8 +404,8 @@ Options:
   -v, --verbose      Print detailed output  [boolean]
       --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter       Filter output using JsonPath  [string]
-      --address      Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token   Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help         Show help  [boolean]
       --project-id   ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id  ID of the pipeline for the pipeline revision  [string] [required]
@@ -425,13 +425,13 @@ Options:
   -v, --verbose      Print detailed output  [boolean]
       --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter       Filter output using JsonPath  [string]
-      --address      Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token   Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help         Show help  [boolean]
       --project-id   ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id  ID of the pipeline for the pipeline revision  [string] [required]
 
-Revision must be provided
+Authentication token must be specified!
 "
 `;
 
@@ -458,11 +458,11 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
-Project ID must be provided
+Authentication token must be specified!
 "
 `;
 
@@ -477,8 +477,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the run  [string] [required]
       --wait        Wait until run execution is finished if it is in progress  [boolean]
@@ -498,13 +498,13 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the run  [string] [required]
       --wait        Wait until run execution is finished if it is in progress  [boolean]
 
-Run ID must be provided
+Authentication token must be specified!
 "
 `;
 
@@ -531,8 +531,8 @@ Options:
   -v, --verbose          Print detailed output  [boolean]
       --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter           Filter output using JsonPath  [string]
-      --address          Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token       Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help             Show help  [boolean]
       --organization-id  ID of the organization containing the runner  [string] [required]
 
@@ -551,12 +551,12 @@ Options:
   -v, --verbose          Print detailed output  [boolean]
       --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter           Filter output using JsonPath  [string]
-      --address          Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token       Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help             Show help  [boolean]
       --organization-id  ID of the organization containing the runner  [string] [required]
 
-Runner ID must be provided
+Authentication token must be specified!
 "
 `;
 
@@ -578,8 +578,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
 Command must be specified

@@ -1,9 +1,9 @@
 {
   "name": "@refactr/cli",
   "version": "1.2.0",
-  "description": "Refactr CLI",
+  "description": "Sophos Factory CLI",
   "main": "dist/main.js",
-  "author": "Refactr, Inc. (refactr.it)",
+  "author": "Sophos Factory",
   "license": "MIT",
   "files": [
     "bin",

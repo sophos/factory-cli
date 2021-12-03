@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.version }}
 
-      - run: node -e "console.log('REFACTR_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+      - run: node -e "console.log('FACTORY_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
         shell: bash
 
       - run: npm ci
@@ -36,6 +36,6 @@ jobs:
       - run: npm run test:unit
       - run: npm run test:e2e -- -u
         env:
-          REFACTR_ADDRESS: ${{ secrets.REFACTR_ADDRESS }}
-          REFACTR_STATIC_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN }}
-          REFACTR_DYNAMIC_AUTH_TOKEN: ${{ secrets.REFACTR_AUTH_TOKEN2 }}
+          FACTORY_ADDRESS: ${{ secrets.FACTORY_ADDRESS }}
+          FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
+          FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}

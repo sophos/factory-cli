@@ -1,8 +1,8 @@
-# Refactr CLI
+# Sophos Factory CLI
 
-The Refactr command line tool is used to interact with the Refactr Platform API from the command line.
+The Sophos Factory command line tool is used to interact with the Sophos Factory Platform API from the command line.
 
-Basic usage and installation is described below. [Click here for complete Refactr CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
+Basic usage and installation is described below. [Click here for complete Sophos Factory CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
 
 **NOTE**: version `1.x` has been redone from scratch and is not compatible with `0.12.x`.
 
@@ -25,9 +25,9 @@ Options:
   -v, --verbose     Print detailed output                                                                      [boolean]
       --format      Output format                                    [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath                                                                [string]
-      --address     Address of the Refactr API server
-                    [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token                     [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server
+                    [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token                     [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help                                                                                  [boolean]
 ```
 
@@ -64,7 +64,7 @@ $ docker pull refactr/cli
 ```
 
 ## License
-Refactr CLI is [MIT](./LICENSE) licensed.
+Sophos Factory CLI is [MIT](./LICENSE) licensed.
 
 ## End User License Agreement
 
