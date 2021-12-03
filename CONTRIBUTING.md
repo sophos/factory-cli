@@ -1,6 +1,6 @@
 # Contributing
 
-This section is for anyone wishing to contribute code to Refactr CLI project.
+This section is for anyone wishing to contribute code to the Sophos Factory CLI project.
 
 Ensure you've installed the CLI globally. See [Installation](https://github.com/refactr/refactr-cli#installation).
 
@@ -62,14 +62,14 @@ In order to run end-to-end CLI tests locally, do the following:
 Full example for running end-to-end tests:
 
 ```sh
-# Use the development api for tests.
-REFACTR_ADDRESS="https://api.devel.refactr.it/v1" \
+# Use the development API for tests.
+FACTORY_ADDRESS="https://api.devel.refactr.it/v1" \
 # Set CLI executable path for tests.
-REFACTR_CLI_PATH=$(realpath ./bin/refactrctl.js) \
-# Refactr platform auth token for "dynamic" test suite
-REFACTR_DYNAMIC_AUTH_TOKEN="<your-refactr-auth-token>" \
-# Refactr platform auth token for "static" test suite
-REFACTR_STATIC_AUTH_TOKEN="<your-refactr-auth-token>" \
+FACTORY_CLI_PATH=$(realpath ./bin/refactrctl.js) \
+# Sophos Factory platform authentication token for "dynamic" test suite
+FACTORY_DYNAMIC_AUTH_TOKEN="<your-factory-auth-token>" \
+# Sophos Factory platform authentication token for "static" test suite
+FACTORY_STATIC_AUTH_TOKEN="<your-factory-auth-token>" \
 npm run test:e2e -- -u
  ```
 
@@ -79,4 +79,4 @@ Dynamic tests cover create, delete, and update operations.
 
 Static tests are for verifying get and list operations. They require data on the server to be unchanged for the whole lifecycle. If you made any changes to corresponding entities on the development server, make sure to update tests first.
 
-All requests are issued against [Refactr Platform API](https://api.devel.refactr.it/v1) endpoints. List of IDs of operational entities can be found in `e2e/helpers/knownIds.js`.
+All requests are issued against [Sophos Factory Platform API](https://api.devel.refactr.it/v1) endpoints. List of IDs of operational entities can be found in `e2e/helpers/knownIds.js`.
