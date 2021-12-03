@@ -2,7 +2,6 @@ import * as assert from 'assert';
 import { List } from 'lodash';
 import isNil from 'lodash/isNil';
 
-
 export const withAddress = (args: string[]): string[] => {
   assert.ok(!isNil(process.env.FACTORY_ADDRESS));
 

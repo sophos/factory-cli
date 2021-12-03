@@ -5,7 +5,6 @@ import { execute } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 import { loadFixtures } from './fixtures';
 
-
 beforeAll(async () => {
   return await loadFixtures();
 });

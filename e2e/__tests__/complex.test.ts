@@ -5,7 +5,6 @@ import { executeAsIs } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 import { withCmd } from '../helpers/options';
 
-
 describe('complex', () => {
   jest.setTimeout(20000);
 

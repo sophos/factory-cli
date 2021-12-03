@@ -4,7 +4,6 @@ import isNil from 'lodash/isNil';
 import { execute } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 
-
 describe('refactrctl run', () => {
   // Give platform time to bootstrap runner.
   jest.setTimeout(60 * 1000);

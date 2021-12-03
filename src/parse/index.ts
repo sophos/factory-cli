@@ -9,8 +9,6 @@ import list from './list';
 import rerun from './rerun';
 import run from './run';
 
-
-
 // NOTE: using commonjs import here as rollup cannot correctly resolve
 //       yargs when importing with ES6 imports for some reason.
 // eslint-disable-next-line @typescript-eslint/no-var-requires

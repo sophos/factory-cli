@@ -48,14 +48,14 @@ Options:
       --help        Show help  [boolean]
       --project-id  ID of the project containing the credential  [string] [required]
 
-Authentication token must be specified!
+Credential ID must be provided
 "
 `;
 
 exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
 "{
     \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-    \\"name\\": \\"Sophos Factory\\",
+    \\"name\\": \\"Refactr\\",
     \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
     \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
     \\"contact_email\\": \\"anthony@refactr.it\\",
@@ -156,7 +156,7 @@ exports[`refactrctl get formats as JSON when --format=json is passed 5`] = `
 
 exports[`refactrctl get formats as JSON when --format=yaml is passed 1`] = `
 "_id: 5f9f2d08e2f1bb2436e6f5b0
-name: Sophos Factory
+name: Refactr
 created: '2020-10-10T07:07:53.294Z'
 modified: '2020-11-01T23:15:21.605Z'
 contact_email: anthony@refactr.it
@@ -294,19 +294,19 @@ Options:
       --help        Show help  [boolean]
       --project-id  ID of the project containing the job  [string] [required]
 
-Authentication token must be specified!
+Job ID must be provided
 "
 `;
 
 exports[`refactrctl get organization accepts id as argument 1`] = `
 "_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Sophos Factory  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
 "
 `;
 
 exports[`refactrctl get organization accepts id from stdin 1`] = `
 "_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Sophos Factory  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
 "
 `;
 
@@ -325,7 +325,7 @@ Options:
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
-Authentication token must be specified!
+Organization ID must be provided
 "
 `;
 
@@ -377,7 +377,7 @@ Options:
       --help        Show help  [boolean]
       --project-id  ID of the project to fetch  [string] [required]
 
-Authentication token must be specified!
+Pipeline ID must be provided
 "
 `;
 
@@ -431,7 +431,7 @@ Options:
       --project-id   ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id  ID of the pipeline for the pipeline revision  [string] [required]
 
-Authentication token must be specified!
+Revision must be provided
 "
 `;
 
@@ -462,7 +462,7 @@ Options:
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
-Authentication token must be specified!
+Project ID must be provided
 "
 `;
 
@@ -504,7 +504,7 @@ Options:
       --project-id  ID of the project containing the run  [string] [required]
       --wait        Wait until run execution is finished if it is in progress  [boolean]
 
-Authentication token must be specified!
+Run ID must be provided
 "
 `;
 
@@ -556,7 +556,7 @@ Options:
       --help             Show help  [boolean]
       --organization-id  ID of the organization containing the runner  [string] [required]
 
-Authentication token must be specified!
+Runner ID must be provided
 "
 `;
 

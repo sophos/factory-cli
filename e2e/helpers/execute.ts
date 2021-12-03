@@ -2,7 +2,6 @@ import { exec } from 'child_process';
 import isNil from 'lodash/isNil';
 import isString from 'lodash/isString';
 
-
 type Args = string[];
 
 const command = process.env.FACTORY_CLI_PATH ?? 'refactrctl';
