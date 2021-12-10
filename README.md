@@ -66,6 +66,7 @@ $ docker pull refactr/cli
 ## License
 Refactr CLI is [MIT](./LICENSE) licensed.
 
-## End User License Agreement
 
-Please see [End User License Agreement & Terms of Use](https://www.refactr.it/terms-privacy-security).
+## Terms of Use
+
+Please see [Sophos Services Agreement](https://www.sophos.com/en-us/legal/sophos-services-agreement.aspx) and [Sophos Privacy Notice](https://www.sophos.com/en-us/legal/sophos-group-privacy-notice.aspx).
