@@ -66,7 +66,6 @@ $ docker pull refactr/cli
 ## License
 Sophos Factory CLI is [MIT](./LICENSE) licensed.
 
-## End User License Agreement
+## Terms of Use
 
-Please see [End User License Agreement & Terms of Use](https://www.refactr.it/terms-privacy-security).
-
+Please see [Sophos Services Agreement](https://www.sophos.com/en-us/legal/sophos-services-agreement.aspx) and [Sophos Privacy Notice](https://www.sophos.com/en-us/legal/sophos-group-privacy-notice.aspx).
