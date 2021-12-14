@@ -78,9 +78,10 @@ exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
     },
     \\"public\\": true,
     \\"access\\": {
-        \\"default_project_run\\": false,
+        \\"default_project_role\\": \\"admin\\",
+        \\"default_project_run\\": true,
         \\"create_projects\\": true,
-        \\"organization_admin\\": false
+        \\"organization_admin\\": true
     }
 }
 "
@@ -95,7 +96,7 @@ exports[`refactrctl get formats as JSON when --format=json is passed 2`] = `
     \\"pipeline_count\\": 1,
     \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\",
     \\"access\\": {
-        \\"role\\": \\"write\\",
+        \\"role\\": \\"admin\\",
         \\"run\\": true
     }
 }
@@ -177,9 +178,10 @@ capabilities:
     publish_catalogs: true
 public: true
 access:
-    default_project_run: false
+    default_project_role: admin
+    default_project_run: true
     create_projects: true
-    organization_admin: false
+    organization_admin: true
 
 "
 `;
@@ -192,7 +194,7 @@ modified: '2021-03-19T12:16:17.965Z'
 pipeline_count: 1
 name: 'CLI tests [STATIC ONLY] (LIST, GET)'
 access:
-    role: write
+    role: admin
     run: true
 
 "
