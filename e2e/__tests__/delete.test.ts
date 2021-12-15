@@ -10,7 +10,7 @@ beforeAll(async () => {
 describe('refactrctl delete', () => {
   test('throws on missing subcommand', async () => {
     await expect(
-      execute(['delete'], { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! })
+      execute(['delete'], { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! })
     ).rejects.toMatchSnapshot();
   });
 
@@ -18,7 +18,7 @@ describe('refactrctl delete', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['delete', 'credential'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -26,7 +26,7 @@ describe('refactrctl delete', () => {
     test('throws on missing --project-id option', async () => {
       await expect(
         execute(['delete', 'credential', 'credential-id'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -36,7 +36,7 @@ describe('refactrctl delete', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['delete', 'job'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -44,7 +44,7 @@ describe('refactrctl delete', () => {
     test('throws on missing --project-id option', async () => {
       await expect(
         execute(['delete', 'job', 'job-id'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -54,7 +54,7 @@ describe('refactrctl delete', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['delete', 'pipeline'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -64,7 +64,7 @@ describe('refactrctl delete', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['delete', 'project'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -74,7 +74,7 @@ describe('refactrctl delete', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['delete', 'runner'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -82,7 +82,7 @@ describe('refactrctl delete', () => {
     test('throws on missing organization-id option', async () => {
       await expect(
         execute(['delete', 'runner', 'runner-id'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });

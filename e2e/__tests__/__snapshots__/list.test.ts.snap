@@ -63,8 +63,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of project containing the credentials  [string] [required]
       --type  [string] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\", \\"google_service_account\\"]
@@ -140,8 +140,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the jobs  [string] [required]
 
@@ -227,8 +227,8 @@ Options:
   -v, --verbose      Print detailed output  [boolean]
       --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter       Filter output using JsonPath  [string]
-      --address      Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token   Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help         Show help  [boolean]
       --project-id   ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id  ID of the pipeline containing the pipeline revision  [string] [required]
@@ -294,8 +294,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the pipelines  [string] [required]
       --sort        Sort order  [choices: \\"modified_asc\\", \\"modified_desc\\", \\"name_asc\\", \\"name_desc\\"]
@@ -307,9 +307,17 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name                                           pipeline_count  organization_id           created            
-6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  6               5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM
-5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)            1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
+"_id                       name                                           pipeline_count  organization_id           created             
+6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  6               5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM 
+5fa4dba223b4e0703b95c465  Full Kitchen Sink                              41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
+607f19bd98a5b821d3ca5f13  Runner Dog Food                                7               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
+5fda3431f00c8ba848f49f45  Vault Testing                                  5               5f9f2d08e2f1bb2436e6f5b0  12/16/2020, 4:22 PM 
+5f9f3b02233d0b9e290b3122  Scratch                                        54              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
+60fb43f7ec3b3b4d95917316  Kitchen Sink Suite [ERDE-1203]                 35              5f9f2d08e2f1bb2436e6f5b0  07/23/2021, 10:34 PM
+617711bbda9b615a36917ef2  Dan Testing                                    2               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
+61660be4ec3b3bc1d991793c  William's Project                              1               5f9f2d08e2f1bb2436e6f5b0  10/12/2021, 10:27 PM
+60abf1a2495357f3f9a3b981  Notification Integrations                      2               5f9f2d08e2f1bb2436e6f5b0  05/24/2021, 6:34 PM 
+615df9a7ec3b3b66bd9176f8  Catalog with Approval Test                     1               5f9f2d08e2f1bb2436e6f5b0  10/06/2021, 7:31 PM 
 "
 `;
 
@@ -319,17 +327,114 @@ exports[`refactrctl list projects should work 2`] = `
         \\"_id\\": \\"6010f6e2a830874a04689246\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
-        \\"modified\\": \\"2021-10-12T16:49:58.216Z\\",
+        \\"modified\\": \\"2021-12-14T15:54:27.578Z\\",
         \\"pipeline_count\\": 6,
         \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
     },
     {
-        \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
+        \\"_id\\": \\"5fa4dba223b4e0703b95c465\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-01-11T15:40:13.848Z\\",
-        \\"modified\\": \\"2021-03-19T12:16:17.965Z\\",
+        \\"created\\": \\"2020-11-06T05:14:10.990Z\\",
+        \\"modified\\": \\"2021-12-09T20:15:30.522Z\\",
+        \\"pipeline_count\\": 41,
+        \\"name\\": \\"Full Kitchen Sink\\",
+        \\"image_id\\": \\"5feeecacb5297d642e1938da\\"
+    },
+    {
+        \\"_id\\": \\"607f19bd98a5b821d3ca5f13\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-04-20T18:13:17.407Z\\",
+        \\"modified\\": \\"2021-12-08T14:53:40.686Z\\",
+        \\"pipeline_count\\": 7,
+        \\"name\\": \\"Runner Dog Food\\",
+        \\"image_id\\": \\"607f19d896b0a463afd1ccb5\\"
+    },
+    {
+        \\"_id\\": \\"5fda3431f00c8ba848f49f45\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-12-16T16:22:09.374Z\\",
+        \\"modified\\": \\"2021-12-01T19:53:07.890Z\\",
+        \\"pipeline_count\\": 5,
+        \\"name\\": \\"Vault Testing\\",
+        \\"image_id\\": \\"5fda3442b486804ec421ce2e\\"
+    },
+    {
+        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
+        \\"modified\\": \\"2021-12-01T17:49:29.219Z\\",
+        \\"pipeline_count\\": 54,
+        \\"name\\": \\"Scratch\\",
+        \\"image_id\\": \\"600b6b5c25b0b52703ea3f0c\\"
+    },
+    {
+        \\"_id\\": \\"60fb43f7ec3b3b4d95917316\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-07-23T22:34:31.873Z\\",
+        \\"modified\\": \\"2021-11-24T16:19:59.090Z\\",
+        \\"pipeline_count\\": 35,
+        \\"name\\": \\"Kitchen Sink Suite [ERDE-1203]\\"
+    },
+    {
+        \\"_id\\": \\"617711bbda9b615a36917ef2\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-10-25T20:21:15.612Z\\",
+        \\"modified\\": \\"2021-11-22T20:12:30.617Z\\",
+        \\"pipeline_count\\": 2,
+        \\"name\\": \\"Dan Testing\\",
+        \\"icon_name\\": \\"pills\\"
+    },
+    {
+        \\"_id\\": \\"61660be4ec3b3bc1d991793c\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-10-12T22:27:48.913Z\\",
+        \\"modified\\": \\"2021-10-14T21:22:29.132Z\\",
         \\"pipeline_count\\": 1,
-        \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\"
+        \\"name\\": \\"William's Project\\"
+    },
+    {
+        \\"_id\\": \\"60abf1a2495357f3f9a3b981\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-05-24T18:34:10.693Z\\",
+        \\"modified\\": \\"2021-10-08T21:18:56.686Z\\",
+        \\"pipeline_count\\": 2,
+        \\"name\\": \\"Notification Integrations\\",
+        \\"summary\\": \\"Reusable pipelines with notification integration to applications such as Slack, Microsoft Teams, Email, etc.\\",
+        \\"description\\": \\"The Notification Integrations catalog contains resuable pipelines that provide integration with applications such as Slack, Microsoft Teams, and email.\\",
+        \\"catalog\\": true,
+        \\"catalog_scope\\": \\"public\\",
+        \\"license_link\\": \\"https://www.refactr.it/terms-privacy-security?tab=terms-of-use\\",
+        \\"policy_link\\": \\"https://www.refactr.it/terms-privacy-security?tab=privacy\\",
+        \\"product_link\\": \\"http://www.refactr.it\\",
+        \\"support_link\\": \\"mailto:support@refactr.it\\",
+        \\"tags\\": [
+            \\"ChatOps\\",
+            \\"DevOps\\",
+            \\"ITOps\\"
+        ],
+        \\"published_pipeline_count\\": 2,
+        \\"image_id\\": \\"60abf33d4ebff36615f8e902\\"
+    },
+    {
+        \\"_id\\": \\"615df9a7ec3b3b66bd9176f8\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-10-06T19:31:51.601Z\\",
+        \\"modified\\": \\"2021-10-06T19:34:26.457Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"Catalog with Approval Test\\",
+        \\"catalog\\": true,
+        \\"catalog_scope\\": \\"draft\\",
+        \\"license_link\\": \\"https://www.refactr.it\\",
+        \\"policy_link\\": \\"https://www.refactr.it\\",
+        \\"product_link\\": \\"https://www.refactr.it\\",
+        \\"summary\\": \\"Test test test\\",
+        \\"support_link\\": \\"https://www.refactr.it\\",
+        \\"tags\\": [
+            \\"Cloud Infrastructure\\"
+        ],
+        \\"image_id\\": \\"615dfa179eb4e597e9d71733\\",
+        \\"description\\": \\"Test test test\\\\n\\\\nTest test test\\\\n\\\\nTest test test\\\\n\\\\nTest test test\\",
+        \\"published_pipeline_count\\": 1
     }
 ]
 "
@@ -340,16 +445,115 @@ exports[`refactrctl list projects should work 3`] = `
     _id: 6010f6e2a830874a04689246
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-01-27T05:15:14.584Z'
-    modified: '2021-10-12T16:49:58.216Z'
+    modified: '2021-12-14T15:54:27.578Z'
     pipeline_count: 6
     name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
 -
-    _id: 5ffc715d04ea5ca71d201bb3
+    _id: 5fa4dba223b4e0703b95c465
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-01-11T15:40:13.848Z'
-    modified: '2021-03-19T12:16:17.965Z'
+    created: '2020-11-06T05:14:10.990Z'
+    modified: '2021-12-09T20:15:30.522Z'
+    pipeline_count: 41
+    name: Full Kitchen Sink
+    image_id: 5feeecacb5297d642e1938da
+-
+    _id: 607f19bd98a5b821d3ca5f13
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-04-20T18:13:17.407Z'
+    modified: '2021-12-08T14:53:40.686Z'
+    pipeline_count: 7
+    name: Runner Dog Food
+    image_id: 607f19d896b0a463afd1ccb5
+-
+    _id: 5fda3431f00c8ba848f49f45
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-12-16T16:22:09.374Z'
+    modified: '2021-12-01T19:53:07.890Z'
+    pipeline_count: 5
+    name: Vault Testing
+    image_id: 5fda3442b486804ec421ce2e
+-
+    _id: 5f9f3b02233d0b9e290b3122
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-11-01T22:47:30.770Z'
+    modified: '2021-12-01T17:49:29.219Z'
+    pipeline_count: 54
+    name: Scratch
+    image_id: 600b6b5c25b0b52703ea3f0c
+-
+    _id: 60fb43f7ec3b3b4d95917316
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-07-23T22:34:31.873Z'
+    modified: '2021-11-24T16:19:59.090Z'
+    pipeline_count: 35
+    name: 'Kitchen Sink Suite [ERDE-1203]'
+-
+    _id: 617711bbda9b615a36917ef2
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-10-25T20:21:15.612Z'
+    modified: '2021-11-22T20:12:30.617Z'
+    pipeline_count: 2
+    name: Dan Testing
+    icon_name: pills
+-
+    _id: 61660be4ec3b3bc1d991793c
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-10-12T22:27:48.913Z'
+    modified: '2021-10-14T21:22:29.132Z'
     pipeline_count: 1
-    name: 'CLI tests [STATIC ONLY] (LIST, GET)'
+    name: William's Project
+-
+    _id: 60abf1a2495357f3f9a3b981
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-05-24T18:34:10.693Z'
+    modified: '2021-10-08T21:18:56.686Z'
+    pipeline_count: 2
+    name: Notification Integrations
+    summary: >-
+        Reusable pipelines with notification integration to applications such as
+        Slack, Microsoft Teams, Email, etc.
+    description: >-
+        The Notification Integrations catalog contains resuable pipelines that
+        provide integration with applications such as Slack, Microsoft Teams,
+        and email.
+    catalog: true
+    catalog_scope: public
+    license_link: 'https://www.refactr.it/terms-privacy-security?tab=terms-of-use'
+    policy_link: 'https://www.refactr.it/terms-privacy-security?tab=privacy'
+    product_link: 'http://www.refactr.it'
+    support_link: 'mailto:support@refactr.it'
+    tags:
+        - ChatOps
+        - DevOps
+        - ITOps
+    published_pipeline_count: 2
+    image_id: 60abf33d4ebff36615f8e902
+-
+    _id: 615df9a7ec3b3b66bd9176f8
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-10-06T19:31:51.601Z'
+    modified: '2021-10-06T19:34:26.457Z'
+    pipeline_count: 1
+    name: Catalog with Approval Test
+    catalog: true
+    catalog_scope: draft
+    license_link: 'https://www.refactr.it'
+    policy_link: 'https://www.refactr.it'
+    product_link: 'https://www.refactr.it'
+    summary: Test test test
+    support_link: 'https://www.refactr.it'
+    tags:
+        - Cloud Infrastructure
+    image_id: 615dfa179eb4e597e9d71733
+    description: |-
+        Test test test
+
+        Test test test
+
+        Test test test
+
+        Test test test
+    published_pipeline_count: 1
 
 "
 `;
@@ -370,7 +574,7 @@ exports[`refactrctl list runners should work (by project) 2`] = `
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2021-01-15T12:17:18.961Z\\",
         \\"name\\": \\"CLI Test (container)\\",
-        \\"type\\": \\"hosted_container_centos7\\",
+        \\"type\\": \\"aws_vm_centos8\\",
         \\"hosted\\": true,
         \\"status\\": \\"Stopped\\",
         \\"idle\\": true
@@ -387,7 +591,7 @@ exports[`refactrctl list runners should work (by project) 3`] = `
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-01-15T12:17:18.961Z'
     name: CLI Test (container)
-    type: hosted_container_centos7
+    type: aws_vm_centos8
     hosted: true
     status: Stopped
     idle: true
@@ -405,8 +609,8 @@ Options:
   -v, --verbose          Print detailed output  [boolean]
       --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter           Filter output using JsonPath  [string]
-      --address          Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token       Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help             Show help  [boolean]
       --project-id       ID of the project containing the runners  [string]
       --organization-id  ID of the organization containing the runners  [string]
@@ -423,8 +627,8 @@ Options:
   -v, --verbose      Print detailed output  [boolean]
       --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter       Filter output using JsonPath  [string]
-      --address      Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token   Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help         Show help  [boolean]
       --project-id   ID of the organization containing the runs  [string] [required]
       --pipeline-id  ID of a pipeline used to filter the runs  [string]
@@ -455,8 +659,8 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Refactr API server  [string] [default: REFACTR_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
-      --auth-token  Authentication token  [string] [default: REFACTR_AUTH_TOKEN environment variable]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
 Command must be specified

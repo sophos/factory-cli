@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import isArray from 'lodash/isArray';
-import { executeAsIs, execute } from '../helpers/execute';
-import { withCmd } from '../helpers/options';
+import { execute, executeAsIs } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
+import { withCmd } from '../helpers/options';
 
 describe('refactrctl get', () => {
   jest.setTimeout(60 * 1000);
 
   test('throws on missing subcommand', async () => {
     await expect(
-      execute(['get'], { token: process.env.REFACTR_STATIC_AUTH_TOKEN! })
+      execute(['get'], { token: process.env.FACTORY_STATIC_AUTH_TOKEN! })
     ).rejects.toMatchSnapshot();
   });
 
@@ -24,12 +24,12 @@ describe('refactrctl get', () => {
           '--format',
           'json'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
     await expect(
       execute(['get', 'project', knownIds.static.project, '--format', 'json'], {
-        token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+        token: process.env.FACTORY_STATIC_AUTH_TOKEN!
       })
     ).resolves.toMatchSnapshot();
     await expect(
@@ -43,7 +43,7 @@ describe('refactrctl get', () => {
           '--format',
           'json'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
     await expect(
@@ -57,7 +57,7 @@ describe('refactrctl get', () => {
           '--format',
           'json'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
     await expect(
@@ -71,7 +71,7 @@ describe('refactrctl get', () => {
           '--format',
           'json'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
   });
@@ -86,12 +86,12 @@ describe('refactrctl get', () => {
           '--format',
           'yaml'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
     await expect(
       execute(['get', 'project', knownIds.static.project, '--format', 'yaml'], {
-        token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+        token: process.env.FACTORY_STATIC_AUTH_TOKEN!
       })
     ).resolves.toMatchSnapshot();
     await expect(
@@ -105,7 +105,7 @@ describe('refactrctl get', () => {
           '--format',
           'yaml'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
     await expect(
@@ -119,7 +119,7 @@ describe('refactrctl get', () => {
           '--format',
           'yaml'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
     await expect(
@@ -133,7 +133,7 @@ describe('refactrctl get', () => {
           '--format',
           'yaml'
         ],
-        { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       )
     ).resolves.toMatchSnapshot();
   });
@@ -142,7 +142,7 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'organization'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -150,7 +150,7 @@ describe('refactrctl get', () => {
     test('accepts id as argument', async () => {
       await expect(
         execute(['get', 'organization', knownIds.static.organization], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).resolves.toMatchSnapshot();
     });
@@ -161,7 +161,7 @@ describe('refactrctl get', () => {
           `echo ${knownIds.static.organization} | ${withCmd(
             'get organization'
           )}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -171,7 +171,7 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'project'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -179,7 +179,7 @@ describe('refactrctl get', () => {
     test('accepts id as argument', async () => {
       await expect(
         execute(['get', 'project', knownIds.static.project], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).resolves.toMatchSnapshot();
     });
@@ -188,7 +188,7 @@ describe('refactrctl get', () => {
       await expect(
         executeAsIs(
           `echo ${knownIds.static.project} | ${withCmd('get project')}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -198,7 +198,7 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'credential'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
 
@@ -206,7 +206,7 @@ describe('refactrctl get', () => {
       await expect(
         execute(
           ['get', 'credential', '--project-id', knownIds.static.project],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).rejects.toMatchSnapshot();
     });
@@ -221,7 +221,7 @@ describe('refactrctl get', () => {
             knownIds.static.project,
             knownIds.static.credential
           ],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -232,7 +232,7 @@ describe('refactrctl get', () => {
           `echo ${knownIds.static.credential} | ${withCmd(
             `get credential --project-id ${knownIds.static.project}`
           )}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -242,14 +242,14 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'job'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
 
       // Missing positional
       await expect(
         execute(['get', 'job', '--project-id', knownIds.static.project], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -264,7 +264,7 @@ describe('refactrctl get', () => {
             knownIds.static.project,
             knownIds.static.job
           ],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -275,7 +275,7 @@ describe('refactrctl get', () => {
           `echo ${knownIds.static.job} | ${withCmd(
             `get job --project-id ${knownIds.static.project}`
           )}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -285,7 +285,7 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'pipeline-revision'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
 
@@ -300,7 +300,7 @@ describe('refactrctl get', () => {
             '--pipeline-id',
             knownIds.static.pipeline
           ],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).rejects.toMatchSnapshot();
     });
@@ -317,7 +317,7 @@ describe('refactrctl get', () => {
             knownIds.static.pipeline,
             knownIds.static.pipelineRevision
           ],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -328,7 +328,7 @@ describe('refactrctl get', () => {
           `echo ${knownIds.static.pipelineRevision} | ${withCmd(
             `get pipeline-revision --project-id ${knownIds.static.project} --pipeline-id ${knownIds.static.pipeline}`
           )}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -338,13 +338,13 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'pipeline'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
 
       await expect(
         execute(['get', 'pipeline', '--project-id', knownIds.static.project], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -359,7 +359,7 @@ describe('refactrctl get', () => {
             knownIds.static.project,
             knownIds.static.pipeline
           ],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -370,7 +370,7 @@ describe('refactrctl get', () => {
           `echo ${knownIds.static.pipeline} | ${withCmd(
             `get pipeline --project-id ${knownIds.static.project}`
           )}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -380,7 +380,7 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'runner'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
 
@@ -388,7 +388,7 @@ describe('refactrctl get', () => {
       await expect(
         execute(
           ['get', 'runner', '--organization-id', knownIds.static.organization],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).rejects.toMatchSnapshot();
     });
@@ -403,7 +403,7 @@ describe('refactrctl get', () => {
             knownIds.static.organization,
             knownIds.static.runner
           ],
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -414,7 +414,7 @@ describe('refactrctl get', () => {
           `echo ${knownIds.static.runner} | ${withCmd(
             `get runner --organization-id ${knownIds.static.organization}`
           )}`,
-          { token: process.env.REFACTR_STATIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         )
       ).resolves.toMatchSnapshot();
     });
@@ -424,14 +424,14 @@ describe('refactrctl get', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['get', 'run'], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
 
       // Missing positional
       await expect(
         execute(['get', 'run', '--project-id', knownIds.static.project], {
-          token: process.env.REFACTR_STATIC_AUTH_TOKEN!
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -451,7 +451,7 @@ describe('refactrctl get', () => {
               knownIds.dynamic.pipeline,
               '--format=json'
             ],
-            { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+            { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
           )
         );
 
@@ -470,7 +470,7 @@ describe('refactrctl get', () => {
               runId,
               '--format=json'
             ],
-            { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+            { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
           ).then((value) => isArray(JSON.parse(value)))
         ).resolves.toBeTruthy();
       });

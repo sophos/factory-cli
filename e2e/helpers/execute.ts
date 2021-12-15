@@ -1,11 +1,10 @@
 import { exec } from 'child_process';
-
 import isNil from 'lodash/isNil';
 import isString from 'lodash/isString';
 
 type Args = string[];
 
-const command = process.env.REFACTR_CLI_PATH ?? 'refactrctl';
+const command = process.env.FACTORY_CLI_PATH ?? 'refactrctl';
 
 type Options = {
   token: string;
@@ -21,11 +20,11 @@ export async function executeAsIs(
   const env: { [key: string]: string | undefined } = {
     // inherit from parent process
     ...process.env,
-    REFACTR_AUTH_TOKEN: options.token
+    FACTORY_AUTH_TOKEN: options.token
   };
 
   if (isString(options.address)) {
-    env.REFACTR_ADDRESS = options.address;
+    env.FACTORY_ADDRESS = options.address;
   }
 
   return new Promise<string>((resolve, reject) => {

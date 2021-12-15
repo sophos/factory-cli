@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
-
 import { execute } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 
@@ -12,7 +11,7 @@ describe('refactrctl run', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['run', 'pipeline'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -40,7 +39,7 @@ describe('refactrctl run', () => {
             knownIds.dynamic.pipeline,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         ).then((value) => JSON.parse(value))
       ).resolves.toHaveProperty('status', 'Queued');
     });
@@ -59,7 +58,7 @@ describe('refactrctl run', () => {
             '--wait',
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         ).then((value) => isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
@@ -90,7 +89,7 @@ describe('refactrctl run', () => {
                 '--wait',
                 '--format=json'
               ],
-              { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+              { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
             )
           );
 
@@ -122,7 +121,7 @@ describe('refactrctl run', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['run', 'job'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -148,7 +147,7 @@ describe('refactrctl run', () => {
             knownIds.dynamic.job,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         ).then((value) => JSON.parse(value))
       ).resolves.toHaveProperty('status', 'Queued');
     });
@@ -165,7 +164,7 @@ describe('refactrctl run', () => {
             knownIds.dynamic.job,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         ).then((value) => isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
@@ -194,7 +193,7 @@ describe('refactrctl run', () => {
                 knownIds.dynamic.job,
                 '--format=json'
               ],
-              { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+              { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
             )
           );
 

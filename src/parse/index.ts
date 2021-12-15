@@ -1,15 +1,13 @@
-import { URL } from 'url';
-
 import isNil from 'lodash/isNil';
+import { URL } from 'url';
 import type Yargs from 'yargs';
-
 import { DEFAULT_FORMATTER } from '../formatter';
 import create from './create';
+import del from './delete';
 import get from './get';
 import list from './list';
-import run from './run';
 import rerun from './rerun';
-import del from './delete';
+import run from './run';
 
 // NOTE: using commonjs import here as rollup cannot correctly resolve
 //       yargs when importing with ES6 imports for some reason.
@@ -45,7 +43,7 @@ const parse = (argv: string[], { version }: { version: string }) => {
       requiresArg: true
     })
     .option('address', {
-      describe: 'Address of the Refactr API server',
+      describe: 'Address of the Sophos Factory API server',
       type: 'string',
       requiresArg: true,
       coerce: (address: string) => {
@@ -68,8 +66,8 @@ const parse = (argv: string[], { version }: { version: string }) => {
     })
     .default(
       'address',
-      () => process.env.REFACTR_ADDRESS ?? DEFAULT_ADDRESS,
-      `REFACTR_ADDRESS environment variable if set, otherwise ${DEFAULT_ADDRESS}`
+      () => process.env.FACTORY_ADDRESS ?? DEFAULT_ADDRESS,
+      `FACTORY_ADDRESS environment variable if set, otherwise ${DEFAULT_ADDRESS}`
     )
     .option('auth-token', {
       describe: 'Authentication token',
@@ -78,8 +76,8 @@ const parse = (argv: string[], { version }: { version: string }) => {
     })
     .default(
       'auth-token',
-      () => process.env.REFACTR_AUTH_TOKEN,
-      'REFACTR_AUTH_TOKEN environment variable'
+      () => process.env.FACTORY_AUTH_TOKEN,
+      'FACTORY_AUTH_TOKEN environment variable'
     )
     .check((argv) => {
       if (!isNil(argv.filter) && argv.format === 'wide') {

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import * as faker from 'faker';
-
 import { execute } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 import { loadFixtures } from './fixtures';
@@ -14,7 +13,7 @@ describe('refactrctl create', () => {
   jest.setTimeout(10000);
   test('throws on missing subcommand', async () => {
     await expect(
-      execute(['create'], { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! })
+      execute(['create'], { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! })
     ).rejects.toMatchSnapshot();
   });
 
@@ -22,7 +21,7 @@ describe('refactrctl create', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['create', 'credential'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -42,7 +41,7 @@ describe('refactrctl create', () => {
             `--project-id=${knownIds.dynamic.project}`
           ],
           {
-            token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+            token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
           }
         )
       );
@@ -59,7 +58,7 @@ describe('refactrctl create', () => {
             id
           ],
           {
-            token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+            token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
           }
         )
       );
@@ -72,7 +71,7 @@ describe('refactrctl create', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['create', 'pipeline'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -89,7 +88,7 @@ describe('refactrctl create', () => {
             faker.random.word(),
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -105,7 +104,7 @@ describe('refactrctl create', () => {
             createResult._id,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -117,7 +116,7 @@ describe('refactrctl create', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['create', 'pipeline-revision'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -127,7 +126,7 @@ describe('refactrctl create', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['create', 'job'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
@@ -150,7 +149,7 @@ describe('refactrctl create', () => {
             'manual',
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -166,7 +165,7 @@ describe('refactrctl create', () => {
             createResult._id,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -201,7 +200,7 @@ describe('refactrctl create', () => {
             "'boolean_variable:true'",
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -217,7 +216,7 @@ describe('refactrctl create', () => {
             createResult._id,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -262,7 +261,7 @@ describe('refactrctl create', () => {
             '--schedule.offset',
             schedule.offset
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -278,7 +277,7 @@ describe('refactrctl create', () => {
             createResult._id,
             '--format=json'
           ],
-          { token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN! }
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
         )
       );
 
@@ -290,7 +289,7 @@ describe('refactrctl create', () => {
     test('throws on missing arguments', async () => {
       await expect(
         execute(['create', 'project'], {
-          token: process.env.REFACTR_DYNAMIC_AUTH_TOKEN!
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
     });
