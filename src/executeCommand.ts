@@ -90,8 +90,8 @@ export default async function executeCommand(args: Args) {
             case 'unknown_error': {
               const message =
                 payload.possiblyWrongAddress ?? false
-                  ? 'Seems like provided API address is not correct, please verify it. ' +
-                    'If error is repeated, please report it on https://github.com/refactr/refactr-cli/issues'
+                  ? 'The API address provided is invalid. ' +
+                    'If this error is persistent, please report it via https://github.com/refactr/refactr-cli/issues'
                   : 'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues';
               viewError({
                 code: 'UnknownError',
@@ -112,7 +112,7 @@ export default async function executeCommand(args: Args) {
       code: 'UnknownCommand',
       error,
       message:
-        'Unknown command! It is likely a problem with our CLI itself. ' +
+        'Unknown command. This may be a problem with the CLI. ' +
         'To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
     });
   }
