@@ -1,6 +1,6 @@
 # Release Process
 
-This document describes the process for creating a release and publishing a new version of this module.
+This document describes the process for creating a release and publishing a new version of the CLI.
 
 ## Prerequisites
 
@@ -11,10 +11,9 @@ This document describes the process for creating a release and publishing a new 
 
 1. Bump the version number in `package.json`. Use [Semantic Versioning](https://semver.org).
 2. Run `npm install` to regenerate the `package-lock.json`.
-3. Run `npm run build`. It's important to do this after bumping the version.
-4. Commit and Git tag these changes. Use `v` followed by the version number, for example: `git tag -a v1.2.0`.
-5. Push the changes to the GitHub repository, including the tag (`git push --tags`).
-6. The push of the `v*` tag will trigger workflows that test the project, then create a new Release on GitHub. The Action [Publish packages](.github/workflows/publish.yml) will automatically upload release assets (binaries) and create releases for npm, GPR, and Docker Hub. Ensure the Action completes successfully.
+3. Commit and Git tag these changes. Use `v` followed by the version number, for example: `git tag -a v1.2.0`.
+4. Push the changes to the GitHub repository, including the tag (`git push --tags`).
+5. The push of the `v*` tag will trigger workflows that test the project, then create a new Release on GitHub. The Action [Publish packages](.github/workflows/publish.yml) will automatically upload release assets (binaries) and create releases for npm, GPR, and Docker Hub. Ensure the Action completes successfully.
 
 New updates can be viewed at:
 
