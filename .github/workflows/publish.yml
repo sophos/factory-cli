@@ -1,7 +1,6 @@
 name: Publish packages
 
-on:
-  workflow_call
+on: workflow_call
 
 jobs:
   generate_tags:
@@ -194,7 +193,7 @@ jobs:
           asset_name: refactr-${{ matrix.operating-system }}-x64.zip
           asset_content_type: application/zip
       - name: Upload SHA256 Sum (${{ matrix.operating-system }})
-        id: upload-release-asset
+        id: upload-sha
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
