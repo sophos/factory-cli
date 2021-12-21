@@ -1,9 +1,7 @@
-name: Publish executables
+name: Publish packages
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_call
 
 jobs:
   generate_tags:
@@ -18,81 +16,39 @@ jobs:
           script: |
             const version = `${process.env.GITHUB_REF}`.replace('refs/tags/v', '');
             const tags = [version];
-
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
               const parts = version.split('.');
               for (let i = 1; i < parts.length; i++) {
                 tags.push(parts.slice(0, i).join('.'));
               }
-
               tags.push('latest');
             }
-
             console.info('Produced tags: ', tags);
-
             return tags;
 
-  test:
-    name: Test
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ubuntu-latest, macos-latest]
-        node-version: [12.x, 14.x, 15.x]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup node ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: node -e "console.log('FACTORY_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
-
-      - run: yarn install
-      - run: yarn build:runtime
-
-      - run: yarn lint
-      - run: yarn test:unit
-      - run: yarn test:e2e
-        env:
-          FACTORY_ADDRESS: ${{ secrets.FACTORY_ADDRESS }}
-          FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
-          FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
-
-  deploy_docker:
-    name: Deploy to Docker Hub
+  publish_docker:
+    name: Publish to Docker Hub
     needs:
-      - test
       - generate_tags
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
-
-      - id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
+        if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
-
+            ${{ runner.os }}-node-
       - uses: actions/github-script@v3
         id: get-tags
         with:
@@ -100,21 +56,16 @@ jobs:
           script: |
             const tags = ${{ needs.generate_tags.outputs.tags }};
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
-
             console.log(
               'Decoded tags: ', tags,
               '\n',
               'Docker tags: ', dockerTags
             );
-
             return dockerTags;
+      - run: npm install
+      - run: npm run build:aot
+      - run: npm run build:exe:alpine
 
-
-      - run: yarn install
-      - run: yarn build:aot
-      - run: yarn build:exe:alpine
-
-      # Docker
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -134,40 +85,47 @@ jobs:
           push: true
           tags: ${{ steps.get-tags.outputs.result }}
 
-  deploy_npm:
-    name: Deploy to npm
-    needs: test
+  publish_packages:
+    name: Publish packages to npm and GPR
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v2
         with:
-          node-version: 12.x
-          registry-url: https://registry.npmjs.org/
-
-      - id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
+        if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-node-
 
-      - run: yarn install
-      - run: yarn build:runtime
+      - run: npm install
+      - run: npm run build:runtime
 
       - name: Publish to npm registry
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to GPR
+        uses: actions/setup-node@v2
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # GitHub Release
-  create_gh_release:
-    name: Create release
-    needs: test
+  # Create GitHub Release and upload binary assets
+  create_release:
+    name: Create GitHub Release
     runs-on: ubuntu-latest
     outputs:
       upload_url: ${{ steps.release.outputs.upload_url }}
@@ -184,15 +142,13 @@ jobs:
           prerelease: false
 
   # Publish macOS and Linux x64 build
-  deploy_binary:
-    name: Deploy executables ${{ matrix.operating-system }}
-
-    needs: create_gh_release
+  create_binary:
+    name: Create executable for ${{ matrix.operating-system }}
+    needs: create_release
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # TODO: add win
-        operating-system: [linux, macos]
+        operating-system: [linux, macos, win]
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
@@ -200,19 +156,22 @@ jobs:
         with:
           node-version: 12.x
 
-      - id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
+        if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-node-
 
-      - run: yarn install
-      - run: yarn build:aot
-      - run: yarn build:exe:${{ matrix.operating-system }}
+      - run: npm install
+      - run: npm run build:aot
+      - run: npm run build:exe:${{ matrix.operating-system }}
 
       # Windows
       - if: ${{ matrix.operating-system == 'win' }}
@@ -230,18 +189,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.create_gh_release.outputs.upload_url }}
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./refactr-${{ matrix.operating-system }}-x64.zip
           asset_name: refactr-${{ matrix.operating-system }}-x64.zip
           asset_content_type: application/zip
 
-#      - name: Upload SHA256 Sum (${{ matrix.operating-system }})
-#        id: upload-release-asset
-#        uses: actions/upload-release-asset@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          upload_url: ${{ needs.create_gh_release.outputs.upload_url }}
-#          asset_path: ./refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
-#          asset_name: refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
-#          asset_content_type: plain/text
+     - name: Upload SHA256 Sum (${{ matrix.operating-system }})
+       id: upload-release-asset
+       uses: actions/upload-release-asset@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+         upload_url: ${{ needs.create_release.outputs.upload_url }}
+         asset_path: ./refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
+         asset_name: refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
+         asset_content_type: plain/text
