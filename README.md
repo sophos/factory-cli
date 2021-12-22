@@ -4,8 +4,6 @@ The Sophos Factory command line tool is used to interact with the Sophos Factory
 
 Basic usage and installation is described below. [Click here for complete Sophos Factory CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
 
-**NOTE**: version `1.x` has been redone from scratch and is not compatible with `0.12.x`.
-
 ## Usage
 
 ```shell
@@ -35,12 +33,7 @@ Options:
 
 ### Binary
 
-Starting from version `1.0.0` the CLI is primarily distributed via binary builds.
-Currently, we provide official binaries for Linux and macOS. Get the
-latest version from [this page](https://github.com/refactr/refactr-cli/releases/latest),
-and download the archive file for your operating system/architecture.
-Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`).
-Make sure it has execution permission granted.
+We provide official binaries for Linux and macOS. Get the latest version from [this page](https://github.com/refactr/refactr-cli/releases/latest), and download the archive file for your operating system/architecture. Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`). Make sure it has execution permission granted.
 
 ### npm
 
