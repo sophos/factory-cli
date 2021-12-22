@@ -11,6 +11,7 @@ jobs:
       tags: ${{ steps.set-tags.outputs.result }}
     steps:
       - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow --tags
       - uses: actions/github-script@v3
         id: set-tags
         with:
