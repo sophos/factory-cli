@@ -15,7 +15,14 @@ jobs:
         id: set-tags
         with:
           script: |
-            const version = `${process.env.GITHUB_REF}`.replace('refs/tags/v', '');
+            const { exec } = require('child_process');
+            exec(`git describe --tags --abbrev=0`, (err, tag, stderr) => {
+              if (err) {
+                console.log('Could not get latest tag:', stderr);
+                process.exit(1)
+              }
+            });
+            const version = tag.trim()
             const tags = [version];
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
               const parts = version.split('.');
@@ -128,6 +135,7 @@ jobs:
   create_release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
+    permissions: write-all
     outputs:
       upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
