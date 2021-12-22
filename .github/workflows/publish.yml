@@ -104,6 +104,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org/'
+          scope: '@refactr'
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
@@ -128,6 +129,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@refactr'
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
