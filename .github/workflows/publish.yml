@@ -20,20 +20,20 @@ jobs:
             exec(`git describe --tags --abbrev=0`, (err, tag, stderr) => {
               if (err) {
                 console.log('Could not get latest tag:', stderr);
-                process.exit(1)
+                process.exit(1);
               }
+              const version = tag.trim();
+              const tags = [version];
+              if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
+                const parts = version.split('.');
+                for (let i = 1; i < parts.length; i++) {
+                  tags.push(parts.slice(0, i).join('.'));
+                }
+                tags.push('latest');
+              }
+              console.info('Produced tags: ', tags);
+              return tags;
             });
-            const version = tag.trim()
-            const tags = [version];
-            if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
-              const parts = version.split('.');
-              for (let i = 1; i < parts.length; i++) {
-                tags.push(parts.slice(0, i).join('.'));
-              }
-              tags.push('latest');
-            }
-            console.info('Produced tags: ', tags);
-            return tags;
 
   publish_docker:
     name: Publish to Docker Hub
