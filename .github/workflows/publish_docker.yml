@@ -21,7 +21,7 @@ jobs:
         with:
           script: |
             const VER = process.env;
-            const tags = [${VER}];
+            const tags = [`${VER}`];
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
               const parts = version.split('.');
               for (let i = 1; i < parts.length; i++) {
@@ -57,7 +57,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const tags = ${TAGS};
+            const tags = `${TAGS}`;
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
               'Decoded tags: ', tags,
