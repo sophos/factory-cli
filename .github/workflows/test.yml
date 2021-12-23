@@ -43,7 +43,15 @@ jobs:
           FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
           FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
 
-  call-publish:
+  call-publish-gh:
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() }}
-    uses: refactr/refactr-cli/.github/workflows/publish.yml@master
+    uses: refactr/refactr-cli/.github/workflows/publish_gh.yml@master
+    permissions: write-all
+  call-publish-docker:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() }}
+    uses: refactr/refactr-cli/.github/workflows/publish_docker.yml@master
+    permissions: write-all
+  call-publish-npm:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() }}
+    uses: refactr/refactr-cli/.github/workflows/publish_npm.yml@master
     permissions: write-all
