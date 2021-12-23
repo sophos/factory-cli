@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
-      - id: set-tags
-        uses: actions/github-script@v3
+      - uses: actions/github-script@v3
+        id: set-tags
         with:
           script: |
             const { exec } = require('child_process');
