@@ -5,15 +5,20 @@ on:
   workflow_dispatch:
     
 jobs:
-  get-version:
+  # Create GitHub Release and upload binary assets
+  create_release:
+    name: Create GitHub Release
     runs-on: ubuntu-latest
+    permissions: write-all
     outputs:
-      version: ${{ steps.get-version.outputs.result }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow --tags
-      - uses: actions/github-script@v3
-        id: get-version
+      - name: Check out and get tags
+        uses: actions/checkout@v2
+        run: git fetch --prune --unshallow --tags
+      - name: Generate the version name from tags
+        uses: actions/github-script@v5
+        id: generate-version
         with:
           script: |
             const { exec } = require('child_process');
@@ -23,17 +28,10 @@ jobs:
                 process.exit(1);
               }
               const version = tag.trim();
+              console.log('Release version:', version);
               return version;
             });
-
-  # Create GitHub Release and upload binary assets
-  create_release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    permissions: write-all
-    outputs:
-      upload_url: ${{ steps.release.outputs.upload_url }}
-    steps:
+          result-encoding: string
       - name: Create Release
         id: release
         uses: actions/create-release@v1
@@ -41,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ steps.get-version.outputs.version }}
+          release_name: Release ${{ steps.generate-version.outputs.result }}
           draft: false
           prerelease: false
 
