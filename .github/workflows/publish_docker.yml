@@ -58,6 +58,7 @@ jobs:
         with:
           result-encoding: string
           script: |
+            const TAGS = process.env;
             const tags = `${TAGS}`;
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
