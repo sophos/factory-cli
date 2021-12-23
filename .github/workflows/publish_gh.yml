@@ -35,6 +35,7 @@ jobs:
     name: Create executable for ${{ matrix.operating-system }}
     needs: create_release
     runs-on: ubuntu-latest
+    permissions: write-all
     strategy:
       matrix:
         operating-system: [linux, macos, win]
@@ -82,6 +83,7 @@ jobs:
           asset_path: ./refactr-${{ matrix.operating-system }}-x64.zip
           asset_name: refactr-${{ matrix.operating-system }}-x64.zip
           asset_content_type: application/zip
+
       - name: Upload SHA256 Sum (${{ matrix.operating-system }})
         id: upload-sha
         uses: actions/upload-release-asset@v1
