@@ -57,7 +57,7 @@ jobs:
         with:
           script: |
             const TAGS = process.env.TAGS;
-            const tags = `${TAGS}`;
+            const tags = TAGS;
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
               'Decoded tags: ', tags,
