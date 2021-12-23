@@ -13,7 +13,7 @@ This document describes the process for creating a release and publishing a new 
 2. Regenerate the `package-lock.json`.
 3. Commit and Git tag these changes. Use `v` followed by the version number, for example: `git tag -a v1.2.0`.
 4. Push the changes to the GitHub repository, including the tag (`git push --tags`).
-5. The push of the `v*` tag will trigger workflows that test the project, then create a new Release on GitHub. The Action [Publish packages](.github/workflows/publish.yml) will automatically upload release assets (binaries) and create releases for npm, GPR, and Docker Hub. Ensure the Action completes successfully.
+5. The push of the `v*` tag will trigger workflows that test the project, then publish the new releases. The workflows named `publish_*` will automatically upload release assets (binaries) and create releases for npm, GPR, and Docker Hub. Ensure the workflows complete successfully.
 
 New updates can be viewed at:
 

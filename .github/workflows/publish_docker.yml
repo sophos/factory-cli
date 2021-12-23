@@ -1,0 +1,97 @@
+name: Publish to Docker Hub
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  generate_tags:
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.set-tags.outputs.result }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow --tags
+      - uses: actions/github-script@v3
+        id: set-tags
+        with:
+          script: |
+            const { exec } = require('child_process');
+            exec(`git describe --tags --abbrev=0`, (err, tag, stderr) => {
+              if (err) {
+                console.log('Could not get latest tag:', stderr);
+                process.exit(1);
+              }
+              const version = tag.trim();
+              const tags = [version];
+              if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
+                const parts = version.split('.');
+                for (let i = 1; i < parts.length; i++) {
+                  tags.push(parts.slice(0, i).join('.'));
+                }
+                tags.push('latest');
+              }
+              console.info('Produced tags: ', tags);
+              return tags;
+            });
+
+  publish_docker:
+    name: Publish to Docker Hub
+    needs:
+      - generate_tags
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        id: npm-cache
+        if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - uses: actions/github-script@v3
+        id: get-tags
+        with:
+          result-encoding: string
+          script: |
+            const tags = ${{ needs.generate_tags.outputs.tags }};
+            const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
+            console.log(
+              'Decoded tags: ', tags,
+              '\n',
+              'Docker tags: ', dockerTags
+            );
+            return dockerTags;
+      - run: npm install
+      - run: npm run build:aot
+      - run: npm run build:exe:alpine
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.get-tags.outputs.result }}
+
+  

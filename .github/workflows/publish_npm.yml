@@ -1,0 +1,66 @@
+name: Publish to npm
+
+on:
+  workflow_call:
+  workflow_dispatch:
+   
+jobs:
+  get-version: # TODO needed?
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.result }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow --tags
+      - uses: actions/github-script@v3
+        id: get-version
+        with:
+          script: |
+            const { exec } = require('child_process');
+            exec(`git describe --tags --abbrev=0`, (err, tag, stderr) => {
+              if (err) {
+                console.log('Could not get latest tag:', stderr);
+                process.exit(1);
+              }
+              const version = tag.trim();
+              return version;
+            });
+  publish_packages:
+    name: Publish packages to npm and GPR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@refactr'
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        id: npm-cache
+        if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm install
+      - run: npm run build:runtime
+
+      - name: Publish to npm registry
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to GPR
+        uses: actions/setup-node@v2
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@refactr'
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
