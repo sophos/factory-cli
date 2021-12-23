@@ -11,9 +11,9 @@ jobs:
       tags: ${{ steps.set-tags.outputs.result }}
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow --tags
-      - uses: actions/github-script@v3
-        id: set-tags
+        run: git fetch --prune --unshallow --tags
+      - id: set-tags
+        uses: actions/github-script@v3
         with:
           script: |
             const { exec } = require('child_process');
@@ -63,7 +63,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const tags = ${{ needs.generate_tags.outputs.tags }};
+            const tags = ${{ steps.generate_tags.outputs.tags }};
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
               'Decoded tags: ', tags,
@@ -92,4 +92,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.get-tags.outputs.result }}
+          tags: ${{ steps.generate_tags.outputs.tags }}
