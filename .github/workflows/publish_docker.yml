@@ -20,7 +20,7 @@ jobs:
         id: generate_tags
         with:
           script: |
-            const VER = process.env;
+            const VER = process.env.VER;
             const version = `${VER}`;
             const tags = [version];
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
@@ -56,9 +56,8 @@ jobs:
         env:
           TAGS: ${{ steps.generate_tags.outputs.result }}
         with:
-          result-encoding: string
           script: |
-            const TAGS = process.env;
+            const TAGS = process.env.TAGS;
             const tags = `${TAGS}`;
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
@@ -67,6 +66,7 @@ jobs:
               'Docker tags: ', dockerTags
             );
             return dockerTags;
+          result-encoding: string
       - run: npm install
       - run: npm run build:aot
       - run: npm run build:exe:alpine
