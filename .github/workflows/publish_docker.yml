@@ -21,7 +21,8 @@ jobs:
         with:
           script: |
             const VER = process.env;
-            const tags = [`${VER}`];
+            const version = `${VER}`;
+            const tags = [version];
             if (!['alpha', 'beta', 'rc'].some((suffix) => version.includes(suffix))) {
               const parts = version.split('.');
               for (let i = 1; i < parts.length; i++) {
