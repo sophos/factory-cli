@@ -5,15 +5,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate_tags:
+  publish_docker:
     runs-on: ubuntu-latest
-    outputs:
-      tags: ${{ steps.set-tags.outputs.result }}
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
       - uses: actions/github-script@v3
-        id: set-tags
+        id: generate_tags
         with:
           script: |
             const { exec } = require('child_process');
@@ -35,12 +33,6 @@ jobs:
               return tags;
             });
 
-  publish_docker:
-    name: Publish to Docker Hub
-    needs:
-      - generate_tags
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v2
@@ -63,7 +55,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const tags = ${{ needs.generate_tags.outputs.tags }};
+            const tags = ${{ steps.generate_tags.outputs.result }};
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
               'Decoded tags: ', tags,
@@ -92,4 +84,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.generate_tags.outputs.tags }}
+          tags: ${{ steps.generate_tags.outputs.result }}
