@@ -10,11 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
-      - uses: actions/github-script@v3
+      - uses: actions/github-script@v5
         id: generate_tags
         with:
           script: |
-            const { exec } = require('child_process');
             exec(`git describe --abbrev=0`, (err, tag, stderr) => {
               if (err) {
                 console.log('Could not get latest tag:', stderr);
@@ -32,6 +31,7 @@ jobs:
               console.info('Produced tags: ', tags);
               return tags;
             });
+          result-encoding: string
 
       - uses: actions/checkout@v2
       - name: Setup node
@@ -50,7 +50,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - uses: actions/github-script@v3
+      - uses: actions/github-script@v5
         id: get-tags
         with:
           result-encoding: string
