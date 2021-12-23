@@ -5,25 +5,6 @@ on:
   workflow_dispatch:
    
 jobs:
-  get-version: # TODO needed?
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.get-version.outputs.result }}
-    steps:
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow --tags
-      - uses: actions/github-script@v3
-        id: get-version
-        with:
-          script: |
-            exec(`git describe --abbrev=0`, (err, tag, stderr) => {
-              if (err) {
-                console.log('Could not get latest tag:', stderr);
-                process.exit(1);
-              }
-              const version = tag.trim();
-              return version;
-            });
   publish_packages:
     name: Publish packages to npm and GPR
     runs-on: ubuntu-latest
