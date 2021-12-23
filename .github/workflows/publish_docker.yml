@@ -32,7 +32,6 @@ jobs:
             }
             console.info('Produced tags: ', tags);
             return tags;
-          result-encoding: string
 
       - uses: actions/checkout@v2
       - name: Setup node
@@ -66,7 +65,6 @@ jobs:
               'Docker tags: ', dockerTags
             );
             return dockerTags;
-          result-encoding: string
       - run: npm install
       - run: npm run build:aot
       - run: npm run build:exe:alpine
