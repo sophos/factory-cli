@@ -17,20 +17,8 @@ jobs:
         uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
       - name: Generate the version name from tags
-        uses: actions/github-script@v5
         id: generate-version
-        with:
-          script: |
-            exec(`git describe --abbrev=0`, (err, tag, stderr) => {
-              if (err) {
-                console.log('Could not get latest tag:', stderr);
-                process.exit(1);
-              }
-              const version = tag.trim();
-              console.log('Release version:', version);
-              return version;
-            });
-          result-encoding: string
+        run: echo "::set-output name=version::$(git describe --abbrev=0)"
       - name: Create Release
         id: release
         uses: actions/create-release@v1
@@ -38,7 +26,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ steps.generate-version.outputs.result }}
+          release_name: Release ${{ steps.generate-version.outputs.version }}
           draft: false
           prerelease: false
 
