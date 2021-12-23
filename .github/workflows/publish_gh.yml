@@ -21,7 +21,6 @@ jobs:
         id: generate-version
         with:
           script: |
-            const { exec } = require('child_process');
             exec(`git describe --abbrev=0`, (err, tag, stderr) => {
               if (err) {
                 console.log('Could not get latest tag:', stderr);
