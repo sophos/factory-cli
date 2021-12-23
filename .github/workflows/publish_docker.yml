@@ -63,7 +63,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const tags = ${{ steps.generate_tags.outputs.tags }};
+            const tags = ${{ needs.generate_tags.outputs.tags }};
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
               'Decoded tags: ', tags,
