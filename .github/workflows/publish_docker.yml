@@ -83,4 +83,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.get_tags.outputs.result }}
+          tags: ${{ steps.get-tags.outputs.result }}
