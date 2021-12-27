@@ -15,6 +15,8 @@ This document describes the process for creating a release and publishing a new 
 4. Push the changes to the GitHub repository, including the tag (`git push --tags`).
 5. The push of the `v*` tag will trigger workflows that test the project, then publish the new releases. The workflows named `publish_*` will automatically upload release assets (binaries) and create releases for npm, GPR, and Docker Hub. Ensure the workflows complete successfully.
 
+*Note on end-to-end tests:* these tests currently interact with the live API and dynamic data. They can fail for network or async reasons, or because the snapshots need to be updated. If the test suite fails, you can try re-running the tests manually with the **Re-run all jobs** button for the GitHub Action. Future planned improvements will update the tests to improve this behavior.
+
 New updates can be viewed at:
 
 - Repository releases page: https://github.com/refactr/refactr-cli/releases
