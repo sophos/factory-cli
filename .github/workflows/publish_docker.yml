@@ -56,16 +56,14 @@ jobs:
           TAGS: ${{ steps.generate_tags.outputs.result }}
         with:
           script: |
-            const tags = process.env.TAGS.replaceAll('[', '')
+            const allTags = tags
+              .replaceAll('[', '')
               .replaceAll(']', '')
               .replaceAll('"', '')
               .split(',');
-            const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
-            console.log(
-              'Decoded tags: ', tags,
-              '\n',
-              'Docker tags: ', dockerTags
-            );
+            console.log(typeof allTags);
+            const dockerTags = allTags.map((tag) => `refactr/cli:${tag}`);
+            console.log('Decoded tags: ', allTags, '\n', 'Docker tags: ', dockerTags);
             return dockerTags;
       - run: npm install
       - run: npm run build:aot
