@@ -55,6 +55,7 @@ jobs:
         env:
           TAGS: ${{ steps.generate_tags.outputs.result }}
         with:
+          result-encoding: string
           script: |
             const tags = process.env.TAGS;
             const allTags = tags.replace(/[^,.a-zA-Z0-9_-]/g, '').split(',');
