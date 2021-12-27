@@ -57,11 +57,7 @@ jobs:
         with:
           script: |
             const tags = process.env.TAGS;
-            const allTags = tags
-              .replaceAll('[', '')
-              .replaceAll(']', '')
-              .replaceAll('"', '')
-              .split(',');
+            const allTags = tags.replace(/[^,.a-zA-Z0-9_-]/g, '').split(',');
             console.log(typeof allTags);
             const dockerTags = allTags.map((tag) => `refactr/cli:${tag}`);
             console.log('Decoded tags: ', allTags, '\n', 'Docker tags: ', dockerTags);
