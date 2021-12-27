@@ -56,7 +56,10 @@ jobs:
           TAGS: ${{ steps.generate_tags.outputs.result }}
         with:
           script: |
-            const tags = process.env.TAGS.replace('[', '').replace(']', '').split(',');
+            const tags = process.env.TAGS.replace('[', '')
+              .replace(']', '')
+              .replace('"', '')
+              .split(',');
             const dockerTags = tags.map((tag) => `refactr/cli:${tag}`);
             console.log(
               'Decoded tags: ', tags,
