@@ -56,6 +56,7 @@ jobs:
           TAGS: ${{ steps.generate_tags.outputs.result }}
         with:
           script: |
+            const tags = process.env.TAGS;
             const allTags = tags
               .replaceAll('[', '')
               .replaceAll(']', '')
