@@ -1,36 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
-"id               name                   type               data  created            
-cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM
-cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"id                                    name                          type     data  created            
+3931f596-c07b-4b1a-b59c-73da9680b5c4  CI test credential            generic  -     12/29/2021, 9:59 PM
+1c4552f1-6555-4189-a4e8-5b48597f59df  Savings                       generic  -     12/29/2021, 9:34 PM
+del-me                                I refuse to go away...        generic  -     12/29/2021, 9:01 PM
+secret-test-cred                      Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 1`] = `
-"id               name                   type               data  created            
-cli_test_cred_2  Test CLI Credential 2  generic            -     01/11/2021, 3:41 PM
-cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"id                                    name                          type     data  created            
+3931f596-c07b-4b1a-b59c-73da9680b5c4  CI test credential            generic  -     12/29/2021, 9:59 PM
+1c4552f1-6555-4189-a4e8-5b48597f59df  Savings                       generic  -     12/29/2021, 9:34 PM
+del-me                                I refuse to go away...        generic  -     12/29/2021, 9:01 PM
+secret-test-cred                      Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 2`] = `
 "[
     {
-        \\"_id\\": \\"5ffc71a504ea5c3fab201bb8\\",
-        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-        \\"created\\": \\"2021-01-11T15:41:25.326Z\\",
-        \\"name\\": \\"Test CLI Credential 2\\",
-        \\"id\\": \\"cli_test_cred_2\\",
+        \\"_id\\": \\"61ccda5c8997cf6f0574286e\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2021-12-29T21:59:56.721Z\\",
+        \\"id\\": \\"3931f596-c07b-4b1a-b59c-73da9680b5c4\\",
+        \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"5ffc718704ea5c7701201bb6\\",
-        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-        \\"created\\": \\"2021-01-11T15:40:55.242Z\\",
-        \\"name\\": \\"Test CLI Credential 1\\",
-        \\"id\\": \\"cli_test_cred_1\\",
-        \\"type\\": \\"username_password\\"
+        \\"_id\\": \\"61ccd4588997cf1f1d74285d\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2021-12-29T21:34:16.234Z\\",
+        \\"id\\": \\"1c4552f1-6555-4189-a4e8-5b48597f59df\\",
+        \\"name\\": \\"Savings\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"61cccca78997cf024c74285a\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2021-12-29T21:01:27.082Z\\",
+        \\"name\\": \\"I refuse to go away...\\",
+        \\"id\\": \\"del-me\\",
+        \\"type\\": \\"generic\\",
+        \\"modified\\": \\"2021-12-29T21:05:49.118Z\\"
+    },
+    {
+        \\"_id\\": \\"61cccbc58997cf7030742858\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2021-12-29T20:57:41.754Z\\",
+        \\"name\\": \\"Super Secret Test Credential\\",
+        \\"id\\": \\"secret-test-cred\\",
+        \\"type\\": \\"generic\\"
     }
 ]
 "
@@ -38,19 +59,34 @@ exports[`refactrctl list credentials should work 2`] = `
 
 exports[`refactrctl list credentials should work 3`] = `
 "-
-    _id: 5ffc71a504ea5c3fab201bb8
-    project_id: 5ffc715d04ea5ca71d201bb3
-    created: '2021-01-11T15:41:25.326Z'
-    name: Test CLI Credential 2
-    id: cli_test_cred_2
+    _id: 61ccda5c8997cf6f0574286e
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2021-12-29T21:59:56.721Z'
+    id: 3931f596-c07b-4b1a-b59c-73da9680b5c4
+    name: CI test credential
     type: generic
 -
-    _id: 5ffc718704ea5c7701201bb6
-    project_id: 5ffc715d04ea5ca71d201bb3
-    created: '2021-01-11T15:40:55.242Z'
-    name: Test CLI Credential 1
-    id: cli_test_cred_1
-    type: username_password
+    _id: 61ccd4588997cf1f1d74285d
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2021-12-29T21:34:16.234Z'
+    id: 1c4552f1-6555-4189-a4e8-5b48597f59df
+    name: Savings
+    type: generic
+-
+    _id: 61cccca78997cf024c74285a
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2021-12-29T21:01:27.082Z'
+    name: I refuse to go away...
+    id: del-me
+    type: generic
+    modified: '2021-12-29T21:05:49.118Z'
+-
+    _id: 61cccbc58997cf7030742858
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2021-12-29T20:57:41.754Z'
+    name: Super Secret Test Credential
+    id: secret-test-cred
+    type: generic
 
 "
 `;
@@ -77,34 +113,37 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list jobs should work (default formatting) 1`] = `
-"_id                       name      enabled  trigger_type  created             
-6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"_id                       name                      enabled  trigger_type  created            
+61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
 "
 `;
 
 exports[`refactrctl list jobs should work 1`] = `
-"_id                       name      enabled  trigger_type  created             
-6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"_id                       name                      enabled  trigger_type  created            
+61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
 "
 `;
 
 exports[`refactrctl list jobs should work 2`] = `
 "[
     {
-        \\"_id\\": \\"6001773304ea5cdf12201bc9\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-        \\"created\\": \\"2021-01-15T11:06:27.007Z\\",
-        \\"disable_on_failure\\": true,
+        \\"_id\\": \\"61ccca11d42b9be6898365e0\\",
+        \\"webhook\\": {
+            \\"ip_whitelist\\": []
+        },
+        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2021-12-29T20:50:25.094Z\\",
+        \\"disable_on_failure\\": false,
         \\"enabled\\": true,
-        \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
-        \\"pipeline_revision_id\\": \\"5ffdecc804ea5c1c58201bbf\\",
-        \\"name\\": \\"Test job\\",
+        \\"pipeline_id\\": \\"61ccc379d42b9b0f518365db\\",
+        \\"pipeline_revision_id\\": \\"61ccc95a8997cfeb71742855\\",
+        \\"name\\": \\"How Do We Know It Works?\\",
         \\"trigger_type\\": \\"manual\\",
-        \\"suppress_vars\\": true,
-        \\"suppress_outputs\\": true,
-        \\"suppress_events\\": true,
-        \\"last_run\\": \\"2021-01-25T18:25:41.174Z\\",
+        \\"suppress_vars\\": false,
+        \\"suppress_outputs\\": false,
+        \\"suppress_events\\": false,
+        \\"last_run\\": \\"2021-12-30T17:49:59.343Z\\",
         \\"last_status\\": \\"Succeeded\\"
     }
 ]
@@ -113,20 +152,22 @@ exports[`refactrctl list jobs should work 2`] = `
 
 exports[`refactrctl list jobs should work 3`] = `
 "-
-    _id: 6001773304ea5cdf12201bc9
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    project_id: 5ffc715d04ea5ca71d201bb3
-    created: '2021-01-15T11:06:27.007Z'
-    disable_on_failure: true
+    _id: 61ccca11d42b9be6898365e0
+    webhook:
+        ip_whitelist: []
+    organization_id: 61cc93942529b6ec9681e4e2
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2021-12-29T20:50:25.094Z'
+    disable_on_failure: false
     enabled: true
-    pipeline_id: 5ffde06a04ea5cf045201bbc
-    pipeline_revision_id: 5ffdecc804ea5c1c58201bbf
-    name: Test job
+    pipeline_id: 61ccc379d42b9b0f518365db
+    pipeline_revision_id: 61ccc95a8997cfeb71742855
+    name: How Do We Know It Works?
     trigger_type: manual
-    suppress_vars: true
-    suppress_outputs: true
-    suppress_events: true
-    last_run: '2021-01-25T18:25:41.174Z'
+    suppress_vars: false
+    suppress_outputs: false
+    suppress_events: false
+    last_run: '2021-12-30T17:49:59.343Z'
     last_status: Succeeded
 
 "
@@ -150,19 +191,42 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list organizations should work (default formatting) 1`] = `
-"_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"_id                       name     contact_name      contact_email              created            
+61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake    victoria.drake@sophos.com  12/29/2021, 4:57 PM
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it         10/10/2020, 7:07 AM
 "
 `;
 
 exports[`refactrctl list organizations should work 1`] = `
-"_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"_id                       name     contact_name      contact_email              created            
+61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake    victoria.drake@sophos.com  12/29/2021, 4:57 PM
+5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it         10/10/2020, 7:07 AM
 "
 `;
 
 exports[`refactrctl list organizations should work 2`] = `
 "[
+    {
+        \\"_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"address\\": \\"123 Main St.\\",
+        \\"city\\": \\"New York\\",
+        \\"state\\": \\"NY\\",
+        \\"zip\\": \\"12345\\",
+        \\"contact_name\\": \\"Victoria Drake\\",
+        \\"contact_email\\": \\"victoria.drake@sophos.com\\",
+        \\"name\\": \\"CLI e2e\\",
+        \\"created\\": \\"2021-12-29T16:57:56.369Z\\",
+        \\"modified\\": \\"2021-12-29T16:57:56.369Z\\",
+        \\"plan\\": \\"starter\\",
+        \\"plan_quotas\\": {
+            \\"total_credits\\": 25,
+            \\"project_count\\": 10,
+            \\"user_count\\": 15,
+            \\"agent_count\\": 10,
+            \\"run_minutes\\": -1,
+            \\"support_hours\\": 0
+        }
+    },
     {
         \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"name\\": \\"Refactr\\",
@@ -194,6 +258,25 @@ exports[`refactrctl list organizations should work 2`] = `
 
 exports[`refactrctl list organizations should work 3`] = `
 "-
+    _id: 61cc93942529b6ec9681e4e2
+    address: 123 Main St.
+    city: New York
+    state: NY
+    zip: '12345'
+    contact_name: Victoria Drake
+    contact_email: victoria.drake@sophos.com
+    name: CLI e2e
+    created: '2021-12-29T16:57:56.369Z'
+    modified: '2021-12-29T16:57:56.369Z'
+    plan: starter
+    plan_quotas:
+        total_credits: 25
+        project_count: 10
+        user_count: 15
+        agent_count: 10
+        run_minutes: -1
+        support_hours: 0
+-
     _id: 5f9f2d08e2f1bb2436e6f5b0
     name: Refactr
     created: '2020-10-10T07:07:53.294Z'
@@ -240,27 +323,24 @@ Missing required arguments: project-id, pipeline-id
 `;
 
 exports[`refactrctl list pipelines should work 1`] = `
-"_id                       organization_id           project_id                name           step_count  revision_count  created            
-5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
+"_id                       organization_id           project_id                name                          step_count  revision_count  created            
+61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
 "
 `;
 
 exports[`refactrctl list pipelines should work 2`] = `
 "[
     {
-        \\"_id\\": \\"5ffde06a04ea5cf045201bbc\\",
-        \\"feature_tags\\": [
-            \\"install\\",
-            \\"script\\"
-        ],
-        \\"catalog_tags\\": [],
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-        \\"created\\": \\"2021-01-12T17:46:18.200Z\\",
-        \\"modified\\": \\"2021-01-12T18:39:04.282Z\\",
-        \\"step_count\\": 2,
-        \\"revision_count\\": 4,
-        \\"name\\": \\"Test Pipeline\\"
+        \\"_id\\": \\"61ccc379d42b9b0f518365db\\",
+        \\"feature_tags\\": [],
+        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2021-12-29T20:22:17.026Z\\",
+        \\"modified\\": \\"2021-12-29T20:47:22.071Z\\",
+        \\"step_count\\": 1,
+        \\"revision_count\\": 3,
+        \\"name\\": \\"The Answer is Always Testing\\",
+        \\"summary\\": \\"Pipeline for dynamic CI tests.\\"
     }
 ]
 "
@@ -268,18 +348,16 @@ exports[`refactrctl list pipelines should work 2`] = `
 
 exports[`refactrctl list pipelines should work 3`] = `
 "-
-    _id: 5ffde06a04ea5cf045201bbc
-    feature_tags:
-        - install
-        - script
-    catalog_tags: []
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    project_id: 5ffc715d04ea5ca71d201bb3
-    created: '2021-01-12T17:46:18.200Z'
-    modified: '2021-01-12T18:39:04.282Z'
-    step_count: 2
-    revision_count: 4
-    name: Test Pipeline
+    _id: 61ccc379d42b9b0f518365db
+    feature_tags: []
+    organization_id: 61cc93942529b6ec9681e4e2
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2021-12-29T20:22:17.026Z'
+    modified: '2021-12-29T20:47:22.071Z'
+    step_count: 1
+    revision_count: 3
+    name: The Answer is Always Testing
+    summary: Pipeline for dynamic CI tests.
 
 "
 `;
@@ -308,28 +386,71 @@ Missing required argument: project-id
 
 exports[`refactrctl list projects should work 1`] = `
 "_id                       name                                           pipeline_count  organization_id           created             
-6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  6               5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM 
+61ccbe03d42b9bdcc88365d8  CRUD Testing                                   1               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
+61cca573d42b9b46428365c8  The One With the Greetings                     1               61cc93942529b6ec9681e4e2  12/29/2021, 6:14 PM 
+6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  10              5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM 
+5f9f3b02233d0b9e290b3122  Scratch                                        57              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
+617711bbda9b615a36917ef2  Dan Testing                                    5               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
+607f19bd98a5b821d3ca5f13  Runner Dog Food                                8               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
 5fa4dba223b4e0703b95c465  Full Kitchen Sink                              41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
-607f19bd98a5b821d3ca5f13  Runner Dog Food                                7               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
 5fda3431f00c8ba848f49f45  Vault Testing                                  5               5f9f2d08e2f1bb2436e6f5b0  12/16/2020, 4:22 PM 
-5f9f3b02233d0b9e290b3122  Scratch                                        54              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
 60fb43f7ec3b3b4d95917316  Kitchen Sink Suite [ERDE-1203]                 35              5f9f2d08e2f1bb2436e6f5b0  07/23/2021, 10:34 PM
-617711bbda9b615a36917ef2  Dan Testing                                    2               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
 61660be4ec3b3bc1d991793c  William's Project                              1               5f9f2d08e2f1bb2436e6f5b0  10/12/2021, 10:27 PM
-60abf1a2495357f3f9a3b981  Notification Integrations                      2               5f9f2d08e2f1bb2436e6f5b0  05/24/2021, 6:34 PM 
-615df9a7ec3b3b66bd9176f8  Catalog with Approval Test                     1               5f9f2d08e2f1bb2436e6f5b0  10/06/2021, 7:31 PM 
 "
 `;
 
 exports[`refactrctl list projects should work 2`] = `
 "[
     {
+        \\"_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"created\\": \\"2021-12-29T19:58:59.813Z\\",
+        \\"modified\\": \\"2021-12-29T22:00:19.034Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"CRUD Testing\\"
+    },
+    {
+        \\"_id\\": \\"61cca573d42b9b46428365c8\\",
+        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"created\\": \\"2021-12-29T18:14:11.872Z\\",
+        \\"modified\\": \\"2021-12-29T19:26:50.603Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"The One With the Greetings\\"
+    },
+    {
         \\"_id\\": \\"6010f6e2a830874a04689246\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
-        \\"modified\\": \\"2021-12-14T15:54:27.578Z\\",
-        \\"pipeline_count\\": 6,
+        \\"modified\\": \\"2021-12-29T15:53:21.296Z\\",
+        \\"pipeline_count\\": 10,
         \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
+    },
+    {
+        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
+        \\"modified\\": \\"2021-12-29T15:11:51.696Z\\",
+        \\"pipeline_count\\": 57,
+        \\"name\\": \\"Scratch\\",
+        \\"image_id\\": \\"600b6b5c25b0b52703ea3f0c\\"
+    },
+    {
+        \\"_id\\": \\"617711bbda9b615a36917ef2\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-10-25T20:21:15.612Z\\",
+        \\"modified\\": \\"2021-12-23T21:17:36.065Z\\",
+        \\"pipeline_count\\": 5,
+        \\"name\\": \\"Dan Testing\\",
+        \\"icon_name\\": \\"pills\\"
+    },
+    {
+        \\"_id\\": \\"607f19bd98a5b821d3ca5f13\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-04-20T18:13:17.407Z\\",
+        \\"modified\\": \\"2021-12-17T19:20:27.247Z\\",
+        \\"pipeline_count\\": 8,
+        \\"name\\": \\"Runner Dog Food\\",
+        \\"image_id\\": \\"607f19d896b0a463afd1ccb5\\"
     },
     {
         \\"_id\\": \\"5fa4dba223b4e0703b95c465\\",
@@ -341,15 +462,6 @@ exports[`refactrctl list projects should work 2`] = `
         \\"image_id\\": \\"5feeecacb5297d642e1938da\\"
     },
     {
-        \\"_id\\": \\"607f19bd98a5b821d3ca5f13\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-04-20T18:13:17.407Z\\",
-        \\"modified\\": \\"2021-12-08T14:53:40.686Z\\",
-        \\"pipeline_count\\": 7,
-        \\"name\\": \\"Runner Dog Food\\",
-        \\"image_id\\": \\"607f19d896b0a463afd1ccb5\\"
-    },
-    {
         \\"_id\\": \\"5fda3431f00c8ba848f49f45\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2020-12-16T16:22:09.374Z\\",
@@ -357,15 +469,6 @@ exports[`refactrctl list projects should work 2`] = `
         \\"pipeline_count\\": 5,
         \\"name\\": \\"Vault Testing\\",
         \\"image_id\\": \\"5fda3442b486804ec421ce2e\\"
-    },
-    {
-        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
-        \\"modified\\": \\"2021-12-01T17:49:29.219Z\\",
-        \\"pipeline_count\\": 54,
-        \\"name\\": \\"Scratch\\",
-        \\"image_id\\": \\"600b6b5c25b0b52703ea3f0c\\"
     },
     {
         \\"_id\\": \\"60fb43f7ec3b3b4d95917316\\",
@@ -376,65 +479,12 @@ exports[`refactrctl list projects should work 2`] = `
         \\"name\\": \\"Kitchen Sink Suite [ERDE-1203]\\"
     },
     {
-        \\"_id\\": \\"617711bbda9b615a36917ef2\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-10-25T20:21:15.612Z\\",
-        \\"modified\\": \\"2021-11-22T20:12:30.617Z\\",
-        \\"pipeline_count\\": 2,
-        \\"name\\": \\"Dan Testing\\",
-        \\"icon_name\\": \\"pills\\"
-    },
-    {
         \\"_id\\": \\"61660be4ec3b3bc1d991793c\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2021-10-12T22:27:48.913Z\\",
         \\"modified\\": \\"2021-10-14T21:22:29.132Z\\",
         \\"pipeline_count\\": 1,
         \\"name\\": \\"William's Project\\"
-    },
-    {
-        \\"_id\\": \\"60abf1a2495357f3f9a3b981\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-05-24T18:34:10.693Z\\",
-        \\"modified\\": \\"2021-10-08T21:18:56.686Z\\",
-        \\"pipeline_count\\": 2,
-        \\"name\\": \\"Notification Integrations\\",
-        \\"summary\\": \\"Reusable pipelines with notification integration to applications such as Slack, Microsoft Teams, Email, etc.\\",
-        \\"description\\": \\"The Notification Integrations catalog contains resuable pipelines that provide integration with applications such as Slack, Microsoft Teams, and email.\\",
-        \\"catalog\\": true,
-        \\"catalog_scope\\": \\"public\\",
-        \\"license_link\\": \\"https://www.refactr.it/terms-privacy-security?tab=terms-of-use\\",
-        \\"policy_link\\": \\"https://www.refactr.it/terms-privacy-security?tab=privacy\\",
-        \\"product_link\\": \\"http://www.refactr.it\\",
-        \\"support_link\\": \\"mailto:support@refactr.it\\",
-        \\"tags\\": [
-            \\"ChatOps\\",
-            \\"DevOps\\",
-            \\"ITOps\\"
-        ],
-        \\"published_pipeline_count\\": 2,
-        \\"image_id\\": \\"60abf33d4ebff36615f8e902\\"
-    },
-    {
-        \\"_id\\": \\"615df9a7ec3b3b66bd9176f8\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-10-06T19:31:51.601Z\\",
-        \\"modified\\": \\"2021-10-06T19:34:26.457Z\\",
-        \\"pipeline_count\\": 1,
-        \\"name\\": \\"Catalog with Approval Test\\",
-        \\"catalog\\": true,
-        \\"catalog_scope\\": \\"draft\\",
-        \\"license_link\\": \\"https://www.refactr.it\\",
-        \\"policy_link\\": \\"https://www.refactr.it\\",
-        \\"product_link\\": \\"https://www.refactr.it\\",
-        \\"summary\\": \\"Test test test\\",
-        \\"support_link\\": \\"https://www.refactr.it\\",
-        \\"tags\\": [
-            \\"Cloud Infrastructure\\"
-        ],
-        \\"image_id\\": \\"615dfa179eb4e597e9d71733\\",
-        \\"description\\": \\"Test test test\\\\n\\\\nTest test test\\\\n\\\\nTest test test\\\\n\\\\nTest test test\\",
-        \\"published_pipeline_count\\": 1
     }
 ]
 "
@@ -442,12 +492,50 @@ exports[`refactrctl list projects should work 2`] = `
 
 exports[`refactrctl list projects should work 3`] = `
 "-
+    _id: 61ccbe03d42b9bdcc88365d8
+    organization_id: 61cc93942529b6ec9681e4e2
+    created: '2021-12-29T19:58:59.813Z'
+    modified: '2021-12-29T22:00:19.034Z'
+    pipeline_count: 1
+    name: CRUD Testing
+-
+    _id: 61cca573d42b9b46428365c8
+    organization_id: 61cc93942529b6ec9681e4e2
+    created: '2021-12-29T18:14:11.872Z'
+    modified: '2021-12-29T19:26:50.603Z'
+    pipeline_count: 1
+    name: The One With the Greetings
+-
     _id: 6010f6e2a830874a04689246
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-01-27T05:15:14.584Z'
-    modified: '2021-12-14T15:54:27.578Z'
-    pipeline_count: 6
+    modified: '2021-12-29T15:53:21.296Z'
+    pipeline_count: 10
     name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
+-
+    _id: 5f9f3b02233d0b9e290b3122
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2020-11-01T22:47:30.770Z'
+    modified: '2021-12-29T15:11:51.696Z'
+    pipeline_count: 57
+    name: Scratch
+    image_id: 600b6b5c25b0b52703ea3f0c
+-
+    _id: 617711bbda9b615a36917ef2
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-10-25T20:21:15.612Z'
+    modified: '2021-12-23T21:17:36.065Z'
+    pipeline_count: 5
+    name: Dan Testing
+    icon_name: pills
+-
+    _id: 607f19bd98a5b821d3ca5f13
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-04-20T18:13:17.407Z'
+    modified: '2021-12-17T19:20:27.247Z'
+    pipeline_count: 8
+    name: Runner Dog Food
+    image_id: 607f19d896b0a463afd1ccb5
 -
     _id: 5fa4dba223b4e0703b95c465
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
@@ -457,14 +545,6 @@ exports[`refactrctl list projects should work 3`] = `
     name: Full Kitchen Sink
     image_id: 5feeecacb5297d642e1938da
 -
-    _id: 607f19bd98a5b821d3ca5f13
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-04-20T18:13:17.407Z'
-    modified: '2021-12-08T14:53:40.686Z'
-    pipeline_count: 7
-    name: Runner Dog Food
-    image_id: 607f19d896b0a463afd1ccb5
--
     _id: 5fda3431f00c8ba848f49f45
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2020-12-16T16:22:09.374Z'
@@ -473,14 +553,6 @@ exports[`refactrctl list projects should work 3`] = `
     name: Vault Testing
     image_id: 5fda3442b486804ec421ce2e
 -
-    _id: 5f9f3b02233d0b9e290b3122
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-11-01T22:47:30.770Z'
-    modified: '2021-12-01T17:49:29.219Z'
-    pipeline_count: 54
-    name: Scratch
-    image_id: 600b6b5c25b0b52703ea3f0c
--
     _id: 60fb43f7ec3b3b4d95917316
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-07-23T22:34:31.873Z'
@@ -488,96 +560,39 @@ exports[`refactrctl list projects should work 3`] = `
     pipeline_count: 35
     name: 'Kitchen Sink Suite [ERDE-1203]'
 -
-    _id: 617711bbda9b615a36917ef2
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-10-25T20:21:15.612Z'
-    modified: '2021-11-22T20:12:30.617Z'
-    pipeline_count: 2
-    name: Dan Testing
-    icon_name: pills
--
     _id: 61660be4ec3b3bc1d991793c
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-10-12T22:27:48.913Z'
     modified: '2021-10-14T21:22:29.132Z'
     pipeline_count: 1
     name: William's Project
--
-    _id: 60abf1a2495357f3f9a3b981
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-05-24T18:34:10.693Z'
-    modified: '2021-10-08T21:18:56.686Z'
-    pipeline_count: 2
-    name: Notification Integrations
-    summary: >-
-        Reusable pipelines with notification integration to applications such as
-        Slack, Microsoft Teams, Email, etc.
-    description: >-
-        The Notification Integrations catalog contains resuable pipelines that
-        provide integration with applications such as Slack, Microsoft Teams,
-        and email.
-    catalog: true
-    catalog_scope: public
-    license_link: 'https://www.refactr.it/terms-privacy-security?tab=terms-of-use'
-    policy_link: 'https://www.refactr.it/terms-privacy-security?tab=privacy'
-    product_link: 'http://www.refactr.it'
-    support_link: 'mailto:support@refactr.it'
-    tags:
-        - ChatOps
-        - DevOps
-        - ITOps
-    published_pipeline_count: 2
-    image_id: 60abf33d4ebff36615f8e902
--
-    _id: 615df9a7ec3b3b66bd9176f8
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-10-06T19:31:51.601Z'
-    modified: '2021-10-06T19:34:26.457Z'
-    pipeline_count: 1
-    name: Catalog with Approval Test
-    catalog: true
-    catalog_scope: draft
-    license_link: 'https://www.refactr.it'
-    policy_link: 'https://www.refactr.it'
-    product_link: 'https://www.refactr.it'
-    summary: Test test test
-    support_link: 'https://www.refactr.it'
-    tags:
-        - Cloud Infrastructure
-    image_id: 615dfa179eb4e597e9d71733
-    description: |-
-        Test test test
-
-        Test test test
-
-        Test test test
-
-        Test test test
-    published_pipeline_count: 1
 
 "
 `;
 
 exports[`refactrctl list runners should work (by project) 1`] = `
-"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
-600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
+"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created            
+61ccb65bd42b9b66fa8365d2  61cc93942529b6ec9681e4e2  CI Test Runner  -          -             -        -        -          Running  -           -             12/29/2021, 7:26 PM
 "
 `;
 
 exports[`refactrctl list runners should work (by project) 2`] = `
 "[
     {
-        \\"_id\\": \\"600187ce44a454482f23890b\\",
+        \\"_id\\": \\"61ccb65bd42b9b66fa8365d2\\",
         \\"project_ids\\": [
-            \\"5ffc715d04ea5ca71d201bb3\\"
+            \\"61cca573d42b9b46428365c8\\",
+            \\"61ccbe03d42b9bdcc88365d8\\"
         ],
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-01-15T12:17:18.961Z\\",
-        \\"name\\": \\"CLI Test (container)\\",
+        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"created\\": \\"2021-12-29T19:26:19.277Z\\",
+        \\"name\\": \\"CI Test Runner\\",
         \\"type\\": \\"aws_vm_centos8\\",
         \\"hosted\\": true,
-        \\"status\\": \\"Stopped\\",
-        \\"idle\\": true
+        \\"status\\": \\"Running\\",
+        \\"idle\\": true,
+        \\"agent_version\\": \\"1.105.16\\",
+        \\"last_run\\": \\"2021-12-30T17:50:04.893Z\\"
     }
 ]
 "
@@ -585,16 +600,19 @@ exports[`refactrctl list runners should work (by project) 2`] = `
 
 exports[`refactrctl list runners should work (by project) 3`] = `
 "-
-    _id: 600187ce44a454482f23890b
+    _id: 61ccb65bd42b9b66fa8365d2
     project_ids:
-        - 5ffc715d04ea5ca71d201bb3
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-01-15T12:17:18.961Z'
-    name: CLI Test (container)
+        - 61cca573d42b9b46428365c8
+        - 61ccbe03d42b9bdcc88365d8
+    organization_id: 61cc93942529b6ec9681e4e2
+    created: '2021-12-29T19:26:19.277Z'
+    name: CI Test Runner
     type: aws_vm_centos8
     hosted: true
-    status: Stopped
+    status: Running
     idle: true
+    agent_version: 1.105.16
+    last_run: '2021-12-30T17:50:04.893Z'
 
 "
 `;

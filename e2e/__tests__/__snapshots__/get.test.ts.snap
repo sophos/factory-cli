@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl get credential accepts id as argument 1`] = `
-"id               name                   type               data  created            
-cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"id                name                          type     data  created            
+secret-test-cred  Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
 "
 `;
 
 exports[`refactrctl get credential accepts id from stdin 1`] = `
-"id               name                   type               data  created            
-cli_test_cred_1  Test CLI Credential 1  username_password  -     01/11/2021, 3:40 PM
+"id                name                          type     data  created            
+secret-test-cred  Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
 "
 `;
 
@@ -52,211 +52,15 @@ Credential ID must be provided
 "
 `;
 
-exports[`refactrctl get formats as JSON when --format=json is passed 1`] = `
-"{
-    \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-    \\"name\\": \\"Refactr\\",
-    \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
-    \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
-    \\"contact_email\\": \\"anthony@refactr.it\\",
-    \\"contact_name\\": \\"Anthony Rowlands\\",
-    \\"city\\": \\"Seattle\\",
-    \\"state\\": \\"WA\\",
-    \\"zip\\": \\"12345\\",
-    \\"plan\\": \\"admin\\",
-    \\"plan_quotas\\": {
-        \\"project_count\\": -1,
-        \\"user_count\\": -1,
-        \\"agent_count\\": -1,
-        \\"run_minutes\\": -1,
-        \\"support_hours\\": 0
-    },
-    \\"address\\": \\"123 Main St.\\",
-    \\"image_id\\": \\"6036851a545c5e5481871c88\\",
-    \\"capabilities\\": {
-        \\"publish_catalogs\\": true
-    },
-    \\"public\\": true,
-    \\"access\\": {
-        \\"default_project_role\\": \\"admin\\",
-        \\"default_project_run\\": true,
-        \\"create_projects\\": true,
-        \\"organization_admin\\": true
-    }
-}
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=json is passed 2`] = `
-"{
-    \\"_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-    \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-    \\"created\\": \\"2021-01-11T15:40:13.848Z\\",
-    \\"modified\\": \\"2021-03-19T12:16:17.965Z\\",
-    \\"pipeline_count\\": 1,
-    \\"name\\": \\"CLI tests [STATIC ONLY] (LIST, GET)\\",
-    \\"access\\": {
-        \\"role\\": \\"admin\\",
-        \\"run\\": true
-    }
-}
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=json is passed 3`] = `
-"{
-    \\"_id\\": \\"5ffc718704ea5c7701201bb6\\",
-    \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-    \\"created\\": \\"2021-01-11T15:40:55.242Z\\",
-    \\"name\\": \\"Test CLI Credential 1\\",
-    \\"id\\": \\"cli_test_cred_1\\",
-    \\"type\\": \\"username_password\\"
-}
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=json is passed 4`] = `
-"{
-    \\"_id\\": \\"6001773304ea5cdf12201bc9\\",
-    \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-    \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-    \\"created\\": \\"2021-01-15T11:06:27.007Z\\",
-    \\"disable_on_failure\\": true,
-    \\"enabled\\": true,
-    \\"pipeline_id\\": \\"5ffde06a04ea5cf045201bbc\\",
-    \\"pipeline_revision_id\\": \\"5ffdecc804ea5c1c58201bbf\\",
-    \\"name\\": \\"Test job\\",
-    \\"trigger_type\\": \\"manual\\",
-    \\"suppress_vars\\": true,
-    \\"suppress_outputs\\": true,
-    \\"suppress_events\\": true,
-    \\"last_run\\": \\"2021-01-25T18:25:41.174Z\\",
-    \\"last_status\\": \\"Succeeded\\"
-}
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=json is passed 5`] = `
-"{
-    \\"_id\\": \\"5ffde06a04ea5cf045201bbc\\",
-    \\"feature_tags\\": [
-        \\"install\\",
-        \\"script\\"
-    ],
-    \\"catalog_tags\\": [],
-    \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-    \\"project_id\\": \\"5ffc715d04ea5ca71d201bb3\\",
-    \\"created\\": \\"2021-01-12T17:46:18.200Z\\",
-    \\"modified\\": \\"2021-01-12T18:39:04.282Z\\",
-    \\"step_count\\": 2,
-    \\"revision_count\\": 4,
-    \\"name\\": \\"Test Pipeline\\"
-}
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=yaml is passed 1`] = `
-"_id: 5f9f2d08e2f1bb2436e6f5b0
-name: Refactr
-created: '2020-10-10T07:07:53.294Z'
-modified: '2020-11-01T23:15:21.605Z'
-contact_email: anthony@refactr.it
-contact_name: Anthony Rowlands
-city: Seattle
-state: WA
-zip: '12345'
-plan: admin
-plan_quotas:
-    project_count: -1
-    user_count: -1
-    agent_count: -1
-    run_minutes: -1
-    support_hours: 0
-address: 123 Main St.
-image_id: 6036851a545c5e5481871c88
-capabilities:
-    publish_catalogs: true
-public: true
-access:
-    default_project_role: admin
-    default_project_run: true
-    create_projects: true
-    organization_admin: true
-
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=yaml is passed 2`] = `
-"_id: 5ffc715d04ea5ca71d201bb3
-organization_id: 5f9f2d08e2f1bb2436e6f5b0
-created: '2021-01-11T15:40:13.848Z'
-modified: '2021-03-19T12:16:17.965Z'
-pipeline_count: 1
-name: 'CLI tests [STATIC ONLY] (LIST, GET)'
-access:
-    role: admin
-    run: true
-
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=yaml is passed 3`] = `
-"_id: 5ffc718704ea5c7701201bb6
-project_id: 5ffc715d04ea5ca71d201bb3
-created: '2021-01-11T15:40:55.242Z'
-name: Test CLI Credential 1
-id: cli_test_cred_1
-type: username_password
-
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=yaml is passed 4`] = `
-"_id: 6001773304ea5cdf12201bc9
-organization_id: 5f9f2d08e2f1bb2436e6f5b0
-project_id: 5ffc715d04ea5ca71d201bb3
-created: '2021-01-15T11:06:27.007Z'
-disable_on_failure: true
-enabled: true
-pipeline_id: 5ffde06a04ea5cf045201bbc
-pipeline_revision_id: 5ffdecc804ea5c1c58201bbf
-name: Test job
-trigger_type: manual
-suppress_vars: true
-suppress_outputs: true
-suppress_events: true
-last_run: '2021-01-25T18:25:41.174Z'
-last_status: Succeeded
-
-"
-`;
-
-exports[`refactrctl get formats as JSON when --format=yaml is passed 5`] = `
-"_id: 5ffde06a04ea5cf045201bbc
-feature_tags:
-    - install
-    - script
-catalog_tags: []
-organization_id: 5f9f2d08e2f1bb2436e6f5b0
-project_id: 5ffc715d04ea5ca71d201bb3
-created: '2021-01-12T17:46:18.200Z'
-modified: '2021-01-12T18:39:04.282Z'
-step_count: 2
-revision_count: 4
-name: Test Pipeline
-
-"
-`;
-
 exports[`refactrctl get job accepts id as argument 1`] = `
-"_id                       name      enabled  trigger_type  created             
-6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"_id                       name                      enabled  trigger_type  created            
+61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
 "
 `;
 
 exports[`refactrctl get job accepts id from stdin 1`] = `
-"_id                       name      enabled  trigger_type  created             
-6001773304ea5cdf12201bc9  Test job  Yes      manual        01/15/2021, 11:06 AM
+"_id                       name                      enabled  trigger_type  created            
+61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
 "
 `;
 
@@ -301,14 +105,14 @@ Job ID must be provided
 `;
 
 exports[`refactrctl get organization accepts id as argument 1`] = `
-"_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"_id                       name     contact_name    contact_email              created            
+61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake  victoria.drake@sophos.com  12/29/2021, 4:57 PM
 "
 `;
 
 exports[`refactrctl get organization accepts id from stdin 1`] = `
-"_id                       name     contact_name      contact_email       created            
-5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it  10/10/2020, 7:07 AM
+"_id                       name     contact_name    contact_email              created            
+61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake  victoria.drake@sophos.com  12/29/2021, 4:57 PM
 "
 `;
 
@@ -332,14 +136,14 @@ Organization ID must be provided
 `;
 
 exports[`refactrctl get pipeline accepts id as argument 1`] = `
-"_id                       organization_id           project_id                name           step_count  revision_count  created            
-5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
+"_id                       organization_id           project_id                name                          step_count  revision_count  created            
+61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
 "
 `;
 
 exports[`refactrctl get pipeline accepts id from stdin 1`] = `
-"_id                       organization_id           project_id                name           step_count  revision_count  created            
-5ffde06a04ea5cf045201bbc  5f9f2d08e2f1bb2436e6f5b0  5ffc715d04ea5ca71d201bb3  Test Pipeline  2           4               01/12/2021, 5:46 PM
+"_id                       organization_id           project_id                name                          step_count  revision_count  created            
+61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
 "
 `;
 
@@ -385,13 +189,13 @@ Pipeline ID must be provided
 
 exports[`refactrctl get pipeline-revision accepts id as argument 1`] = `
 "_id                       revision  created            
-5ffdecc804ea5c1c58201bbf  4         01/12/2021, 6:39 PM
+61ccc95a8997cfeb71742855  3         12/29/2021, 8:47 PM
 "
 `;
 
 exports[`refactrctl get pipeline-revision accepts id from stdin 1`] = `
 "_id                       revision  created            
-5ffdecc804ea5c1c58201bbf  4         01/12/2021, 6:39 PM
+61ccc95a8997cfeb71742855  3         12/29/2021, 8:47 PM
 "
 `;
 
@@ -438,14 +242,14 @@ Revision must be provided
 `;
 
 exports[`refactrctl get project accepts id as argument 1`] = `
-"_id                       name                                 pipeline_count  organization_id           created            
-5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
+"_id                       name          pipeline_count  organization_id           created            
+61ccbe03d42b9bdcc88365d8  CRUD Testing  1               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
 "
 `;
 
 exports[`refactrctl get project accepts id from stdin 1`] = `
-"_id                       name                                 pipeline_count  organization_id           created            
-5ffc715d04ea5ca71d201bb3  CLI tests [STATIC ONLY] (LIST, GET)  1               5f9f2d08e2f1bb2436e6f5b0  01/11/2021, 3:40 PM
+"_id                       name          pipeline_count  organization_id           created            
+61ccbe03d42b9bdcc88365d8  CRUD Testing  1               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
 "
 `;
 
@@ -511,14 +315,14 @@ Run ID must be provided
 `;
 
 exports[`refactrctl get runner accepts id as argument 1`] = `
-"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
-600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
+"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created            
+61ccb65bd42b9b66fa8365d2  61cc93942529b6ec9681e4e2  CI Test Runner  -          -             -        -        -          Running  -           -             12/29/2021, 7:26 PM
 "
 `;
 
 exports[`refactrctl get runner accepts id from stdin 1`] = `
-"_id                       organization_id           name                  host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created             
-600187ce44a454482f23890b  5f9f2d08e2f1bb2436e6f5b0  CLI Test (container)  -          -             -        -        -          Stopped  -           -             01/15/2021, 12:17 PM
+"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created            
+61ccb65bd42b9b66fa8365d2  61cc93942529b6ec9681e4e2  CI Test Runner  -          -             -        -        -          Running  -           -             12/29/2021, 7:26 PM
 "
 `;
 

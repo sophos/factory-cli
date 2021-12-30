@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
+import { format } from 'date-fns';
 import isArray from 'lodash/isArray';
 import { execute, executeAsIs } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 import { withCmd } from '../helpers/options';
+import yaml from 'js-yaml';
 
 describe('refactrctl get', () => {
   jest.setTimeout(60 * 1000);
@@ -15,70 +17,97 @@ describe('refactrctl get', () => {
   });
 
   test('formats as JSON when --format=json is passed', async () => {
-    await expect(
-      execute(
-        [
-          'get',
-          'organization',
-          knownIds.static.organization,
-          '--format',
-          'json'
-        ],
-        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(['get', 'project', knownIds.static.project, '--format', 'json'], {
-        token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-      })
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(
-        [
-          'get',
-          'credential',
-          knownIds.static.credential,
-          '--project-id',
-          knownIds.static.project,
-          '--format',
-          'json'
-        ],
-        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(
-        [
-          'get',
-          'job',
-          knownIds.static.job,
-          '--project-id',
-          knownIds.static.project,
-          '--format',
-          'json'
-        ],
-        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(
-        [
-          'get',
-          'pipeline',
-          knownIds.static.pipeline,
-          '--project-id',
-          knownIds.static.project,
-          '--format',
-          'json'
-        ],
-        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
+    const formatJsonOrg = async () => {
+      const json = JSON.stringify(
+        await execute(
+          [
+            'get',
+            'organization',
+            knownIds.static.organization,
+            '--format',
+            'json'
+          ],
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+        )
+      );
+      JSON.parse(json);
+    };
+    expect(formatJsonOrg).not.toThrow();
+
+    const formatJsonProj = async () => {
+      const json = JSON.stringify(
+        await execute(
+          ['get', 'project', knownIds.static.project, '--format', 'json'],
+          {
+            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+          }
+        )
+      );
+      JSON.parse(json);
+    };
+    expect(formatJsonProj).not.toThrow();
+
+    const formatJsonCred = async () => {
+      const json = JSON.stringify(
+        await execute(
+          [
+            'get',
+            'credential',
+            knownIds.static.credential,
+            '--project-id',
+            knownIds.static.project,
+            '--format',
+            'json'
+          ],
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+        )
+      );
+      JSON.parse(json);
+    };
+    expect(formatJsonCred).not.toThrow();
+
+    const formatJsonJob = async () => {
+      const json = JSON.stringify(
+        await execute(
+          [
+            'get',
+            'job',
+            knownIds.static.job,
+            '--project-id',
+            knownIds.static.project,
+            '--format',
+            'json'
+          ],
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+        )
+      );
+      JSON.parse(json);
+    };
+    expect(formatJsonJob).not.toThrow();
+
+    const formatJsonPipe = async () => {
+      const json = JSON.stringify(
+        await execute(
+          [
+            'get',
+            'pipeline',
+            knownIds.static.pipeline,
+            '--project-id',
+            knownIds.static.project,
+            '--format',
+            'json'
+          ],
+          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+        )
+      );
+      JSON.parse(json);
+    };
+    expect(formatJsonPipe).not.toThrow();
   });
 
-  test('formats as JSON when --format=yaml is passed', async () => {
-    await expect(
-      execute(
+  test('formats as YAML when --format=yaml is passed', async () => {
+    const formatYamlOrg = async () => {
+      const res = await execute(
         [
           'get',
           'organization',
@@ -87,15 +116,24 @@ describe('refactrctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(['get', 'project', knownIds.static.project, '--format', 'yaml'], {
-        token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-      })
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(
+      );
+      yaml.load(res);
+    };
+    expect(formatYamlOrg).not.toThrow();
+
+    const formatYamlProj = async () => {
+      const res = await execute(
+        ['get', 'project', knownIds.static.project, '--format', 'yaml'],
+        {
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+        }
+      );
+      yaml.load(res);
+    };
+    expect(formatYamlProj).not.toThrow();
+
+    const formatYamlCred = async () => {
+      const res = await execute(
         [
           'get',
           'credential',
@@ -106,10 +144,13 @@ describe('refactrctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(
+      );
+      yaml.load(res);
+    };
+    expect(formatYamlCred).not.toThrow();
+
+    const formatYamlJob = async () => {
+      const res = await execute(
         [
           'get',
           'job',
@@ -120,10 +161,13 @@ describe('refactrctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
-    await expect(
-      execute(
+      );
+      yaml.load(res);
+    };
+    expect(formatYamlJob).not.toThrow();
+
+    const formatYamlPipe = async () => {
+      const res = await execute(
         [
           'get',
           'pipeline',
@@ -134,8 +178,10 @@ describe('refactrctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      )
-    ).resolves.toMatchSnapshot();
+      );
+      yaml.load(res);
+    };
+    expect(formatYamlPipe).not.toThrow();
   });
 
   describe('organization', () => {
@@ -434,46 +480,6 @@ describe('refactrctl get', () => {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
-    });
-
-    describe('with --wait', () => {
-      let runId: string;
-      beforeAll(async () => {
-        const data = JSON.parse(
-          await execute(
-            [
-              'run',
-              'pipeline',
-              '--project-id',
-              knownIds.dynamic.project,
-              '--revision-id',
-              knownIds.dynamic.pipelineRevision,
-              knownIds.dynamic.pipeline,
-              '--format=json'
-            ],
-            { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-          )
-        );
-
-        runId = data._id;
-      });
-
-      test('waits until run is finished', async () => {
-        await expect(
-          execute(
-            [
-              'get',
-              'run',
-              '--project-id',
-              knownIds.dynamic.project,
-              '--wait',
-              runId,
-              '--format=json'
-            ],
-            { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-          ).then((value) => isArray(JSON.parse(value)))
-        ).resolves.toBeTruthy();
-      });
     });
   });
 });
