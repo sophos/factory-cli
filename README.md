@@ -33,7 +33,7 @@ Options:
 
 ### Binary
 
-We provide official binaries for Linux and macOS. Get the latest version from [this page](https://github.com/refactr/refactr-cli/releases/latest), and download the archive file for your operating system/architecture. Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`). Make sure it has execution permission granted.
+We provide official binaries for Linux and macOS. Get the latest version from [this page](https://github.com/sophos-factory/cli/releases/latest), and download the archive file for your operating system/architecture. Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`). Make sure it has execution permission granted.
 
 ### npm
 

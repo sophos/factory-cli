@@ -19,6 +19,6 @@ This document describes the process for creating a release and publishing a new 
 
 New updates can be viewed at:
 
-- Repository releases page: https://github.com/refactr/refactr-cli/releases
+- Repository releases page: https://github.com/sophos-factory/cli/releases
 - The npm package page: https://www.npmjs.com/package/@refactr/cli
 - Docker Hub: https://hub.docker.com/r/refactr/cli
