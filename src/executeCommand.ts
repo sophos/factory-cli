@@ -3,17 +3,16 @@ import isFunction from 'lodash/isFunction';
 import isNil from 'lodash/isNil';
 import Client from './client';
 import {
-    commandsWithSubcommandsMap,
-    executableCommandsMap,
-    mustHaveSubcommand,
-    TopLevelCommand
+  commandsWithSubcommandsMap,
+  executableCommandsMap,
+  mustHaveSubcommand,
+  TopLevelCommand
 } from './cmd';
 import filterer from './filterer';
 import formatter from './formatter';
 import type { Args } from './parse';
 import printer from './printer';
 import asyncGenToArray from './util/asyncGenToArray';
-
 
 export default async function executeCommand(args: Args) {
   const methods: string[] = args._ as string[];
