@@ -1,19 +1,19 @@
 import flow from 'lodash/flow';
-import isNil from 'lodash/isNil';
 import isFunction from 'lodash/isFunction';
-
-import {
-  commandsWithSubcommandsMap,
-  executableCommandsMap,
-  mustHaveSubcommand,
-  TopLevelCommand
-} from './cmd';
+import isNil from 'lodash/isNil';
 import Client from './client';
+import {
+    commandsWithSubcommandsMap,
+    executableCommandsMap,
+    mustHaveSubcommand,
+    TopLevelCommand
+} from './cmd';
+import filterer from './filterer';
 import formatter from './formatter';
 import type { Args } from './parse';
 import printer from './printer';
-import filterer from './filterer';
 import asyncGenToArray from './util/asyncGenToArray';
+
 
 export default async function executeCommand(args: Args) {
   const methods: string[] = args._ as string[];
@@ -91,8 +91,8 @@ export default async function executeCommand(args: Args) {
               const message =
                 payload.possiblyWrongAddress ?? false
                   ? 'The API address provided is invalid. ' +
-                    'If this error is persistent, please report it via https://github.com/refactr/refactr-cli/issues'
-                  : 'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues';
+                    'If this error is persistent, please report it via https://github.com/sophos-factory/cli/issues'
+                  : 'An unknown error occurred. To report an issue, please visit https://github.com/sophos-factory/cli/issues';
               viewError({
                 code: 'UnknownError',
                 message: message
@@ -113,7 +113,7 @@ export default async function executeCommand(args: Args) {
       error,
       message:
         'Unknown command. This may be a problem with the CLI. ' +
-        'To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+        'To report an issue, please visit https://github.com/sophos-factory/cli/issues'
     });
   }
 
@@ -123,7 +123,7 @@ export default async function executeCommand(args: Args) {
       error,
       stack: error.stack,
       message:
-        'An unknown error occurred. To report an issue, please visit https://github.com/refactr/refactr-cli/issues'
+        'An unknown error occurred. To report an issue, please visit https://github.com/sophos-factory/cli/issues'
     });
   }
 }

@@ -2,14 +2,14 @@
 
 This section is for anyone wishing to contribute code to the Sophos Factory CLI project.
 
-Ensure you've installed the CLI globally. See [Installation](https://github.com/refactr/refactr-cli#installation).
+Ensure you've installed the CLI globally. See [Installation](https://github.com/sophos-factory/cli#installation).
 
 ## Clone
 
 Clone the repository: 
 
 ```sh
-git clone https://github.com/refactr/refactr-cli.git
+git clone https://github.com/sophos-factory/cli.git
 ```
 
 ## Build
