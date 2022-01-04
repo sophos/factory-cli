@@ -12,6 +12,8 @@ on:
       - 'v*'
     paths-ignore:
       - '**.md'
+  release:
+    types: [published]
 
 jobs:
   test:
@@ -44,12 +46,12 @@ jobs:
           FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
 
   call-publish-gh:
-    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() || github.event_name == 'release' }}
     uses: sophos-factory/cli/.github/workflows/publish_gh.yml@master
     permissions: write-all
   call-publish-docker:
-    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() || github.event_name == 'release' }}
     uses: sophos-factory/cli/.github/workflows/publish_docker.yml@master
   call-publish-npm:
-    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() || github.event_name == 'release' }}
     uses: sophos-factory/cli/.github/workflows/publish_npm.yml@master
