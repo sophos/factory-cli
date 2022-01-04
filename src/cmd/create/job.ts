@@ -2,7 +2,7 @@ import isNil from 'lodash/isNil';
 import {
   JobScheduleIntervalTypeEnum,
   JobTriggerTypeEnum
-} from '@refactr/api-client';
+} from '@sophos-factory/api-client';
 
 import { createCommandResult, handler } from '../handler';
 import { JobTriggerType } from '../../job-trigger-type';

@@ -1,4 +1,4 @@
-import { CredentialTypeEnum } from '@refactr/api-client';
+import { CredentialTypeEnum } from '@sophos-factory/api-client';
 
 import { createCommandResult, handler } from '../handler';
 import { CredentialType } from '../../credential-type';

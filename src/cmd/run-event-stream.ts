@@ -1,4 +1,4 @@
-import { Run, RunStatusEnum } from '@refactr/api-client';
+import { Run, RunStatusEnum } from '@sophos-factory/api-client';
 import type Client from '../client';
 
 export function createStream(

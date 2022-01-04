@@ -1,6 +1,6 @@
 {
-  "name": "@refactr/cli",
-  "version": "2.0.1",
+  "name": "@sophos-factory/cli",
+  "version": "2.0.2",
   "description": "Sophos Factory CLI",
   "main": "dist/main.js",
   "author": "Sophos Factory",
@@ -34,7 +34,7 @@
     "test:e2e": "jest --testRegex=\"e2e/.*\\.test\\.(js|ts)$\" --bail --runInBand"
   },
   "dependencies": {
-    "@refactr/api-client": "~0.8.2",
+    "@sophos-factory/api-client": "^1.0.1",
     "cli-table": "^0.3.4",
     "date-fns": "^2.16.1",
     "debug": "^4.3.1",
