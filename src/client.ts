@@ -7,7 +7,7 @@ import {
   AgentsApi,
   Configuration,
   CredentialsApi
-} from '@refactr/api-client';
+} from '@sophos-factory/api-client';
 
 export default class Client {
   public readonly jobs: JobsApi;

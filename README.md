@@ -40,13 +40,13 @@ We provide official binaries for Linux and macOS. Get the latest version from [t
 To get the latest version of the CLI tool, use `npm`:
 
 ```shell
-$ npm install @refactr/cli -g
+$ npm install @sophos-factory/cli -g
 ```
 
 or with `yarn`:
 
 ```shell
-$ yarn global add @refactr/cli
+$ yarn global add @sophos-factory/cli
 ```
 
 Global installation is required.

@@ -1,4 +1,4 @@
-import { InlineResponse201, RunEvents } from '@refactr/api-client';
+import { InlineResponse201, RunEvents } from '@sophos-factory/api-client';
 import { createCommandResult, handler } from '../handler';
 import { createStream } from '../run-event-stream';
 import fields from '../../fields';
