@@ -39,7 +39,7 @@ jobs:
       - run: npm run test:unit
       - run: npm run test:e2e -- -u
         env:
-          FACTORY_ADDRESS: ${{ secrets.FACTORY_ADDRESS }}
+          FACTORY_ADDRESS: 'https://api.main.refactr.it/v1'
           FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
           FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
 

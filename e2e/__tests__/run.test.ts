@@ -117,6 +117,46 @@ describe('refactrctl run', () => {
     });
   });
 
+  describe('with --wait', () => {
+    let runId: string;
+    beforeAll(async () => {
+      const data = JSON.parse(
+        await execute(
+          [
+            'run',
+            'pipeline',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--revision-id',
+            knownIds.dynamic.pipelineRevision,
+            knownIds.dynamic.pipeline,
+            '--format=json'
+          ],
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
+        )
+      );
+
+      runId = data._id;
+    });
+
+    test('waits until run is finished', async () => {
+      await expect(
+        execute(
+          [
+            'get',
+            'run',
+            '--project-id',
+            knownIds.dynamic.project,
+            '--wait',
+            runId,
+            '--format=json'
+          ],
+          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
+        ).then((value) => isArray(JSON.parse(value)))
+      ).resolves.toBeTruthy();
+    });
+  });
+
   describe('job', () => {
     test('throws on missing arguments', async () => {
       await expect(

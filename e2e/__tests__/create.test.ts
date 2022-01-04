@@ -34,7 +34,7 @@ describe('refactrctl create', () => {
             'create',
             'credential',
             '--format=json',
-            `--name="${faker.random.word()}"`,
+            `--name="CI test credential"`,
             '--type=generic',
             '--data.text="hello world"',
             `--id=${id}`,
