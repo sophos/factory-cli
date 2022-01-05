@@ -55,3 +55,4 @@ jobs:
   call-publish-npm:
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && success() || github.event_name == 'release' }}
     uses: sophos-factory/cli/.github/workflows/publish_npm.yml@master
+    permissions: write-all
