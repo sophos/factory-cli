@@ -8,6 +8,7 @@ jobs:
   publish_packages:
     name: Publish packages to npm and GPR
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
