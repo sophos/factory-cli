@@ -18,7 +18,7 @@ jobs:
       - run: git fetch --prune --unshallow --tags
       - name: Generate the version name from tags
         id: generate-version
-        run: echo "::set-output name=version::$(git describe --abbrev=0)"
+        run: echo "::set-output name=version::$(git tag --list | tail -n 1)"
       - name: Create Release
         id: release
         uses: actions/create-release@v1
