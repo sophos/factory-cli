@@ -46,6 +46,10 @@ npm run build:aot && npm run build:exe:[os]
 
 ... where `[os]` is one of `linux`, `macos`, `alpine` or `win` (Windows is not officially supported).
 
+## Pre-commit
+
+Pre-commit hooks will run the below tests and `lint:fix` when you do `git commit`. If you need to bypass the testing, use `git commit --no-verify`.
+
 ## Tests
 
 Run unit tests with:
