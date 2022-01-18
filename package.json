@@ -1,6 +1,6 @@
 {
   "name": "@sophos-factory/cli",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Sophos Factory CLI",
   "main": "dist/main.js",
   "author": "Sophos Factory",
@@ -32,7 +32,7 @@
     "build:exe:macos": "pkg dist/main.bundled.js -o dist/macos/refactrctl -t node14-macos-x64",
     "test:unit": "jest --testRegex=\"src/.*\\.test\\.(js|ts)$\"",
     "test:e2e": "jest --testRegex=\"e2e/.*\\.test\\.(js|ts)$\" --bail --runInBand",
-    "pre-commit": "run-p build:runtime test:unit test:e2e lint:fix",
+    "pre-commit": "run-p build:aot test:unit test:e2e lint:fix",
     "prepare": "husky install"
   },
   "dependencies": {
