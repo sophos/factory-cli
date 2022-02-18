@@ -12,7 +12,8 @@ type Arguments = {
 export default handler<Arguments, AsyncGenerator<RunEvents> | Run>(
   async (apiClient, { projectId, runId, wait = false }: Arguments) => {
     const api = apiClient.runs;
-    const { data: run } = await api.getRun(projectId, runId);
+    const extraFields = ['events', 'operations', 'variables', 'outputs'];
+    const { data: run } = await api.getRun(projectId, runId, extraFields);
 
     if (wait) {
       const stream = createStream(apiClient, projectId, runId);

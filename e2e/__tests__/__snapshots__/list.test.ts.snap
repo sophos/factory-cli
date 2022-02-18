@@ -1,56 +1,115 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
-"id                                    name                          type     data  created            
-3931f596-c07b-4b1a-b59c-73da9680b5c4  CI test credential            generic  -     12/29/2021, 9:59 PM
-1c4552f1-6555-4189-a4e8-5b48597f59df  Savings                       generic  -     12/29/2021, 9:34 PM
-del-me                                I refuse to go away...        generic  -     12/29/2021, 9:01 PM
-secret-test-cred                      Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
+"id                                    name                type     data  created             
+9da10ba9-0dea-4585-bd8b-845f38f26446  CI test credential  generic  -     02/18/2022, 9:41 PM 
+ef46a16d-8cdd-41ab-b862-e32cbda8ec19  CI test credential  generic  -     02/18/2022, 9:34 PM 
+5f369ed2-0efc-4f82-a257-9b9678316e67  CI test credential  generic  -     02/18/2022, 9:23 PM 
+e2f0269e-aae1-4ee4-ac3a-414c2893d126  CI test credential  generic  -     02/18/2022, 9:20 PM 
+ab9630bd-5121-4a28-b88f-49d6b75c5283  CI test credential  generic  -     02/18/2022, 9:14 PM 
+492e06fb-a9f3-4f59-9f6f-1131301f2a36  CI test credential  generic  -     02/18/2022, 9:12 PM 
+abbed5b2-e7bd-449a-9739-7b1a60f67abf  CI test credential  generic  -     02/16/2022, 11:29 PM
+8c3654d7-a786-4b6f-a2a4-fee041aa5912  CI test credential  generic  -     02/16/2022, 11:28 PM
+1d6bcec5-5b6b-479f-b900-a7ad50d51b5d  CI test credential  generic  -     02/16/2022, 11:28 PM
+6bd64587-4469-4230-b95d-756c0aa03445  CI test credential  generic  -     02/16/2022, 11:28 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 1`] = `
-"id                                    name                          type     data  created            
-3931f596-c07b-4b1a-b59c-73da9680b5c4  CI test credential            generic  -     12/29/2021, 9:59 PM
-1c4552f1-6555-4189-a4e8-5b48597f59df  Savings                       generic  -     12/29/2021, 9:34 PM
-del-me                                I refuse to go away...        generic  -     12/29/2021, 9:01 PM
-secret-test-cred                      Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
+"id                                    name                type     data  created             
+9da10ba9-0dea-4585-bd8b-845f38f26446  CI test credential  generic  -     02/18/2022, 9:41 PM 
+ef46a16d-8cdd-41ab-b862-e32cbda8ec19  CI test credential  generic  -     02/18/2022, 9:34 PM 
+5f369ed2-0efc-4f82-a257-9b9678316e67  CI test credential  generic  -     02/18/2022, 9:23 PM 
+e2f0269e-aae1-4ee4-ac3a-414c2893d126  CI test credential  generic  -     02/18/2022, 9:20 PM 
+ab9630bd-5121-4a28-b88f-49d6b75c5283  CI test credential  generic  -     02/18/2022, 9:14 PM 
+492e06fb-a9f3-4f59-9f6f-1131301f2a36  CI test credential  generic  -     02/18/2022, 9:12 PM 
+abbed5b2-e7bd-449a-9739-7b1a60f67abf  CI test credential  generic  -     02/16/2022, 11:29 PM
+8c3654d7-a786-4b6f-a2a4-fee041aa5912  CI test credential  generic  -     02/16/2022, 11:28 PM
+1d6bcec5-5b6b-479f-b900-a7ad50d51b5d  CI test credential  generic  -     02/16/2022, 11:28 PM
+6bd64587-4469-4230-b95d-756c0aa03445  CI test credential  generic  -     02/16/2022, 11:28 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 2`] = `
 "[
     {
-        \\"_id\\": \\"61ccda5c8997cf6f0574286e\\",
+        \\"_id\\": \\"6210128855de2608f532fdb7\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2021-12-29T21:59:56.721Z\\",
-        \\"id\\": \\"3931f596-c07b-4b1a-b59c-73da9680b5c4\\",
+        \\"created\\": \\"2022-02-18T21:41:28.097Z\\",
+        \\"id\\": \\"9da10ba9-0dea-4585-bd8b-845f38f26446\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"61ccd4588997cf1f1d74285d\\",
+        \\"_id\\": \\"621010c8f3d04e6b6699e8aa\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2021-12-29T21:34:16.234Z\\",
-        \\"id\\": \\"1c4552f1-6555-4189-a4e8-5b48597f59df\\",
-        \\"name\\": \\"Savings\\",
+        \\"created\\": \\"2022-02-18T21:34:00.929Z\\",
+        \\"id\\": \\"ef46a16d-8cdd-41ab-b862-e32cbda8ec19\\",
+        \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"61cccca78997cf024c74285a\\",
+        \\"_id\\": \\"62100e3ef3d04e5e6c99e8a3\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2021-12-29T21:01:27.082Z\\",
-        \\"name\\": \\"I refuse to go away...\\",
-        \\"id\\": \\"del-me\\",
-        \\"type\\": \\"generic\\",
-        \\"modified\\": \\"2021-12-29T21:05:49.118Z\\"
+        \\"created\\": \\"2022-02-18T21:23:10.574Z\\",
+        \\"id\\": \\"5f369ed2-0efc-4f82-a257-9b9678316e67\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"61cccbc58997cf7030742858\\",
+        \\"_id\\": \\"62100db2f3d04e628099e89c\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2021-12-29T20:57:41.754Z\\",
-        \\"name\\": \\"Super Secret Test Credential\\",
-        \\"id\\": \\"secret-test-cred\\",
+        \\"created\\": \\"2022-02-18T21:20:50.376Z\\",
+        \\"id\\": \\"e2f0269e-aae1-4ee4-ac3a-414c2893d126\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"62100c4155de26fa6032fd92\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-02-18T21:14:41.312Z\\",
+        \\"id\\": \\"ab9630bd-5121-4a28-b88f-49d6b75c5283\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"62100ba355de2667af32fd8c\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-02-18T21:12:03.034Z\\",
+        \\"id\\": \\"492e06fb-a9f3-4f59-9f6f-1131301f2a36\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"620d88cb55de26402332fd8b\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-02-16T23:29:15.486Z\\",
+        \\"id\\": \\"abbed5b2-e7bd-449a-9739-7b1a60f67abf\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"620d88a3f3d04e797199e875\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-02-16T23:28:35.871Z\\",
+        \\"id\\": \\"8c3654d7-a786-4b6f-a2a4-fee041aa5912\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"620d88a2f3d04ef5d799e872\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-02-16T23:28:34.330Z\\",
+        \\"id\\": \\"1d6bcec5-5b6b-479f-b900-a7ad50d51b5d\\",
+        \\"name\\": \\"CI test credential\\",
+        \\"type\\": \\"generic\\"
+    },
+    {
+        \\"_id\\": \\"620d889ef3d04e3b5399e86e\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-02-16T23:28:30.432Z\\",
+        \\"id\\": \\"6bd64587-4469-4230-b95d-756c0aa03445\\",
+        \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     }
 ]
@@ -59,33 +118,74 @@ exports[`refactrctl list credentials should work 2`] = `
 
 exports[`refactrctl list credentials should work 3`] = `
 "-
-    _id: 61ccda5c8997cf6f0574286e
+    _id: 6210128855de2608f532fdb7
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2021-12-29T21:59:56.721Z'
-    id: 3931f596-c07b-4b1a-b59c-73da9680b5c4
+    created: '2022-02-18T21:41:28.097Z'
+    id: 9da10ba9-0dea-4585-bd8b-845f38f26446
     name: CI test credential
     type: generic
 -
-    _id: 61ccd4588997cf1f1d74285d
+    _id: 621010c8f3d04e6b6699e8aa
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2021-12-29T21:34:16.234Z'
-    id: 1c4552f1-6555-4189-a4e8-5b48597f59df
-    name: Savings
+    created: '2022-02-18T21:34:00.929Z'
+    id: ef46a16d-8cdd-41ab-b862-e32cbda8ec19
+    name: CI test credential
     type: generic
 -
-    _id: 61cccca78997cf024c74285a
+    _id: 62100e3ef3d04e5e6c99e8a3
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2021-12-29T21:01:27.082Z'
-    name: I refuse to go away...
-    id: del-me
+    created: '2022-02-18T21:23:10.574Z'
+    id: 5f369ed2-0efc-4f82-a257-9b9678316e67
+    name: CI test credential
     type: generic
-    modified: '2021-12-29T21:05:49.118Z'
 -
-    _id: 61cccbc58997cf7030742858
+    _id: 62100db2f3d04e628099e89c
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2021-12-29T20:57:41.754Z'
-    name: Super Secret Test Credential
-    id: secret-test-cred
+    created: '2022-02-18T21:20:50.376Z'
+    id: e2f0269e-aae1-4ee4-ac3a-414c2893d126
+    name: CI test credential
+    type: generic
+-
+    _id: 62100c4155de26fa6032fd92
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-02-18T21:14:41.312Z'
+    id: ab9630bd-5121-4a28-b88f-49d6b75c5283
+    name: CI test credential
+    type: generic
+-
+    _id: 62100ba355de2667af32fd8c
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-02-18T21:12:03.034Z'
+    id: 492e06fb-a9f3-4f59-9f6f-1131301f2a36
+    name: CI test credential
+    type: generic
+-
+    _id: 620d88cb55de26402332fd8b
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-02-16T23:29:15.486Z'
+    id: abbed5b2-e7bd-449a-9739-7b1a60f67abf
+    name: CI test credential
+    type: generic
+-
+    _id: 620d88a3f3d04e797199e875
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-02-16T23:28:35.871Z'
+    id: 8c3654d7-a786-4b6f-a2a4-fee041aa5912
+    name: CI test credential
+    type: generic
+-
+    _id: 620d88a2f3d04ef5d799e872
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-02-16T23:28:34.330Z'
+    id: 1d6bcec5-5b6b-479f-b900-a7ad50d51b5d
+    name: CI test credential
+    type: generic
+-
+    _id: 620d889ef3d04e3b5399e86e
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-02-16T23:28:30.432Z'
+    id: 6bd64587-4469-4230-b95d-756c0aa03445
+    name: CI test credential
     type: generic
 
 "
@@ -143,7 +243,7 @@ exports[`refactrctl list jobs should work 2`] = `
         \\"suppress_vars\\": false,
         \\"suppress_outputs\\": false,
         \\"suppress_events\\": false,
-        \\"last_run\\": \\"2021-12-30T17:49:59.343Z\\",
+        \\"last_run\\": \\"2022-02-18T21:42:00.829Z\\",
         \\"last_status\\": \\"Succeeded\\"
     }
 ]
@@ -167,7 +267,7 @@ exports[`refactrctl list jobs should work 3`] = `
     suppress_vars: false
     suppress_outputs: false
     suppress_events: false
-    last_run: '2021-12-30T17:49:59.343Z'
+    last_run: '2022-02-18T21:42:00.829Z'
     last_status: Succeeded
 
 "
@@ -324,12 +424,24 @@ Missing required arguments: project-id, pipeline-id
 
 exports[`refactrctl list pipelines should work 1`] = `
 "_id                       organization_id           project_id                name                          step_count  revision_count  created            
+61e72f74597da5d29cac3c49  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  Practical                     0           1               01/18/2022, 9:21 PM
 61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
 "
 `;
 
 exports[`refactrctl list pipelines should work 2`] = `
 "[
+    {
+        \\"_id\\": \\"61e72f74597da5d29cac3c49\\",
+        \\"feature_tags\\": [],
+        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
+        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
+        \\"created\\": \\"2022-01-18T21:21:56.247Z\\",
+        \\"modified\\": \\"2022-01-18T21:21:56.247Z\\",
+        \\"step_count\\": 0,
+        \\"revision_count\\": 1,
+        \\"name\\": \\"Practical\\"
+    },
     {
         \\"_id\\": \\"61ccc379d42b9b0f518365db\\",
         \\"feature_tags\\": [],
@@ -348,6 +460,16 @@ exports[`refactrctl list pipelines should work 2`] = `
 
 exports[`refactrctl list pipelines should work 3`] = `
 "-
+    _id: 61e72f74597da5d29cac3c49
+    feature_tags: []
+    organization_id: 61cc93942529b6ec9681e4e2
+    project_id: 61ccbe03d42b9bdcc88365d8
+    created: '2022-01-18T21:21:56.247Z'
+    modified: '2022-01-18T21:21:56.247Z'
+    step_count: 0
+    revision_count: 1
+    name: Practical
+-
     _id: 61ccc379d42b9b0f518365db
     feature_tags: []
     organization_id: 61cc93942529b6ec9681e4e2
@@ -385,17 +507,17 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name                                           pipeline_count  organization_id           created             
-61ccbe03d42b9bdcc88365d8  CRUD Testing                                   1               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
-61cca573d42b9b46428365c8  The One With the Greetings                     1               61cc93942529b6ec9681e4e2  12/29/2021, 6:14 PM 
-6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  10              5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM 
-5f9f3b02233d0b9e290b3122  Scratch                                        57              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
-617711bbda9b615a36917ef2  Dan Testing                                    5               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
-607f19bd98a5b821d3ca5f13  Runner Dog Food                                8               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
-5fa4dba223b4e0703b95c465  Full Kitchen Sink                              41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
-5fda3431f00c8ba848f49f45  Vault Testing                                  5               5f9f2d08e2f1bb2436e6f5b0  12/16/2020, 4:22 PM 
-60fb43f7ec3b3b4d95917316  Kitchen Sink Suite [ERDE-1203]                 35              5f9f2d08e2f1bb2436e6f5b0  07/23/2021, 10:34 PM
-61660be4ec3b3bc1d991793c  William's Project                              1               5f9f2d08e2f1bb2436e6f5b0  10/12/2021, 10:27 PM
+"_id                       name               pipeline_count  organization_id           created             
+61ccbe03d42b9bdcc88365d8  CRUD Testing       2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
+617711bbda9b615a36917ef2  Dan Testing        5               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
+5fa4dba223b4e0703b95c465  Full Kitchen Sink  41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
+5f9f3b02233d0b9e290b3122  Scratch            59              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
+607f19bd98a5b821d3ca5f13  Runner Dog Food    8               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
+6202e247f2b3eb9542b9c466  Carlos Testing     1               5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM 
+61f99a75597da55553ac3c8d  Duck Scans         3               5f9f2d08e2f1bb2436e6f5b0  02/01/2022, 8:39 PM 
+61fd8937df32e924f68eed35  Hello World        0               5f9f2d08e2f1bb2436e6f5b0  02/04/2022, 8:14 PM 
+60080aae44a4547e8423894b  ABC                2               5f9f2d08e2f1bb2436e6f5b0  01/20/2021, 10:49 AM
+61e9acd3597da59758ac3c87  CIS Demo 1-20-22   1               5f9f2d08e2f1bb2436e6f5b0  01/20/2022, 6:41 PM 
 "
 `;
 
@@ -405,86 +527,86 @@ exports[`refactrctl list projects should work 2`] = `
         \\"_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
         \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
         \\"created\\": \\"2021-12-29T19:58:59.813Z\\",
-        \\"modified\\": \\"2021-12-29T22:00:19.034Z\\",
-        \\"pipeline_count\\": 1,
+        \\"modified\\": \\"2022-02-18T21:41:34.575Z\\",
+        \\"pipeline_count\\": 2,
         \\"name\\": \\"CRUD Testing\\"
-    },
-    {
-        \\"_id\\": \\"61cca573d42b9b46428365c8\\",
-        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"created\\": \\"2021-12-29T18:14:11.872Z\\",
-        \\"modified\\": \\"2021-12-29T19:26:50.603Z\\",
-        \\"pipeline_count\\": 1,
-        \\"name\\": \\"The One With the Greetings\\"
-    },
-    {
-        \\"_id\\": \\"6010f6e2a830874a04689246\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
-        \\"modified\\": \\"2021-12-29T15:53:21.296Z\\",
-        \\"pipeline_count\\": 10,
-        \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
-    },
-    {
-        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
-        \\"modified\\": \\"2021-12-29T15:11:51.696Z\\",
-        \\"pipeline_count\\": 57,
-        \\"name\\": \\"Scratch\\",
-        \\"image_id\\": \\"600b6b5c25b0b52703ea3f0c\\"
     },
     {
         \\"_id\\": \\"617711bbda9b615a36917ef2\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2021-10-25T20:21:15.612Z\\",
-        \\"modified\\": \\"2021-12-23T21:17:36.065Z\\",
+        \\"modified\\": \\"2022-02-18T21:36:14.694Z\\",
         \\"pipeline_count\\": 5,
         \\"name\\": \\"Dan Testing\\",
         \\"icon_name\\": \\"pills\\"
     },
     {
-        \\"_id\\": \\"607f19bd98a5b821d3ca5f13\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-04-20T18:13:17.407Z\\",
-        \\"modified\\": \\"2021-12-17T19:20:27.247Z\\",
-        \\"pipeline_count\\": 8,
-        \\"name\\": \\"Runner Dog Food\\",
-        \\"image_id\\": \\"607f19d896b0a463afd1ccb5\\"
-    },
-    {
         \\"_id\\": \\"5fa4dba223b4e0703b95c465\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
         \\"created\\": \\"2020-11-06T05:14:10.990Z\\",
-        \\"modified\\": \\"2021-12-09T20:15:30.522Z\\",
+        \\"modified\\": \\"2022-02-16T17:10:25.818Z\\",
         \\"pipeline_count\\": 41,
         \\"name\\": \\"Full Kitchen Sink\\",
         \\"image_id\\": \\"5feeecacb5297d642e1938da\\"
     },
     {
-        \\"_id\\": \\"5fda3431f00c8ba848f49f45\\",
+        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-12-16T16:22:09.374Z\\",
-        \\"modified\\": \\"2021-12-01T19:53:07.890Z\\",
-        \\"pipeline_count\\": 5,
-        \\"name\\": \\"Vault Testing\\",
-        \\"image_id\\": \\"5fda3442b486804ec421ce2e\\"
+        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
+        \\"modified\\": \\"2022-02-16T16:49:11.179Z\\",
+        \\"pipeline_count\\": 59,
+        \\"name\\": \\"Scratch\\",
+        \\"image_id\\": \\"600b6b5c25b0b52703ea3f0c\\"
     },
     {
-        \\"_id\\": \\"60fb43f7ec3b3b4d95917316\\",
+        \\"_id\\": \\"607f19bd98a5b821d3ca5f13\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-07-23T22:34:31.873Z\\",
-        \\"modified\\": \\"2021-11-24T16:19:59.090Z\\",
-        \\"pipeline_count\\": 35,
-        \\"name\\": \\"Kitchen Sink Suite [ERDE-1203]\\"
+        \\"created\\": \\"2021-04-20T18:13:17.407Z\\",
+        \\"modified\\": \\"2022-02-15T17:57:18.451Z\\",
+        \\"pipeline_count\\": 8,
+        \\"name\\": \\"Runner Dog Food\\",
+        \\"image_id\\": \\"607f19d896b0a463afd1ccb5\\"
     },
     {
-        \\"_id\\": \\"61660be4ec3b3bc1d991793c\\",
+        \\"_id\\": \\"6202e247f2b3eb9542b9c466\\",
         \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-10-12T22:27:48.913Z\\",
-        \\"modified\\": \\"2021-10-14T21:22:29.132Z\\",
+        \\"created\\": \\"2022-02-08T21:36:07.354Z\\",
+        \\"modified\\": \\"2022-02-11T09:00:45.647Z\\",
         \\"pipeline_count\\": 1,
-        \\"name\\": \\"William's Project\\"
+        \\"name\\": \\"Carlos Testing\\"
+    },
+    {
+        \\"_id\\": \\"61f99a75597da55553ac3c8d\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2022-02-01T20:39:17.776Z\\",
+        \\"modified\\": \\"2022-02-09T22:21:03.342Z\\",
+        \\"pipeline_count\\": 3,
+        \\"name\\": \\"Duck Scans\\",
+        \\"image_id\\": \\"61f99b4c068d9107f4019c53\\"
+    },
+    {
+        \\"_id\\": \\"61fd8937df32e924f68eed35\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2022-02-04T20:14:47.422Z\\",
+        \\"modified\\": \\"2022-02-04T20:14:47.422Z\\",
+        \\"pipeline_count\\": 0,
+        \\"name\\": \\"Hello World\\"
+    },
+    {
+        \\"_id\\": \\"60080aae44a4547e8423894b\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-20T10:49:18.861Z\\",
+        \\"modified\\": \\"2022-02-03T14:45:33.929Z\\",
+        \\"pipeline_count\\": 2,
+        \\"name\\": \\"ABC\\"
+    },
+    {
+        \\"_id\\": \\"61e9acd3597da59758ac3c87\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2022-01-20T18:41:23.048Z\\",
+        \\"modified\\": \\"2022-01-20T18:43:13.827Z\\",
+        \\"pipeline_count\\": 1,
+        \\"name\\": \\"CIS Demo 1-20-22\\"
     }
 ]
 "
@@ -495,77 +617,77 @@ exports[`refactrctl list projects should work 3`] = `
     _id: 61ccbe03d42b9bdcc88365d8
     organization_id: 61cc93942529b6ec9681e4e2
     created: '2021-12-29T19:58:59.813Z'
-    modified: '2021-12-29T22:00:19.034Z'
-    pipeline_count: 1
+    modified: '2022-02-18T21:41:34.575Z'
+    pipeline_count: 2
     name: CRUD Testing
--
-    _id: 61cca573d42b9b46428365c8
-    organization_id: 61cc93942529b6ec9681e4e2
-    created: '2021-12-29T18:14:11.872Z'
-    modified: '2021-12-29T19:26:50.603Z'
-    pipeline_count: 1
-    name: The One With the Greetings
--
-    _id: 6010f6e2a830874a04689246
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-01-27T05:15:14.584Z'
-    modified: '2021-12-29T15:53:21.296Z'
-    pipeline_count: 10
-    name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
--
-    _id: 5f9f3b02233d0b9e290b3122
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-11-01T22:47:30.770Z'
-    modified: '2021-12-29T15:11:51.696Z'
-    pipeline_count: 57
-    name: Scratch
-    image_id: 600b6b5c25b0b52703ea3f0c
 -
     _id: 617711bbda9b615a36917ef2
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2021-10-25T20:21:15.612Z'
-    modified: '2021-12-23T21:17:36.065Z'
+    modified: '2022-02-18T21:36:14.694Z'
     pipeline_count: 5
     name: Dan Testing
     icon_name: pills
 -
-    _id: 607f19bd98a5b821d3ca5f13
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-04-20T18:13:17.407Z'
-    modified: '2021-12-17T19:20:27.247Z'
-    pipeline_count: 8
-    name: Runner Dog Food
-    image_id: 607f19d896b0a463afd1ccb5
--
     _id: 5fa4dba223b4e0703b95c465
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2020-11-06T05:14:10.990Z'
-    modified: '2021-12-09T20:15:30.522Z'
+    modified: '2022-02-16T17:10:25.818Z'
     pipeline_count: 41
     name: Full Kitchen Sink
     image_id: 5feeecacb5297d642e1938da
 -
-    _id: 5fda3431f00c8ba848f49f45
+    _id: 5f9f3b02233d0b9e290b3122
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-12-16T16:22:09.374Z'
-    modified: '2021-12-01T19:53:07.890Z'
-    pipeline_count: 5
-    name: Vault Testing
-    image_id: 5fda3442b486804ec421ce2e
+    created: '2020-11-01T22:47:30.770Z'
+    modified: '2022-02-16T16:49:11.179Z'
+    pipeline_count: 59
+    name: Scratch
+    image_id: 600b6b5c25b0b52703ea3f0c
 -
-    _id: 60fb43f7ec3b3b4d95917316
+    _id: 607f19bd98a5b821d3ca5f13
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-07-23T22:34:31.873Z'
-    modified: '2021-11-24T16:19:59.090Z'
-    pipeline_count: 35
-    name: 'Kitchen Sink Suite [ERDE-1203]'
+    created: '2021-04-20T18:13:17.407Z'
+    modified: '2022-02-15T17:57:18.451Z'
+    pipeline_count: 8
+    name: Runner Dog Food
+    image_id: 607f19d896b0a463afd1ccb5
 -
-    _id: 61660be4ec3b3bc1d991793c
+    _id: 6202e247f2b3eb9542b9c466
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-10-12T22:27:48.913Z'
-    modified: '2021-10-14T21:22:29.132Z'
+    created: '2022-02-08T21:36:07.354Z'
+    modified: '2022-02-11T09:00:45.647Z'
     pipeline_count: 1
-    name: William's Project
+    name: Carlos Testing
+-
+    _id: 61f99a75597da55553ac3c8d
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2022-02-01T20:39:17.776Z'
+    modified: '2022-02-09T22:21:03.342Z'
+    pipeline_count: 3
+    name: Duck Scans
+    image_id: 61f99b4c068d9107f4019c53
+-
+    _id: 61fd8937df32e924f68eed35
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2022-02-04T20:14:47.422Z'
+    modified: '2022-02-04T20:14:47.422Z'
+    pipeline_count: 0
+    name: Hello World
+-
+    _id: 60080aae44a4547e8423894b
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-20T10:49:18.861Z'
+    modified: '2022-02-03T14:45:33.929Z'
+    pipeline_count: 2
+    name: ABC
+-
+    _id: 61e9acd3597da59758ac3c87
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2022-01-20T18:41:23.048Z'
+    modified: '2022-01-20T18:43:13.827Z'
+    pipeline_count: 1
+    name: CIS Demo 1-20-22
 
 "
 `;
@@ -591,8 +713,8 @@ exports[`refactrctl list runners should work (by project) 2`] = `
         \\"hosted\\": true,
         \\"status\\": \\"Running\\",
         \\"idle\\": true,
-        \\"agent_version\\": \\"1.105.16\\",
-        \\"last_run\\": \\"2021-12-30T17:50:04.893Z\\"
+        \\"agent_version\\": \\"1.106.4\\",
+        \\"last_run\\": \\"2022-02-18T21:42:04.442Z\\"
     }
 ]
 "
@@ -611,8 +733,8 @@ exports[`refactrctl list runners should work (by project) 3`] = `
     hosted: true
     status: Running
     idle: true
-    agent_version: 1.105.16
-    last_run: '2021-12-30T17:50:04.893Z'
+    agent_version: 1.106.4
+    last_run: '2022-02-18T21:42:04.442Z'
 
 "
 `;

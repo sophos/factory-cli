@@ -92,6 +92,7 @@ describe('refactrctl run', () => {
               { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
             )
           );
+          console.log(result);
 
           if (!isArray(result)) {
             throw new Error('Expected array to be received!');

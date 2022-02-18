@@ -243,13 +243,13 @@ Revision must be provided
 
 exports[`refactrctl get project accepts id as argument 1`] = `
 "_id                       name          pipeline_count  organization_id           created            
-61ccbe03d42b9bdcc88365d8  CRUD Testing  1               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
+61ccbe03d42b9bdcc88365d8  CRUD Testing  2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
 "
 `;
 
 exports[`refactrctl get project accepts id from stdin 1`] = `
 "_id                       name          pipeline_count  organization_id           created            
-61ccbe03d42b9bdcc88365d8  CRUD Testing  1               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
+61ccbe03d42b9bdcc88365d8  CRUD Testing  2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
 "
 `;
 
