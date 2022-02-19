@@ -67,15 +67,18 @@ Full example for running end-to-end tests:
 
 ```sh
 # Use the development API for tests.
-FACTORY_ADDRESS="https://api.main.refactr.it/v1" \
+export FACTORY_ADDRESS="https://api.main.refactr.it/v1"
 # Set CLI executable path for tests.
-FACTORY_CLI_PATH=$(realpath ./bin/refactrctl.js) \
+export FACTORY_CLI_PATH=$(realpath ./bin/refactrctl.js)
 # Sophos Factory platform authentication token for "dynamic" test suite
-FACTORY_DYNAMIC_AUTH_TOKEN="<your-factory-auth-token>" \
+export FACTORY_DYNAMIC_AUTH_TOKEN="<your-factory-auth-token>"
 # Sophos Factory platform authentication token for "static" test suite
-FACTORY_STATIC_AUTH_TOKEN="<your-factory-auth-token>" \
-npm run test:e2e -- -u
- ```
+export FACTORY_STATIC_AUTH_TOKEN="<your-factory-auth-token>"
+# Run end-to-end tests
+npm run test:e2e
+```
+
+To update the test snapshots, add `-- -u` to the test command.
 
 End-to-end tests are split into two types: static and dynamic.
 
