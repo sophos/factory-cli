@@ -9,6 +9,7 @@ import {
   coerceRunPipelineVariables
 } from './coercers';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default (yargs: Yargs.Argv) =>
   yargs.command('create', 'Create specified resource', (yargs) =>
     yargs

@@ -1,7 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-
-import { format } from 'date-fns';
-import isArray from 'lodash/isArray';
 import { execute, executeAsIs } from '../helpers/execute';
 import knownIds from '../helpers/knownIds';
 import { withCmd } from '../helpers/options';

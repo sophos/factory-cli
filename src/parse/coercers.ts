@@ -4,6 +4,7 @@ import isString from 'lodash/isString';
 import { parsePipelineFile, readPipelineFile } from '../util/io';
 import { isPOJO } from '../util/isPOJO';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function coerceRunPipelineVariables(arg: string | string[]) {
   if (!isString(arg) && !isArray(arg)) {
     return;
@@ -49,6 +50,7 @@ export function coerceRunPipelineVariables(arg: string | string[]) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function coercePipelineCreateInput(arg: string | string[]) {
   if (isArray(arg)) {
     throw new Error('It is not possible to provide multiple data as input!');

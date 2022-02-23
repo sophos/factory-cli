@@ -2,6 +2,7 @@ import Yargs from 'yargs';
 import isNil from 'lodash/isNil';
 import { CREDENTIAL_TYPES } from '../credential-type';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default (yargs: Yargs.Argv) =>
   yargs.command('list', 'List specified resources', (yargs) =>
     yargs

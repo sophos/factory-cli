@@ -60,7 +60,7 @@ npm run test:unit
 
 In order to run end-to-end CLI tests locally, do the following:
 
-1. Ensure you have executed a build.
+1. Ensure you have executed a build with `npm run build:runtime`.
 2. Pass the below environment variables prior to the `npm run` command. If you are using Mac OS, first ensure `realpath` is installed: `brew install coreutils`.
 
 Full example for running end-to-end tests:

@@ -1,114 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
-"id                                    name                type     data  created             
-9da10ba9-0dea-4585-bd8b-845f38f26446  CI test credential  generic  -     02/18/2022, 9:41 PM 
-ef46a16d-8cdd-41ab-b862-e32cbda8ec19  CI test credential  generic  -     02/18/2022, 9:34 PM 
-5f369ed2-0efc-4f82-a257-9b9678316e67  CI test credential  generic  -     02/18/2022, 9:23 PM 
-e2f0269e-aae1-4ee4-ac3a-414c2893d126  CI test credential  generic  -     02/18/2022, 9:20 PM 
-ab9630bd-5121-4a28-b88f-49d6b75c5283  CI test credential  generic  -     02/18/2022, 9:14 PM 
-492e06fb-a9f3-4f59-9f6f-1131301f2a36  CI test credential  generic  -     02/18/2022, 9:12 PM 
-abbed5b2-e7bd-449a-9739-7b1a60f67abf  CI test credential  generic  -     02/16/2022, 11:29 PM
-8c3654d7-a786-4b6f-a2a4-fee041aa5912  CI test credential  generic  -     02/16/2022, 11:28 PM
-1d6bcec5-5b6b-479f-b900-a7ad50d51b5d  CI test credential  generic  -     02/16/2022, 11:28 PM
-6bd64587-4469-4230-b95d-756c0aa03445  CI test credential  generic  -     02/16/2022, 11:28 PM
+"id                                    name                type     data  created            
+bfdd5dcf-de43-4045-9c70-3cab82372279  CI test credential  generic  -     02/23/2022, 7:44 PM
+b2bc6040-6d68-4904-919b-ef54e02a29f4  CI test credential  generic  -     02/23/2022, 7:41 PM
+abdae95b-ce55-4391-94b6-cf660fbde408  CI test credential  generic  -     02/23/2022, 7:40 PM
+46adcefa-40a5-47a5-8056-8c984694c257  CI test credential  generic  -     02/23/2022, 7:40 PM
+8d77ea93-a85c-4d3e-a893-8987cee5f1e9  CI test credential  generic  -     02/23/2022, 7:40 PM
+6148a6f0-bff0-4adf-a558-5735c38f56e1  CI test credential  generic  -     02/23/2022, 7:40 PM
+ec99da79-f25e-4092-9160-2d1356c9ca3d  CI test credential  generic  -     02/23/2022, 7:34 PM
+854320d8-3711-418a-859b-fa8c73ffadc0  CI test credential  generic  -     02/23/2022, 6:15 PM
+b78923b6-bd6a-4543-a31f-5a5d40d60cf7  CI test credential  generic  -     02/23/2022, 6:14 PM
+568c6610-8e7f-40bf-b5ef-f4933213161a  CI test credential  generic  -     02/23/2022, 6:14 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 1`] = `
-"id                                    name                type     data  created             
-9da10ba9-0dea-4585-bd8b-845f38f26446  CI test credential  generic  -     02/18/2022, 9:41 PM 
-ef46a16d-8cdd-41ab-b862-e32cbda8ec19  CI test credential  generic  -     02/18/2022, 9:34 PM 
-5f369ed2-0efc-4f82-a257-9b9678316e67  CI test credential  generic  -     02/18/2022, 9:23 PM 
-e2f0269e-aae1-4ee4-ac3a-414c2893d126  CI test credential  generic  -     02/18/2022, 9:20 PM 
-ab9630bd-5121-4a28-b88f-49d6b75c5283  CI test credential  generic  -     02/18/2022, 9:14 PM 
-492e06fb-a9f3-4f59-9f6f-1131301f2a36  CI test credential  generic  -     02/18/2022, 9:12 PM 
-abbed5b2-e7bd-449a-9739-7b1a60f67abf  CI test credential  generic  -     02/16/2022, 11:29 PM
-8c3654d7-a786-4b6f-a2a4-fee041aa5912  CI test credential  generic  -     02/16/2022, 11:28 PM
-1d6bcec5-5b6b-479f-b900-a7ad50d51b5d  CI test credential  generic  -     02/16/2022, 11:28 PM
-6bd64587-4469-4230-b95d-756c0aa03445  CI test credential  generic  -     02/16/2022, 11:28 PM
+"id                                    name                type     data  created            
+bfdd5dcf-de43-4045-9c70-3cab82372279  CI test credential  generic  -     02/23/2022, 7:44 PM
+b2bc6040-6d68-4904-919b-ef54e02a29f4  CI test credential  generic  -     02/23/2022, 7:41 PM
+abdae95b-ce55-4391-94b6-cf660fbde408  CI test credential  generic  -     02/23/2022, 7:40 PM
+46adcefa-40a5-47a5-8056-8c984694c257  CI test credential  generic  -     02/23/2022, 7:40 PM
+8d77ea93-a85c-4d3e-a893-8987cee5f1e9  CI test credential  generic  -     02/23/2022, 7:40 PM
+6148a6f0-bff0-4adf-a558-5735c38f56e1  CI test credential  generic  -     02/23/2022, 7:40 PM
+ec99da79-f25e-4092-9160-2d1356c9ca3d  CI test credential  generic  -     02/23/2022, 7:34 PM
+854320d8-3711-418a-859b-fa8c73ffadc0  CI test credential  generic  -     02/23/2022, 6:15 PM
+b78923b6-bd6a-4543-a31f-5a5d40d60cf7  CI test credential  generic  -     02/23/2022, 6:14 PM
+568c6610-8e7f-40bf-b5ef-f4933213161a  CI test credential  generic  -     02/23/2022, 6:14 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 2`] = `
 "[
     {
-        \\"_id\\": \\"6210128855de2608f532fdb7\\",
+        \\"_id\\": \\"62168e9655de267b5432ffbb\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-18T21:41:28.097Z\\",
-        \\"id\\": \\"9da10ba9-0dea-4585-bd8b-845f38f26446\\",
+        \\"created\\": \\"2022-02-23T19:44:22.537Z\\",
+        \\"id\\": \\"bfdd5dcf-de43-4045-9c70-3cab82372279\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"621010c8f3d04e6b6699e8aa\\",
+        \\"_id\\": \\"62168de455de26532532ffb2\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-18T21:34:00.929Z\\",
-        \\"id\\": \\"ef46a16d-8cdd-41ab-b862-e32cbda8ec19\\",
+        \\"created\\": \\"2022-02-23T19:41:24.125Z\\",
+        \\"id\\": \\"b2bc6040-6d68-4904-919b-ef54e02a29f4\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"62100e3ef3d04e5e6c99e8a3\\",
+        \\"_id\\": \\"62168dc855de26fdea32ffa5\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-18T21:23:10.574Z\\",
-        \\"id\\": \\"5f369ed2-0efc-4f82-a257-9b9678316e67\\",
+        \\"created\\": \\"2022-02-23T19:40:56.579Z\\",
+        \\"id\\": \\"abdae95b-ce55-4391-94b6-cf660fbde408\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"62100db2f3d04e628099e89c\\",
+        \\"_id\\": \\"62168da7f3d04e6ff199ea8d\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-18T21:20:50.376Z\\",
-        \\"id\\": \\"e2f0269e-aae1-4ee4-ac3a-414c2893d126\\",
+        \\"created\\": \\"2022-02-23T19:40:23.916Z\\",
+        \\"id\\": \\"46adcefa-40a5-47a5-8056-8c984694c257\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"62100c4155de26fa6032fd92\\",
+        \\"_id\\": \\"62168da555de26370e32ff93\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-18T21:14:41.312Z\\",
-        \\"id\\": \\"ab9630bd-5121-4a28-b88f-49d6b75c5283\\",
+        \\"created\\": \\"2022-02-23T19:40:21.278Z\\",
+        \\"id\\": \\"8d77ea93-a85c-4d3e-a893-8987cee5f1e9\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"62100ba355de2667af32fd8c\\",
+        \\"_id\\": \\"62168da1f3d04ebf7999ea86\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-18T21:12:03.034Z\\",
-        \\"id\\": \\"492e06fb-a9f3-4f59-9f6f-1131301f2a36\\",
+        \\"created\\": \\"2022-02-23T19:40:17.031Z\\",
+        \\"id\\": \\"6148a6f0-bff0-4adf-a558-5735c38f56e1\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"620d88cb55de26402332fd8b\\",
+        \\"_id\\": \\"62168c30f3d04eb05c99ea7e\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-16T23:29:15.486Z\\",
-        \\"id\\": \\"abbed5b2-e7bd-449a-9739-7b1a60f67abf\\",
+        \\"created\\": \\"2022-02-23T19:34:08.164Z\\",
+        \\"id\\": \\"ec99da79-f25e-4092-9160-2d1356c9ca3d\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"620d88a3f3d04e797199e875\\",
+        \\"_id\\": \\"621679a9f3d04ec61699ea67\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-16T23:28:35.871Z\\",
-        \\"id\\": \\"8c3654d7-a786-4b6f-a2a4-fee041aa5912\\",
+        \\"created\\": \\"2022-02-23T18:15:05.979Z\\",
+        \\"id\\": \\"854320d8-3711-418a-859b-fa8c73ffadc0\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"620d88a2f3d04ef5d799e872\\",
+        \\"_id\\": \\"6216799a55de26a3cb32ff68\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-16T23:28:34.330Z\\",
-        \\"id\\": \\"1d6bcec5-5b6b-479f-b900-a7ad50d51b5d\\",
+        \\"created\\": \\"2022-02-23T18:14:50.521Z\\",
+        \\"id\\": \\"b78923b6-bd6a-4543-a31f-5a5d40d60cf7\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     },
     {
-        \\"_id\\": \\"620d889ef3d04e3b5399e86e\\",
+        \\"_id\\": \\"6216799255de26404132ff63\\",
         \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-16T23:28:30.432Z\\",
-        \\"id\\": \\"6bd64587-4469-4230-b95d-756c0aa03445\\",
+        \\"created\\": \\"2022-02-23T18:14:42.291Z\\",
+        \\"id\\": \\"568c6610-8e7f-40bf-b5ef-f4933213161a\\",
         \\"name\\": \\"CI test credential\\",
         \\"type\\": \\"generic\\"
     }
@@ -118,73 +118,73 @@ exports[`refactrctl list credentials should work 2`] = `
 
 exports[`refactrctl list credentials should work 3`] = `
 "-
-    _id: 6210128855de2608f532fdb7
+    _id: 62168e9655de267b5432ffbb
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-18T21:41:28.097Z'
-    id: 9da10ba9-0dea-4585-bd8b-845f38f26446
+    created: '2022-02-23T19:44:22.537Z'
+    id: bfdd5dcf-de43-4045-9c70-3cab82372279
     name: CI test credential
     type: generic
 -
-    _id: 621010c8f3d04e6b6699e8aa
+    _id: 62168de455de26532532ffb2
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-18T21:34:00.929Z'
-    id: ef46a16d-8cdd-41ab-b862-e32cbda8ec19
+    created: '2022-02-23T19:41:24.125Z'
+    id: b2bc6040-6d68-4904-919b-ef54e02a29f4
     name: CI test credential
     type: generic
 -
-    _id: 62100e3ef3d04e5e6c99e8a3
+    _id: 62168dc855de26fdea32ffa5
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-18T21:23:10.574Z'
-    id: 5f369ed2-0efc-4f82-a257-9b9678316e67
+    created: '2022-02-23T19:40:56.579Z'
+    id: abdae95b-ce55-4391-94b6-cf660fbde408
     name: CI test credential
     type: generic
 -
-    _id: 62100db2f3d04e628099e89c
+    _id: 62168da7f3d04e6ff199ea8d
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-18T21:20:50.376Z'
-    id: e2f0269e-aae1-4ee4-ac3a-414c2893d126
+    created: '2022-02-23T19:40:23.916Z'
+    id: 46adcefa-40a5-47a5-8056-8c984694c257
     name: CI test credential
     type: generic
 -
-    _id: 62100c4155de26fa6032fd92
+    _id: 62168da555de26370e32ff93
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-18T21:14:41.312Z'
-    id: ab9630bd-5121-4a28-b88f-49d6b75c5283
+    created: '2022-02-23T19:40:21.278Z'
+    id: 8d77ea93-a85c-4d3e-a893-8987cee5f1e9
     name: CI test credential
     type: generic
 -
-    _id: 62100ba355de2667af32fd8c
+    _id: 62168da1f3d04ebf7999ea86
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-18T21:12:03.034Z'
-    id: 492e06fb-a9f3-4f59-9f6f-1131301f2a36
+    created: '2022-02-23T19:40:17.031Z'
+    id: 6148a6f0-bff0-4adf-a558-5735c38f56e1
     name: CI test credential
     type: generic
 -
-    _id: 620d88cb55de26402332fd8b
+    _id: 62168c30f3d04eb05c99ea7e
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-16T23:29:15.486Z'
-    id: abbed5b2-e7bd-449a-9739-7b1a60f67abf
+    created: '2022-02-23T19:34:08.164Z'
+    id: ec99da79-f25e-4092-9160-2d1356c9ca3d
     name: CI test credential
     type: generic
 -
-    _id: 620d88a3f3d04e797199e875
+    _id: 621679a9f3d04ec61699ea67
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-16T23:28:35.871Z'
-    id: 8c3654d7-a786-4b6f-a2a4-fee041aa5912
+    created: '2022-02-23T18:15:05.979Z'
+    id: 854320d8-3711-418a-859b-fa8c73ffadc0
     name: CI test credential
     type: generic
 -
-    _id: 620d88a2f3d04ef5d799e872
+    _id: 6216799a55de26a3cb32ff68
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-16T23:28:34.330Z'
-    id: 1d6bcec5-5b6b-479f-b900-a7ad50d51b5d
+    created: '2022-02-23T18:14:50.521Z'
+    id: b78923b6-bd6a-4543-a31f-5a5d40d60cf7
     name: CI test credential
     type: generic
 -
-    _id: 620d889ef3d04e3b5399e86e
+    _id: 6216799255de26404132ff63
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-16T23:28:30.432Z'
-    id: 6bd64587-4469-4230-b95d-756c0aa03445
+    created: '2022-02-23T18:14:42.291Z'
+    id: 568c6610-8e7f-40bf-b5ef-f4933213161a
     name: CI test credential
     type: generic
 
@@ -243,7 +243,7 @@ exports[`refactrctl list jobs should work 2`] = `
         \\"suppress_vars\\": false,
         \\"suppress_outputs\\": false,
         \\"suppress_events\\": false,
-        \\"last_run\\": \\"2022-02-18T21:42:00.829Z\\",
+        \\"last_run\\": \\"2022-02-23T19:47:05.388Z\\",
         \\"last_status\\": \\"Succeeded\\"
     }
 ]
@@ -267,7 +267,7 @@ exports[`refactrctl list jobs should work 3`] = `
     suppress_vars: false
     suppress_outputs: false
     suppress_events: false
-    last_run: '2022-02-18T21:42:00.829Z'
+    last_run: '2022-02-23T19:47:05.388Z'
     last_status: Succeeded
 
 "
@@ -507,17 +507,17 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name               pipeline_count  organization_id           created             
-61ccbe03d42b9bdcc88365d8  CRUD Testing       2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
-617711bbda9b615a36917ef2  Dan Testing        5               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
-5fa4dba223b4e0703b95c465  Full Kitchen Sink  41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
-5f9f3b02233d0b9e290b3122  Scratch            59              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
-607f19bd98a5b821d3ca5f13  Runner Dog Food    8               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
-6202e247f2b3eb9542b9c466  Carlos Testing     1               5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM 
-61f99a75597da55553ac3c8d  Duck Scans         3               5f9f2d08e2f1bb2436e6f5b0  02/01/2022, 8:39 PM 
-61fd8937df32e924f68eed35  Hello World        0               5f9f2d08e2f1bb2436e6f5b0  02/04/2022, 8:14 PM 
-60080aae44a4547e8423894b  ABC                2               5f9f2d08e2f1bb2436e6f5b0  01/20/2021, 10:49 AM
-61e9acd3597da59758ac3c87  CIS Demo 1-20-22   1               5f9f2d08e2f1bb2436e6f5b0  01/20/2022, 6:41 PM 
+"_id                       name                                           pipeline_count  organization_id           created             
+61ccbe03d42b9bdcc88365d8  CRUD Testing                                   2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
+6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  10              5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM 
+617711bbda9b615a36917ef2  Dan Testing                                    5               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
+5fa4dba223b4e0703b95c465  Full Kitchen Sink                              41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
+5f9f3b02233d0b9e290b3122  Scratch                                        59              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
+607f19bd98a5b821d3ca5f13  Runner Dog Food                                8               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
+6202e247f2b3eb9542b9c466  Carlos Testing                                 1               5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM 
+61f99a75597da55553ac3c8d  Duck Scans                                     3               5f9f2d08e2f1bb2436e6f5b0  02/01/2022, 8:39 PM 
+61fd8937df32e924f68eed35  Hello World                                    0               5f9f2d08e2f1bb2436e6f5b0  02/04/2022, 8:14 PM 
+60080aae44a4547e8423894b  ABC                                            2               5f9f2d08e2f1bb2436e6f5b0  01/20/2021, 10:49 AM
 "
 `;
 
@@ -527,9 +527,17 @@ exports[`refactrctl list projects should work 2`] = `
         \\"_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
         \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
         \\"created\\": \\"2021-12-29T19:58:59.813Z\\",
-        \\"modified\\": \\"2022-02-18T21:41:34.575Z\\",
+        \\"modified\\": \\"2022-02-23T19:45:18.020Z\\",
         \\"pipeline_count\\": 2,
         \\"name\\": \\"CRUD Testing\\"
+    },
+    {
+        \\"_id\\": \\"6010f6e2a830874a04689246\\",
+        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
+        \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
+        \\"modified\\": \\"2022-02-22T20:06:55.969Z\\",
+        \\"pipeline_count\\": 10,
+        \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
     },
     {
         \\"_id\\": \\"617711bbda9b615a36917ef2\\",
@@ -599,14 +607,6 @@ exports[`refactrctl list projects should work 2`] = `
         \\"modified\\": \\"2022-02-03T14:45:33.929Z\\",
         \\"pipeline_count\\": 2,
         \\"name\\": \\"ABC\\"
-    },
-    {
-        \\"_id\\": \\"61e9acd3597da59758ac3c87\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2022-01-20T18:41:23.048Z\\",
-        \\"modified\\": \\"2022-01-20T18:43:13.827Z\\",
-        \\"pipeline_count\\": 1,
-        \\"name\\": \\"CIS Demo 1-20-22\\"
     }
 ]
 "
@@ -617,9 +617,16 @@ exports[`refactrctl list projects should work 3`] = `
     _id: 61ccbe03d42b9bdcc88365d8
     organization_id: 61cc93942529b6ec9681e4e2
     created: '2021-12-29T19:58:59.813Z'
-    modified: '2022-02-18T21:41:34.575Z'
+    modified: '2022-02-23T19:45:18.020Z'
     pipeline_count: 2
     name: CRUD Testing
+-
+    _id: 6010f6e2a830874a04689246
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-01-27T05:15:14.584Z'
+    modified: '2022-02-22T20:06:55.969Z'
+    pipeline_count: 10
+    name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
 -
     _id: 617711bbda9b615a36917ef2
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
@@ -681,13 +688,6 @@ exports[`refactrctl list projects should work 3`] = `
     modified: '2022-02-03T14:45:33.929Z'
     pipeline_count: 2
     name: ABC
--
-    _id: 61e9acd3597da59758ac3c87
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2022-01-20T18:41:23.048Z'
-    modified: '2022-01-20T18:43:13.827Z'
-    pipeline_count: 1
-    name: CIS Demo 1-20-22
 
 "
 `;
@@ -714,7 +714,7 @@ exports[`refactrctl list runners should work (by project) 2`] = `
         \\"status\\": \\"Running\\",
         \\"idle\\": true,
         \\"agent_version\\": \\"1.106.4\\",
-        \\"last_run\\": \\"2022-02-18T21:42:04.442Z\\"
+        \\"last_run\\": \\"2022-02-23T19:47:07.917Z\\"
     }
 ]
 "
@@ -734,7 +734,7 @@ exports[`refactrctl list runners should work (by project) 3`] = `
     status: Running
     idle: true
     agent_version: 1.106.4
-    last_run: '2022-02-18T21:42:04.442Z'
+    last_run: '2022-02-23T19:47:07.917Z'
 
 "
 `;

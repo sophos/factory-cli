@@ -14,7 +14,7 @@ import type { Args } from './parse';
 import printer from './printer';
 import asyncGenToArray from './util/asyncGenToArray';
 
-export default async function executeCommand(args: Args) {
+export default async function executeCommand(args: Args): Promise<void> {
   const methods: string[] = args._ as string[];
   const filterPath = args.filter ?? null;
   const command = methods[0] as TopLevelCommand;

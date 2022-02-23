@@ -21,7 +21,7 @@ const apply = (yargs: Yargs.Argv) =>
   //       infer type correctly.
   create(get(list(del(rerun(run(yargs))))));
 
-const parse = (argv: string[], { version }: { version: string }) => {
+const parse = (argv: string[], { version }: { version: string }): unknown => {
   return apply(yargs(argv))
     .strict(true)
     .scriptName('refactrctl')

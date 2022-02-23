@@ -3,6 +3,7 @@ import { readStdin } from '../util/io';
 import isNil from 'lodash/isNil';
 import { coerceRunPipelineVariables } from './coercers';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default (yargs: Yargs.Argv) =>
   yargs.command('run', 'Execute pipeline or job', (yargs) =>
     yargs
