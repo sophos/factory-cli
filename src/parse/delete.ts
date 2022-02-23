@@ -2,6 +2,7 @@ import Yargs from 'yargs';
 import { readStdin } from '../util/io';
 import isNil from 'lodash/isNil';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default (yargs: Yargs.Argv) =>
   yargs.command('delete', 'Delete specified resource', (yargs) =>
     yargs

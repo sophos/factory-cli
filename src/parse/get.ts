@@ -3,6 +3,7 @@ import isNil from 'lodash/isNil';
 
 import { readStdin } from '../util/io';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default (yargs: Yargs.Argv) =>
   yargs.command('get', 'Get specified resource', (yargs) =>
     yargs
