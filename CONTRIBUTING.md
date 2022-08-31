@@ -67,7 +67,7 @@ Full example for running end-to-end tests:
 
 ```sh
 # Use the development API for tests.
-export FACTORY_ADDRESS="https://api.main.refactr.it/v1"
+export FACTORY_ADDRESS="https://api.dev.factory.sophos.com/v1"
 # Set CLI executable path for tests.
 export FACTORY_CLI_PATH=$(realpath ./bin/refactrctl.js)
 # Sophos Factory platform authentication token for "dynamic" test suite
@@ -86,4 +86,4 @@ Dynamic tests cover create, delete, and update operations.
 
 Static tests are for verifying get and list operations. They require data on the server to be unchanged for the whole lifecycle. If you made any changes to corresponding entities on the development server, make sure to update tests first.
 
-All requests are issued against [Sophos Factory Platform API](https://api.main.refactr.it/v1) endpoints. List of IDs of operational entities can be found in `e2e/helpers/knownIds.js`.
+All requests are issued against [Sophos Factory Platform API](https://api.dev.factory.sophos.com/v1) endpoints. List of IDs of operational entities can be found in `e2e/helpers/knownIds.js`.
