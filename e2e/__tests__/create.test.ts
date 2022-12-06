@@ -55,6 +55,23 @@ describe('refactrctl create', () => {
             'credential',
             '--format=json',
             `--project-id=${knownIds.dynamic.project}`,
+            createResult._id
+          ],
+          {
+            token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
+          }
+        )
+      );
+
+      expect(deleteResult).toHaveProperty('id', createResult._id);
+
+      const getAfterDeleteResult = JSON.parse(
+        await execute(
+          [
+            'get',
+            'credential',
+            '--format=json',
+            `--project-id=${knownIds.dynamic.project}`,
             id
           ],
           {
@@ -63,7 +80,7 @@ describe('refactrctl create', () => {
         )
       );
 
-      expect(deleteResult).toHaveProperty('id', id);
+      expect(getAfterDeleteResult).toBeNull();
     });
   });
 

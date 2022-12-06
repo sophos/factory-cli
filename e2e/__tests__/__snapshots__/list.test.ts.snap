@@ -2,115 +2,115 @@
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
 "id                                    name                type     data  created            
-bfdd5dcf-de43-4045-9c70-3cab82372279  CI test credential  generic  -     02/23/2022, 7:44 PM
-b2bc6040-6d68-4904-919b-ef54e02a29f4  CI test credential  generic  -     02/23/2022, 7:41 PM
-abdae95b-ce55-4391-94b6-cf660fbde408  CI test credential  generic  -     02/23/2022, 7:40 PM
-46adcefa-40a5-47a5-8056-8c984694c257  CI test credential  generic  -     02/23/2022, 7:40 PM
-8d77ea93-a85c-4d3e-a893-8987cee5f1e9  CI test credential  generic  -     02/23/2022, 7:40 PM
-6148a6f0-bff0-4adf-a558-5735c38f56e1  CI test credential  generic  -     02/23/2022, 7:40 PM
-ec99da79-f25e-4092-9160-2d1356c9ca3d  CI test credential  generic  -     02/23/2022, 7:34 PM
-854320d8-3711-418a-859b-fa8c73ffadc0  CI test credential  generic  -     02/23/2022, 6:15 PM
-b78923b6-bd6a-4543-a31f-5a5d40d60cf7  CI test credential  generic  -     02/23/2022, 6:14 PM
-568c6610-8e7f-40bf-b5ef-f4933213161a  CI test credential  generic  -     02/23/2022, 6:14 PM
+f859ff43-b548-4d50-9484-991102e134b6  CI test credential  generic  -     12/06/2022, 8:49 PM
+9becfd71-3bb5-417e-a42b-89710e7a6f6b  CI test credential  generic  -     12/06/2022, 8:45 PM
+5fe34b45-79f8-4fd0-be1b-fd2fc32a97a4  CI test credential  generic  -     12/06/2022, 8:44 PM
+fb0e0ffc-8ec5-4d3c-9038-23616cb20811  CI test credential  generic  -     12/06/2022, 6:03 PM
+0607acea-9434-4744-981d-730db5026bfb  CI test credential  generic  -     12/06/2022, 5:31 PM
+ae89587d-687d-43bd-8cd3-55a56af43491  CI test credential  generic  -     12/06/2022, 5:29 PM
+64bd9ca0-9ecc-46ba-9c76-624753282fd7  CI test credential  generic  -     12/06/2022, 5:23 PM
+b8160863-6594-407c-9526-aee746563c11  CI test credential  generic  -     12/06/2022, 5:18 PM
+90b47ebb-d57c-4fd3-b832-94fb6b89a9da  CI test credential  generic  -     12/06/2022, 4:22 PM
+31ad6dd6-d065-4e70-949d-f5be977a77c6  CI test credential  generic  -     12/06/2022, 4:13 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 1`] = `
 "id                                    name                type     data  created            
-bfdd5dcf-de43-4045-9c70-3cab82372279  CI test credential  generic  -     02/23/2022, 7:44 PM
-b2bc6040-6d68-4904-919b-ef54e02a29f4  CI test credential  generic  -     02/23/2022, 7:41 PM
-abdae95b-ce55-4391-94b6-cf660fbde408  CI test credential  generic  -     02/23/2022, 7:40 PM
-46adcefa-40a5-47a5-8056-8c984694c257  CI test credential  generic  -     02/23/2022, 7:40 PM
-8d77ea93-a85c-4d3e-a893-8987cee5f1e9  CI test credential  generic  -     02/23/2022, 7:40 PM
-6148a6f0-bff0-4adf-a558-5735c38f56e1  CI test credential  generic  -     02/23/2022, 7:40 PM
-ec99da79-f25e-4092-9160-2d1356c9ca3d  CI test credential  generic  -     02/23/2022, 7:34 PM
-854320d8-3711-418a-859b-fa8c73ffadc0  CI test credential  generic  -     02/23/2022, 6:15 PM
-b78923b6-bd6a-4543-a31f-5a5d40d60cf7  CI test credential  generic  -     02/23/2022, 6:14 PM
-568c6610-8e7f-40bf-b5ef-f4933213161a  CI test credential  generic  -     02/23/2022, 6:14 PM
+f859ff43-b548-4d50-9484-991102e134b6  CI test credential  generic  -     12/06/2022, 8:49 PM
+9becfd71-3bb5-417e-a42b-89710e7a6f6b  CI test credential  generic  -     12/06/2022, 8:45 PM
+5fe34b45-79f8-4fd0-be1b-fd2fc32a97a4  CI test credential  generic  -     12/06/2022, 8:44 PM
+fb0e0ffc-8ec5-4d3c-9038-23616cb20811  CI test credential  generic  -     12/06/2022, 6:03 PM
+0607acea-9434-4744-981d-730db5026bfb  CI test credential  generic  -     12/06/2022, 5:31 PM
+ae89587d-687d-43bd-8cd3-55a56af43491  CI test credential  generic  -     12/06/2022, 5:29 PM
+64bd9ca0-9ecc-46ba-9c76-624753282fd7  CI test credential  generic  -     12/06/2022, 5:23 PM
+b8160863-6594-407c-9526-aee746563c11  CI test credential  generic  -     12/06/2022, 5:18 PM
+90b47ebb-d57c-4fd3-b832-94fb6b89a9da  CI test credential  generic  -     12/06/2022, 4:22 PM
+31ad6dd6-d065-4e70-949d-f5be977a77c6  CI test credential  generic  -     12/06/2022, 4:13 PM
 "
 `;
 
 exports[`refactrctl list credentials should work 2`] = `
 "[
     {
-        \\"_id\\": \\"62168e9655de267b5432ffbb\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:44:22.537Z\\",
-        \\"id\\": \\"bfdd5dcf-de43-4045-9c70-3cab82372279\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638faae078b63b4d11f9671f",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T20:49:36.143Z",
+        "id": "f859ff43-b548-4d50-9484-991102e134b6",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"62168de455de26532532ffb2\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:41:24.125Z\\",
-        \\"id\\": \\"b2bc6040-6d68-4904-919b-ef54e02a29f4\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638fa9e53dd0335b3059b6b7",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T20:45:25.514Z",
+        "id": "9becfd71-3bb5-417e-a42b-89710e7a6f6b",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"62168dc855de26fdea32ffa5\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:40:56.579Z\\",
-        \\"id\\": \\"abdae95b-ce55-4391-94b6-cf660fbde408\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638fa9ae3dd0335b3059b678",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T20:44:30.043Z",
+        "id": "5fe34b45-79f8-4fd0-be1b-fd2fc32a97a4",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"62168da7f3d04e6ff199ea8d\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:40:23.916Z\\",
-        \\"id\\": \\"46adcefa-40a5-47a5-8056-8c984694c257\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f840478b63b4d11f95f2e",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T18:03:48.799Z",
+        "id": "fb0e0ffc-8ec5-4d3c-9038-23616cb20811",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"62168da555de26370e32ff93\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:40:21.278Z\\",
-        \\"id\\": \\"8d77ea93-a85c-4d3e-a893-8987cee5f1e9\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f7c5d3dd0335b3059aec9",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T17:31:09.104Z",
+        "id": "0607acea-9434-4744-981d-730db5026bfb",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"62168da1f3d04ebf7999ea86\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:40:17.031Z\\",
-        \\"id\\": \\"6148a6f0-bff0-4adf-a558-5735c38f56e1\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f7be078b63b4d11f95b9d",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T17:29:04.286Z",
+        "id": "ae89587d-687d-43bd-8cd3-55a56af43491",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"62168c30f3d04eb05c99ea7e\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T19:34:08.164Z\\",
-        \\"id\\": \\"ec99da79-f25e-4092-9160-2d1356c9ca3d\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f7a883dd0335b3059ac0f",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T17:23:20.661Z",
+        "id": "64bd9ca0-9ecc-46ba-9c76-624753282fd7",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"621679a9f3d04ec61699ea67\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T18:15:05.979Z\\",
-        \\"id\\": \\"854320d8-3711-418a-859b-fa8c73ffadc0\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f794e78b63b4d11f957bd",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T17:18:06.954Z",
+        "id": "b8160863-6594-407c-9526-aee746563c11",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"6216799a55de26a3cb32ff68\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T18:14:50.521Z\\",
-        \\"id\\": \\"b78923b6-bd6a-4543-a31f-5a5d40d60cf7\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f6c4d78b63b4d11f954e1",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T16:22:37.804Z",
+        "id": "90b47ebb-d57c-4fd3-b832-94fb6b89a9da",
+        "name": "CI test credential",
+        "type": "generic"
     },
     {
-        \\"_id\\": \\"6216799255de26404132ff63\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-02-23T18:14:42.291Z\\",
-        \\"id\\": \\"568c6610-8e7f-40bf-b5ef-f4933213161a\\",
-        \\"name\\": \\"CI test credential\\",
-        \\"type\\": \\"generic\\"
+        "_id": "638f6a2078b63b4d11f95242",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-12-06T16:13:20.393Z",
+        "id": "31ad6dd6-d065-4e70-949d-f5be977a77c6",
+        "name": "CI test credential",
+        "type": "generic"
     }
 ]
 "
@@ -118,73 +118,73 @@ exports[`refactrctl list credentials should work 2`] = `
 
 exports[`refactrctl list credentials should work 3`] = `
 "-
-    _id: 62168e9655de267b5432ffbb
+    _id: 638faae078b63b4d11f9671f
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:44:22.537Z'
-    id: bfdd5dcf-de43-4045-9c70-3cab82372279
+    created: '2022-12-06T20:49:36.143Z'
+    id: f859ff43-b548-4d50-9484-991102e134b6
     name: CI test credential
     type: generic
 -
-    _id: 62168de455de26532532ffb2
+    _id: 638fa9e53dd0335b3059b6b7
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:41:24.125Z'
-    id: b2bc6040-6d68-4904-919b-ef54e02a29f4
+    created: '2022-12-06T20:45:25.514Z'
+    id: 9becfd71-3bb5-417e-a42b-89710e7a6f6b
     name: CI test credential
     type: generic
 -
-    _id: 62168dc855de26fdea32ffa5
+    _id: 638fa9ae3dd0335b3059b678
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:40:56.579Z'
-    id: abdae95b-ce55-4391-94b6-cf660fbde408
+    created: '2022-12-06T20:44:30.043Z'
+    id: 5fe34b45-79f8-4fd0-be1b-fd2fc32a97a4
     name: CI test credential
     type: generic
 -
-    _id: 62168da7f3d04e6ff199ea8d
+    _id: 638f840478b63b4d11f95f2e
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:40:23.916Z'
-    id: 46adcefa-40a5-47a5-8056-8c984694c257
+    created: '2022-12-06T18:03:48.799Z'
+    id: fb0e0ffc-8ec5-4d3c-9038-23616cb20811
     name: CI test credential
     type: generic
 -
-    _id: 62168da555de26370e32ff93
+    _id: 638f7c5d3dd0335b3059aec9
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:40:21.278Z'
-    id: 8d77ea93-a85c-4d3e-a893-8987cee5f1e9
+    created: '2022-12-06T17:31:09.104Z'
+    id: 0607acea-9434-4744-981d-730db5026bfb
     name: CI test credential
     type: generic
 -
-    _id: 62168da1f3d04ebf7999ea86
+    _id: 638f7be078b63b4d11f95b9d
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:40:17.031Z'
-    id: 6148a6f0-bff0-4adf-a558-5735c38f56e1
+    created: '2022-12-06T17:29:04.286Z'
+    id: ae89587d-687d-43bd-8cd3-55a56af43491
     name: CI test credential
     type: generic
 -
-    _id: 62168c30f3d04eb05c99ea7e
+    _id: 638f7a883dd0335b3059ac0f
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T19:34:08.164Z'
-    id: ec99da79-f25e-4092-9160-2d1356c9ca3d
+    created: '2022-12-06T17:23:20.661Z'
+    id: 64bd9ca0-9ecc-46ba-9c76-624753282fd7
     name: CI test credential
     type: generic
 -
-    _id: 621679a9f3d04ec61699ea67
+    _id: 638f794e78b63b4d11f957bd
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T18:15:05.979Z'
-    id: 854320d8-3711-418a-859b-fa8c73ffadc0
+    created: '2022-12-06T17:18:06.954Z'
+    id: b8160863-6594-407c-9526-aee746563c11
     name: CI test credential
     type: generic
 -
-    _id: 6216799a55de26a3cb32ff68
+    _id: 638f6c4d78b63b4d11f954e1
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T18:14:50.521Z'
-    id: b78923b6-bd6a-4543-a31f-5a5d40d60cf7
+    created: '2022-12-06T16:22:37.804Z'
+    id: 90b47ebb-d57c-4fd3-b832-94fb6b89a9da
     name: CI test credential
     type: generic
 -
-    _id: 6216799255de26404132ff63
+    _id: 638f6a2078b63b4d11f95242
     project_id: 61ccbe03d42b9bdcc88365d8
-    created: '2022-02-23T18:14:42.291Z'
-    id: 568c6610-8e7f-40bf-b5ef-f4933213161a
+    created: '2022-12-06T16:13:20.393Z'
+    id: 31ad6dd6-d065-4e70-949d-f5be977a77c6
     name: CI test credential
     type: generic
 
@@ -197,14 +197,14 @@ exports[`refactrctl list credentials throws on missing arguments 1`] = `
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
       --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of project containing the credentials  [string] [required]
-      --type  [string] [choices: \\"api_token\\", \\"aws_access_key\\", \\"azure_service_principal\\", \\"bearer_token\\", \\"generic\\", \\"ssh_key\\", \\"username_password\\", \\"vault_app_role\\", \\"google_service_account\\"]
-      --sort        Sort order  [string] [choices: \\"created_asc\\", \\"created_desc\\"]
+      --type  [string] [choices: "api_token", "aws_access_key", "azure_service_principal", "bearer_token", "generic", "ssh_key", "username_password", "vault_app_role", "google_service_account"]
+      --sort        Sort order  [string] [choices: "created_asc", "created_desc"]
       --limit  [number]
       --offset  [number]
 
@@ -227,24 +227,24 @@ exports[`refactrctl list jobs should work 1`] = `
 exports[`refactrctl list jobs should work 2`] = `
 "[
     {
-        \\"_id\\": \\"61ccca11d42b9be6898365e0\\",
-        \\"webhook\\": {
-            \\"ip_whitelist\\": []
+        "_id": "61ccca11d42b9be6898365e0",
+        "webhook": {
+            "ip_whitelist": []
         },
-        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2021-12-29T20:50:25.094Z\\",
-        \\"disable_on_failure\\": false,
-        \\"enabled\\": true,
-        \\"pipeline_id\\": \\"61ccc379d42b9b0f518365db\\",
-        \\"pipeline_revision_id\\": \\"61ccc95a8997cfeb71742855\\",
-        \\"name\\": \\"How Do We Know It Works?\\",
-        \\"trigger_type\\": \\"manual\\",
-        \\"suppress_vars\\": false,
-        \\"suppress_outputs\\": false,
-        \\"suppress_events\\": false,
-        \\"last_run\\": \\"2022-02-23T19:47:05.388Z\\",
-        \\"last_status\\": \\"Succeeded\\"
+        "organization_id": "61cc93942529b6ec9681e4e2",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2021-12-29T20:50:25.094Z",
+        "disable_on_failure": false,
+        "enabled": true,
+        "pipeline_id": "61ccc379d42b9b0f518365db",
+        "pipeline_revision_id": "61ccc95a8997cfeb71742855",
+        "name": "How Do We Know It Works?",
+        "trigger_type": "manual",
+        "suppress_vars": false,
+        "suppress_outputs": false,
+        "suppress_events": false,
+        "last_run": "2022-12-06T21:48:59.927Z",
+        "last_status": "Succeeded"
     }
 ]
 "
@@ -267,7 +267,7 @@ exports[`refactrctl list jobs should work 3`] = `
     suppress_vars: false
     suppress_outputs: false
     suppress_events: false
-    last_run: '2022-02-23T19:47:05.388Z'
+    last_run: '2022-12-06T21:48:59.927Z'
     last_status: Succeeded
 
 "
@@ -279,7 +279,7 @@ exports[`refactrctl list jobs throws on missing arguments 1`] = `
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
       --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
@@ -307,50 +307,50 @@ exports[`refactrctl list organizations should work 1`] = `
 exports[`refactrctl list organizations should work 2`] = `
 "[
     {
-        \\"_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"address\\": \\"123 Main St.\\",
-        \\"city\\": \\"New York\\",
-        \\"state\\": \\"NY\\",
-        \\"zip\\": \\"12345\\",
-        \\"contact_name\\": \\"Victoria Drake\\",
-        \\"contact_email\\": \\"victoria.drake@sophos.com\\",
-        \\"name\\": \\"CLI e2e\\",
-        \\"created\\": \\"2021-12-29T16:57:56.369Z\\",
-        \\"modified\\": \\"2021-12-29T16:57:56.369Z\\",
-        \\"plan\\": \\"starter\\",
-        \\"plan_quotas\\": {
-            \\"total_credits\\": 25,
-            \\"project_count\\": 10,
-            \\"user_count\\": 15,
-            \\"agent_count\\": 10,
-            \\"run_minutes\\": -1,
-            \\"support_hours\\": 0
+        "_id": "61cc93942529b6ec9681e4e2",
+        "address": "123 Main St.",
+        "city": "New York",
+        "state": "NY",
+        "zip": "12345",
+        "contact_name": "Victoria Drake",
+        "contact_email": "victoria.drake@sophos.com",
+        "name": "CLI e2e",
+        "created": "2021-12-29T16:57:56.369Z",
+        "modified": "2021-12-29T16:57:56.369Z",
+        "plan": "starter",
+        "plan_quotas": {
+            "total_credits": 25,
+            "project_count": 10,
+            "user_count": 15,
+            "agent_count": 10,
+            "run_minutes": -1,
+            "support_hours": 0
         }
     },
     {
-        \\"_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"name\\": \\"Refactr\\",
-        \\"created\\": \\"2020-10-10T07:07:53.294Z\\",
-        \\"modified\\": \\"2020-11-01T23:15:21.605Z\\",
-        \\"contact_email\\": \\"anthony@refactr.it\\",
-        \\"contact_name\\": \\"Anthony Rowlands\\",
-        \\"city\\": \\"Seattle\\",
-        \\"state\\": \\"WA\\",
-        \\"zip\\": \\"12345\\",
-        \\"plan\\": \\"admin\\",
-        \\"plan_quotas\\": {
-            \\"project_count\\": -1,
-            \\"user_count\\": -1,
-            \\"agent_count\\": -1,
-            \\"run_minutes\\": -1,
-            \\"support_hours\\": 0
+        "_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "name": "Refactr",
+        "created": "2020-10-10T07:07:53.294Z",
+        "modified": "2020-11-01T23:15:21.605Z",
+        "contact_email": "anthony@refactr.it",
+        "contact_name": "Anthony Rowlands",
+        "city": "Seattle",
+        "state": "WA",
+        "zip": "12345",
+        "plan": "admin",
+        "plan_quotas": {
+            "project_count": -1,
+            "user_count": -1,
+            "agent_count": -1,
+            "run_minutes": -1,
+            "support_hours": 0
         },
-        \\"address\\": \\"123 Main St.\\",
-        \\"image_id\\": \\"6036851a545c5e5481871c88\\",
-        \\"capabilities\\": {
-            \\"publish_catalogs\\": true
+        "address": "123 Main St.",
+        "image_id": "926491b4-5b8a-4991-8e2a-83d0e601ca91",
+        "capabilities": {
+            "publish_catalogs": true
         },
-        \\"public\\": true
+        "public": true
     }
 ]
 "
@@ -394,7 +394,7 @@ exports[`refactrctl list organizations should work 3`] = `
         run_minutes: -1
         support_hours: 0
     address: 123 Main St.
-    image_id: 6036851a545c5e5481871c88
+    image_id: 926491b4-5b8a-4991-8e2a-83d0e601ca91
     capabilities:
         publish_catalogs: true
     public: true
@@ -408,7 +408,7 @@ exports[`refactrctl list pipeline-revisions throws on missing arguments 1`] = `
 Options:
       --version      Show version number  [boolean]
   -v, --verbose      Print detailed output  [boolean]
-      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter       Filter output using JsonPath  [string]
       --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
@@ -432,27 +432,27 @@ exports[`refactrctl list pipelines should work 1`] = `
 exports[`refactrctl list pipelines should work 2`] = `
 "[
     {
-        \\"_id\\": \\"61e72f74597da5d29cac3c49\\",
-        \\"feature_tags\\": [],
-        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2022-01-18T21:21:56.247Z\\",
-        \\"modified\\": \\"2022-01-18T21:21:56.247Z\\",
-        \\"step_count\\": 0,
-        \\"revision_count\\": 1,
-        \\"name\\": \\"Practical\\"
+        "_id": "61e72f74597da5d29cac3c49",
+        "feature_tags": [],
+        "organization_id": "61cc93942529b6ec9681e4e2",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2022-01-18T21:21:56.247Z",
+        "modified": "2022-01-18T21:21:56.247Z",
+        "step_count": 0,
+        "revision_count": 1,
+        "name": "Practical"
     },
     {
-        \\"_id\\": \\"61ccc379d42b9b0f518365db\\",
-        \\"feature_tags\\": [],
-        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"project_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"created\\": \\"2021-12-29T20:22:17.026Z\\",
-        \\"modified\\": \\"2021-12-29T20:47:22.071Z\\",
-        \\"step_count\\": 1,
-        \\"revision_count\\": 3,
-        \\"name\\": \\"The Answer is Always Testing\\",
-        \\"summary\\": \\"Pipeline for dynamic CI tests.\\"
+        "_id": "61ccc379d42b9b0f518365db",
+        "feature_tags": [],
+        "organization_id": "61cc93942529b6ec9681e4e2",
+        "project_id": "61ccbe03d42b9bdcc88365d8",
+        "created": "2021-12-29T20:22:17.026Z",
+        "modified": "2021-12-29T20:47:22.071Z",
+        "step_count": 1,
+        "revision_count": 3,
+        "name": "The Answer is Always Testing",
+        "summary": "Pipeline for dynamic CI tests."
     }
 ]
 "
@@ -492,13 +492,13 @@ List pipelines for a project
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
       --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the pipelines  [string] [required]
-      --sort        Sort order  [choices: \\"modified_asc\\", \\"modified_desc\\", \\"name_asc\\", \\"name_desc\\"]
+      --sort        Sort order  [choices: "modified_asc", "modified_desc", "name_asc", "name_desc"]
       --limit  [number]
       --offset  [number]
 
@@ -507,106 +507,122 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name                                           pipeline_count  organization_id           created             
-61ccbe03d42b9bdcc88365d8  CRUD Testing                                   2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
-6010f6e2a830874a04689246  CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)  10              5f9f2d08e2f1bb2436e6f5b0  01/27/2021, 5:15 AM 
-617711bbda9b615a36917ef2  Dan Testing                                    5               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
-5fa4dba223b4e0703b95c465  Full Kitchen Sink                              41              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
-5f9f3b02233d0b9e290b3122  Scratch                                        59              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
-607f19bd98a5b821d3ca5f13  Runner Dog Food                                8               5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
-6202e247f2b3eb9542b9c466  Carlos Testing                                 1               5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM 
-61f99a75597da55553ac3c8d  Duck Scans                                     3               5f9f2d08e2f1bb2436e6f5b0  02/01/2022, 8:39 PM 
-61fd8937df32e924f68eed35  Hello World                                    0               5f9f2d08e2f1bb2436e6f5b0  02/04/2022, 8:14 PM 
-60080aae44a4547e8423894b  ABC                                            2               5f9f2d08e2f1bb2436e6f5b0  01/20/2021, 10:49 AM
+"_id                       name                             pipeline_count  organization_id           created             
+61ccbe03d42b9bdcc88365d8  CRUD Testing                     2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
+6249ba55360cfd3cb08d2de3  Ricochet's Refactr'n...          10              5f9f2d08e2f1bb2436e6f5b0  04/03/2022, 3:16 PM 
+5fa4dba223b4e0703b95c465  Full Kitchen Sink                67              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
+6202e247f2b3eb9542b9c466  Carlos Testing                   37              5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM 
+617711bbda9b615a36917ef2  Dan Testing                      9               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
+5f9f3b02233d0b9e290b3122  Scratch                          70              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
+62fd140d921b72276f5e34dd  Testing Tools                    9               5f9f2d08e2f1bb2436e6f5b0  08/17/2022, 4:15 PM 
+6353125a608f7516b7c59d9f  Sample Multi Cluster Management  10              5f9f2d08e2f1bb2436e6f5b0  10/21/2022, 9:42 PM 
+607f19bd98a5b821d3ca5f13  Runner Dog Food                  18              5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
+60fb43f7ec3b3b4d95917316  Kitchen Sink Suite [ERDE-1203]   35              5f9f2d08e2f1bb2436e6f5b0  07/23/2021, 10:34 PM
 "
 `;
 
 exports[`refactrctl list projects should work 2`] = `
 "[
     {
-        \\"_id\\": \\"61ccbe03d42b9bdcc88365d8\\",
-        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"created\\": \\"2021-12-29T19:58:59.813Z\\",
-        \\"modified\\": \\"2022-02-23T19:45:18.020Z\\",
-        \\"pipeline_count\\": 2,
-        \\"name\\": \\"CRUD Testing\\"
+        "_id": "61ccbe03d42b9bdcc88365d8",
+        "organization_id": "61cc93942529b6ec9681e4e2",
+        "created": "2021-12-29T19:58:59.813Z",
+        "modified": "2022-12-06T21:49:58.524Z",
+        "pipeline_count": 2,
+        "name": "CRUD Testing"
     },
     {
-        \\"_id\\": \\"6010f6e2a830874a04689246\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-01-27T05:15:14.584Z\\",
-        \\"modified\\": \\"2022-02-22T20:06:55.969Z\\",
-        \\"pipeline_count\\": 10,
-        \\"name\\": \\"CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)\\"
+        "_id": "6249ba55360cfd3cb08d2de3",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2022-04-03T15:16:37.166Z",
+        "modified": "2022-12-02T19:04:54.705Z",
+        "pipeline_count": 10,
+        "name": "Ricochet's Refactr'n...",
+        "summary": "A scratchpad for the ramblings of Rick O'Shea (Ricochet)",
+        "image_id": "35cb8234-6d7e-4581-b56c-833abcb88bef",
+        "description": "## VINCIT VERITAS OMNIA\\n###### Truth conquers all\\n\\nPipelines for testing and reproducing suspected bugs from the only French-Irishman on on the Sophos Factory team (i.e., Ricochet or Rick O'Shea)."
     },
     {
-        \\"_id\\": \\"617711bbda9b615a36917ef2\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-10-25T20:21:15.612Z\\",
-        \\"modified\\": \\"2022-02-18T21:36:14.694Z\\",
-        \\"pipeline_count\\": 5,
-        \\"name\\": \\"Dan Testing\\",
-        \\"icon_name\\": \\"pills\\"
+        "_id": "5fa4dba223b4e0703b95c465",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2020-11-06T05:14:10.990Z",
+        "modified": "2022-12-01T21:21:50.997Z",
+        "pipeline_count": 67,
+        "name": "Full Kitchen Sink",
+        "image_id": "a74dbe83-c083-4abe-830e-ec4534b9861c",
+        "description": "The \\"kitchen sink\\" supports testing the various step modules, functions, expressions, installers, etc. supported in Sophos Factory. Any new tools/installers, or functionality should be added to the Kitchen Sink to enable a full end-to-end test of the running platform."
     },
     {
-        \\"_id\\": \\"5fa4dba223b4e0703b95c465\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-11-06T05:14:10.990Z\\",
-        \\"modified\\": \\"2022-02-16T17:10:25.818Z\\",
-        \\"pipeline_count\\": 41,
-        \\"name\\": \\"Full Kitchen Sink\\",
-        \\"image_id\\": \\"5feeecacb5297d642e1938da\\"
+        "_id": "6202e247f2b3eb9542b9c466",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2022-02-08T21:36:07.354Z",
+        "modified": "2022-12-01T14:48:07.270Z",
+        "pipeline_count": 37,
+        "name": "Carlos Testing"
     },
     {
-        \\"_id\\": \\"5f9f3b02233d0b9e290b3122\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2020-11-01T22:47:30.770Z\\",
-        \\"modified\\": \\"2022-02-16T16:49:11.179Z\\",
-        \\"pipeline_count\\": 59,
-        \\"name\\": \\"Scratch\\",
-        \\"image_id\\": \\"600b6b5c25b0b52703ea3f0c\\"
+        "_id": "617711bbda9b615a36917ef2",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2021-10-25T20:21:15.612Z",
+        "modified": "2022-11-30T17:33:10.054Z",
+        "pipeline_count": 9,
+        "name": "Dan Testing",
+        "icon_name": "pills"
     },
     {
-        \\"_id\\": \\"607f19bd98a5b821d3ca5f13\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-04-20T18:13:17.407Z\\",
-        \\"modified\\": \\"2022-02-15T17:57:18.451Z\\",
-        \\"pipeline_count\\": 8,
-        \\"name\\": \\"Runner Dog Food\\",
-        \\"image_id\\": \\"607f19d896b0a463afd1ccb5\\"
+        "_id": "5f9f3b02233d0b9e290b3122",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2020-11-01T22:47:30.770Z",
+        "modified": "2022-11-09T20:15:58.099Z",
+        "pipeline_count": 70,
+        "name": "Scratch",
+        "icon_name": "chart line"
     },
     {
-        \\"_id\\": \\"6202e247f2b3eb9542b9c466\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2022-02-08T21:36:07.354Z\\",
-        \\"modified\\": \\"2022-02-11T09:00:45.647Z\\",
-        \\"pipeline_count\\": 1,
-        \\"name\\": \\"Carlos Testing\\"
+        "_id": "62fd140d921b72276f5e34dd",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2022-08-17T16:15:09.583Z",
+        "modified": "2022-11-08T22:52:08.484Z",
+        "pipeline_count": 9,
+        "name": "Testing Tools",
+        "image_id": "93abd6b6-26a8-4ddf-90a2-101fc5a501c7",
+        "summary": "Tools for testing",
+        "catalog": true,
+        "catalog_scope": "private",
+        "published_pipeline_count": 1,
+        "product_link": "https://app.dev.factory.sophos.com/",
+        "tags": [
+            "DevOps"
+        ],
+        "support_link": "https://app.dev.factory.sophos.com/",
+        "description": "Tools for testing.",
+        "license_link": "https://app.dev.factory.sophos.com/",
+        "policy_link": "https://app.dev.factory.sophos.com/"
     },
     {
-        \\"_id\\": \\"61f99a75597da55553ac3c8d\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2022-02-01T20:39:17.776Z\\",
-        \\"modified\\": \\"2022-02-09T22:21:03.342Z\\",
-        \\"pipeline_count\\": 3,
-        \\"name\\": \\"Duck Scans\\",
-        \\"image_id\\": \\"61f99b4c068d9107f4019c53\\"
+        "_id": "6353125a608f7516b7c59d9f",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2022-10-21T21:42:50.814Z",
+        "modified": "2022-11-01T19:14:47.027Z",
+        "pipeline_count": 10,
+        "name": "Sample Multi Cluster Management"
     },
     {
-        \\"_id\\": \\"61fd8937df32e924f68eed35\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2022-02-04T20:14:47.422Z\\",
-        \\"modified\\": \\"2022-02-04T20:14:47.422Z\\",
-        \\"pipeline_count\\": 0,
-        \\"name\\": \\"Hello World\\"
+        "_id": "607f19bd98a5b821d3ca5f13",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2021-04-20T18:13:17.407Z",
+        "modified": "2022-10-20T15:16:31.269Z",
+        "pipeline_count": 18,
+        "name": "Runner Dog Food",
+        "image_id": "b8fb3f9b-c2be-42ab-b6e5-671957127654"
     },
     {
-        \\"_id\\": \\"60080aae44a4547e8423894b\\",
-        \\"organization_id\\": \\"5f9f2d08e2f1bb2436e6f5b0\\",
-        \\"created\\": \\"2021-01-20T10:49:18.861Z\\",
-        \\"modified\\": \\"2022-02-03T14:45:33.929Z\\",
-        \\"pipeline_count\\": 2,
-        \\"name\\": \\"ABC\\"
+        "_id": "60fb43f7ec3b3b4d95917316",
+        "organization_id": "5f9f2d08e2f1bb2436e6f5b0",
+        "created": "2021-07-23T22:34:31.873Z",
+        "modified": "2022-10-02T20:59:04.373Z",
+        "pipeline_count": 35,
+        "name": "Kitchen Sink Suite [ERDE-1203]"
     }
 ]
 "
@@ -617,77 +633,104 @@ exports[`refactrctl list projects should work 3`] = `
     _id: 61ccbe03d42b9bdcc88365d8
     organization_id: 61cc93942529b6ec9681e4e2
     created: '2021-12-29T19:58:59.813Z'
-    modified: '2022-02-23T19:45:18.020Z'
+    modified: '2022-12-06T21:49:58.524Z'
     pipeline_count: 2
     name: CRUD Testing
 -
-    _id: 6010f6e2a830874a04689246
+    _id: 6249ba55360cfd3cb08d2de3
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-01-27T05:15:14.584Z'
-    modified: '2022-02-22T20:06:55.969Z'
+    created: '2022-04-03T15:16:37.166Z'
+    modified: '2022-12-02T19:04:54.705Z'
     pipeline_count: 10
-    name: 'CLI tests [DYNAMIC] ( CREATE, UPDATE, DELETE)'
--
-    _id: 617711bbda9b615a36917ef2
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-10-25T20:21:15.612Z'
-    modified: '2022-02-18T21:36:14.694Z'
-    pipeline_count: 5
-    name: Dan Testing
-    icon_name: pills
+    name: Ricochet's Refactr'n...
+    summary: A scratchpad for the ramblings of Rick O'Shea (Ricochet)
+    image_id: 35cb8234-6d7e-4581-b56c-833abcb88bef
+    description: >-
+        ## VINCIT VERITAS OMNIA
+
+        ###### Truth conquers all
+
+
+        Pipelines for testing and reproducing suspected bugs from the only
+        French-Irishman on on the Sophos Factory team (i.e., Ricochet or Rick
+        O'Shea).
 -
     _id: 5fa4dba223b4e0703b95c465
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2020-11-06T05:14:10.990Z'
-    modified: '2022-02-16T17:10:25.818Z'
-    pipeline_count: 41
+    modified: '2022-12-01T21:21:50.997Z'
+    pipeline_count: 67
     name: Full Kitchen Sink
-    image_id: 5feeecacb5297d642e1938da
--
-    _id: 5f9f3b02233d0b9e290b3122
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2020-11-01T22:47:30.770Z'
-    modified: '2022-02-16T16:49:11.179Z'
-    pipeline_count: 59
-    name: Scratch
-    image_id: 600b6b5c25b0b52703ea3f0c
--
-    _id: 607f19bd98a5b821d3ca5f13
-    organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-04-20T18:13:17.407Z'
-    modified: '2022-02-15T17:57:18.451Z'
-    pipeline_count: 8
-    name: Runner Dog Food
-    image_id: 607f19d896b0a463afd1ccb5
+    image_id: a74dbe83-c083-4abe-830e-ec4534b9861c
+    description: >-
+        The "kitchen sink" supports testing the various step modules, functions,
+        expressions, installers, etc. supported in Sophos Factory. Any new
+        tools/installers, or functionality should be added to the Kitchen Sink
+        to enable a full end-to-end test of the running platform.
 -
     _id: 6202e247f2b3eb9542b9c466
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
     created: '2022-02-08T21:36:07.354Z'
-    modified: '2022-02-11T09:00:45.647Z'
-    pipeline_count: 1
+    modified: '2022-12-01T14:48:07.270Z'
+    pipeline_count: 37
     name: Carlos Testing
 -
-    _id: 61f99a75597da55553ac3c8d
+    _id: 617711bbda9b615a36917ef2
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2022-02-01T20:39:17.776Z'
-    modified: '2022-02-09T22:21:03.342Z'
-    pipeline_count: 3
-    name: Duck Scans
-    image_id: 61f99b4c068d9107f4019c53
+    created: '2021-10-25T20:21:15.612Z'
+    modified: '2022-11-30T17:33:10.054Z'
+    pipeline_count: 9
+    name: Dan Testing
+    icon_name: pills
 -
-    _id: 61fd8937df32e924f68eed35
+    _id: 5f9f3b02233d0b9e290b3122
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2022-02-04T20:14:47.422Z'
-    modified: '2022-02-04T20:14:47.422Z'
-    pipeline_count: 0
-    name: Hello World
+    created: '2020-11-01T22:47:30.770Z'
+    modified: '2022-11-09T20:15:58.099Z'
+    pipeline_count: 70
+    name: Scratch
+    icon_name: chart line
 -
-    _id: 60080aae44a4547e8423894b
+    _id: 62fd140d921b72276f5e34dd
     organization_id: 5f9f2d08e2f1bb2436e6f5b0
-    created: '2021-01-20T10:49:18.861Z'
-    modified: '2022-02-03T14:45:33.929Z'
-    pipeline_count: 2
-    name: ABC
+    created: '2022-08-17T16:15:09.583Z'
+    modified: '2022-11-08T22:52:08.484Z'
+    pipeline_count: 9
+    name: Testing Tools
+    image_id: 93abd6b6-26a8-4ddf-90a2-101fc5a501c7
+    summary: Tools for testing
+    catalog: true
+    catalog_scope: private
+    published_pipeline_count: 1
+    product_link: https://app.dev.factory.sophos.com/
+    tags:
+        - DevOps
+    support_link: https://app.dev.factory.sophos.com/
+    description: Tools for testing.
+    license_link: https://app.dev.factory.sophos.com/
+    policy_link: https://app.dev.factory.sophos.com/
+-
+    _id: 6353125a608f7516b7c59d9f
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2022-10-21T21:42:50.814Z'
+    modified: '2022-11-01T19:14:47.027Z'
+    pipeline_count: 10
+    name: Sample Multi Cluster Management
+-
+    _id: 607f19bd98a5b821d3ca5f13
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-04-20T18:13:17.407Z'
+    modified: '2022-10-20T15:16:31.269Z'
+    pipeline_count: 18
+    name: Runner Dog Food
+    image_id: b8fb3f9b-c2be-42ab-b6e5-671957127654
+-
+    _id: 60fb43f7ec3b3b4d95917316
+    organization_id: 5f9f2d08e2f1bb2436e6f5b0
+    created: '2021-07-23T22:34:31.873Z'
+    modified: '2022-10-02T20:59:04.373Z'
+    pipeline_count: 35
+    name: Kitchen Sink Suite [ERDE-1203]
 
 "
 `;
@@ -701,20 +744,20 @@ exports[`refactrctl list runners should work (by project) 1`] = `
 exports[`refactrctl list runners should work (by project) 2`] = `
 "[
     {
-        \\"_id\\": \\"61ccb65bd42b9b66fa8365d2\\",
-        \\"project_ids\\": [
-            \\"61cca573d42b9b46428365c8\\",
-            \\"61ccbe03d42b9bdcc88365d8\\"
+        "_id": "61ccb65bd42b9b66fa8365d2",
+        "project_ids": [
+            "61cca573d42b9b46428365c8",
+            "61ccbe03d42b9bdcc88365d8"
         ],
-        \\"organization_id\\": \\"61cc93942529b6ec9681e4e2\\",
-        \\"created\\": \\"2021-12-29T19:26:19.277Z\\",
-        \\"name\\": \\"CI Test Runner\\",
-        \\"type\\": \\"aws_vm_centos8\\",
-        \\"hosted\\": true,
-        \\"status\\": \\"Running\\",
-        \\"idle\\": true,
-        \\"agent_version\\": \\"1.106.4\\",
-        \\"last_run\\": \\"2022-02-23T19:47:07.917Z\\"
+        "organization_id": "61cc93942529b6ec9681e4e2",
+        "created": "2021-12-29T19:26:19.277Z",
+        "name": "CI Test Runner",
+        "type": "aws_vm_centos8",
+        "hosted": true,
+        "status": "Running",
+        "idle": true,
+        "agent_version": "1.116.0-pre.0",
+        "last_run": "2022-12-06T21:49:53.876Z"
     }
 ]
 "
@@ -733,8 +776,8 @@ exports[`refactrctl list runners should work (by project) 3`] = `
     hosted: true
     status: Running
     idle: true
-    agent_version: 1.106.4
-    last_run: '2022-02-23T19:47:07.917Z'
+    agent_version: 1.116.0-pre.0
+    last_run: '2022-12-06T21:49:53.876Z'
 
 "
 `;
@@ -747,7 +790,7 @@ List runners for an organization or a project
 Options:
       --version          Show version number  [boolean]
   -v, --verbose          Print detailed output  [boolean]
-      --format           Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter           Filter output using JsonPath  [string]
       --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
@@ -765,7 +808,7 @@ exports[`refactrctl list runs throws on missing arguments 1`] = `
 Options:
       --version      Show version number  [boolean]
   -v, --verbose      Print detailed output  [boolean]
-      --format       Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter       Filter output using JsonPath  [string]
       --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
@@ -773,7 +816,7 @@ Options:
       --project-id   ID of the organization containing the runs  [string] [required]
       --pipeline-id  ID of a pipeline used to filter the runs  [string]
       --job-id       ID of a job used to filter the runs  [string]
-      --sort         Sort order  [string] [choices: \\"created_asc\\", \\"created_desc\\"]
+      --sort         Sort order  [string] [choices: "created_asc", "created_desc"]
       --limit  [number]
       --offset  [number]
 
@@ -797,7 +840,7 @@ Commands:
 Options:
       --version     Show version number  [boolean]
   -v, --verbose     Print detailed output  [boolean]
-      --format      Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
       --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]

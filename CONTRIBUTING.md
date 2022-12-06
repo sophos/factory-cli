@@ -6,7 +6,7 @@ Ensure you've installed the CLI globally. See [Installation](https://github.com/
 
 ## Clone
 
-Clone the repository: 
+Clone the repository:
 
 ```sh
 git clone https://github.com/sophos-factory/cli.git
