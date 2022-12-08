@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      GITHUB_TOKEN:
-        description: Github token for accessing github resources
-        required: true
       NPM_TOKEN:
         description: NPM Registry token
         required: true
