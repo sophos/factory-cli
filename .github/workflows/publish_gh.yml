@@ -3,10 +3,6 @@ name: Publish Release to GitHub
 on:
   workflow_dispatch:
   workflow_call:
-    secrets:
-      GITHUB_TOKEN:
-        description: Github token for accessing github resources
-        required: true
 
 jobs:
   # Create GitHub Release and upload binary assets

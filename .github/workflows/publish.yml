@@ -17,8 +17,6 @@ jobs:
   publish-gh:
     uses: ./.github/workflows/publish_gh.yml
     needs: run-tests
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-docker:
     uses: ./.github/workflows/publish_docker.yml
@@ -31,5 +29,4 @@ jobs:
     uses: ./.github/workflows/publish_npm.yml
     needs: run-tests
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
