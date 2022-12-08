@@ -3,12 +3,19 @@ name: Publish to Docker Hub
 on:
   workflow_call:
   workflow_dispatch:
+    secrets:
+      DOCKER_USERNAME:
+        description: Docker username
+        required: true
+      DOCKER_PASSWORD:
+        description: Docker password
+        required: true
 
 jobs:
   publish_docker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
       - run: git fetch --prune --unshallow --tags
       - name: Get version from Git tags
         id: get-version
