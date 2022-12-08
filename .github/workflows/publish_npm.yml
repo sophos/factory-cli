@@ -1,8 +1,8 @@
 name: Publish to npm
 
 on:
-  workflow_call:
   workflow_dispatch:
+  workflow_call:
     secrets:
       GITHUB_TOKEN:
         description: Github token for accessing github resources
