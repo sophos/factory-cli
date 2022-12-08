@@ -3,6 +3,10 @@ name: Publish Release to GitHub
 on:
   workflow_call:
   workflow_dispatch:
+    secrets:
+      GITHUB_TOKEN:
+        description: Github token for accessing github resources
+        required: true
 
 jobs:
   # Create GitHub Release and upload binary assets
@@ -14,11 +18,11 @@ jobs:
       upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
       - name: Check out and get tags
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - run: git fetch --prune --unshallow --tags
       - name: Generate the version name from tags
         id: generate-version
-        run: echo "::set-output name=version::$(git tag --list | tail -n 1)"
+        run: echo "::set-output name=version::$(git describe --abbrev=0)"
       - name: Create Release
         id: release
         uses: actions/create-release@v1

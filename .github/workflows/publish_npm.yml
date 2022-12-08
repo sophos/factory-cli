@@ -3,14 +3,21 @@ name: Publish to npm
 on:
   workflow_call:
   workflow_dispatch:
-   
+    secrets:
+      GITHUB_TOKEN:
+        description: Github token for accessing github resources
+        required: true
+      NPM_TOKEN:
+        description: NPM Registry token
+        required: true
+
 jobs:
   publish_packages:
     name: Publish packages to npm and GPR
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
       - name: Setup node
         uses: actions/setup-node@v2
         with:

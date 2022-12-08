@@ -1,0 +1,34 @@
+name: Publish release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  run-tests:
+    uses: ./.github/workflows/run-tests.yml
+    with:
+      FACTORY_ADDRESS: 'https://api.dev.factory.sophos.com/v1'
+    secrets:
+      FACTORY_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
+      FACTORY_AUTH_TOKEN2: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
+
+  publish-gh:
+    uses: ./.github/workflows/publish_gh.yml
+    needs: run-tests
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-docker:
+    uses: ./.github/workflows/publish_docker.yml
+    needs: publish-gh
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+  publish-npm:
+    uses: ./.github/workflows/publish_npm.yml
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

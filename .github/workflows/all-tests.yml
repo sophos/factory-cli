@@ -1,0 +1,44 @@
+on:
+  workflow_call:
+    inputs:
+      FACTORY_ADDRESS:
+        description: Sophos Factory URL
+        required: true
+        type: string
+    secrets:
+      FACTORY_AUTH_TOKEN:
+        description: Sophos Factory auth token
+        required: true
+      FACTORY_AUTH_TOKEN2:
+        description: Second Sophos Factory auth token
+        required: true
+
+jobs:
+  all-tests:
+    name: Run unit and e2e tests
+    if: ${{ !contains(github.event.head_commit.message, 'skip ci') }}
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, macos-latest]
+        version: [14.x, 16.x, 18.x, 19.x]
+    steps:
+      - uses: actions/checkout@v3.1.0
+      - name: Setup node ${{ matrix.version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.version }}
+
+      - run: node -e "console.log('FACTORY_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+        shell: bash
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build:runtime
+
+      - run: npm run test:unit
+      - run: npm run test:e2e -- -u
+        env:
+          FACTORY_ADDRESS: ${{ inputs.FACTORY_ADDRESS }} # 'https://api.dev.factory.sophos.com/v1'
+          FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
+          FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
