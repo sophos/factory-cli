@@ -5,6 +5,7 @@ on:
         description: Sophos Factory URL
         required: true
         type: string
+        default: https://api.dev.factory.sophos.com/v1
     secrets:
       FACTORY_AUTH_TOKEN:
         description: Sophos Factory auth token

@@ -1,8 +1,8 @@
 name: Publish to Docker Hub
 
 on:
-  workflow_call:
   workflow_dispatch:
+  workflow_call:
     secrets:
       DOCKER_USERNAME:
         description: Docker username
