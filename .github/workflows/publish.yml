@@ -22,13 +22,14 @@ jobs:
 
   publish-docker:
     uses: ./.github/workflows/publish_docker.yml
-    needs: publish-gh
+    needs: run-tests
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   publish-npm:
     uses: ./.github/workflows/publish_npm.yml
+    needs: run-tests
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
