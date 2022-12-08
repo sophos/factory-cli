@@ -11,7 +11,7 @@ Positionals:
 Options:
       --version             Show version number  [boolean]
   -v, --verbose             Print detailed output  [boolean]
-      --format              Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format              Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter              Filter output using JsonPath  [string]
       --address             Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token          Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
@@ -38,7 +38,7 @@ Positionals:
 Options:
       --version             Show version number  [boolean]
   -v, --verbose             Print detailed output  [boolean]
-      --format              Output format  [choices: \\"wide\\", \\"json\\", \\"yaml\\"] [default: \\"wide\\"]
+      --format              Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter              Filter output using JsonPath  [string]
       --address             Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token          Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]

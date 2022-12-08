@@ -10,6 +10,6 @@ exports[`humanify formats null/undefined 1`] = `"-"`;
 
 exports[`humanify formats number 1`] = `1.123333333`;
 
-exports[`humanify formats objects 1`] = `"{\\"foo\\":[\\"foo\\",\\"bar\\",\\"baz\\"],\\"bar\\":true,\\"baz\\":{\\"xyz\\":{\\"qux\\":\\"quux\\"}}}"`;
+exports[`humanify formats objects 1`] = `"{"foo":["foo","bar","baz"],"bar":true,"baz":{"xyz":{"qux":"quux"}}}"`;
 
 exports[`humanify formats string 1`] = `"string12345"`;

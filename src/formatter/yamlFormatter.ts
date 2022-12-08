@@ -1,9 +1,9 @@
-import { safeDump } from 'js-yaml';
+import { dump } from 'js-yaml';
 
 import { Formatter } from './formatter';
 
 const yamlFormatter: Formatter = (input: unknown): string => {
-  return safeDump(input, {
+  return dump(input, {
     indent: 4
   });
 };

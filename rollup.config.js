@@ -3,7 +3,7 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import json from '@rollup/plugin-json';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import pkg from './package.json';
 
 const external = Object.keys(pkg.dependencies || {});
@@ -31,7 +31,10 @@ const sharedConfig = {
       exclude: 'node_modules/**'
     }),
     replace({
-      __VERSION__: JSON.stringify(pkg.version)
+      preventAssignment: true,
+      values: {
+        __VERSION__: JSON.stringify(pkg.version)
+      }
     })
   ]
 };

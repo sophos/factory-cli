@@ -2,13 +2,13 @@
 
 exports[`formatter formats to JSON correctly 1`] = `
 "{
-    \\"foo\\": \\"foo\\",
-    \\"bar\\": \\"bar\\",
-    \\"baz\\": \\"baz\\",
-    \\"xyz\\": null,
-    \\"qux\\": \\"2021-01-04T13:08:25.618Z\\",
-    \\"quux\\": 1.234,
-    \\"quuz\\": {}
+    "foo": "foo",
+    "bar": "bar",
+    "baz": "baz",
+    "xyz": null,
+    "qux": "2021-01-04T13:08:25.618Z",
+    "quux": 1.234,
+    "quuz": {}
 }"
 `;
 
