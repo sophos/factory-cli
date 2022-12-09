@@ -17,6 +17,8 @@ jobs:
   publish-gh:
     uses: ./.github/workflows/publish_gh.yml
     needs: run-tests
+    permissions:
+      contents: write
 
   publish-docker:
     uses: ./.github/workflows/publish_docker.yml

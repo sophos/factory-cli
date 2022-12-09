@@ -9,6 +9,8 @@ jobs:
   create_release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
@@ -34,6 +36,8 @@ jobs:
     name: Create executable for ${{ matrix.operating-system }}
     needs: create_release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     strategy:
       matrix:
         operating-system: [linux, macos, win]
