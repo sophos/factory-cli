@@ -28,5 +28,7 @@ jobs:
   publish-npm:
     uses: ./.github/workflows/publish_npm.yml
     needs: run-tests
+    permissions:
+      packages: write
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
