@@ -14,7 +14,7 @@ import run from './run';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const yargs = require('yargs');
 
-const DEFAULT_ADDRESS = 'https://api.refactr.it/v1';
+const DEFAULT_ADDRESS = 'https://api.dev.factory.sophos.com/v1';
 
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot

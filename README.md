@@ -24,7 +24,7 @@ Options:
       --format      Output format                                    [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath                                                                [string]
       --address     Address of the Sophos Factory API server
-                    [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
+                    [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
       --auth-token  Authentication token                     [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help                                                                                  [boolean]
 ```
