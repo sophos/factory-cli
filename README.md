@@ -1,6 +1,6 @@
 # Sophos Factory CLI
 
-The Sophos Factory command line tool is used to interact with the Sophos Factory Platform API from the command line.
+The Sophos Factory command line tool (CLI) is used to interact with Sophos Factory from the command line.
 
 Basic usage and installation is described below. [Click here for complete Sophos Factory CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
 
@@ -33,7 +33,7 @@ Options:
 
 ### Binary
 
-We provide official binaries for Linux and macOS. Get the latest version from [this page](https://github.com/sophos-factory/cli/releases/latest), and download the archive file for your operating system/architecture. Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`). Make sure it has execution permission granted.
+We provide official binaries for Linux and macOS. Get the latest version from [this page](https://github.com/sophos/factory-cli/releases/latest), and download the archive file for your operating system/architecture. Unpack the archive, and put the binary somewhere in your `$PATH` (e.g. on UNIX-y systems `/usr/local/bin`). Make sure it has execution permission granted.
 
 ### npm
 

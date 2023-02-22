@@ -90,8 +90,8 @@ export default async function executeCommand(args: Args): Promise<void> {
               const message =
                 payload.possiblyWrongAddress ?? false
                   ? 'The API address provided is invalid. ' +
-                    'If this error is persistent, please report it via https://github.com/sophos-factory/cli/issues'
-                  : 'An unknown error occurred. To report an issue, please visit https://github.com/sophos-factory/cli/issues';
+                    'If this error is persistent, please report it via https://github.com/sophos/factory-cli/issues'
+                  : 'An unknown error occurred. To report an issue, please visit https://github.com/sophos/factory-cli/issues';
               viewError({
                 code: 'UnknownError',
                 message: message
@@ -112,7 +112,7 @@ export default async function executeCommand(args: Args): Promise<void> {
       error,
       message:
         'Unknown command. This may be a problem with the CLI. ' +
-        'To report an issue, please visit https://github.com/sophos-factory/cli/issues'
+        'To report an issue, please visit https://github.com/sophos/factory-cli/issues'
     });
   }
 
@@ -122,7 +122,7 @@ export default async function executeCommand(args: Args): Promise<void> {
       error,
       stack: error.stack,
       message:
-        'An unknown error occurred. To report an issue, please visit https://github.com/sophos-factory/cli/issues'
+        'An unknown error occurred. To report an issue, please visit https://github.com/sophos/factory-cli/issues'
     });
   }
 }
