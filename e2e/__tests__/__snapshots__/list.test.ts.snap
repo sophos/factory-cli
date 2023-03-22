@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`refactrctl list credentials should work (default formatting) 1`] = `
-"id                                    name                type     data  created            
+"id                                    name                type     data  created
 f859ff43-b548-4d50-9484-991102e134b6  CI test credential  generic  -     12/06/2022, 8:49 PM
 9becfd71-3bb5-417e-a42b-89710e7a6f6b  CI test credential  generic  -     12/06/2022, 8:45 PM
 5fe34b45-79f8-4fd0-be1b-fd2fc32a97a4  CI test credential  generic  -     12/06/2022, 8:44 PM
@@ -16,7 +16,7 @@ b8160863-6594-407c-9526-aee746563c11  CI test credential  generic  -     12/06/2
 `;
 
 exports[`refactrctl list credentials should work 1`] = `
-"id                                    name                type     data  created            
+"id                                    name                type     data  created
 f859ff43-b548-4d50-9484-991102e134b6  CI test credential  generic  -     12/06/2022, 8:49 PM
 9becfd71-3bb5-417e-a42b-89710e7a6f6b  CI test credential  generic  -     12/06/2022, 8:45 PM
 5fe34b45-79f8-4fd0-be1b-fd2fc32a97a4  CI test credential  generic  -     12/06/2022, 8:44 PM
@@ -199,7 +199,7 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of project containing the credentials  [string] [required]
@@ -213,13 +213,13 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list jobs should work (default formatting) 1`] = `
-"_id                       name                      enabled  trigger_type  created            
+"_id                       name                      enabled  trigger_type  created
 61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
 "
 `;
 
 exports[`refactrctl list jobs should work 1`] = `
-"_id                       name                      enabled  trigger_type  created            
+"_id                       name                      enabled  trigger_type  created
 61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
 "
 `;
@@ -281,7 +281,7 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the jobs  [string] [required]
@@ -291,14 +291,14 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list organizations should work (default formatting) 1`] = `
-"_id                       name     contact_name      contact_email              created            
+"_id                       name     contact_name      contact_email              created
 61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake    victoria.drake@sophos.com  12/29/2021, 4:57 PM
 5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it         10/10/2020, 7:07 AM
 "
 `;
 
 exports[`refactrctl list organizations should work 1`] = `
-"_id                       name     contact_name      contact_email              created            
+"_id                       name     contact_name      contact_email              created
 61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake    victoria.drake@sophos.com  12/29/2021, 4:57 PM
 5f9f2d08e2f1bb2436e6f5b0  Refactr  Anthony Rowlands  anthony@refactr.it         10/10/2020, 7:07 AM
 "
@@ -410,7 +410,7 @@ Options:
   -v, --verbose      Print detailed output  [boolean]
       --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter       Filter output using JsonPath  [string]
-      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help         Show help  [boolean]
       --project-id   ID of the project containing the pipeline revision  [string] [required]
@@ -423,7 +423,7 @@ Missing required arguments: project-id, pipeline-id
 `;
 
 exports[`refactrctl list pipelines should work 1`] = `
-"_id                       organization_id           project_id                name                          step_count  revision_count  created            
+"_id                       organization_id           project_id                name                          step_count  revision_count  created
 61e72f74597da5d29cac3c49  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  Practical                     0           1               01/18/2022, 9:21 PM
 61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
 "
@@ -494,7 +494,7 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
       --project-id  ID of the project containing the pipelines  [string] [required]
@@ -507,16 +507,16 @@ Missing required argument: project-id
 `;
 
 exports[`refactrctl list projects should work 1`] = `
-"_id                       name                             pipeline_count  organization_id           created             
-61ccbe03d42b9bdcc88365d8  CRUD Testing                     2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM 
-6249ba55360cfd3cb08d2de3  Ricochet's Refactr'n...          10              5f9f2d08e2f1bb2436e6f5b0  04/03/2022, 3:16 PM 
-5fa4dba223b4e0703b95c465  Full Kitchen Sink                67              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM 
-6202e247f2b3eb9542b9c466  Carlos Testing                   37              5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM 
-617711bbda9b615a36917ef2  Dan Testing                      9               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM 
+"_id                       name                             pipeline_count  organization_id           created
+61ccbe03d42b9bdcc88365d8  CRUD Testing                     2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
+6249ba55360cfd3cb08d2de3  Ricochet's Refactr'n...          10              5f9f2d08e2f1bb2436e6f5b0  04/03/2022, 3:16 PM
+5fa4dba223b4e0703b95c465  Full Kitchen Sink                67              5f9f2d08e2f1bb2436e6f5b0  11/06/2020, 5:14 AM
+6202e247f2b3eb9542b9c466  Carlos Testing                   37              5f9f2d08e2f1bb2436e6f5b0  02/08/2022, 9:36 PM
+617711bbda9b615a36917ef2  Dan Testing                      9               5f9f2d08e2f1bb2436e6f5b0  10/25/2021, 8:21 PM
 5f9f3b02233d0b9e290b3122  Scratch                          70              5f9f2d08e2f1bb2436e6f5b0  11/01/2020, 10:47 PM
-62fd140d921b72276f5e34dd  Testing Tools                    9               5f9f2d08e2f1bb2436e6f5b0  08/17/2022, 4:15 PM 
-6353125a608f7516b7c59d9f  Sample Multi Cluster Management  10              5f9f2d08e2f1bb2436e6f5b0  10/21/2022, 9:42 PM 
-607f19bd98a5b821d3ca5f13  Runner Dog Food                  18              5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM 
+62fd140d921b72276f5e34dd  Testing Tools                    9               5f9f2d08e2f1bb2436e6f5b0  08/17/2022, 4:15 PM
+6353125a608f7516b7c59d9f  Sample Multi Cluster Management  10              5f9f2d08e2f1bb2436e6f5b0  10/21/2022, 9:42 PM
+607f19bd98a5b821d3ca5f13  Runner Dog Food                  18              5f9f2d08e2f1bb2436e6f5b0  04/20/2021, 6:13 PM
 60fb43f7ec3b3b4d95917316  Kitchen Sink Suite [ERDE-1203]   35              5f9f2d08e2f1bb2436e6f5b0  07/23/2021, 10:34 PM
 "
 `;
@@ -736,7 +736,7 @@ exports[`refactrctl list projects should work 3`] = `
 `;
 
 exports[`refactrctl list runners should work (by project) 1`] = `
-"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created            
+"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created
 61ccb65bd42b9b66fa8365d2  61cc93942529b6ec9681e4e2  CI Test Runner  -          -             -        -        -          Running  -           -             12/29/2021, 7:26 PM
 "
 `;
@@ -792,7 +792,7 @@ Options:
   -v, --verbose          Print detailed output  [boolean]
       --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter           Filter output using JsonPath  [string]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help             Show help  [boolean]
       --project-id       ID of the project containing the runners  [string]
@@ -810,7 +810,7 @@ Options:
   -v, --verbose      Print detailed output  [boolean]
       --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter       Filter output using JsonPath  [string]
-      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help         Show help  [boolean]
       --project-id   ID of the organization containing the runs  [string] [required]
@@ -842,7 +842,7 @@ Options:
   -v, --verbose     Print detailed output  [boolean]
       --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
       --filter      Filter output using JsonPath  [string]
-      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.refactr.it/v1]
       --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help        Show help  [boolean]
 
