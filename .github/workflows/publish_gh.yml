@@ -67,11 +67,11 @@ jobs:
 
       # Windows
       - if: ${{ matrix.operating-system == 'win' }}
-        run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/refactrctl.exe ./LICENSE
+        run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/factoryctl.exe ./LICENSE
 
       # macOS, Linux
       - if: ${{ matrix.operating-system != 'win' }}
-        run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/refactrctl ./LICENSE
+        run: zip --junk-paths refactr-${{ matrix.operating-system }}-x64.zip dist/${{ matrix.operating-system }}/factoryctl ./LICENSE
 
       - run: sha256sum ./refactr-${{ matrix.operating-system }}-x64.zip -b | awk '{ print $1 }' >> ./refactr-${{ matrix.operating-system }}-x64-sha256sum.txt
 
