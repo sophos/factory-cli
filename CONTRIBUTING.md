@@ -29,7 +29,7 @@ npm run watch
 To execute the local build of the CLI application, use the following path to run your command:
 
 ```sh
-./bin/refactrctl.js <command>
+./bin/factoryctl.js <command>
 ```
 
 To produce a new production runtime (as a npm package), run the following command:
@@ -58,32 +58,26 @@ Run unit tests with:
 npm run test:unit
 ```
 
-In order to run end-to-end CLI tests locally, do the following:
+In order to run integration CLI tests locally, do the following:
 
 1. Ensure you have executed a build with `npm run build:runtime`.
 2. Pass the below environment variables prior to the `npm run` command. If you are using Mac OS, first ensure `realpath` is installed: `brew install coreutils`.
 
-Full example for running end-to-end tests:
+Full example for running integration tests:
 
 ```sh
 # Use the development API for tests.
 export FACTORY_ADDRESS="https://api.dev.factory.sophos.com/v1"
 # Set CLI executable path for tests.
-export FACTORY_CLI_PATH=$(realpath ./bin/refactrctl.js)
+export FACTORY_CLI_PATH=$(realpath ./bin/factoryctl.js)
 # Sophos Factory platform authentication token for "dynamic" test suite
 export FACTORY_DYNAMIC_AUTH_TOKEN="<your-factory-auth-token>"
 # Sophos Factory platform authentication token for "static" test suite
 export FACTORY_STATIC_AUTH_TOKEN="<your-factory-auth-token>"
-# Run end-to-end tests
-npm run test:e2e
+# Run integration tests
+npm run test:int
 ```
 
 To update the test snapshots, add `-- -u` to the test command.
 
-End-to-end tests are split into two types: static and dynamic.
-
-Dynamic tests cover create, delete, and update operations.
-
-Static tests are for verifying get and list operations. They require data on the server to be unchanged for the whole lifecycle. If you made any changes to corresponding entities on the development server, make sure to update tests first.
-
-All requests are issued against [Sophos Factory Platform API](https://api.dev.factory.sophos.com/v1) endpoints. List of IDs of operational entities can be found in `e2e/helpers/knownIds.js`.
+All requests are issued against [Sophos Factory Platform API](https://api.dev.factory.sophos.com/v1) endpoints. List of IDs of operational entities can be found in `tests/helpers/knownIds.ts`.
