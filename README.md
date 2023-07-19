@@ -2,7 +2,7 @@
 
 The Sophos Factory command line tool (CLI) is used to interact with Sophos Factory from the command line.
 
-Basic usage and installation is described below. [Click here for complete Sophos Factory CLI documentation.](https://docs.factory.sophos.com/docs/using-the-cli/)
+Basic usage and installation is described below. [Click here for complete Sophos Factory CLI documentation.](https://docs.refactr.it/docs/using-the-cli/)
 
 ## Usage
 
