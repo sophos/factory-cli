@@ -7,16 +7,16 @@ Basic usage and installation is described below. [Click here for complete Sophos
 ## Usage
 
 ```shell
-$ refactrctl --help   
-Usage: refactrctl <command> [options]
+$ factoryctl --help   
+Usage: factoryctl <command> [options]
 
 Commands:
-  refactrctl run             Execute pipeline or job
-  refactrctl rerun [run-id]  Reschedule pipeline run
-  refactrctl delete          Delete specified resource
-  refactrctl list            List specified resources
-  refactrctl get             Get specified resource
-  refactrctl create          Create specified resource
+  factoryctl run             Execute pipeline or job
+  factoryctl rerun [run-id]  Reschedule pipeline run
+  factoryctl delete          Delete specified resource
+  factoryctl list            List specified resources
+  factoryctl get             Get specified resource
+  factoryctl create          Create specified resource
 
 Options:
       --version     Show version number                                                                        [boolean]
@@ -53,7 +53,7 @@ Global installation is required.
 
 ### Docker
 
-The CLI [available on Docker Hub](https://hub.docker.com/r/refactr/cli) as well:
+The CLI is [available on Docker Hub](https://hub.docker.com/r/refactr/cli) as well:
 
 ```shell
 $ docker pull refactr/cli
