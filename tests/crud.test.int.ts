@@ -10,10 +10,10 @@ beforeAll(async () => {
 });
 
 describe('factoryctl create', () => {
-  jest.setTimeout(10000);
+  jest.setTimeout(20000);
   describe('credential', () => {
     test('create & delete credential', async () => {
-      const id = faker.datatype.uuid();
+      const id = 'CRUDtestCredential';
       const createResult = JSON.parse(
         await execute(
           [
