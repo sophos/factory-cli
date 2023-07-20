@@ -130,14 +130,7 @@ describe('factoryctl list', () => {
   test('returns array of runs', async () => {
     await expect(
       execute(
-        [
-          'list',
-          'runs',
-          '--project-id',
-          knownIds.project,
-          '--format',
-          'json'
-        ],
+        ['list', 'runs', '--project-id', knownIds.project, '--format', 'json'],
         {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         }

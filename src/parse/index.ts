@@ -24,7 +24,7 @@ const apply = (yargs: Yargs.Argv) =>
 const parse = (argv: string[], { version }: { version: string }): unknown => {
   return apply(yargs(argv))
     .strict(true)
-    .scriptName('refactrctl')
+    .scriptName('factoryctl')
     .version(version)
     .usage('Usage: $0 <command> [options]')
     .option('verbose', {
@@ -38,7 +38,7 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
       choices: ['wide', 'json', 'yaml']
     })
     .option('filter', {
-      describe: 'Filter output using JsonPath',
+      describe: 'Filter output using JSONPath',
       type: 'string',
       requiresArg: true
     })

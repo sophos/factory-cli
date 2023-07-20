@@ -5,9 +5,9 @@ RUN apk update && apk add --no-cache libstdc++ libgcc
 RUN mkdir -p /opt/refactr
 WORKDIR /opt/refactr
 
-COPY ./dist/refactrctl-alpine ./bin/refactrctl
-RUN chmod +x ./bin/refactrctl
+COPY ./dist/factoryctl-alpine ./bin/factoryctl
+RUN chmod +x ./bin/factoryctl
 
 ENV PATH="/opt/refactr/bin:${PATH}"
 
-ENTRYPOINT ["./bin/refactrctl"]
+ENTRYPOINT ["./bin/factoryctl"]

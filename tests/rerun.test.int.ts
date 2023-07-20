@@ -38,13 +38,7 @@ describe('factoryctl rerun', () => {
   test('returns run object with rerunning without --wait flag', async () => {
     await expect(
       execute(
-        [
-          'rerun',
-          '--project-id',
-          knownIds.project,
-          runId,
-          '--format=json'
-        ],
+        ['rerun', '--project-id', knownIds.project, runId, '--format=json'],
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
       ).then((value) => JSON.parse(value))
     ).resolves.toHaveProperty('status', 'Queued');

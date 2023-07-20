@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`factoryctl create credential throws on missing arguments 1`] = `
+"factoryctl create credential
+
+Create a new credential
+
+Options:
+      --version               Show version number  [boolean]
+  -v, --verbose               Print detailed output  [boolean]
+      --format                Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter                Filter output using JsonPath  [string]
+      --address               Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token            Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help                  Show help  [boolean]
+      --project-id            ID of the project under which the credential will be created  [string] [required]
+      --name                  Name of the credential  [string] [required]
+      --data.username         Username for "username_password" credential type  [string]
+      --data.password         Password for "username_password" credential type  [string]
+      --data.token            Token for "bearer_token" credential type  [string]
+      --data.access-key       Access key for "aws_access_key" credential type  [string]
+      --data.secret-key       Secret key for "aws_access_key" credential type  [string]
+      --data.subscription-id  Subscription ID for "azure_service_principal" credential type  [string]
+      --data.domain           Domain for "azure_service_principal" credential type  [string]
+      --data.client-id        Client ID for "azure_service_principal" credential type  [string]
+      --data.client-key       Client key for "azure_service_principal" credential type  [string]
+      --data.tenant-id        Domain key for "azure_service_principal" credential type  [string]
+      --data.json             JSON key for "google_service_account" credential type  [string]
+      --data.role-id          Role ID for "vault_app_role" credential type
+      --data.secret-id        Secret ID for "vault_app_role" credential type
+      --data.private-key      SSH key for "ssh_key" credential type  [string]
+      --data.text             Text for "generic" credential type  [string]
+      --id                    Credential reference id  [required]
+      --type                  Credential type  [required] [choices: "api_token", "aws_access_key", "azure_service_principal", "bearer_token", "generic", "ssh_key", "username_password", "vault_app_role", "google_service_account"]
+
+Missing required arguments: project-id, name, data, id, type
+"
+`;
+
+exports[`factoryctl create job throws on missing arguments 1`] = `
+"factoryctl create job
+
+Create a new job
+
+Options:
+      --version                 Show version number  [boolean]
+  -v, --verbose                 Print detailed output  [boolean]
+      --format                  Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter                  Filter output using JsonPath  [string]
+      --address                 Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token              Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help                    Show help  [boolean]
+      --project-id              ID of the project under which job will be created  [string] [required]
+      --pipeline-id             ID of the pipeline from which job will be created  [string] [required]
+      --revision-id             ID of the pipeline revision  [string] [required]
+      --name                    Name of the job  [string] [required]
+      --type                    Trigger type of the job  [required] [choices: "manual", "scheduled"]
+      --var                     Pipeline variable in \`key:value\` format, where value is JSON data or valid JSON object.  [string]
+      --schedule.start-day  [string]
+      --schedule.start-time  [string]
+      --schedule.offset  [string]
+      --schedule.interval  [number]
+      --schedule.interval-type  [choices: "minute", "hour", "day", "week", "month"]
+      --suppress-events         Suppress run events during job run  [boolean] [default: false]
+      --suppress-outputs        Suppress outputs during job run  [boolean] [default: false]
+      --suppress-variables      Suppress variables during job run  [boolean] [default: false]
+      --disable-on-failure      Specifies whether job will be disabled on failed run  [boolean] [default: false]
+
+Missing required arguments: project-id, pipeline-id, revision-id, name, type
+"
+`;
+
+exports[`factoryctl create pipeline throws on missing arguments 1`] = `
+"factoryctl pipeline --project-id <project-id> --name <name> [options]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help         Show help  [boolean]
+      --project-id   ID of the project under which pipeline will be created  [string] [required]
+      --name         Name of the pipeline  [string] [required]
+      --description  Description of the pipeline  [string]
+      --summary      Summary of the pipeline  [string]
+
+Missing required arguments: project-id, name
+"
+`;
+
+exports[`factoryctl create pipeline-revision throws on missing arguments 1`] = `
+"factoryctl create pipeline-revision [input]
+
+Create a new pipeline-revision
+
+Positionals:
+  input  Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats. If supplied argument is starting with at symbol (\`@\`) argument is treated as path to configuration file.  [default: read from stdin]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help         Show help  [boolean]
+      --project-id   ID of the project containing the pipeline  [string] [required]
+      --pipeline-id  ID of the pipeline for the pipeline-revision  [required]
+
+Missing required arguments: project-id, pipeline-id
+"
+`;
+
+exports[`factoryctl create project throws on missing arguments 1`] = `
+"factoryctl create project
+
+Create a new project
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help             Show help  [boolean]
+      --organization-id  ID of organization under which the project will be created  [string] [required]
+      --name             Name of the project  [string] [required]
+
+Missing required arguments: organization-id, name
+"
+`;
+
+exports[`factoryctl create throws on missing subcommand 1`] = `
+"factoryctl create
+
+Create specified resource
+
+Commands:
+  factoryctl create project                    Create a new project
+  factoryctl create pipeline-revision [input]  Create a new pipeline-revision
+  factoryctl create pipeline [options]         Creates a new pipeline
+  factoryctl create credential                 Create a new credential
+  factoryctl create job                        Create a new job
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help        Show help  [boolean]
+
+Command must be specified.
+"
+`;
