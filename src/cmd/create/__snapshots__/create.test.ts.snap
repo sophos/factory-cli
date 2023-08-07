@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl create credential throws on missing arguments 1`] = `
-"refactrctl create credential
+exports[`factoryctl create credential throws on missing arguments 1`] = `
+"factoryctl create credential
 
 Create a new credential
 
@@ -37,8 +37,8 @@ Missing required arguments: project-id, name, data, id, type
 "
 `;
 
-exports[`refactrctl create job throws on missing arguments 1`] = `
-"refactrctl create job
+exports[`factoryctl create job throws on missing arguments 1`] = `
+"factoryctl create job
 
 Create a new job
 
@@ -70,8 +70,8 @@ Missing required arguments: project-id, pipeline-id, revision-id, name, type
 "
 `;
 
-exports[`refactrctl create pipeline throws on missing arguments 1`] = `
-"refactrctl pipeline --project-id <project-id> --name <name> [options]
+exports[`factoryctl create pipeline throws on missing arguments 1`] = `
+"factoryctl pipeline --project-id <project-id> --name <name> [options]
 
 Options:
       --version      Show version number  [boolean]
@@ -90,8 +90,8 @@ Missing required arguments: project-id, name
 "
 `;
 
-exports[`refactrctl create pipeline-revision throws on missing arguments 1`] = `
-"refactrctl create pipeline-revision [input]
+exports[`factoryctl create pipeline-revision throws on missing arguments 1`] = `
+"factoryctl create pipeline-revision [input]
 
 Create a new pipeline-revision
 
@@ -113,8 +113,8 @@ Missing required arguments: project-id, pipeline-id
 "
 `;
 
-exports[`refactrctl create project throws on missing arguments 1`] = `
-"refactrctl create project
+exports[`factoryctl create project throws on missing arguments 1`] = `
+"factoryctl create project
 
 Create a new project
 
@@ -133,17 +133,17 @@ Missing required arguments: organization-id, name
 "
 `;
 
-exports[`refactrctl create throws on missing subcommand 1`] = `
-"refactrctl create
+exports[`factoryctl create throws on missing subcommand 1`] = `
+"factoryctl create
 
 Create specified resource
 
 Commands:
-  refactrctl create project                    Create a new project
-  refactrctl create pipeline-revision [input]  Create a new pipeline-revision
-  refactrctl create pipeline [options]         Creates a new pipeline
-  refactrctl create credential                 Create a new credential
-  refactrctl create job                        Create a new job
+  factoryctl create project                    Create a new project
+  factoryctl create pipeline-revision [input]  Create a new pipeline-revision
+  factoryctl create pipeline [options]         Creates a new pipeline
+  factoryctl create credential                 Create a new credential
+  factoryctl create job                        Create a new job
 
 Options:
       --version     Show version number  [boolean]

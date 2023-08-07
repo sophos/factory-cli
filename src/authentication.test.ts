@@ -1,5 +1,5 @@
-import { execute } from '../helpers/execute';
-import { withAddress } from '../helpers/options';
+import { execute } from '../tests/helpers/execute';
+import { withAddress } from '../tests/helpers/options';
 
 describe('authentication', () => {
   test('rejects if token is not provided', async () => {

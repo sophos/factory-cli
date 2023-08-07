@@ -4,7 +4,8 @@ process.env.TZ = 'UTC';
 process.env.NO_COLOR = 'true';
 
 const config: Config.InitialOptions = {
-  testRegex: '.*\\.test\\.(js|ts)$'
+  testMatch: ['**.test.ts', '**.test.int.ts'],
+  bail: true
 };
 
 export default config;

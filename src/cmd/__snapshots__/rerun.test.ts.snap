@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl rerun throws on missing arguments 1`] = `
-"refactrctl run pipeline [pipeline-id]
+exports[`factoryctl rerun throws on missing arguments 1`] = `
+"factoryctl run pipeline [pipeline-id]
 
 Executes specified pipeline
 

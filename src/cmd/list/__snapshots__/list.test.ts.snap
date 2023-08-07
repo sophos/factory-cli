@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`factoryctl list credentials throws on missing arguments 1`] = `
+"factoryctl credentials [options]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help        Show help  [boolean]
+      --project-id  ID of project containing the credentials  [string] [required]
+      --type  [string] [choices: "api_token", "aws_access_key", "azure_service_principal", "bearer_token", "generic", "ssh_key", "username_password", "vault_app_role", "google_service_account"]
+      --sort        Sort order  [string] [choices: "created_asc", "created_desc"]
+      --limit  [number]
+      --offset  [number]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`factoryctl list jobs throws on missing arguments 1`] = `
+"factoryctl jobs [options]
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the jobs  [string] [required]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`factoryctl list pipeline-revisions throws on missing arguments 1`] = `
+"factoryctl pipeline-revisions [options]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help         Show help  [boolean]
+      --project-id   ID of the project containing the pipeline revision  [string] [required]
+      --pipeline-id  ID of the pipeline containing the pipeline revision  [string] [required]
+      --limit  [number]
+      --offset  [number]
+
+Missing required arguments: project-id, pipeline-id
+"
+`;
+
+exports[`factoryctl list pipelines throws on missing arguments 1`] = `
+"factoryctl list pipelines
+
+List pipelines for a project
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help        Show help  [boolean]
+      --project-id  ID of the project containing the pipelines  [string] [required]
+      --sort        Sort order  [choices: "modified_asc", "modified_desc", "name_asc", "name_desc"]
+      --limit  [number]
+      --offset  [number]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`factoryctl list runners throws on missing arguments 1`] = `
+"factoryctl list runners
+
+List runners for an organization or a project
+
+Options:
+      --version          Show version number  [boolean]
+  -v, --verbose          Print detailed output  [boolean]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter           Filter output using JsonPath  [string]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help             Show help  [boolean]
+      --project-id       ID of the project containing the runners  [string]
+      --organization-id  ID of the organization containing the runners  [string]
+
+Missing required argument: either organization-id or project-id
+"
+`;
+
+exports[`factoryctl list runs throws on missing arguments 1`] = `
+"factoryctl runs [options]
+
+Options:
+      --version      Show version number  [boolean]
+  -v, --verbose      Print detailed output  [boolean]
+      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter       Filter output using JsonPath  [string]
+      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help         Show help  [boolean]
+      --project-id   ID of the organization containing the runs  [string] [required]
+      --pipeline-id  ID of a pipeline used to filter the runs  [string]
+      --job-id       ID of a job used to filter the runs  [string]
+      --sort         Sort order  [string] [choices: "created_asc", "created_desc"]
+      --limit  [number]
+      --offset  [number]
+
+Missing required argument: project-id
+"
+`;
+
+exports[`factoryctl list throws on missing subcommand 1`] = `
+"Usage: factoryctl list <command> [options]
+
+Commands:
+  factoryctl list credentials         List credentials from a project
+  factoryctl list projects            List projects from an organization
+  factoryctl list organizations       List organizations to which authenticated user belongs
+  factoryctl list jobs                List jobs for a project
+  factoryctl list runs                List runs for a project
+  factoryctl list pipeline-revisions  List pipeline revisions for a pipeline
+  factoryctl list runners             List runners for an organization or a project
+  factoryctl list pipelines           List pipelines for a project
+
+Options:
+      --version     Show version number  [boolean]
+  -v, --verbose     Print detailed output  [boolean]
+      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter      Filter output using JsonPath  [string]
+      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help        Show help  [boolean]
+
+Command must be specified
+"
+`;

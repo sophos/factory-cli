@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl run job throws on missing arguments 1`] = `
-"refactrctl run job [job-id]
+exports[`factoryctl run job throws on missing arguments 1`] = `
+"factoryctl run job [job-id]
 
 Executes specified job
 
@@ -27,8 +27,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl run pipeline throws on missing arguments 1`] = `
-"refactrctl run pipeline [pipeline-id]
+exports[`factoryctl run pipeline throws on missing arguments 1`] = `
+"factoryctl run pipeline [pipeline-id]
 
 Executes specified pipeline
 

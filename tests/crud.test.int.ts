@@ -1,33 +1,19 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import * as faker from 'faker';
-import { execute } from '../helpers/execute';
-import knownIds from '../helpers/knownIds';
+import { execute } from './helpers/execute';
+import knownIds from './helpers/knownIds';
 import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
   return await loadFixtures();
 });
 
-describe('refactrctl create', () => {
-  jest.setTimeout(10000);
-  test('throws on missing subcommand', async () => {
-    await expect(
-      execute(['create'], { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! })
-    ).rejects.toMatchSnapshot();
-  });
-
+describe('factoryctl create', () => {
+  jest.setTimeout(20000);
   describe('credential', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['create', 'credential'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
-    });
-
     test('create & delete credential', async () => {
-      const id = faker.datatype.uuid();
+      const id = 'CRUDtestCredential';
       const createResult = JSON.parse(
         await execute(
           [
@@ -38,7 +24,7 @@ describe('refactrctl create', () => {
             '--type=generic',
             '--data.text="hello world"',
             `--id=${id}`,
-            `--project-id=${knownIds.dynamic.project}`
+            `--project-id=${knownIds.project}`
           ],
           {
             token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
@@ -54,7 +40,7 @@ describe('refactrctl create', () => {
             'delete',
             'credential',
             '--format=json',
-            `--project-id=${knownIds.dynamic.project}`,
+            `--project-id=${knownIds.project}`,
             createResult._id
           ],
           {
@@ -71,7 +57,7 @@ describe('refactrctl create', () => {
             'get',
             'credential',
             '--format=json',
-            `--project-id=${knownIds.dynamic.project}`,
+            `--project-id=${knownIds.project}`,
             id
           ],
           {
@@ -85,14 +71,6 @@ describe('refactrctl create', () => {
   });
 
   describe('pipeline', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['create', 'pipeline'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
-    });
-
     test('create & delete pipeline', async () => {
       const createResult = JSON.parse(
         await execute(
@@ -100,7 +78,7 @@ describe('refactrctl create', () => {
             'create',
             'pipeline',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--name',
             faker.random.word(),
             '--format=json'
@@ -117,7 +95,7 @@ describe('refactrctl create', () => {
             'delete',
             'pipeline',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             createResult._id,
             '--format=json'
           ],
@@ -129,25 +107,7 @@ describe('refactrctl create', () => {
     });
   });
 
-  describe('pipeline-revision', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['create', 'pipeline-revision'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
-    });
-  });
-
   describe('job', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['create', 'job'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
-    });
-
     test('create & delete job (type: manual)', async () => {
       const createResult = JSON.parse(
         await execute(
@@ -155,11 +115,11 @@ describe('refactrctl create', () => {
             'create',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--pipeline-id',
-            knownIds.dynamic.pipeline,
+            knownIds.pipeline,
             '--revision-id',
-            knownIds.dynamic.pipelineRevision,
+            knownIds.pipelineRevision,
             '--name',
             faker.random.word(),
             '--type',
@@ -178,7 +138,7 @@ describe('refactrctl create', () => {
             'delete',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             createResult._id,
             '--format=json'
           ],
@@ -196,11 +156,11 @@ describe('refactrctl create', () => {
             'create',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--pipeline-id',
-            knownIds.dynamic.pipeline,
+            knownIds.pipeline,
             '--revision-id',
-            knownIds.dynamic.pipelineRevision,
+            knownIds.pipelineRevision,
             '--name',
             faker.random.word(),
             '--type',
@@ -229,7 +189,7 @@ describe('refactrctl create', () => {
             'delete',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             createResult._id,
             '--format=json'
           ],
@@ -258,11 +218,11 @@ describe('refactrctl create', () => {
             'create',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--pipeline-id',
-            knownIds.dynamic.pipeline,
+            knownIds.pipeline,
             '--revision-id',
-            knownIds.dynamic.pipelineRevision,
+            knownIds.pipelineRevision,
             '--name',
             faker.random.word(),
             '--type=scheduled',
@@ -290,7 +250,7 @@ describe('refactrctl create', () => {
             'delete',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             createResult._id,
             '--format=json'
           ],
@@ -299,16 +259,6 @@ describe('refactrctl create', () => {
       );
 
       expect(deleteResult).toHaveProperty('_id', createResult._id);
-    });
-  });
-
-  describe('project', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['create', 'project'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
     });
   });
 });

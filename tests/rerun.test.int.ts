@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import isArray from 'lodash/isArray';
-import { execute } from '../helpers/execute';
-import knownIds from '../helpers/knownIds';
+import { execute } from './helpers/execute';
+import knownIds from './helpers/knownIds';
 
-describe('refactrctl rerun', () => {
+describe('factoryctl rerun', () => {
   // Give platform time to bootstrap runner.
-  jest.setTimeout(60 * 1000);
+  jest.setTimeout(300 * 1000);
 
   let runId: string;
   beforeAll(async () => {
@@ -16,10 +16,10 @@ describe('refactrctl rerun', () => {
           'run',
           'pipeline',
           '--project-id',
-          knownIds.dynamic.project,
+          knownIds.project,
           '--revision-id',
-          knownIds.dynamic.pipelineRevision,
-          knownIds.dynamic.pipeline,
+          knownIds.pipelineRevision,
+          knownIds.pipeline,
           '--format=json'
         ],
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
@@ -30,29 +30,15 @@ describe('refactrctl rerun', () => {
 
     // Wait until run is finished.
     return await execute(
-      ['get', 'run', '--project-id', knownIds.dynamic.project, '--wait', runId],
+      ['get', 'run', '--project-id', knownIds.project, '--wait', runId],
       { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
     );
-  });
-
-  test('throws on missing arguments', async () => {
-    await expect(
-      execute(['run', 'pipeline'], {
-        token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-      })
-    ).rejects.toMatchSnapshot();
   });
 
   test('returns run object with rerunning without --wait flag', async () => {
     await expect(
       execute(
-        [
-          'rerun',
-          '--project-id',
-          knownIds.dynamic.project,
-          runId,
-          '--format=json'
-        ],
+        ['rerun', '--project-id', knownIds.project, runId, '--format=json'],
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
       ).then((value) => JSON.parse(value))
     ).resolves.toHaveProperty('status', 'Queued');
@@ -64,7 +50,7 @@ describe('refactrctl rerun', () => {
         [
           'rerun',
           '--project-id',
-          knownIds.dynamic.project,
+          knownIds.project,
           runId,
           '--wait',
           '--format=json'

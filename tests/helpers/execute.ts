@@ -4,7 +4,7 @@ import isString from 'lodash/isString';
 
 type Args = string[];
 
-const command = process.env.FACTORY_CLI_PATH ?? 'refactrctl';
+const command = process.env.FACTORY_CLI_PATH ?? 'factoryctl';
 
 type Options = {
   token: string;

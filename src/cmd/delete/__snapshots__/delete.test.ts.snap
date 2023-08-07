@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl delete credential throws on missing --project-id option 1`] = `
-"refactrctl delete credential [credential-id]
+exports[`factoryctl delete credential throws on missing --project-id option 1`] = `
+"factoryctl delete credential [credential-id]
 
 Delete a credential
 
@@ -22,8 +22,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl delete credential throws on missing arguments 1`] = `
-"refactrctl delete credential [credential-id]
+exports[`factoryctl delete credential throws on missing arguments 1`] = `
+"factoryctl delete credential [credential-id]
 
 Delete a credential
 
@@ -44,8 +44,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl delete job throws on missing --project-id option 1`] = `
-"refactrctl delete job [job-id]
+exports[`factoryctl delete job throws on missing --project-id option 1`] = `
+"factoryctl delete job [job-id]
 
 Delete a job
 
@@ -67,8 +67,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl delete job throws on missing arguments 1`] = `
-"refactrctl delete job [job-id]
+exports[`factoryctl delete job throws on missing arguments 1`] = `
+"factoryctl delete job [job-id]
 
 Delete a job
 
@@ -90,8 +90,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl delete pipeline throws on missing arguments 1`] = `
-"refactrctl delete pipeline [pipeline-id]
+exports[`factoryctl delete pipeline throws on missing arguments 1`] = `
+"factoryctl delete pipeline [pipeline-id]
 
 Delete a pipeline
 
@@ -112,8 +112,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl delete project throws on missing arguments 1`] = `
-"refactrctl delete project [project-id]
+exports[`factoryctl delete project throws on missing arguments 1`] = `
+"factoryctl delete project [project-id]
 
 Delete a project
 
@@ -133,8 +133,8 @@ Project ID must be provided
 "
 `;
 
-exports[`refactrctl delete runner throws on missing arguments 1`] = `
-"refactrctl delete runner [runner-id]
+exports[`factoryctl delete runner throws on missing arguments 1`] = `
+"factoryctl delete runner [runner-id]
 
 Delete a runner
 
@@ -155,8 +155,8 @@ Missing required argument: organization-id
 "
 `;
 
-exports[`refactrctl delete runner throws on missing organization-id option 1`] = `
-"refactrctl delete runner [runner-id]
+exports[`factoryctl delete runner throws on missing organization-id option 1`] = `
+"factoryctl delete runner [runner-id]
 
 Delete a runner
 
@@ -177,17 +177,17 @@ Missing required argument: organization-id
 "
 `;
 
-exports[`refactrctl delete throws on missing subcommand 1`] = `
-"refactrctl delete
+exports[`factoryctl delete throws on missing subcommand 1`] = `
+"factoryctl delete
 
 Delete specified resource
 
 Commands:
-  refactrctl delete pipeline [pipeline-id]      Delete a pipeline
-  refactrctl delete job [job-id]                Delete a job
-  refactrctl delete project [project-id]        Delete a project
-  refactrctl delete runner [runner-id]          Delete a runner
-  refactrctl delete credential [credential-id]  Delete a credential
+  factoryctl delete pipeline [pipeline-id]      Delete a pipeline
+  factoryctl delete job [job-id]                Delete a job
+  factoryctl delete project [project-id]        Delete a project
+  factoryctl delete runner [runner-id]          Delete a runner
+  factoryctl delete credential [credential-id]  Delete a credential
 
 Options:
       --version     Show version number  [boolean]

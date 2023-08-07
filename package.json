@@ -1,6 +1,6 @@
 {
   "name": "@sophos-factory/cli",
-  "version": "2.1.1-beta.3",
+  "version": "3.0.0",
   "description": "Sophos Factory CLI",
   "main": "dist/main.js",
   "author": "Sophos Factory",
@@ -17,26 +17,26 @@
     "node": ">=14"
   },
   "bin": {
-    "refactrctl": "./bin/refactrctl.js"
+    "factoryctl": "./bin/factoryctl.js"
   },
   "scripts": {
     "format": "prettier -w src/**/*.ts",
-    "lint:fix": "eslint src e2e bin --fix",
-    "lint": "eslint src e2e bin",
+    "lint:fix": "eslint src tests bin --fix",
+    "lint": "eslint src tests bin",
     "watch": "cross-env NODE_ENV=development BUILD_TARGET=runtime rollup -c --bundleConfigAsCjs -w src/main.ts",
     "build:runtime": "cross-env BUILD_TARGET=runtime rollup -c --bundleConfigAsCjs",
     "build:aot": "cross-env BUILD_TARGET=aot rollup -c --bundleConfigAsCjs",
-    "build:exe:alpine": "pkg dist/main.bundled.js -o dist/refactrctl-alpine -t node16-alpine-x64",
-    "build:exe:win": "pkg dist/main.bundled.js -o dist/win/refactrctl -t node16-win-x64",
-    "build:exe:linux": "pkg dist/main.bundled.js -o dist/linux/refactrctl -t node16-linux-x64",
-    "build:exe:macos": "pkg dist/main.bundled.js -o dist/macos/refactrctl -t node16-macos-x64",
-    "test:unit": "jest --testRegex=\"src/.*\\.test\\.(js|ts)$\"",
-    "test:e2e": "jest --testRegex=\"e2e/.*\\.test\\.(js|ts)$\" --runInBand",
-    "pre-commit": "run-p build:aot test:unit test:e2e lint:fix",
+    "build:exe:alpine": "pkg dist/main.bundled.js -o dist/factoryctl-alpine -t node16-alpine-x64",
+    "build:exe:win": "pkg dist/main.bundled.js -o dist/win/factoryctl -t node16-win-x64",
+    "build:exe:linux": "pkg dist/main.bundled.js -o dist/linux/factoryctl -t node16-linux-x64",
+    "build:exe:macos": "pkg dist/main.bundled.js -o dist/macos/factoryctl -t node16-macos-x64",
+    "test:unit": "jest ./src",
+    "test:int": "jest ./tests --runInBand",
+    "pre-commit": "run-p build:aot test:unit test:int lint:fix",
     "prepare": "husky install"
   },
   "dependencies": {
-    "@sophos-factory/api-client": "1.2.0",
+    "@sophos-factory/api-client": "2.0.0",
     "cli-table": "^0.3.4",
     "date-fns": "^2.16.1",
     "debug": "^4.3.1",

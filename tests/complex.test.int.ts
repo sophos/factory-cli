@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import * as faker from 'faker';
-import { executeAsIs } from '../helpers/execute';
-import knownIds from '../helpers/knownIds';
-import { withCmd } from '../helpers/options';
+import { executeAsIs } from './helpers/execute';
+import knownIds from './helpers/knownIds';
+import { withCmd } from './helpers/options';
 
 describe('complex', () => {
   jest.setTimeout(20000);
@@ -12,11 +12,11 @@ describe('complex', () => {
     await expect(
       executeAsIs(
         `echo $(${withCmd(
-          `get project --filter _id --format yaml ${knownIds.static.project}`
+          `get project --filter _id --format yaml ${knownIds.project}`
         )}) | ${withCmd('get project --format json')}`,
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
       ).then((str) => JSON.parse(str))
-    ).resolves.toHaveProperty('_id', knownIds.static.project);
+    ).resolves.toHaveProperty('_id', knownIds.project);
   });
 
   test('create -> get -> delete (pipeline)', async () => {
@@ -24,12 +24,12 @@ describe('complex', () => {
       executeAsIs(
         `${withCmd(
           `create pipeline --name=${faker.random.word()} --project-id ${
-            knownIds.dynamic.project
+            knownIds.project
           } --filter='$._id' --format=json`
         )} | ${withCmd(
-          `get pipeline --project-id ${knownIds.dynamic.project} --filter='$._id' --format=json`
+          `get pipeline --project-id ${knownIds.project} --filter='$._id' --format=json`
         )} | ${withCmd(
-          `delete pipeline --project-id ${knownIds.dynamic.project} --format=json`
+          `delete pipeline --project-id ${knownIds.project} --format=json`
         )}`,
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
       ).then((data) => JSON.parse(data))

@@ -1,21 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
-import { execute } from '../helpers/execute';
-import knownIds from '../helpers/knownIds';
+import { execute } from './helpers/execute';
+import knownIds from './helpers/knownIds';
 
-describe('refactrctl run', () => {
+describe('factoryctl run', () => {
   // Give platform time to bootstrap runner.
-  jest.setTimeout(60 * 1000);
+  jest.setTimeout(300 * 1000);
   describe('pipeline', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['run', 'pipeline'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
-    });
-
     test('returns run object without --wait flag', async () => {
       await expect(
         execute(
@@ -23,20 +15,10 @@ describe('refactrctl run', () => {
             'run',
             'pipeline',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--revision-id',
-            knownIds.dynamic.pipelineRevision,
-            '--var',
-            '\'string_array_variable:["string", "array"]\'',
-            '--var',
-            '\'string_variable:"string"\'',
-            '--var',
-            "'number_array_variable:[100, 123]'",
-            '--var',
-            "'number_variable:123'",
-            '--var',
-            "'boolean_variable:true'",
-            knownIds.dynamic.pipeline,
+            knownIds.pipelineRevision,
+            knownIds.pipeline,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
@@ -51,10 +33,10 @@ describe('refactrctl run', () => {
             'run',
             'pipeline',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--revision-id',
-            knownIds.dynamic.pipelineRevision,
-            knownIds.dynamic.pipeline,
+            knownIds.pipelineRevision,
+            knownIds.pipeline,
             '--wait',
             '--format=json'
           ],
@@ -72,9 +54,9 @@ describe('refactrctl run', () => {
                 'run',
                 'pipeline',
                 '--project-id',
-                knownIds.dynamic.project,
+                knownIds.project,
                 '--revision-id',
-                knownIds.dynamic.pipelineRevision,
+                knownIds.pipelineRevision,
                 '--var',
                 '\'string_array_variable:["string", "array"]\'',
                 '--var',
@@ -85,7 +67,7 @@ describe('refactrctl run', () => {
                 "'number_variable:123'",
                 '--var',
                 "'boolean_variable:true'",
-                knownIds.dynamic.pipeline,
+                knownIds.pipeline,
                 '--wait',
                 '--format=json'
               ],
@@ -125,10 +107,10 @@ describe('refactrctl run', () => {
             'run',
             'pipeline',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--revision-id',
-            knownIds.dynamic.pipelineRevision,
-            knownIds.dynamic.pipeline,
+            knownIds.pipelineRevision,
+            knownIds.pipeline,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
@@ -145,7 +127,7 @@ describe('refactrctl run', () => {
             'get',
             'run',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--wait',
             runId,
             '--format=json'
@@ -157,14 +139,6 @@ describe('refactrctl run', () => {
   });
 
   describe('job', () => {
-    test('throws on missing arguments', async () => {
-      await expect(
-        execute(['run', 'job'], {
-          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
-        })
-      ).rejects.toMatchSnapshot();
-    });
-
     test('returns run object without --wait flag', async () => {
       await expect(
         execute(
@@ -172,7 +146,7 @@ describe('refactrctl run', () => {
             'run',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--var',
             '\'string_array_variable:["string", "array"]\'',
             '--var',
@@ -183,7 +157,7 @@ describe('refactrctl run', () => {
             "'number_variable:123'",
             '--var',
             "'boolean_variable:true'",
-            knownIds.dynamic.job,
+            knownIds.job,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
@@ -198,9 +172,9 @@ describe('refactrctl run', () => {
             'run',
             'job',
             '--project-id',
-            knownIds.dynamic.project,
+            knownIds.project,
             '--wait',
-            knownIds.dynamic.job,
+            knownIds.job,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
@@ -217,7 +191,7 @@ describe('refactrctl run', () => {
                 'run',
                 'job',
                 '--project-id',
-                knownIds.dynamic.project,
+                knownIds.project,
                 '--var',
                 '\'string_array_variable:["string", "array"]\'',
                 '--var',
@@ -229,7 +203,7 @@ describe('refactrctl run', () => {
                 '--var',
                 "'boolean_variable:true'",
                 '--wait',
-                knownIds.dynamic.job,
+                knownIds.job,
                 '--format=json'
               ],
               { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }

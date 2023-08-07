@@ -16,7 +16,7 @@ on:
 
 jobs:
   all-tests:
-    name: Run unit and e2e tests
+    name: Run unit and integration tests
     if: ${{ !contains(github.event.head_commit.message, 'skip ci') }}
     runs-on: ${{ matrix.operating-system }}
     strategy:
@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: ${{ matrix.version }}
 
-      - run: node -e "console.log('FACTORY_CLI_PATH'+'='+path.resolve('./bin/refactrctl.js'))" >> $GITHUB_ENV
+      - run: node -e "console.log('FACTORY_CLI_PATH'+'='+path.resolve('./bin/factoryctl.js'))" >> $GITHUB_ENV
         shell: bash
 
       - run: npm ci
@@ -39,7 +39,7 @@ jobs:
       - run: npm run build:runtime
 
       - run: npm run test:unit
-      - run: npm run test:e2e -- -u
+      - run: npm run test:int -- -u
         env:
           FACTORY_ADDRESS: ${{ inputs.FACTORY_ADDRESS }}
           FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}

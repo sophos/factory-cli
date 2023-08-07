@@ -1,19 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`refactrctl get credential accepts id as argument 1`] = `
-"id                name                          type     data  created            
-secret-test-cred  Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
-"
-`;
-
-exports[`refactrctl get credential accepts id from stdin 1`] = `
-"id                name                          type     data  created            
-secret-test-cred  Super Secret Test Credential  generic  -     12/29/2021, 8:57 PM
-"
-`;
-
-exports[`refactrctl get credential throws on missing arguments 1`] = `
-"Usage: refactrctl get credential <credential-id> [options]
+exports[`factoryctl get credential throws on missing arguments 1`] = `
+"Usage: factoryctl get credential <credential-id> [options]
 
 Positionals:
   credential-id  ID of the credential to fetch. Unlike IDs for other resources (which are mechanically generated), credential ID is user-provided reference ID  [string] [default: read from stdin]
@@ -32,8 +20,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl get credential throws on missing arguments 2`] = `
-"Usage: refactrctl get credential <credential-id> [options]
+exports[`factoryctl get credential throws on missing arguments 2`] = `
+"Usage: factoryctl get credential <credential-id> [options]
 
 Positionals:
   credential-id  ID of the credential to fetch. Unlike IDs for other resources (which are mechanically generated), credential ID is user-provided reference ID  [string] [default: read from stdin]
@@ -52,20 +40,8 @@ Credential ID must be provided
 "
 `;
 
-exports[`refactrctl get job accepts id as argument 1`] = `
-"_id                       name                      enabled  trigger_type  created            
-61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
-"
-`;
-
-exports[`refactrctl get job accepts id from stdin 1`] = `
-"_id                       name                      enabled  trigger_type  created            
-61ccca11d42b9be6898365e0  How Do We Know It Works?  Yes      manual        12/29/2021, 8:50 PM
-"
-`;
-
-exports[`refactrctl get job throws on missing arguments 1`] = `
-"Usage: refactrctl get job <job-id> [options]
+exports[`factoryctl get job throws on missing arguments 1`] = `
+"Usage: factoryctl get job <job-id> [options]
 
 Positionals:
   job-id  ID of the job to fetch  [string] [default: read from stdin]
@@ -84,8 +60,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl get job throws on missing arguments 2`] = `
-"Usage: refactrctl get job <job-id> [options]
+exports[`factoryctl get job throws on missing arguments 2`] = `
+"Usage: factoryctl get job <job-id> [options]
 
 Positionals:
   job-id  ID of the job to fetch  [string] [default: read from stdin]
@@ -104,20 +80,8 @@ Job ID must be provided
 "
 `;
 
-exports[`refactrctl get organization accepts id as argument 1`] = `
-"_id                       name     contact_name    contact_email              created            
-61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake  victoria.drake@sophos.com  12/29/2021, 4:57 PM
-"
-`;
-
-exports[`refactrctl get organization accepts id from stdin 1`] = `
-"_id                       name     contact_name    contact_email              created            
-61cc93942529b6ec9681e4e2  CLI e2e  Victoria Drake  victoria.drake@sophos.com  12/29/2021, 4:57 PM
-"
-`;
-
-exports[`refactrctl get organization throws on missing arguments 1`] = `
-"Usage: refactrctl get organization <organization-id> [options]
+exports[`factoryctl get organization throws on missing arguments 1`] = `
+"Usage: factoryctl get organization <organization-id> [options]
 
 Positionals:
   organization-id  ID of the organization to fetch  [string] [default: read from stdin]
@@ -135,20 +99,8 @@ Organization ID must be provided
 "
 `;
 
-exports[`refactrctl get pipeline accepts id as argument 1`] = `
-"_id                       organization_id           project_id                name                          step_count  revision_count  created            
-61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
-"
-`;
-
-exports[`refactrctl get pipeline accepts id from stdin 1`] = `
-"_id                       organization_id           project_id                name                          step_count  revision_count  created            
-61ccc379d42b9b0f518365db  61cc93942529b6ec9681e4e2  61ccbe03d42b9bdcc88365d8  The Answer is Always Testing  1           3               12/29/2021, 8:22 PM
-"
-`;
-
-exports[`refactrctl get pipeline throws on missing arguments 1`] = `
-"Usage: refactrctl get pipeline <pipeline-id> [options]
+exports[`factoryctl get pipeline throws on missing arguments 1`] = `
+"Usage: factoryctl get pipeline <pipeline-id> [options]
 
 Positionals:
   pipeline-id  ID of the pipeline to fetch  [string] [default: read from stdin]
@@ -167,8 +119,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl get pipeline throws on missing arguments 2`] = `
-"Usage: refactrctl get pipeline <pipeline-id> [options]
+exports[`factoryctl get pipeline throws on missing arguments 2`] = `
+"Usage: factoryctl get pipeline <pipeline-id> [options]
 
 Positionals:
   pipeline-id  ID of the pipeline to fetch  [string] [default: read from stdin]
@@ -187,20 +139,8 @@ Pipeline ID must be provided
 "
 `;
 
-exports[`refactrctl get pipeline-revision accepts id as argument 1`] = `
-"_id                       revision  created            
-61ccc95a8997cfeb71742855  3         12/29/2021, 8:47 PM
-"
-`;
-
-exports[`refactrctl get pipeline-revision accepts id from stdin 1`] = `
-"_id                       revision  created            
-61ccc95a8997cfeb71742855  3         12/29/2021, 8:47 PM
-"
-`;
-
-exports[`refactrctl get pipeline-revision throws on missing arguments 1`] = `
-"Usage: refactrctl get pipeline-revision <revision> [options]
+exports[`factoryctl get pipeline-revision throws on missing arguments 1`] = `
+"Usage: factoryctl get pipeline-revision <revision> [options]
 
 Positionals:
   revision-id  ID of the pipeline revision to fetch  [string] [default: read from stdin]
@@ -220,8 +160,8 @@ Missing required arguments: project-id, pipeline-id
 "
 `;
 
-exports[`refactrctl get pipeline-revision throws on missing arguments 2`] = `
-"Usage: refactrctl get pipeline-revision <revision> [options]
+exports[`factoryctl get pipeline-revision throws on missing arguments 2`] = `
+"Usage: factoryctl get pipeline-revision <revision> [options]
 
 Positionals:
   revision-id  ID of the pipeline revision to fetch  [string] [default: read from stdin]
@@ -241,20 +181,8 @@ Revision must be provided
 "
 `;
 
-exports[`refactrctl get project accepts id as argument 1`] = `
-"_id                       name          pipeline_count  organization_id           created            
-61ccbe03d42b9bdcc88365d8  CRUD Testing  2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
-"
-`;
-
-exports[`refactrctl get project accepts id from stdin 1`] = `
-"_id                       name          pipeline_count  organization_id           created            
-61ccbe03d42b9bdcc88365d8  CRUD Testing  2               61cc93942529b6ec9681e4e2  12/29/2021, 7:58 PM
-"
-`;
-
-exports[`refactrctl get project throws on missing arguments 1`] = `
-"Usage: refactrctl get project <project-id> [options]
+exports[`factoryctl get project throws on missing arguments 1`] = `
+"Usage: factoryctl get project <project-id> [options]
 
 Positionals:
   project-id  ID of the project to fetch  [string] [default: read from stdin]
@@ -272,8 +200,8 @@ Project ID must be provided
 "
 `;
 
-exports[`refactrctl get run throws on missing arguments 1`] = `
-"Usage: refactrctl get run <run-id> [options]
+exports[`factoryctl get run throws on missing arguments 1`] = `
+"Usage: factoryctl get run <run-id> [options]
 
 Positionals:
   run-id  ID of the run to fetch  [string] [default: read from stdin]
@@ -293,8 +221,8 @@ Missing required argument: project-id
 "
 `;
 
-exports[`refactrctl get run throws on missing arguments 2`] = `
-"Usage: refactrctl get run <run-id> [options]
+exports[`factoryctl get run throws on missing arguments 2`] = `
+"Usage: factoryctl get run <run-id> [options]
 
 Positionals:
   run-id  ID of the run to fetch  [string] [default: read from stdin]
@@ -314,20 +242,8 @@ Run ID must be provided
 "
 `;
 
-exports[`refactrctl get runner accepts id as argument 1`] = `
-"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created            
-61ccb65bd42b9b66fa8365d2  61cc93942529b6ec9681e4e2  CI Test Runner  -          -             -        -        -          Running  -           -             12/29/2021, 7:26 PM
-"
-`;
-
-exports[`refactrctl get runner accepts id from stdin 1`] = `
-"_id                       organization_id           name            host_type  machine_type  version  started  heartbeat  status   idle_since  stop_pending  created            
-61ccb65bd42b9b66fa8365d2  61cc93942529b6ec9681e4e2  CI Test Runner  -          -             -        -        -          Running  -           -             12/29/2021, 7:26 PM
-"
-`;
-
-exports[`refactrctl get runner throws on missing arguments 1`] = `
-"Usage: refactrctl get runner <runner-id> [options]
+exports[`factoryctl get runner throws on missing arguments 1`] = `
+"Usage: factoryctl get runner <runner-id> [options]
 
 Positionals:
   runner-id  ID of the runner to fetch  [string] [default: read from stdin]
@@ -346,8 +262,8 @@ Missing required argument: organization-id
 "
 `;
 
-exports[`refactrctl get runner throws on missing arguments 2`] = `
-"Usage: refactrctl get runner <runner-id> [options]
+exports[`factoryctl get runner throws on missing arguments 2`] = `
+"Usage: factoryctl get runner <runner-id> [options]
 
 Positionals:
   runner-id  ID of the runner to fetch  [string] [default: read from stdin]
@@ -366,18 +282,18 @@ Runner ID must be provided
 "
 `;
 
-exports[`refactrctl get throws on missing subcommand 1`] = `
-"Usage: refactrctl get <command> [options]
+exports[`factoryctl get throws on missing subcommand 1`] = `
+"Usage: factoryctl get <command> [options]
 
 Commands:
-  refactrctl get credential [credential-id]       Get credential details
-  refactrctl get job [job-id]                     Get job details
-  refactrctl get project [project-id]             Get project details
-  refactrctl get pipeline [pipeline-id]           Get pipeline details
-  refactrctl get organization [organization-id]   Get organization details
-  refactrctl get run [run-id]                     Get run details
-  refactrctl get pipeline-revision [revision-id]  Get pipeline-revision details
-  refactrctl get runner [runner-id]               Get runner details
+  factoryctl get credential [credential-id]       Get credential details
+  factoryctl get job [job-id]                     Get job details
+  factoryctl get project [project-id]             Get project details
+  factoryctl get pipeline [pipeline-id]           Get pipeline details
+  factoryctl get organization [organization-id]   Get organization details
+  factoryctl get run [run-id]                     Get run details
+  factoryctl get pipeline-revision [revision-id]  Get pipeline-revision details
+  factoryctl get runner [runner-id]               Get runner details
 
 Options:
       --version     Show version number  [boolean]

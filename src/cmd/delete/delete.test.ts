@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import { execute } from '../helpers/execute';
-import { loadFixtures } from './fixtures';
+import { execute } from '../../../tests/helpers/execute';
+import { loadFixtures } from '../../../tests/fixtures';
 
 beforeAll(async () => {
   return await loadFixtures();
 });
 
-describe('refactrctl delete', () => {
+describe('factoryctl delete', () => {
   test('throws on missing subcommand', async () => {
     await expect(
       execute(['delete'], { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! })
