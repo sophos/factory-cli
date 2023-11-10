@@ -1,11 +1,11 @@
 const knownIds = {
-  organization: '61cc93942529b6ec9681e4e2', // "CLI e2e"
-  project: '61ccbe03d42b9bdcc88365d8', // "CRUD Testing"
-  job: '61ccca11d42b9be6898365e0', // "How Do We Know It Works?"
-  pipeline: '61ccc379d42b9b0f518365db', // "The Answer is Always Testing"
-  runner: '61ccb65bd42b9b66fa8365d2', // "CI Test Runner"
-  credential: 'secret-test-cred', // "Super Secret Test Credential"
-  pipelineRevision: '61ccc95a8997cfeb71742855' // "Revision #3 Add test variables"
+  organization: '5f9f2d08e2f1bb2436e6f5b0', // "Refactr"
+  project: '5fa4dba223b4e0703b95c465', // "Full Kitchen Sink"
+  job: '632a8b28630394e2de3b7bd3', // "Manually run the Scheduled KS pipeline"
+  pipeline: '5fb86500bd71fd7b2b2e9cd0', // "S1 - All"
+  runner: '6259e10b3e6c5ef6ea798f67', // "Kitchen Sink Sync Runner"
+  credential: 't3-fake-bearer-token', // "t3-fake-bearer-token"
+  pipelineRevision: '63f68ee728be4a69cfec5b47' // "Auto-created from pipeline sync script"
 };
 
 export default knownIds;
