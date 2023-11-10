@@ -84,10 +84,10 @@ Missing required argument: project-id
 "
 `;
 
-exports[`factoryctl list runners throws on missing arguments 1`] = `
-"factoryctl list runners
+exports[`factoryctl list runner managers throws on missing arguments 1`] = `
+"factoryctl list runner-managers
 
-List runners for an organization or a project
+List runner managers for an organization
 
 Options:
       --version          Show version number  [boolean]
@@ -98,10 +98,9 @@ Options:
       --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --help             Show help  [boolean]
-      --project-id       ID of the project containing the runners  [string]
-      --organization-id  ID of the organization containing the runners  [string]
+      --organization-id  ID of the organization containing the runner managers  [string]
 
-Missing required argument: either organization-id or project-id
+Missing required argument: organization-id
 "
 `;
 
@@ -138,7 +137,7 @@ Commands:
   factoryctl list jobs                List jobs for a project
   factoryctl list runs                List runs for a project
   factoryctl list pipeline-revisions  List pipeline revisions for a pipeline
-  factoryctl list runners             List runners for an organization or a project
+  factoryctl list runner-managers     List runner managers for an organization
   factoryctl list pipelines           List pipelines for a project
 
 Options:

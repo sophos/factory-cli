@@ -255,44 +255,56 @@ Run ID must be provided
 `;
 
 exports[`factoryctl get runner throws on missing arguments 1`] = `
-"Usage: factoryctl get runner <runner-id> [options]
+"Usage: factoryctl get <command> [options]
 
-Positionals:
-  runner-id  ID of the runner to fetch  [string] [default: read from stdin]
+Commands:
+  factoryctl get credential [credential-id]          Get credential details
+  factoryctl get job [job-id]                        Get job details
+  factoryctl get project [project-id]                Get project details
+  factoryctl get pipeline [pipeline-id]              Get pipeline details
+  factoryctl get organization [organization-id]      Get organization details
+  factoryctl get run [run-id]                        Get run details
+  factoryctl get pipeline-revision [revision-id]     Get pipeline-revision details
+  factoryctl get runner-manager [runner-manager-id]  Get runner manager details
 
 Options:
-      --version          Show version number  [boolean]
-  -v, --verbose          Print detailed output  [boolean]
-      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter           Filter output using JSONPath  [string]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
-      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help             Show help  [boolean]
-      --organization-id  ID of the organization containing the runner  [string] [required]
+      --version       Show version number  [boolean]
+  -v, --verbose       Print detailed output  [boolean]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter        Filter output using JSONPath  [string]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help          Show help  [boolean]
 
-Missing required argument: organization-id
+Unknown argument: runner
 "
 `;
 
 exports[`factoryctl get runner throws on missing arguments 2`] = `
-"Usage: factoryctl get runner <runner-id> [options]
+"Usage: factoryctl get <command> [options]
 
-Positionals:
-  runner-id  ID of the runner to fetch  [string] [default: read from stdin]
+Commands:
+  factoryctl get credential [credential-id]          Get credential details
+  factoryctl get job [job-id]                        Get job details
+  factoryctl get project [project-id]                Get project details
+  factoryctl get pipeline [pipeline-id]              Get pipeline details
+  factoryctl get organization [organization-id]      Get organization details
+  factoryctl get run [run-id]                        Get run details
+  factoryctl get pipeline-revision [revision-id]     Get pipeline-revision details
+  factoryctl get runner-manager [runner-manager-id]  Get runner manager details
 
 Options:
-      --version          Show version number  [boolean]
-  -v, --verbose          Print detailed output  [boolean]
-      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter           Filter output using JSONPath  [string]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
-      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help             Show help  [boolean]
-      --organization-id  ID of the organization containing the runner  [string] [required]
+      --version       Show version number  [boolean]
+  -v, --verbose       Print detailed output  [boolean]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter        Filter output using JSONPath  [string]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help          Show help  [boolean]
 
-Runner ID must be provided
+Unknown arguments: organization-id, organizationId, runner
 "
 `;
 
@@ -300,14 +312,14 @@ exports[`factoryctl get throws on missing subcommand 1`] = `
 "Usage: factoryctl get <command> [options]
 
 Commands:
-  factoryctl get credential [credential-id]       Get credential details
-  factoryctl get job [job-id]                     Get job details
-  factoryctl get project [project-id]             Get project details
-  factoryctl get pipeline [pipeline-id]           Get pipeline details
-  factoryctl get organization [organization-id]   Get organization details
-  factoryctl get run [run-id]                     Get run details
-  factoryctl get pipeline-revision [revision-id]  Get pipeline-revision details
-  factoryctl get runner [runner-id]               Get runner details
+  factoryctl get credential [credential-id]          Get credential details
+  factoryctl get job [job-id]                        Get job details
+  factoryctl get project [project-id]                Get project details
+  factoryctl get pipeline [pipeline-id]              Get pipeline details
+  factoryctl get organization [organization-id]      Get organization details
+  factoryctl get run [run-id]                        Get run details
+  factoryctl get pipeline-revision [revision-id]     Get pipeline-revision details
+  factoryctl get runner-manager [runner-manager-id]  Get runner manager details
 
 Options:
       --version       Show version number  [boolean]
