@@ -13,7 +13,7 @@ describe('coercers', () => {
     };
     let expected: Record<string, unknown>;
     beforeAll(() => {
-      expected = require('./fixtures/coercePipelineCreateInput/extected.json');
+      expected = require('./fixtures/coercePipelineCreateInput/expected.json');
     });
 
     test('throws when array is passed', () => {

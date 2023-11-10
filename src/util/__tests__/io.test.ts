@@ -6,7 +6,7 @@ describe('io', () => {
   describe('readFile', () => {
     let expected: Record<string, unknown>;
     beforeAll(() => {
-      expected = require('./fixtures/readFile/extected.json');
+      expected = require('./fixtures/readFile/expected.json');
     });
 
     test('read JSON file', () => {
