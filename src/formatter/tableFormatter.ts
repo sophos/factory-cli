@@ -1,4 +1,3 @@
-import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
 import isString from 'lodash/isString';
 import Table from 'cli-table';
@@ -35,7 +34,7 @@ const tableFormatter: Formatter = function tableFormatter(
     return 'No data returned!';
   }
 
-  if (!isArray(input)) {
+  if (!Array.isArray(input)) {
     input = [input];
   }
 
