@@ -24,6 +24,10 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, macos-latest]
         version: [14.x, 16.x, 18.x, 19.x]
+    env:
+      FACTORY_ADDRESS: ${{ inputs.FACTORY_ADDRESS }}
+      FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
+      FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
     steps:
       - uses: actions/checkout@v3.1.0
       - name: Setup node ${{ matrix.version }}
@@ -40,7 +44,3 @@ jobs:
 
       - run: npm run test:unit
       - run: npm run test:int -- -u
-        env:
-          FACTORY_ADDRESS: ${{ inputs.FACTORY_ADDRESS }}
-          FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
-          FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
