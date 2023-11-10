@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import isArray from 'lodash/isArray';
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
 
@@ -56,7 +55,7 @@ describe('factoryctl rerun', () => {
           '--format=json'
         ],
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-      ).then((value) => isArray(JSON.parse(value)))
+      ).then((value) => Array.isArray(JSON.parse(value)))
     ).resolves.toBeTruthy();
   });
 });

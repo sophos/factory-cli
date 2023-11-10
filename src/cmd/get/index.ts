@@ -5,7 +5,7 @@ import project from './project';
 import run from './run';
 import pipeline from './pipeline';
 import pipelineRevision from './pipeline-revision';
-import runner from './runner';
+import runnerManager from './runner-manager';
 
 const getCommandMap = {
   credential,
@@ -15,7 +15,7 @@ const getCommandMap = {
   pipeline,
   'pipeline-revision': pipelineRevision,
   run,
-  runner
+  'runner-manager': runnerManager
 };
 
 export default getCommandMap;

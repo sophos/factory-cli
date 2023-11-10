@@ -121,30 +121,21 @@ export default (yargs: Yargs.Argv) =>
             .option('offset', { type: 'number', requiresArg: true })
       )
       .command(
-        'runners',
-        'List runners for an organization or a project',
+        'runner-managers',
+        'List runner managers for an organization',
         (yargs) =>
           yargs
-            .option('project-id', {
-              describe: 'ID of the project containing the runners',
-              type: 'string',
-              requiresArg: true
-            })
             .option('organization-id', {
-              describe: 'ID of the organization containing the runners',
+              describe: 'ID of the organization containing the runner managers',
               type: 'string',
               requiresArg: true
             })
             .check((args) => {
-              if (isNil(args.projectId || args.organizationId)) {
-                throw new Error(
-                  'Missing required argument: either organization-id or project-id'
-                );
+              if (isNil(args.organizationId)) {
+                throw new Error('Missing required argument: organization-id');
               }
-
               return true;
             })
-            .conflicts('project-id', 'organization-id')
       )
       .command('pipelines', 'List pipelines for a project', (yargs) =>
         yargs

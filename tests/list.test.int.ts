@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import { isArray } from 'lodash';
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
 import { loadFixtures } from './fixtures';
@@ -25,7 +24,7 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -45,7 +44,7 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -55,7 +54,7 @@ describe('factoryctl list', () => {
       await expect(
         execute(['list', 'organizations', '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => isArray(JSON.parse(value)))
+        }).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -75,7 +74,7 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -93,7 +92,7 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -103,27 +102,27 @@ describe('factoryctl list', () => {
       await expect(
         execute(['list', 'projects', '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => isArray(JSON.parse(value)))
+        }).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
 
-  describe('runners', () => {
-    test('returns array of runners', async () => {
+  describe('runner managers', () => {
+    test('returns array of runner managers', async () => {
       await expect(
         execute(
           [
             'list',
-            'runners',
-            '--project-id',
-            knownIds.project,
+            'runner-managers',
+            '--organization-id',
+            knownIds.organization,
             '--format',
             'json'
           ],
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -134,7 +133,7 @@ describe('factoryctl list', () => {
         {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         }
-      ).then((value) => isArray(JSON.parse(value)))
+      ).then((value) => Array.isArray(JSON.parse(value)))
     ).resolves.toBeTruthy();
   });
 });

@@ -69,28 +69,31 @@ export default (yargs: Yargs.Argv) =>
             return true;
           }, false)
       )
-      .command('runner [runner-id]', 'Delete a runner', (yargs) =>
-        yargs
-          .positional('runner-id', {
-            describe: 'ID of the runner to delete',
-            type: 'string',
-            required: true,
-            demandOption: true
-          })
-          .default('runner-id', () => readStdin(), 'read from stdin')
-          .check((argv) => {
-            if (isNil(argv.runnerId)) {
-              throw new Error('Runner ID must be provided');
-            }
+      .command(
+        'runner-manager [runner-manager-id]',
+        'Delete a runner manager',
+        (yargs) =>
+          yargs
+            .positional('runner-manager-id', {
+              describe: 'ID of the runner manager to delete',
+              type: 'string',
+              required: true,
+              demandOption: true
+            })
+            .default('runner-manager-id', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.runnerManagerId)) {
+                throw new Error('Runner Manager ID must be provided');
+              }
 
-            return true;
-          }, false)
-          .option('organization-id', {
-            describe: 'ID of the organization containing the runner',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
+              return true;
+            }, false)
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runner manager',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
       )
       .command('credential [credential-id]', 'Delete a credential', (yargs) =>
         yargs

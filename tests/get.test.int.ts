@@ -326,33 +326,33 @@ describe('factoryctl get', () => {
     });
   });
 
-  describe('runner', () => {
-    test('returns runner information', async () => {
+  describe('runner managers', () => {
+    test('returns runner manager information', async () => {
       await expect(
         execute(
           [
             'get',
-            'runner',
+            'runner-manager',
             '--organization-id',
             knownIds.organization,
-            knownIds.runner,
+            knownIds.runnerManager,
             '--format',
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         ).then((value) => JSON.parse(value))
-      ).resolves.toHaveProperty('_id', knownIds.runner);
+      ).resolves.toHaveProperty('_id', knownIds.runnerManager);
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.runner} | ${withCmd(
-            `get runner --organization-id ${knownIds.organization} --format=json`
+          `echo ${knownIds.runnerManager} | ${withCmd(
+            `get runner-manager --organization-id ${knownIds.organization} --format=json`
           )}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
         ).then((value) => JSON.parse(value))
-      ).resolves.toHaveProperty('_id', knownIds.runner);
+      ).resolves.toHaveProperty('_id', knownIds.runnerManager);
     });
   });
 });

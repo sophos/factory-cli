@@ -187,29 +187,32 @@ export default (yargs: Yargs.Argv) =>
               requiresArg: true
             })
       )
-      .command('runner [runner-id]', 'Get runner details', (yargs) =>
-        yargs
-          .usage('Usage: $0 get runner <runner-id> [options]')
-          .positional('runner-id', {
-            type: 'string',
-            describe: 'ID of the runner to fetch',
-            demandOption: true,
-            requiresArg: true
-          })
-          .default('runner-id', () => readStdin(), 'read from stdin')
-          .check((argv) => {
-            if (isNil(argv.runnerId)) {
-              throw new Error('Runner ID must be provided');
-            }
+      .command(
+        'runner-manager [runner-manager-id]',
+        'Get runner manager details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 get runner <runner-id> [options]')
+            .positional('runner-manager-id', {
+              type: 'string',
+              describe: 'ID of the runner manager to fetch',
+              demandOption: true,
+              requiresArg: true
+            })
+            .default('runner-manager-id', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.runnerManagerId)) {
+                throw new Error('Runner Manager ID must be provided');
+              }
 
-            return true;
-          }, false)
-          .option('organization-id', {
-            describe: 'ID of the organization containing the runner',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
+              return true;
+            }, false)
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runner manager',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
       )
       .demandCommand(1, 'Command must be specified')
       .strict()

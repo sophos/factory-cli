@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import isArray from 'lodash/isArray';
 import isNil from 'lodash/isNil';
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
@@ -41,7 +40,7 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
 
@@ -58,13 +57,13 @@ describe('factoryctl run', () => {
                 '--revision-id',
                 knownIds.pipelineRevision,
                 '--var',
-                '\'string_array_variable:["string", "array"]\'',
-                '--var',
                 '\'string_variable:"string"\'',
                 '--var',
-                "'number_array_variable:[100, 123]'",
+                '\'string_array_variable:["string", "array"]\'',
                 '--var',
                 "'number_variable:123'",
+                '--var',
+                "'number_array_variable:[100, 123]'",
                 '--var',
                 "'boolean_variable:true'",
                 knownIds.pipeline,
@@ -75,7 +74,7 @@ describe('factoryctl run', () => {
             )
           );
 
-          if (!isArray(result)) {
+          if (!Array.isArray(result)) {
             throw new Error('Expected array to be received!');
           }
           const ret = result.find(
@@ -89,10 +88,10 @@ describe('factoryctl run', () => {
           return JSON.parse(ret.details);
         })()
       ).resolves.toStrictEqual({
-        string_array_variable: ['string', 'array'],
         string_variable: 'string',
-        number_array_variable: [100, 123],
+        string_array_variable: ['string', 'array'],
         number_variable: 123,
+        number_array_variable: [100, 123],
         boolean_variable: true
       });
     });
@@ -133,7 +132,7 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
   });
@@ -178,7 +177,7 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((value) => Array.isArray(JSON.parse(value)))
       ).resolves.toBeTruthy();
     });
 
@@ -210,7 +209,7 @@ describe('factoryctl run', () => {
             )
           );
 
-          if (!isArray(result)) {
+          if (!Array.isArray(result)) {
             throw new Error('Expected array to be received!');
           }
 

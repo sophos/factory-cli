@@ -54,10 +54,10 @@ describe('factoryctl list', () => {
     });
   });
 
-  describe('runners', () => {
+  describe('runner managers', () => {
     test('throws on missing arguments', async () => {
       await expect(
-        execute(['list', 'runners'], {
+        execute(['list', 'runner-managers'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();

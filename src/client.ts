@@ -6,7 +6,7 @@ export default class Client {
   public readonly projects: factoryApi.ProjectsApi;
   public readonly organizations: factoryAuthApi.OrganizationsApi;
   public readonly pipelines: factoryApi.PipelinesApi;
-  public readonly runners: factoryApi.AgentsApi;
+  public readonly runnerManagers: factoryApi.RunnerPoolsApi;
   public readonly credentials: factoryApi.CredentialsApi;
 
   constructor({
@@ -27,7 +27,7 @@ export default class Client {
     this.runs = new factoryApi.RunsApi(config);
     this.projects = new factoryApi.ProjectsApi(config);
     this.pipelines = new factoryApi.PipelinesApi(config);
-    this.runners = new factoryApi.AgentsApi(config);
+    this.runnerManagers = new factoryApi.RunnerPoolsApi(config);
     this.credentials = new factoryApi.CredentialsApi(config);
 
     const authConfig = new factoryAuthApi.Configuration({
