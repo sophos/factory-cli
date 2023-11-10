@@ -13,20 +13,22 @@ Usage: factoryctl <command> [options]
 Commands:
   factoryctl run             Execute pipeline or job
   factoryctl rerun [run-id]  Reschedule pipeline run
-  factoryctl delete          Delete specified resource
   factoryctl list            List specified resources
   factoryctl get             Get specified resource
   factoryctl create          Create specified resource
+  factoryctl delete          Delete specified resource
 
 Options:
-      --version     Show version number                                                                        [boolean]
-  -v, --verbose     Print detailed output                                                                      [boolean]
-      --format      Output format                                    [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter      Filter output using JsonPath                                                                [string]
-      --address     Address of the Sophos Factory API server
-                    [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-token  Authentication token                     [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help        Show help                                                                                  [boolean]
+      --version       Show version number                                                                      [boolean]
+  -v, --verbose       Print detailed output                                                                    [boolean]
+      --format        Output format                                  [choices: "wide", "json", "yaml"] [default: "wide"]
+      --filter        Filter output using JSONPath                                                              [string]
+      --address       Address of the Sophos Factory API server
+        [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server
+  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token    Authentication token                   [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --help          Show help                                                                                [boolean]
 ```
 
 ## Installation
@@ -49,7 +51,7 @@ or with `yarn`:
 $ yarn global add @sophos-factory/cli
 ```
 
-Global installation is required.
+*Global installation is required.*
 
 ### Docker
 

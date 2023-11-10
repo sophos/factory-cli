@@ -20,7 +20,7 @@ const DEFAULT_AUTH_ADDRESS = 'https://auth.dev.factory.sophos.com/v1';
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
-  create(get(list(del(rerun(run(yargs))))));
+  del(create(get(list(rerun(run(yargs))))));
 
 const parse = (argv: string[], { version }: { version: string }): unknown => {
   return apply(yargs(argv))
