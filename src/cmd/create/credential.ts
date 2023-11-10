@@ -1,7 +1,9 @@
-import { CredentialTypeEnum } from '@sophos-factory/api-client';
+import { factoryApi } from '@sophos-factory/api-client';
 
 import { createCommandResult, handler } from '../handler';
 import { CredentialType } from '../../credential-type';
+
+const { CredentialTypeEnum } = factoryApi;
 
 const credentialType = {
   'api_token': CredentialTypeEnum.ApiToken,

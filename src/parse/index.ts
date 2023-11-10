@@ -15,6 +15,7 @@ import run from './run';
 const yargs = require('yargs');
 
 const DEFAULT_ADDRESS = 'https://api.dev.factory.sophos.com/v1';
+const DEFAULT_AUTH_ADDRESS = 'https://auth.dev.factory.sophos.com/v1';
 
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
@@ -69,6 +70,36 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
       () => process.env.FACTORY_ADDRESS ?? DEFAULT_ADDRESS,
       `FACTORY_ADDRESS environment variable if set, otherwise ${DEFAULT_ADDRESS}`
     )
+    .option('auth-address', {
+      describe: 'Address of the Sophos Factory Auth API server',
+      type: 'string',
+      requiresArg: false,
+      coerce: (authAddress: string) => {
+        if (
+          !(
+            authAddress.startsWith('http://') ||
+            authAddress.startsWith('https://')
+          )
+        ) {
+          authAddress = `https://${authAddress}`;
+        }
+
+        try {
+          const url = new URL(authAddress);
+
+          authAddress = url.toString();
+        } catch (err) {
+          throw new Error('Invalid API address provided!');
+        }
+
+        return authAddress;
+      }
+    })
+    .default(
+      'auth-address',
+      () => process.env.FACTORY_AUTH_ADDRESS ?? DEFAULT_AUTH_ADDRESS,
+      `FACTORY_AUTH_ADDRESS environment variable if set, otherwise ${DEFAULT_AUTH_ADDRESS}`
+    )
     .option('auth-token', {
       describe: 'Authentication token',
       type: 'string',
@@ -99,6 +130,7 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
 
 export type Args = Omit<ReturnType<typeof parse>, 'address'> & {
   address: string;
+  authAddress: string;
   authToken: string;
 
   // TODO: yargs should infer this.

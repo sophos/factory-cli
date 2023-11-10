@@ -1,16 +1,17 @@
-import { Run, RunEvents, RunStatusEnum } from '@sophos-factory/api-client';
+import { factoryApi } from '@sophos-factory/api-client';
+// import { Run, RunEvents, RunStatusEnum } from '@sophos-factory/api-client';
 import type Client from '../client';
 
 export function createStream(
   apiClient: Client,
   projectId: string,
   runId: string
-): AsyncGenerator<RunEvents, void, undefined> {
+): AsyncGenerator<factoryApi.RunEvents, void, undefined> {
   const api = apiClient.runs;
   let offset = 0;
 
   async function getRunEvents() {
-    let run: Run;
+    let run: factoryApi.Run;
     try {
       const extraFields = ['events', 'operations', 'variables', 'outputs'];
       run = (await api.getRun(projectId, runId, extraFields)).data;
@@ -28,8 +29,8 @@ export function createStream(
     return {
       events,
       done:
-        run?.status === RunStatusEnum.Failed ||
-        run?.status === RunStatusEnum.Succeeded,
+        run?.status === factoryApi.RunStatusEnum.Failed ||
+        run?.status === factoryApi.RunStatusEnum.Succeeded,
       isErrored: false
     };
   }

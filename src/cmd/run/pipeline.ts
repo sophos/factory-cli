@@ -1,4 +1,5 @@
-import { InlineResponse201, RunEvents } from '@sophos-factory/api-client';
+import { factoryApi } from '@sophos-factory/api-client';
+
 import { createCommandResult, handler } from '../handler';
 import { createStream } from '../run-event-stream';
 import fields from '../../fields';
@@ -17,7 +18,7 @@ type Arguments = {
 
 export default handler<
   Arguments,
-  AsyncGenerator<RunEvents> | InlineResponse201
+  AsyncGenerator<factoryApi.RunEvents> | factoryApi.InlineResponse201
 >(
   async (
     apiClient,
