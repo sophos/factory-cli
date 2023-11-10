@@ -1,6 +1,6 @@
 {
   "name": "@sophos-factory/cli",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Sophos Factory CLI",
   "main": "dist/main.js",
   "author": "Sophos Factory",
