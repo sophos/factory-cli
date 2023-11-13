@@ -43,4 +43,4 @@ jobs:
       - run: npm run build:runtime
 
       - run: npm run test:unit
-      - run: npm run test:int -- -u
+      - run: npm run test:int
