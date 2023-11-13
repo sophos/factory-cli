@@ -139,55 +139,95 @@ Project ID must be provided
 "
 `;
 
-exports[`factoryctl delete runner throws on missing arguments 1`] = `
-"factoryctl delete
+exports[`factoryctl delete runner pool throws on missing arguments 1`] = `
+"factoryctl delete runner-pool [runner-pool-id]
 
-Delete specified resource
+Delete a runner pool
 
-Commands:
-  factoryctl delete pipeline [pipeline-id]              Delete a pipeline
-  factoryctl delete job [job-id]                        Delete a job
-  factoryctl delete project [project-id]                Delete a project
-  factoryctl delete runner-manager [runner-manager-id]  Delete a runner manager
-  factoryctl delete credential [credential-id]          Delete a credential
+Positionals:
+  runner-pool-id  ID of the runner pool to delete  [string] [default: read from stdin]
 
 Options:
-      --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
-      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --filter        Filter output using JSONPath  [string]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-  -v, --verbose       Print detailed output  [boolean]
-      --help          Show help  [boolean]
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner pool  [string] [required]
 
-Unknown argument: runner
+Missing required argument: organization-id
+"
+`;
+
+exports[`factoryctl delete runner pool throws on missing organization-id option 1`] = `
+"factoryctl delete runner-pool [runner-pool-id]
+
+Delete a runner pool
+
+Positionals:
+  runner-pool-id  ID of the runner pool to delete  [string] [default: read from stdin]
+
+Options:
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner pool  [string] [required]
+
+Missing required argument: organization-id
+"
+`;
+
+exports[`factoryctl delete runner throws on missing arguments 1`] = `
+"factoryctl delete runner [runner-id]
+
+Delete a runner
+
+Positionals:
+  runner-id  ID of the runner to delete  [string] [default: read from stdin]
+
+Options:
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner  [string] [required]
+
+Missing required argument: organization-id
 "
 `;
 
 exports[`factoryctl delete runner throws on missing organization-id option 1`] = `
-"factoryctl delete
+"factoryctl delete runner [runner-id]
 
-Delete specified resource
+Delete a runner
 
-Commands:
-  factoryctl delete pipeline [pipeline-id]              Delete a pipeline
-  factoryctl delete job [job-id]                        Delete a job
-  factoryctl delete project [project-id]                Delete a project
-  factoryctl delete runner-manager [runner-manager-id]  Delete a runner manager
-  factoryctl delete credential [credential-id]          Delete a credential
+Positionals:
+  runner-id  ID of the runner to delete  [string] [default: read from stdin]
 
 Options:
-      --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
-      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --filter        Filter output using JSONPath  [string]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-  -v, --verbose       Print detailed output  [boolean]
-      --help          Show help  [boolean]
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner  [string] [required]
 
-Unknown arguments: runner, runner-id
+Missing required argument: organization-id
 "
 `;
 
@@ -197,11 +237,12 @@ exports[`factoryctl delete throws on missing subcommand 1`] = `
 Delete specified resource
 
 Commands:
-  factoryctl delete pipeline [pipeline-id]              Delete a pipeline
-  factoryctl delete job [job-id]                        Delete a job
-  factoryctl delete project [project-id]                Delete a project
-  factoryctl delete runner-manager [runner-manager-id]  Delete a runner manager
-  factoryctl delete credential [credential-id]          Delete a credential
+  factoryctl delete credential [credential-id]    Delete a credential
+  factoryctl delete job [job-id]                  Delete a job
+  factoryctl delete pipeline [pipeline-id]        Delete a pipeline
+  factoryctl delete project [project-id]          Delete a project
+  factoryctl delete runner [runner-id]            Delete a runner
+  factoryctl delete runner-pool [runner-pool-id]  Delete a runner pool
 
 Options:
       --version       Show version number  [boolean]

@@ -78,10 +78,27 @@ describe('factoryctl delete', () => {
         })
       ).rejects.toMatchSnapshot();
     });
-
     test('throws on missing organization-id option', async () => {
       await expect(
         execute(['delete', 'runner', 'runner-id'], {
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+    });
+  });
+
+  describe('runner pool', () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['delete', 'runner-pool'], {
+          token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+    });
+
+    test('throws on missing organization-id option', async () => {
+      await expect(
+        execute(['delete', 'runner-pool', 'runner-pool-id'], {
           token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
         })
       ).rejects.toMatchSnapshot();
