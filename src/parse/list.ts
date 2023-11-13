@@ -41,7 +41,10 @@ export default (yargs: Yargs.Argv) =>
           requiresArg: true
         })
       )
-      .command('organizations', 'List organizations to which authenticated user belongs')
+      .command(
+        'organizations',
+        'List organizations to which authenticated user belongs'
+      )
       .command('pipelines', 'List pipelines for a project', (yargs) =>
         yargs
           .option('project-id', {
@@ -60,7 +63,10 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('pipeline-revisions', 'List pipeline revisions for a pipeline', (yargs) =>
+      .command(
+        'pipeline-revisions',
+        'List pipeline revisions for a pipeline',
+        (yargs) =>
           yargs
             .usage('$0 pipeline-revisions [options]')
             .option('project-id', {
@@ -101,45 +107,51 @@ export default (yargs: Yargs.Argv) =>
           })
           .option('offset', { type: 'number', requiresArg: true })
       )
-      .command('runner-pools', 'List runner pools for an organization', (yargs) =>
-        yargs
-          .option('organization-id', {
-            describe: 'ID of the organization containing the runner pools',
-            type: 'string',
-            requiresArg: true
-          })
-          .check((args) => {
-            if (isNil(args.organizationId)) {
-              throw new Error('Missing required argument: organization-id');
-            }
-            return true;
-          })
+      .command(
+        'runner-pools',
+        'List runner pools for an organization',
+        (yargs) =>
+          yargs
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runner pools',
+              type: 'string',
+              requiresArg: true
+            })
+            .check((args) => {
+              if (isNil(args.organizationId)) {
+                throw new Error('Missing required argument: organization-id');
+              }
+              return true;
+            })
       )
-      .command('runners', 'List runners for an organization or project', (yargs) =>
-        yargs
-          .option('organization-id', {
-            describe: 'ID of the organization containing the runners',
-            type: 'string',
-            requiresArg: false
-          })
-          .option('project-id', {
-            describe: 'ID of the project containing the runners',
-            type: 'string',
-            requiresArg: false
-          })
-          .check((args) => {
-            if (isNil(args.organizationId) && isNil(args.projectId)) {
-              throw new Error(
-                'Missing required argument: organization-id or project-id'
-              );
-            }
-            if (!isNil(args.organizationId) && !isNil(args.projectId)) {
-              throw new Error(
-                'Conflicting arguments provided: organization-id and project-id'
-              );
-            }
-            return true;
-          })
+      .command(
+        'runners',
+        'List runners for an organization or project',
+        (yargs) =>
+          yargs
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runners',
+              type: 'string',
+              requiresArg: false
+            })
+            .option('project-id', {
+              describe: 'ID of the project containing the runners',
+              type: 'string',
+              requiresArg: false
+            })
+            .check((args) => {
+              if (isNil(args.organizationId) && isNil(args.projectId)) {
+                throw new Error(
+                  'Missing required argument: organization-id or project-id'
+                );
+              }
+              if (!isNil(args.organizationId) && !isNil(args.projectId)) {
+                throw new Error(
+                  'Conflicting arguments provided: organization-id and project-id'
+                );
+              }
+              return true;
+            })
       )
       .command('runs', 'List runs for a project', (yargs) =>
         yargs
