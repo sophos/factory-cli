@@ -32,22 +32,17 @@ export default {
     'revision_count',
     'created'
   ],
-  runner: [
+  runnerAgent: ['_id', 'organization_id', 'name', 'status', 'created'],
+  runnerPool: [
     '_id',
-    'organization_id',
+    'organization_id"',
     'name',
-    'host_type',
-    'machine_type',
-    'version',
-    'started',
-    'heartbeat',
-    'status',
-    'idle_since',
-    'stop_pending',
-    'created'
+    'created',
+    'runner_manager_meta',
+    'runner_manager_options',
+    'runner_options'
   ],
   credential: ['id', 'name', 'type', 'data', 'created'],
-
   // Log
   runEvent: ['occurred', 'level', 'message', 'details']
 };

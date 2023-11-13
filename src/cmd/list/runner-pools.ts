@@ -12,5 +12,5 @@ export default handler(async (apiClient, { organizationId }: Arguments) => {
   const { data } = await api.listOrganizationRunnerManagers(organizationId);
   const list = data?.runner_managers ?? [];
 
-  return createCommandResult('view', list, fields.runner);
+  return createCommandResult('view', list, fields.runnerPool);
 });

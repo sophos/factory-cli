@@ -1,6 +1,7 @@
 import { factoryApi, factoryAuthApi } from '@sophos-factory/api-client';
 
 export default class Client {
+  public readonly agents: factoryApi.AgentsApi;
   public readonly jobs: factoryApi.JobsApi;
   public readonly runs: factoryApi.RunsApi;
   public readonly projects: factoryApi.ProjectsApi;
@@ -23,6 +24,7 @@ export default class Client {
       accessToken
     });
 
+    this.agents = new factoryApi.AgentsApi(config);
     this.jobs = new factoryApi.JobsApi(config);
     this.runs = new factoryApi.RunsApi(config);
     this.projects = new factoryApi.ProjectsApi(config);

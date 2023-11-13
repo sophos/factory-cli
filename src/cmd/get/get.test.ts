@@ -138,6 +138,26 @@ describe('factoryctl get', () => {
     });
   });
 
+  describe('runner-pool', () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['get', 'runner-pool', '--format', 'json'], {
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+
+      // Missing positional
+      await expect(
+        execute(
+          ['get', 'runner-pool', '--organization-id', knownIds.organization],
+          {
+            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+          }
+        )
+      ).rejects.toMatchSnapshot();
+    });
+  });
+
   describe('run', () => {
     test('throws on missing arguments', async () => {
       await expect(

@@ -8,12 +8,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the credential  [string] [required]
 
@@ -29,12 +29,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the credential  [string] [required]
 
@@ -50,12 +50,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the job  [string] [required]
 
@@ -71,12 +71,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the job  [string] [required]
 
@@ -92,12 +92,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
 
 Organization ID must be provided
@@ -112,12 +112,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project to fetch  [string] [required]
 
@@ -133,12 +133,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project to fetch  [string] [required]
 
@@ -154,12 +154,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id   ID of the pipeline for the pipeline revision  [string] [required]
@@ -176,12 +176,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the pipeline revision  [string] [required]
       --pipeline-id   ID of the pipeline for the pipeline revision  [string] [required]
@@ -198,12 +198,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
 
 Project ID must be provided
@@ -218,12 +218,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the run  [string] [required]
       --wait          Wait until run execution is finished if it is in progress  [boolean]
@@ -240,12 +240,12 @@ Positionals:
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
       --project-id    ID of the project containing the run  [string] [required]
       --wait          Wait until run execution is finished if it is in progress  [boolean]
@@ -255,56 +255,88 @@ Run ID must be provided
 `;
 
 exports[`factoryctl get runner throws on missing arguments 1`] = `
-"Usage: factoryctl get <command> [options]
+"Usage: factoryctl get runner <runner-id> [options]
 
-Commands:
-  factoryctl get credential [credential-id]          Get credential details
-  factoryctl get job [job-id]                        Get job details
-  factoryctl get project [project-id]                Get project details
-  factoryctl get pipeline [pipeline-id]              Get pipeline details
-  factoryctl get organization [organization-id]      Get organization details
-  factoryctl get run [run-id]                        Get run details
-  factoryctl get pipeline-revision [revision-id]     Get pipeline-revision details
-  factoryctl get runner-manager [runner-manager-id]  Get runner manager details
+Positionals:
+  runner-id  ID of the runner to fetch  [string] [default: read from stdin]
 
 Options:
-      --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
-      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help          Show help  [boolean]
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner  [string]
+      --project-id       ID of the project containing the runner  [string]
 
-Unknown argument: runner
+Runner ID must be provided
 "
 `;
 
 exports[`factoryctl get runner throws on missing arguments 2`] = `
-"Usage: factoryctl get <command> [options]
+"Usage: factoryctl get runner <runner-id> [options]
 
-Commands:
-  factoryctl get credential [credential-id]          Get credential details
-  factoryctl get job [job-id]                        Get job details
-  factoryctl get project [project-id]                Get project details
-  factoryctl get pipeline [pipeline-id]              Get pipeline details
-  factoryctl get organization [organization-id]      Get organization details
-  factoryctl get run [run-id]                        Get run details
-  factoryctl get pipeline-revision [revision-id]     Get pipeline-revision details
-  factoryctl get runner-manager [runner-manager-id]  Get runner manager details
+Positionals:
+  runner-id  ID of the runner to fetch  [string] [default: read from stdin]
 
 Options:
-      --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
-      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help          Show help  [boolean]
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner  [string]
+      --project-id       ID of the project containing the runner  [string]
 
-Unknown arguments: organization-id, organizationId, runner
+Runner ID must be provided
+"
+`;
+
+exports[`factoryctl get runner-pool throws on missing arguments 1`] = `
+"Usage: factoryctl get runner-pool <runner-pool-id> [options]
+
+Positionals:
+  runner-pool-id  ID of the runner pool to fetch  [string] [default: read from stdin]
+
+Options:
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner pool  [string] [required]
+
+Missing required argument: organization-id
+"
+`;
+
+exports[`factoryctl get runner-pool throws on missing arguments 2`] = `
+"Usage: factoryctl get runner-pool <runner-pool-id> [options]
+
+Positionals:
+  runner-pool-id  ID of the runner pool to fetch  [string] [default: read from stdin]
+
+Options:
+      --version          Show version number  [boolean]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
+      --help             Show help  [boolean]
+      --organization-id  ID of the organization containing the runner pool  [string] [required]
+
+Runner Pool ID must be provided
 "
 `;
 
@@ -312,23 +344,24 @@ exports[`factoryctl get throws on missing subcommand 1`] = `
 "Usage: factoryctl get <command> [options]
 
 Commands:
-  factoryctl get credential [credential-id]          Get credential details
-  factoryctl get job [job-id]                        Get job details
-  factoryctl get project [project-id]                Get project details
-  factoryctl get pipeline [pipeline-id]              Get pipeline details
-  factoryctl get organization [organization-id]      Get organization details
-  factoryctl get run [run-id]                        Get run details
-  factoryctl get pipeline-revision [revision-id]     Get pipeline-revision details
-  factoryctl get runner-manager [runner-manager-id]  Get runner manager details
+  factoryctl get credential [credential-id]       Get credential details
+  factoryctl get job [job-id]                     Get job details
+  factoryctl get organization [organization-id]   Get organization details
+  factoryctl get pipeline [pipeline-id]           Get pipeline details
+  factoryctl get pipeline-revision [revision-id]  Get pipeline-revision details
+  factoryctl get project [project-id]             Get project details
+  factoryctl get run [run-id]                     Get run details
+  factoryctl get runner [runner-id]               Get runner details
+  factoryctl get runner-pool [runner-pool-id]     Get runner pool details
 
 Options:
       --version       Show version number  [boolean]
-  -v, --verbose       Print detailed output  [boolean]
-      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath  [string]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
       --help          Show help  [boolean]
 
 Command must be specified

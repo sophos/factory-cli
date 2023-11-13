@@ -28,22 +28,8 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     .scriptName('factoryctl')
     .version(version)
     .usage('Usage: $0 <command> [options]')
-    .option('verbose', {
-      alias: 'v',
-      describe: 'Print detailed output',
-      type: 'boolean'
-    })
-    .option('format', {
-      describe: 'Output format',
-      default: DEFAULT_FORMATTER,
-      choices: ['wide', 'json', 'yaml']
-    })
-    .option('filter', {
-      describe: 'Filter output using JSONPath',
-      type: 'string',
-      requiresArg: true
-    })
     .option('address', {
+      aliases: ['url'],
       describe: 'Address of the Sophos Factory API server',
       type: 'string',
       requiresArg: true,
@@ -68,9 +54,10 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     .default(
       'address',
       () => process.env.FACTORY_ADDRESS ?? DEFAULT_ADDRESS,
-      `FACTORY_ADDRESS environment variable if set, otherwise ${DEFAULT_ADDRESS}`
+      `FACTORY_ADDRESS if set, otherwise ${DEFAULT_ADDRESS}`
     )
     .option('auth-address', {
+      aliases: ['authUrl'],
       describe: 'Address of the Sophos Factory Auth API server',
       type: 'string',
       requiresArg: false,
@@ -89,7 +76,7 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
 
           authAddress = url.toString();
         } catch (err) {
-          throw new Error('Invalid API address provided!');
+          throw new Error('Invalid Auth API address provided!');
         }
 
         return authAddress;
@@ -98,12 +85,27 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     .default(
       'auth-address',
       () => process.env.FACTORY_AUTH_ADDRESS ?? DEFAULT_AUTH_ADDRESS,
-      `FACTORY_AUTH_ADDRESS environment variable if set, otherwise ${DEFAULT_AUTH_ADDRESS}`
+      `FACTORY_AUTH_ADDRESS if set, otherwise ${DEFAULT_AUTH_ADDRESS}`
     )
     .option('auth-token', {
       describe: 'Authentication token',
       type: 'string',
       requiresArg: true
+    })
+    .option('filter', {
+      describe: 'Filter output using JSONPath',
+      type: 'string',
+      requiresArg: true
+    })
+    .option('format', {
+      describe: 'Output format',
+      default: DEFAULT_FORMATTER,
+      choices: ['wide', 'json', 'yaml']
+    })
+    .option('verbose', {
+      alias: 'v',
+      describe: 'Print detailed output',
+      type: 'boolean'
     })
     .default(
       'auth-token',

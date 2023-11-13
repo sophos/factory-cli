@@ -5,17 +5,17 @@ exports[`authentication rejects if token is not provided 1`] = `
 
 Options:
       --version          Show version number  [boolean]
-  -v, --verbose          Print detailed output  [boolean]
-      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter           Filter output using JsonPath  [string]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JsonPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
       --help             Show help  [boolean]
+      --offset  [number]
       --organization-id  ID of the organization containing the projects  [string]
       --sort             Sort order  [string] [choices: "modified_asc", "modified_desc", "name_asc", "name_desc"]
       --limit  [number]
-      --offset  [number]
 
 Authentication token must be specified!
 "

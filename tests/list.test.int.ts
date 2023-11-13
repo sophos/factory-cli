@@ -107,13 +107,30 @@ describe('factoryctl list', () => {
     });
   });
 
-  describe('runner managers', () => {
-    test('returns array of runner managers', async () => {
+  describe('runners', () => {
+    test('returns array of runners for project', async () => {
       await expect(
         execute(
           [
             'list',
-            'runner-managers',
+            'runners',
+            '--project-id',
+            knownIds.project,
+            '--format',
+            'json'
+          ],
+          {
+            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+          }
+        ).then((value) => Array.isArray(JSON.parse(value)))
+      ).resolves.toBeTruthy();
+    });
+    test('returns array of runners for organization', async () => {
+      await expect(
+        execute(
+          [
+            'list',
+            'runners',
             '--organization-id',
             knownIds.organization,
             '--format',
@@ -126,6 +143,27 @@ describe('factoryctl list', () => {
       ).resolves.toBeTruthy();
     });
   });
+
+  describe('runner pools', () => {
+    test('returns array of runner pools', async () => {
+      await expect(
+        execute(
+          [
+            'list',
+            'runner-pools',
+            '--organization-id',
+            knownIds.organization,
+            '--format',
+            'json'
+          ],
+          {
+            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+          }
+        ).then((value) => Array.isArray(JSON.parse(value)))
+      ).resolves.toBeTruthy();
+    });
+  });
+
   test('returns array of runs', async () => {
     await expect(
       execute(

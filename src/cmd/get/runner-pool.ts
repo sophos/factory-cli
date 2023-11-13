@@ -3,17 +3,17 @@ import fields from '../../fields';
 
 type Arguments = {
   organizationId: string;
-  runnerManagerId: string;
+  runnerPoolId: string;
 };
 
 export default handler(
-  async (apiClient, { organizationId, runnerManagerId }: Arguments) => {
+  async (apiClient, { organizationId, runnerPoolId }: Arguments) => {
     const api = apiClient.runnerManagers;
     const { data: run } = await api.getRunnerManager(
       organizationId,
-      runnerManagerId
+      runnerPoolId
     );
 
-    return createCommandResult('view', run, fields.runner);
+    return createCommandResult('view', run, fields.runnerPool);
   }
 );

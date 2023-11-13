@@ -5,7 +5,8 @@ import organizations from './organizations';
 import jobs from './jobs';
 import pipelines from './pipelines';
 import pipelineRevisions from './pipeline-revisions';
-import runnerManagers from './runner-managers';
+import runnerPools from './runner-pools';
+import runners from './runners';
 
 const listCommandMap = {
   projects,
@@ -14,8 +15,9 @@ const listCommandMap = {
   jobs,
   'pipeline-revisions': pipelineRevisions,
   pipelines,
-  'runner-managers': runnerManagers,
-  credentials
+  credentials,
+  'runner-pools': runnerPools,
+  runners
 };
 
 export default listCommandMap;
