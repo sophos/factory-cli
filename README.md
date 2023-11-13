@@ -7,7 +7,6 @@ Basic usage and installation is described below. [Click here for complete Sophos
 ## Usage
 
 ```shell
-$ factoryctl --help   
 Usage: factoryctl <command> [options]
 
 Commands:
@@ -20,14 +19,14 @@ Commands:
 
 Options:
       --version       Show version number                                                                      [boolean]
-  -v, --verbose       Print detailed output                                                                    [boolean]
-      --format        Output format                                  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter        Filter output using JSONPath                                                              [string]
       --address       Address of the Sophos Factory API server
-        [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+                             [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
       --auth-address  Address of the Sophos Factory Auth API server
-  [string] [default: FACTORY_AUTH_ADDRESS environment variable if set, otherwise https://auth.dev.factory.sophos.com/v1]
+                       [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token                   [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath                                                              [string]
+      --format        Output format                                  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output                                                                    [boolean]
       --help          Show help                                                                                [boolean]
 ```
 
