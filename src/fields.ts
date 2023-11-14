@@ -35,7 +35,7 @@ export default {
   runnerAgent: ['_id', 'organization_id', 'name', 'status', 'created'],
   runnerPool: [
     '_id',
-    'organization_id"',
+    'organization_id',
     'name',
     'created',
     'runner_manager_meta',
