@@ -5,8 +5,8 @@ exports[`factoryctl list credentials throws on missing arguments 1`] = `
 
 Options:
       --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter        Filter output using JsonPath  [string]
       --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -27,8 +27,8 @@ exports[`factoryctl list jobs throws on missing arguments 1`] = `
 
 Options:
       --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter        Filter output using JsonPath  [string]
       --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -46,8 +46,8 @@ exports[`factoryctl list pipeline-revisions throws on missing arguments 1`] = `
 
 Options:
       --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter        Filter output using JsonPath  [string]
       --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -69,8 +69,8 @@ List pipelines for a project
 
 Options:
       --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter        Filter output using JsonPath  [string]
       --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -92,8 +92,8 @@ List runner pools for an organization
 
 Options:
       --version          Show version number  [boolean]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address          Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter           Filter output using JsonPath  [string]
       --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -113,8 +113,8 @@ List runners for an organization or project
 
 Options:
       --version          Show version number  [boolean]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address     Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address          Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter           Filter output using JsonPath  [string]
       --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -133,8 +133,8 @@ exports[`factoryctl list runs throws on missing arguments 1`] = `
 
 Options:
       --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter        Filter output using JsonPath  [string]
       --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
@@ -167,8 +167,8 @@ Commands:
 
 Options:
       --version       Show version number  [boolean]
-      --address       Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-address  Address of the Sophos Factory Auth API server  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
       --filter        Filter output using JsonPath  [string]
       --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
