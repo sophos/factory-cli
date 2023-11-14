@@ -2,6 +2,7 @@
 
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
+import parseOutput, { asJson } from './helpers/parseOutput';
 
 describe('factoryctl rerun', () => {
   // Give platform time to bootstrap runner.
@@ -9,23 +10,23 @@ describe('factoryctl rerun', () => {
 
   let runId: string;
   beforeAll(async () => {
-    const data = JSON.parse(
-      await execute(
-        [
-          'run',
-          'pipeline',
-          '--project-id',
-          knownIds.project,
-          '--revision-id',
-          knownIds.pipelineRevision,
-          knownIds.pipeline,
-          '--format=json'
-        ],
-        { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-      )
-    );
-
-    runId = data._id;
+    await execute(
+      [
+        'run',
+        'pipeline',
+        '--project-id',
+        knownIds.project,
+        '--revision-id',
+        knownIds.pipelineRevision,
+        knownIds.pipeline,
+        '--format=json'
+      ],
+      { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
+    ).then((result) => {
+      const data = parseOutput(result, asJson);
+      runId = data._id;
+      return data;
+    });
 
     // Wait until run is finished.
     return await execute(
@@ -39,7 +40,7 @@ describe('factoryctl rerun', () => {
       execute(
         ['rerun', '--project-id', knownIds.project, runId, '--format=json'],
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-      ).then((value) => JSON.parse(value))
+      ).then((result) => parseOutput(result, asJson))
     ).resolves.toHaveProperty('status', 'Queued');
   });
 
@@ -55,7 +56,7 @@ describe('factoryctl rerun', () => {
           '--format=json'
         ],
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-      ).then((value) => Array.isArray(JSON.parse(value)))
-    ).resolves.toBeTruthy();
+      ).then((result) => parseOutput(result, asJson))
+    ).resolves.toBeInstanceOf(Array);
   });
 });

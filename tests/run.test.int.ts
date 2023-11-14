@@ -2,6 +2,7 @@
 import isNil from 'lodash/isNil';
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
+import parseOutput, { asJson } from './helpers/parseOutput';
 
 describe('factoryctl run', () => {
   // Give platform time to bootstrap runner.
@@ -21,7 +22,7 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result, asJson))
       ).resolves.toHaveProperty('status', 'Queued');
     });
 
@@ -40,8 +41,8 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
 
     test('correctly runs with variables', async () => {
@@ -85,7 +86,7 @@ describe('factoryctl run', () => {
             throw new Error('Expected debug step output to be presented!');
           }
 
-          return JSON.parse(ret.details);
+          return parseOutput(ret.details, asJson);
         })()
       ).resolves.toStrictEqual({
         string_variable: 'string',
@@ -100,23 +101,23 @@ describe('factoryctl run', () => {
   describe('with --wait', () => {
     let runId: string;
     beforeAll(async () => {
-      const data = JSON.parse(
-        await execute(
-          [
-            'run',
-            'pipeline',
-            '--project-id',
-            knownIds.project,
-            '--revision-id',
-            knownIds.pipelineRevision,
-            knownIds.pipeline,
-            '--format=json'
-          ],
-          { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
-
-      runId = data._id;
+      await execute(
+        [
+          'run',
+          'pipeline',
+          '--project-id',
+          knownIds.project,
+          '--revision-id',
+          knownIds.pipelineRevision,
+          knownIds.pipeline,
+          '--format=json'
+        ],
+        { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
+      ).then((result) => {
+        const run = parseOutput(result, asJson);
+        runId = run._id;
+        return run;
+      });
     });
 
     test('waits until run is finished', async () => {
@@ -132,8 +133,8 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -160,7 +161,7 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result, asJson))
       ).resolves.toHaveProperty('status', 'Queued');
     });
 
@@ -177,8 +178,8 @@ describe('factoryctl run', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
 
     test('correctly runs with variables', async () => {
@@ -221,7 +222,7 @@ describe('factoryctl run', () => {
             throw new Error('Expected debug step output to be presented!');
           }
 
-          return JSON.parse(ret.details);
+          return parseOutput(ret.details, asJson);
         })()
       ).resolves.toStrictEqual({
         string_array_variable: ['string', 'array'],

@@ -2,6 +2,7 @@
 
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
+import parseOutput, { asJson } from './helpers/parseOutput';
 import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
@@ -24,8 +25,8 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -44,8 +45,8 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -54,8 +55,8 @@ describe('factoryctl list', () => {
       await expect(
         execute(['list', 'organizations', '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        }).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -74,7 +75,7 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => Array.isArray(JSON.parse(value)))
+        ).then((result) => parseOutput(result, asJson))
       ).resolves.toBeTruthy();
     });
   });
@@ -92,8 +93,8 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -102,8 +103,8 @@ describe('factoryctl list', () => {
       await expect(
         execute(['list', 'projects', '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        }).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -122,7 +123,7 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => Array.isArray(JSON.parse(value)))
+        ).then((result) => parseOutput(result, asJson))
       ).resolves.toBeTruthy();
     });
     test('returns array of runners for organization', async () => {
@@ -139,8 +140,8 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -159,8 +160,8 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => Array.isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -171,7 +172,7 @@ describe('factoryctl list', () => {
         {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         }
-      ).then((value) => Array.isArray(JSON.parse(value)))
-    ).resolves.toBeTruthy();
+      ).then((result) => parseOutput(result, asJson))
+    ).resolves.toBeInstanceOf(Array);
   });
 });
