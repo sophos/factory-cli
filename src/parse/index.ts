@@ -30,7 +30,8 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     .usage('Usage: $0 <command> [options]')
     .option('address', {
       aliases: ['url'],
-      describe: 'Address of the Sophos Factory API server',
+      describe:
+        'Address of the Factory API server. Required for all commands except "organization(s)',
       type: 'string',
       requiresArg: true,
       coerce: (address: string) => {
@@ -58,7 +59,8 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     )
     .option('auth-address', {
       aliases: ['authUrl'],
-      describe: 'Address of the Sophos Factory Auth API server',
+      describe:
+        'Address of the Factory Auth API server. Required for "organization(s)" commands',
       type: 'string',
       requiresArg: false,
       coerce: (authAddress: string) => {

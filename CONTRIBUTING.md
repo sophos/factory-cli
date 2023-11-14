@@ -67,7 +67,10 @@ Full example for running integration tests:
 
 ```sh
 # Use the development API for tests.
+# FACTORY_ADDRESS is used for all 'factoryctl' sub-commands except 'organization(s)'
 export FACTORY_ADDRESS="https://api.dev.factory.sophos.com/v1"
+# FACTORY_AUTH_ADDRESS is used for 'factoryctl' sub-commands on organization(s)
+export FACTORY_AUTH_ADDRESS="https://auth.dev.factory.sophos.com/v1"
 # Set CLI executable path for tests.
 export FACTORY_CLI_PATH=$(realpath ./bin/factoryctl.js)
 # Sophos Factory platform authentication token for "dynamic" test suite
