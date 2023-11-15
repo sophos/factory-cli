@@ -4,6 +4,7 @@ import * as faker from 'faker';
 import { executeAsIs } from './helpers/execute';
 import knownIds from './helpers/knownIds';
 import { withCmd } from './helpers/options';
+import parseOutput, { asJson } from './helpers/parseOutput';
 
 describe('complex', () => {
   jest.setTimeout(20000);
@@ -15,7 +16,7 @@ describe('complex', () => {
           `get project --filter _id --format yaml ${knownIds.project}`
         )}) | ${withCmd('get project --format json')}`,
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      ).then((str) => JSON.parse(str))
+      ).then((result) => parseOutput(result, asJson))
     ).resolves.toHaveProperty('_id', knownIds.project);
   });
 
@@ -32,7 +33,7 @@ describe('complex', () => {
           `delete pipeline --project-id ${knownIds.project} --format=json`
         )}`,
         { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-      ).then((data) => JSON.parse(data))
+      ).then((result) => parseOutput(result, asJson))
     ).resolves.toHaveProperty('_id');
   });
 });

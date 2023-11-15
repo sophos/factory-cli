@@ -54,6 +54,16 @@ describe('factoryctl list', () => {
     });
   });
 
+  describe('runner pools', () => {
+    test('throws on missing arguments', async () => {
+      await expect(
+        execute(['list', 'runner-pools'], {
+          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+        })
+      ).rejects.toMatchSnapshot();
+    });
+  });
+
   describe('runners', () => {
     test('throws on missing arguments', async () => {
       await expect(

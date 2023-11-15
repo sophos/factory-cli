@@ -15,11 +15,12 @@ import run from './run';
 const yargs = require('yargs');
 
 const DEFAULT_ADDRESS = 'https://api.dev.factory.sophos.com/v1';
+const DEFAULT_AUTH_ADDRESS = 'https://auth.dev.factory.sophos.com/v1';
 
 const apply = (yargs: Yargs.Argv) =>
   // NOTE: using manual chaining instead of `_.flow` because it cannot
   //       infer type correctly.
-  create(get(list(del(rerun(run(yargs))))));
+  del(create(get(list(rerun(run(yargs))))));
 
 const parse = (argv: string[], { version }: { version: string }): unknown => {
   return apply(yargs(argv))
@@ -27,23 +28,10 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     .scriptName('factoryctl')
     .version(version)
     .usage('Usage: $0 <command> [options]')
-    .option('verbose', {
-      alias: 'v',
-      describe: 'Print detailed output',
-      type: 'boolean'
-    })
-    .option('format', {
-      describe: 'Output format',
-      default: DEFAULT_FORMATTER,
-      choices: ['wide', 'json', 'yaml']
-    })
-    .option('filter', {
-      describe: 'Filter output using JSONPath',
-      type: 'string',
-      requiresArg: true
-    })
     .option('address', {
-      describe: 'Address of the Sophos Factory API server',
+      aliases: ['url'],
+      describe:
+        'Address of the Factory API server. Required for all commands except "organization(s)',
       type: 'string',
       requiresArg: true,
       coerce: (address: string) => {
@@ -67,12 +55,59 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
     .default(
       'address',
       () => process.env.FACTORY_ADDRESS ?? DEFAULT_ADDRESS,
-      `FACTORY_ADDRESS environment variable if set, otherwise ${DEFAULT_ADDRESS}`
+      `FACTORY_ADDRESS if set, otherwise ${DEFAULT_ADDRESS}`
+    )
+    .option('auth-address', {
+      aliases: ['authUrl'],
+      describe:
+        'Address of the Factory Auth API server. Required for "organization(s)" commands',
+      type: 'string',
+      requiresArg: false,
+      coerce: (authAddress: string) => {
+        if (
+          !(
+            authAddress.startsWith('http://') ||
+            authAddress.startsWith('https://')
+          )
+        ) {
+          authAddress = `https://${authAddress}`;
+        }
+
+        try {
+          const url = new URL(authAddress);
+
+          authAddress = url.toString();
+        } catch (err) {
+          throw new Error('Invalid Auth API address provided!');
+        }
+
+        return authAddress;
+      }
+    })
+    .default(
+      'auth-address',
+      () => process.env.FACTORY_AUTH_ADDRESS ?? DEFAULT_AUTH_ADDRESS,
+      `FACTORY_AUTH_ADDRESS if set, otherwise ${DEFAULT_AUTH_ADDRESS}`
     )
     .option('auth-token', {
       describe: 'Authentication token',
       type: 'string',
       requiresArg: true
+    })
+    .option('filter', {
+      describe: 'Filter output using JSONPath',
+      type: 'string',
+      requiresArg: true
+    })
+    .option('format', {
+      describe: 'Output format',
+      default: DEFAULT_FORMATTER,
+      choices: ['wide', 'json', 'yaml']
+    })
+    .option('verbose', {
+      alias: 'v',
+      describe: 'Print detailed output',
+      type: 'boolean'
     })
     .default(
       'auth-token',
@@ -99,6 +134,7 @@ const parse = (argv: string[], { version }: { version: string }): unknown => {
 
 export type Args = Omit<ReturnType<typeof parse>, 'address'> & {
   address: string;
+  authAddress: string;
   authToken: string;
 
   // TODO: yargs should infer this.

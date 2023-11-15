@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import { isArray } from 'lodash';
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
+import parseOutput, { asJson } from './helpers/parseOutput';
 import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
@@ -25,8 +25,8 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -45,8 +45,8 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -55,8 +55,8 @@ describe('factoryctl list', () => {
       await expect(
         execute(['list', 'organizations', '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        }).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -75,7 +75,7 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((result) => parseOutput(result, asJson))
       ).resolves.toBeTruthy();
     });
   });
@@ -93,8 +93,8 @@ describe('factoryctl list', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
@@ -103,13 +103,13 @@ describe('factoryctl list', () => {
       await expect(
         execute(['list', 'projects', '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => isArray(JSON.parse(value)))
-      ).resolves.toBeTruthy();
+        }).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
     });
   });
 
   describe('runners', () => {
-    test('returns array of runners', async () => {
+    test('returns array of runners for project', async () => {
       await expect(
         execute(
           [
@@ -123,10 +123,48 @@ describe('factoryctl list', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => isArray(JSON.parse(value)))
+        ).then((result) => parseOutput(result, asJson))
       ).resolves.toBeTruthy();
     });
+    test('returns array of runners for organization', async () => {
+      await expect(
+        execute(
+          [
+            'list',
+            'runners',
+            '--organization-id',
+            knownIds.organization,
+            '--format',
+            'json'
+          ],
+          {
+            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+          }
+        ).then((result) => parseOutput(result))
+      ).resolves.toBeInstanceOf(Array);
+    });
   });
+
+  describe('runner pools', () => {
+    test('returns array of runner pools', async () => {
+      await expect(
+        execute(
+          [
+            'list',
+            'runner-pools',
+            '--organization-id',
+            knownIds.organization,
+            '--format',
+            'json'
+          ],
+          {
+            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+          }
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeInstanceOf(Array);
+    });
+  });
+
   test('returns array of runs', async () => {
     await expect(
       execute(
@@ -134,7 +172,7 @@ describe('factoryctl list', () => {
         {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
         }
-      ).then((value) => isArray(JSON.parse(value)))
-    ).resolves.toBeTruthy();
+      ).then((result) => parseOutput(result, asJson))
+    ).resolves.toBeInstanceOf(Array);
   });
 });

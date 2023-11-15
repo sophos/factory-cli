@@ -6,24 +6,24 @@ import isNil from 'lodash/isNil';
 export default (yargs: Yargs.Argv) =>
   yargs.command('delete', 'Delete specified resource', (yargs) =>
     yargs
-      .command('pipeline [pipeline-id]', 'Delete a pipeline', (yargs) =>
+      .command('credential [credential-id]', 'Delete a credential', (yargs) =>
         yargs
-          .positional('pipeline-id', {
-            describe: 'ID of the pipeline to delete',
+          .positional('credential-id', {
+            describe: 'ID of the credential to deleted',
             type: 'string',
             required: true,
             demandOption: true
           })
-          .default('pipeline-id', () => readStdin(), 'read from stdin')
+          .default('credential-id', () => readStdin(), 'read from stdin')
           .check((argv) => {
-            if (isNil(argv.pipelineId)) {
-              throw new Error('Pipeline ID must be provided');
+            if (isNil(argv.credentialId)) {
+              throw new Error('Credential ID must be provided');
             }
 
             return true;
           }, false)
           .option('project-id', {
-            describe: 'ID of the project containing the pipeline',
+            describe: 'ID of the project containing the credential',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -47,6 +47,29 @@ export default (yargs: Yargs.Argv) =>
           }, false)
           .option('project-id', {
             describe: 'ID of the project containing the job',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
+      )
+      .command('pipeline [pipeline-id]', 'Delete a pipeline', (yargs) =>
+        yargs
+          .positional('pipeline-id', {
+            describe: 'ID of the pipeline to delete',
+            type: 'string',
+            required: true,
+            demandOption: true
+          })
+          .default('pipeline-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.pipelineId)) {
+              throw new Error('Pipeline ID must be provided');
+            }
+
+            return true;
+          }, false)
+          .option('project-id', {
+            describe: 'ID of the project containing the pipeline',
             type: 'string',
             demandOption: true,
             requiresArg: true
@@ -79,7 +102,7 @@ export default (yargs: Yargs.Argv) =>
           })
           .default('runner-id', () => readStdin(), 'read from stdin')
           .check((argv) => {
-            if (isNil(argv.runnerId)) {
+            if (isNil(argv.runnerPoolId)) {
               throw new Error('Runner ID must be provided');
             }
 
@@ -92,28 +115,31 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('credential [credential-id]', 'Delete a credential', (yargs) =>
-        yargs
-          .positional('credential-id', {
-            describe: 'ID of the credential to deleted',
-            type: 'string',
-            required: true,
-            demandOption: true
-          })
-          .default('credential-id', () => readStdin(), 'read from stdin')
-          .check((argv) => {
-            if (isNil(argv.credentialId)) {
-              throw new Error('Credential ID must be provided');
-            }
+      .command(
+        'runner-pool [runner-pool-id]',
+        'Delete a runner pool',
+        (yargs) =>
+          yargs
+            .positional('runner-pool-id', {
+              describe: 'ID of the runner pool to delete',
+              type: 'string',
+              required: true,
+              demandOption: true
+            })
+            .default('runner-pool-id', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.runnerPoolId)) {
+                throw new Error('Runner Pool ID must be provided');
+              }
 
-            return true;
-          }, false)
-          .option('project-id', {
-            describe: 'ID of the project containing the credential',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
+              return true;
+            }, false)
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runner pool',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
       )
       .demandCommand(1, 'Command must be specified.')
       .strict()

@@ -1,32 +1,42 @@
-import {
-  ProjectsApi,
-  JobsApi,
-  RunsApi,
-  OrganizationsApi,
-  PipelinesApi,
-  AgentsApi,
-  Configuration,
-  CredentialsApi
-} from '@sophos-factory/api-client';
+import { factoryApi, factoryAuthApi } from '@sophos-factory/api-client';
 
 export default class Client {
-  public readonly jobs: JobsApi;
-  public readonly runs: RunsApi;
-  public readonly projects: ProjectsApi;
-  public readonly organizations: OrganizationsApi;
-  public readonly pipelines: PipelinesApi;
-  public readonly runners: AgentsApi;
-  public readonly credentials: CredentialsApi;
+  public readonly agents: factoryApi.AgentsApi;
+  public readonly jobs: factoryApi.JobsApi;
+  public readonly runs: factoryApi.RunsApi;
+  public readonly projects: factoryApi.ProjectsApi;
+  public readonly organizations: factoryAuthApi.OrganizationsApi;
+  public readonly pipelines: factoryApi.PipelinesApi;
+  public readonly runnerManagers: factoryApi.RunnerPoolsApi;
+  public readonly credentials: factoryApi.CredentialsApi;
 
-  constructor(baseUrl: string, accessToken: string) {
-    const config = new Configuration({ basePath: baseUrl, accessToken });
+  constructor({
+    baseUrl,
+    accessToken,
+    authBaseUrl
+  }: {
+    baseUrl: string;
+    accessToken: string;
+    authBaseUrl?: string;
+  }) {
+    const config = new factoryApi.Configuration({
+      basePath: baseUrl,
+      accessToken
+    });
 
-    this.jobs = new JobsApi(config);
-    this.runs = new RunsApi(config);
-    this.projects = new ProjectsApi(config);
-    this.organizations = new OrganizationsApi(config);
-    this.pipelines = new PipelinesApi(config);
-    this.runners = new AgentsApi(config);
-    this.credentials = new CredentialsApi(config);
+    this.agents = new factoryApi.AgentsApi(config);
+    this.jobs = new factoryApi.JobsApi(config);
+    this.runs = new factoryApi.RunsApi(config);
+    this.projects = new factoryApi.ProjectsApi(config);
+    this.pipelines = new factoryApi.PipelinesApi(config);
+    this.runnerManagers = new factoryApi.RunnerPoolsApi(config);
+    this.credentials = new factoryApi.CredentialsApi(config);
+
+    const authConfig = new factoryAuthApi.Configuration({
+      basePath: authBaseUrl,
+      accessToken
+    });
+
+    this.organizations = new factoryAuthApi.OrganizationsApi(authConfig);
   }
 }

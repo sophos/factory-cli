@@ -2,116 +2,94 @@
 import { execute, executeAsIs } from './helpers/execute';
 import knownIds from './helpers/knownIds';
 import { withCmd } from './helpers/options';
-import yaml from 'js-yaml';
+import parseOutput, { asJson } from './helpers/parseOutput';
 
 describe('factoryctl get', () => {
   jest.setTimeout(60 * 1000);
+
   test('formats as JSON when --format=json is passed', async () => {
     const formatJsonOrg = async () => {
-      const json = JSON.stringify(
-        await execute(
-          ['get', 'organization', knownIds.organization, '--format', 'json'],
-          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        )
-      );
-      JSON.parse(json);
+      await execute(
+        ['get', 'organization', knownIds.organization, '--format', 'json'],
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+      ).then((result) => parseOutput(result, asJson));
     };
     expect(formatJsonOrg).not.toThrow();
 
     const formatJsonProj = async () => {
-      const json = JSON.stringify(
-        await execute(
-          ['get', 'project', knownIds.project, '--format', 'json'],
-          {
-            token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-          }
-        )
-      );
-      JSON.parse(json);
+      await execute(['get', 'project', knownIds.project, '--format', 'json'], {
+        token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+      }).then((result) => parseOutput(result, asJson));
     };
     expect(formatJsonProj).not.toThrow();
 
     const formatJsonCred = async () => {
-      const json = JSON.stringify(
-        await execute(
-          [
-            'get',
-            'credential',
-            knownIds.credential,
-            '--project-id',
-            knownIds.project,
-            '--format',
-            'json'
-          ],
-          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        )
-      );
-      JSON.parse(json);
+      await execute(
+        [
+          'get',
+          'credential',
+          knownIds.credential,
+          '--project-id',
+          knownIds.project,
+          '--format',
+          'json'
+        ],
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+      ).then((result) => parseOutput(result, asJson));
     };
     expect(formatJsonCred).not.toThrow();
 
     const formatJsonJob = async () => {
-      const json = JSON.stringify(
-        await execute(
-          [
-            'get',
-            'job',
-            knownIds.job,
-            '--project-id',
-            knownIds.project,
-            '--format',
-            'json'
-          ],
-          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        )
-      );
-      JSON.parse(json);
+      await execute(
+        [
+          'get',
+          'job',
+          knownIds.job,
+          '--project-id',
+          knownIds.project,
+          '--format',
+          'json'
+        ],
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+      ).then((result) => parseOutput(result, asJson));
     };
     expect(formatJsonJob).not.toThrow();
 
-    const formatJsonPipe = async () => {
-      const json = JSON.stringify(
-        await execute(
-          [
-            'get',
-            'pipeline',
-            knownIds.pipeline,
-            '--project-id',
-            knownIds.project,
-            '--format',
-            'json'
-          ],
-          { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        )
-      );
-      JSON.parse(json);
+    const formatJsonPipeline = async () => {
+      await execute(
+        [
+          'get',
+          'pipeline',
+          knownIds.pipeline,
+          '--project-id',
+          knownIds.project,
+          '--format',
+          'json'
+        ],
+        { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
+      ).then((result) => parseOutput(result, asJson));
     };
-    expect(formatJsonPipe).not.toThrow();
+    expect(formatJsonPipeline).not.toThrow();
   });
 
   test('formats as YAML when --format=yaml is passed', async () => {
-    const formatYamlOrg = async () => {
-      const res = await execute(
+    const formatYamlOrganization = async () => {
+      await execute(
         ['get', 'organization', knownIds.organization, '--format', 'yaml'],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      );
-      yaml.load(res);
+      ).then((result) => parseOutput(result));
     };
-    expect(formatYamlOrg).not.toThrow();
+    expect(formatYamlOrganization).not.toThrow();
 
     const formatYamlProj = async () => {
-      const res = await execute(
-        ['get', 'project', knownIds.project, '--format', 'yaml'],
-        {
-          token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }
-      );
-      yaml.load(res);
+      await execute(['get', 'project', knownIds.project, '--format', 'yaml'], {
+        token: process.env.FACTORY_STATIC_AUTH_TOKEN!
+      }).then((result) => parseOutput(result));
     };
     expect(formatYamlProj).not.toThrow();
 
-    const formatYamlCred = async () => {
-      const res = await execute(
+    const formatYamlCredential = async () => {
+      await execute(
         [
           'get',
           'credential',
@@ -122,13 +100,12 @@ describe('factoryctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      );
-      yaml.load(res);
+      ).then((result) => parseOutput(result));
     };
-    expect(formatYamlCred).not.toThrow();
+    expect(formatYamlCredential).not.toThrow();
 
     const formatYamlJob = async () => {
-      const res = await execute(
+      await execute(
         [
           'get',
           'job',
@@ -139,13 +116,12 @@ describe('factoryctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      );
-      yaml.load(res);
+      ).then((result) => parseOutput(result));
     };
     expect(formatYamlJob).not.toThrow();
 
-    const formatYamlPipe = async () => {
-      const res = await execute(
+    const formatYamlPipeline = async () => {
+      await execute(
         [
           'get',
           'pipeline',
@@ -156,10 +132,9 @@ describe('factoryctl get', () => {
           'yaml'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      );
-      yaml.load(res);
+      ).then((result) => parseOutput(result));
     };
-    expect(formatYamlPipe).not.toThrow();
+    expect(formatYamlPipeline).not.toThrow();
   });
 
   describe('organization', () => {
@@ -170,7 +145,7 @@ describe('factoryctl get', () => {
           {
             token: process.env.FACTORY_STATIC_AUTH_TOKEN!
           }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.organization);
     });
 
@@ -181,7 +156,7 @@ describe('factoryctl get', () => {
             'get organization --format=json'
           )}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.organization);
     });
   });
@@ -191,7 +166,7 @@ describe('factoryctl get', () => {
       await expect(
         execute(['get', 'project', knownIds.project, '--format', 'json'], {
           token: process.env.FACTORY_STATIC_AUTH_TOKEN!
-        }).then((value) => JSON.parse(value))
+        }).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.project);
     });
 
@@ -200,7 +175,7 @@ describe('factoryctl get', () => {
         executeAsIs(
           `echo ${knownIds.project} | ${withCmd('get project --format=json')}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.project);
     });
   });
@@ -219,7 +194,7 @@ describe('factoryctl get', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('id', knownIds.credential);
       // TODO toHaveProperty('project_id', knownIds.project);
     });
@@ -231,7 +206,7 @@ describe('factoryctl get', () => {
             `get credential --project-id ${knownIds.project} --format=json`
           )}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('id', knownIds.credential);
     });
   });
@@ -249,7 +224,7 @@ describe('factoryctl get', () => {
           'json'
         ],
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      ).then((value) => JSON.parse(value))
+      ).then((result) => parseOutput(result))
     ).resolves.toHaveProperty('_id', knownIds.job);
   });
 
@@ -260,7 +235,7 @@ describe('factoryctl get', () => {
           `get job --project-id ${knownIds.project} --format=json`
         )}`,
         { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-      ).then((value) => JSON.parse(value))
+      ).then((result) => parseOutput(result))
     ).resolves.toHaveProperty('_id', knownIds.job);
   });
 
@@ -280,7 +255,7 @@ describe('factoryctl get', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.pipelineRevision);
     });
 
@@ -291,7 +266,7 @@ describe('factoryctl get', () => {
             `get pipeline-revision --project-id ${knownIds.project} --pipeline-id ${knownIds.pipeline} --format=json`
           )}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.pipelineRevision);
     });
   });
@@ -310,7 +285,7 @@ describe('factoryctl get', () => {
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.pipeline);
     });
 
@@ -321,38 +296,38 @@ describe('factoryctl get', () => {
             `get pipeline --project-id ${knownIds.project} --format=json`
           )}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
+        ).then((result) => parseOutput(result))
       ).resolves.toHaveProperty('_id', knownIds.pipeline);
     });
   });
 
-  describe('runner', () => {
-    test('returns runner information', async () => {
+  describe('runner pools', () => {
+    test('returns runner pool information', async () => {
       await expect(
         execute(
           [
             'get',
-            'runner',
+            'runner-pool',
             '--organization-id',
             knownIds.organization,
-            knownIds.runner,
+            knownIds.runnerPool,
             '--format',
             'json'
           ],
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
-      ).resolves.toHaveProperty('_id', knownIds.runner);
+        ).then((result) => parseOutput(result))
+      ).resolves.toHaveProperty('_id', knownIds.runnerPool);
     });
 
     test('accepts id from stdin', async () => {
       await expect(
         executeAsIs(
-          `echo ${knownIds.runner} | ${withCmd(
-            `get runner --organization-id ${knownIds.organization} --format=json`
+          `echo ${knownIds.runnerPool} | ${withCmd(
+            `get runner-pool --organization-id ${knownIds.organization} --format=json`
           )}`,
           { token: process.env.FACTORY_STATIC_AUTH_TOKEN! }
-        ).then((value) => JSON.parse(value))
-      ).resolves.toHaveProperty('_id', knownIds.runner);
+        ).then((result) => parseOutput(result))
+      ).resolves.toHaveProperty('_id', knownIds.runnerPool);
     });
   });
 });

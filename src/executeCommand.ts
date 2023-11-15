@@ -40,10 +40,12 @@ export default async function executeCommand(args: Args): Promise<void> {
     if (isFunction(handler)) {
       isUnknownCmd = false;
 
-      const apiClient = new Client(
-        args.address as unknown as string,
-        args.authToken as string
-      );
+      const apiClient = new Client({
+        baseUrl: args.address as unknown as string,
+        authBaseUrl: args.authAddress as unknown as string,
+        accessToken: args.authToken as unknown as string
+      });
+
       const result = await handler(apiClient, args);
       const { payload, fields, type, format: formatType } = result;
       const isJsonOrYamlFormat = formatType === 'json' || formatType === 'yaml';

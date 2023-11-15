@@ -20,10 +20,14 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, 'skip ci') }}
     runs-on: ${{ matrix.operating-system }}
     strategy:
-      max-parallel: 4
+      max-parallel: 1
       matrix:
         operating-system: [ubuntu-latest, macos-latest]
-        version: [14.x, 16.x, 18.x, 19.x]
+        version: [16.x, 18.x, 20.x, 21.x]
+    env:
+      FACTORY_ADDRESS: ${{ inputs.FACTORY_ADDRESS }}
+      FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
+      FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
     steps:
       - uses: actions/checkout@v3.1.0
       - name: Setup node ${{ matrix.version }}
@@ -39,8 +43,4 @@ jobs:
       - run: npm run build:runtime
 
       - run: npm run test:unit
-      - run: npm run test:int -- -u
-        env:
-          FACTORY_ADDRESS: ${{ inputs.FACTORY_ADDRESS }}
-          FACTORY_STATIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN }}
-          FACTORY_DYNAMIC_AUTH_TOKEN: ${{ secrets.FACTORY_AUTH_TOKEN2 }}
+      - run: npm run test:int

@@ -1,8 +1,6 @@
 import isNil from 'lodash/isNil';
-import {
-  JobScheduleIntervalTypeEnum,
-  JobTriggerTypeEnum
-} from '@sophos-factory/api-client';
+
+import { factoryApi } from '@sophos-factory/api-client';
 
 import { createCommandResult, handler } from '../handler';
 import { JobTriggerType } from '../../job-trigger-type';
@@ -30,16 +28,16 @@ type Arguments = {
 };
 
 const triggerType = {
-  manual: JobTriggerTypeEnum.Manual,
-  scheduled: JobTriggerTypeEnum.Scheduled
+  manual: factoryApi.JobTriggerTypeEnum.Manual,
+  scheduled: factoryApi.JobTriggerTypeEnum.Scheduled
 };
 
 const intervalType = {
-  minute: JobScheduleIntervalTypeEnum.Minute,
-  hour: JobScheduleIntervalTypeEnum.Hour,
-  day: JobScheduleIntervalTypeEnum.Day,
-  week: JobScheduleIntervalTypeEnum.Week,
-  month: JobScheduleIntervalTypeEnum.Month
+  minute: factoryApi.JobScheduleIntervalTypeEnum.Minute,
+  hour: factoryApi.JobScheduleIntervalTypeEnum.Hour,
+  day: factoryApi.JobScheduleIntervalTypeEnum.Day,
+  week: factoryApi.JobScheduleIntervalTypeEnum.Week,
+  month: factoryApi.JobScheduleIntervalTypeEnum.Month
 };
 
 export default handler(

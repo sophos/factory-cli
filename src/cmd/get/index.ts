@@ -1,11 +1,12 @@
 import credential from './credential';
 import job from './job';
 import organization from './organization';
-import project from './project';
-import run from './run';
 import pipeline from './pipeline';
 import pipelineRevision from './pipeline-revision';
+import project from './project';
+import run from './run';
 import runner from './runner';
+import runnerPool from './runner-pool';
 
 const getCommandMap = {
   credential,
@@ -15,7 +16,8 @@ const getCommandMap = {
   pipeline,
   'pipeline-revision': pipelineRevision,
   run,
-  runner
+  runner,
+  'runner-pool': runnerPool
 };
 
 export default getCommandMap;

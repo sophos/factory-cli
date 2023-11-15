@@ -7,11 +7,12 @@ Create a new credential
 
 Options:
       --version               Show version number  [boolean]
-  -v, --verbose               Print detailed output  [boolean]
-      --format                Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter                Filter output using JsonPath  [string]
-      --address               Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address               Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address          Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token            Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter                Filter output using JSONPath  [string]
+      --format                Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose               Print detailed output  [boolean]
       --help                  Show help  [boolean]
       --project-id            ID of the project under which the credential will be created  [string] [required]
       --name                  Name of the credential  [string] [required]
@@ -44,11 +45,12 @@ Create a new job
 
 Options:
       --version                 Show version number  [boolean]
-  -v, --verbose                 Print detailed output  [boolean]
-      --format                  Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter                  Filter output using JsonPath  [string]
-      --address                 Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address                 Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address            Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token              Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter                  Filter output using JSONPath  [string]
+      --format                  Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose                 Print detailed output  [boolean]
       --help                    Show help  [boolean]
       --project-id              ID of the project under which job will be created  [string] [required]
       --pipeline-id             ID of the pipeline from which job will be created  [string] [required]
@@ -74,17 +76,18 @@ exports[`factoryctl create pipeline throws on missing arguments 1`] = `
 "factoryctl pipeline --project-id <project-id> --name <name> [options]
 
 Options:
-      --version      Show version number  [boolean]
-  -v, --verbose      Print detailed output  [boolean]
-      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter       Filter output using JsonPath  [string]
-      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help         Show help  [boolean]
-      --project-id   ID of the project under which pipeline will be created  [string] [required]
-      --name         Name of the pipeline  [string] [required]
-      --description  Description of the pipeline  [string]
-      --summary      Summary of the pipeline  [string]
+      --version       Show version number  [boolean]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
+      --help          Show help  [boolean]
+      --project-id    ID of the project under which pipeline will be created  [string] [required]
+      --name          Name of the pipeline  [string] [required]
+      --description   Description of the pipeline  [string]
+      --summary       Summary of the pipeline  [string]
 
 Missing required arguments: project-id, name
 "
@@ -99,15 +102,16 @@ Positionals:
   input  Pipeline workflow configuration. The configuration must be provided either in YAML or JSON formats. If supplied argument is starting with at symbol (\`@\`) argument is treated as path to configuration file.  [default: read from stdin]
 
 Options:
-      --version      Show version number  [boolean]
-  -v, --verbose      Print detailed output  [boolean]
-      --format       Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter       Filter output using JsonPath  [string]
-      --address      Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-token   Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help         Show help  [boolean]
-      --project-id   ID of the project containing the pipeline  [string] [required]
-      --pipeline-id  ID of the pipeline for the pipeline-revision  [required]
+      --version       Show version number  [boolean]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
+      --help          Show help  [boolean]
+      --project-id    ID of the project containing the pipeline  [string] [required]
+      --pipeline-id   ID of the pipeline for the pipeline-revision  [required]
 
 Missing required arguments: project-id, pipeline-id
 "
@@ -120,11 +124,12 @@ Create a new project
 
 Options:
       --version          Show version number  [boolean]
-  -v, --verbose          Print detailed output  [boolean]
-      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter           Filter output using JsonPath  [string]
-      --address          Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --address          Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address     Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
       --auth-token       Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter           Filter output using JSONPath  [string]
+      --format           Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose          Print detailed output  [boolean]
       --help             Show help  [boolean]
       --organization-id  ID of organization under which the project will be created  [string] [required]
       --name             Name of the project  [string] [required]
@@ -146,13 +151,14 @@ Commands:
   factoryctl create job                        Create a new job
 
 Options:
-      --version     Show version number  [boolean]
-  -v, --verbose     Print detailed output  [boolean]
-      --format      Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
-      --filter      Filter output using JsonPath  [string]
-      --address     Address of the Sophos Factory API server  [string] [default: FACTORY_ADDRESS environment variable if set, otherwise https://api.dev.factory.sophos.com/v1]
-      --auth-token  Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
-      --help        Show help  [boolean]
+      --version       Show version number  [boolean]
+      --address       Address of the Factory API server. Required for all commands except "organization(s)  [string] [default: FACTORY_ADDRESS if set, otherwise https://api.dev.factory.sophos.com/v1]
+      --auth-address  Address of the Factory Auth API server. Required for "organization(s)" commands  [string] [default: FACTORY_AUTH_ADDRESS if set, otherwise https://auth.dev.factory.sophos.com/v1]
+      --auth-token    Authentication token  [string] [default: FACTORY_AUTH_TOKEN environment variable]
+      --filter        Filter output using JSONPath  [string]
+      --format        Output format  [choices: "wide", "json", "yaml"] [default: "wide"]
+  -v, --verbose       Print detailed output  [boolean]
+      --help          Show help  [boolean]
 
 Command must be specified.
 "

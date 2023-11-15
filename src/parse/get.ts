@@ -62,23 +62,26 @@ export default (yargs: Yargs.Argv) =>
             requiresArg: true
           })
       )
-      .command('project [project-id]', 'Get project details', (yargs) =>
-        yargs
-          .usage('Usage: $0 get project <project-id> [options]')
-          .positional('project-id', {
-            type: 'string',
-            describe: 'ID of the project to fetch',
-            demandOption: true,
-            requiresArg: true
-          })
-          .default('project-id', () => readStdin(), 'read from stdin')
-          .check((argv) => {
-            if (isNil(argv.projectId)) {
-              throw new Error('Project ID must be provided');
-            }
+      .command(
+        'organization [organization-id]',
+        'Get organization details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 get organization <organization-id> [options]')
+            .positional('organization-id', {
+              type: 'string',
+              describe: 'ID of the organization to fetch',
+              demandOption: true,
+              requiresArg: true
+            })
+            .default('organization-id', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.organizationId)) {
+                throw new Error('Organization ID must be provided');
+              }
 
-            return true;
-          }, false)
+              return true;
+            }, false)
       )
       .command('pipeline [pipeline-id]', 'Get pipeline details', (yargs) =>
         yargs
@@ -102,56 +105,6 @@ export default (yargs: Yargs.Argv) =>
             describe: 'ID of the project to fetch',
             demandOption: true,
             requiresArg: true
-          })
-      )
-      .command(
-        'organization [organization-id]',
-        'Get organization details',
-        (yargs) =>
-          yargs
-            .usage('Usage: $0 get organization <organization-id> [options]')
-            .positional('organization-id', {
-              type: 'string',
-              describe: 'ID of the organization to fetch',
-              demandOption: true,
-              requiresArg: true
-            })
-            .default('organization-id', () => readStdin(), 'read from stdin')
-            .check((argv) => {
-              if (isNil(argv.organizationId)) {
-                throw new Error('Organization ID must be provided');
-              }
-
-              return true;
-            }, false)
-      )
-      .command('run [run-id]', 'Get run details', (yargs) =>
-        yargs
-          .usage('Usage: $0 get run <run-id> [options]')
-          .positional('run-id', {
-            type: 'string',
-            describe: 'ID of the run to fetch',
-            demandOption: true,
-            requiresArg: true
-          })
-          .default('run-id', () => readStdin(), 'read from stdin')
-          .check((argv) => {
-            if (isNil(argv.runId)) {
-              throw new Error('Run ID must be provided');
-            }
-
-            return true;
-          }, false)
-          .option('project-id', {
-            describe: 'ID of the project containing the run',
-            type: 'string',
-            demandOption: true,
-            requiresArg: true
-          })
-          .option('wait', {
-            describe:
-              'Wait until run execution is finished if it is in progress',
-            type: 'boolean'
           })
       )
       .command(
@@ -187,6 +140,53 @@ export default (yargs: Yargs.Argv) =>
               requiresArg: true
             })
       )
+      .command('project [project-id]', 'Get project details', (yargs) =>
+        yargs
+          .usage('Usage: $0 get project <project-id> [options]')
+          .positional('project-id', {
+            type: 'string',
+            describe: 'ID of the project to fetch',
+            demandOption: true,
+            requiresArg: true
+          })
+          .default('project-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.projectId)) {
+              throw new Error('Project ID must be provided');
+            }
+
+            return true;
+          }, false)
+      )
+      .command('run [run-id]', 'Get run details', (yargs) =>
+        yargs
+          .usage('Usage: $0 get run <run-id> [options]')
+          .positional('run-id', {
+            type: 'string',
+            describe: 'ID of the run to fetch',
+            demandOption: true,
+            requiresArg: true
+          })
+          .default('run-id', () => readStdin(), 'read from stdin')
+          .check((argv) => {
+            if (isNil(argv.runId)) {
+              throw new Error('Run ID must be provided');
+            }
+
+            return true;
+          }, false)
+          .option('project-id', {
+            describe: 'ID of the project containing the run',
+            type: 'string',
+            demandOption: true,
+            requiresArg: true
+          })
+          .option('wait', {
+            describe:
+              'Wait until run execution is finished if it is in progress',
+            type: 'boolean'
+          })
+      )
       .command('runner [runner-id]', 'Get runner details', (yargs) =>
         yargs
           .usage('Usage: $0 get runner <runner-id> [options]')
@@ -207,9 +207,58 @@ export default (yargs: Yargs.Argv) =>
           .option('organization-id', {
             describe: 'ID of the organization containing the runner',
             type: 'string',
-            demandOption: true,
+            demandOption: false,
             requiresArg: true
           })
+          .option('project-id', {
+            describe: 'ID of the project containing the runner',
+            type: 'string',
+            demandOption: false,
+            requiresArg: true
+          })
+          .check((argv) => {
+            if (isNil(argv.runnerId)) {
+              throw new Error('Runner ID must be provided');
+            }
+            if (isNil(argv.projectId) && isNil(argv.organizationId)) {
+              throw new Error(
+                'Either Project ID or Organization ID must be provided'
+              );
+            }
+            if (!isNil(argv.projectId) && !isNil(argv.organizationId)) {
+              throw new Error(
+                'Provide Project ID or Organization ID, but not both'
+              );
+            }
+            return true;
+          }, false)
+      )
+      .command(
+        'runner-pool [runner-pool-id]',
+        'Get runner pool details',
+        (yargs) =>
+          yargs
+            .usage('Usage: $0 get runner-pool <runner-pool-id> [options]')
+            .positional('runner-pool-id', {
+              type: 'string',
+              describe: 'ID of the runner pool to fetch',
+              demandOption: true,
+              requiresArg: true
+            })
+            .default('runner-pool-id', () => readStdin(), 'read from stdin')
+            .check((argv) => {
+              if (isNil(argv.runnerPoolId)) {
+                throw new Error('Runner Pool ID must be provided');
+              }
+
+              return true;
+            }, false)
+            .option('organization-id', {
+              describe: 'ID of the organization containing the runner pool',
+              type: 'string',
+              demandOption: true,
+              requiresArg: true
+            })
       )
       .demandCommand(1, 'Command must be specified')
       .strict()

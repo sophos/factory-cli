@@ -2,15 +2,15 @@ import { createCommandResult, handler } from '../handler';
 
 type Arguments = {
   organizationId: string;
-  runnerId: string;
+  runnerAgentId: string;
 };
 
 export default handler(
-  async (apiClient, { organizationId, runnerId }: Arguments) => {
-    const api = apiClient.runners;
+  async (apiClient, { organizationId, runnerAgentId }: Arguments) => {
+    const api = apiClient.agents;
 
-    await api.deleteRunnerAgent(organizationId, runnerId);
+    await api.deleteRunnerAgent(organizationId, runnerAgentId);
 
-    return createCommandResult('view', { _id: runnerId }, ['_id']);
+    return createCommandResult('view', { _id: runnerAgentId }, ['_id']);
   }
 );

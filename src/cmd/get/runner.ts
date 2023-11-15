@@ -8,9 +8,9 @@ type Arguments = {
 
 export default handler(
   async (apiClient, { organizationId, runnerId }: Arguments) => {
-    const api = apiClient.runners;
+    const api = apiClient.agents;
     const { data: run } = await api.getRunnerAgent(organizationId, runnerId);
 
-    return createCommandResult('view', run, fields.runner);
+    return createCommandResult('view', run, fields.runnerAgent);
   }
 );

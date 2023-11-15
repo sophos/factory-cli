@@ -3,6 +3,7 @@
 import * as faker from 'faker';
 import { execute } from './helpers/execute';
 import knownIds from './helpers/knownIds';
+import parseOutput, { asJson } from './helpers/parseOutput';
 import { loadFixtures } from './fixtures';
 
 beforeAll(async () => {
@@ -13,9 +14,10 @@ describe('factoryctl create', () => {
   jest.setTimeout(20000);
   describe('credential', () => {
     test('create & delete credential', async () => {
-      const id = 'CRUDtestCredential';
-      const createResult = JSON.parse(
-        await execute(
+      const credentialId = 'CRUDtestCredential';
+      let credential_id = '';
+      await expect(
+        execute(
           [
             'create',
             'credential',
@@ -23,57 +25,56 @@ describe('factoryctl create', () => {
             `--name="CI test credential"`,
             '--type=generic',
             '--data.text="hello world"',
-            `--id=${id}`,
+            `--id=${credentialId}`,
             `--project-id=${knownIds.project}`
           ],
           {
             token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
           }
-        )
-      );
+        ).then((result) => {
+          const credential = parseOutput(result, asJson);
+          credential_id = credential._id;
+          return credential;
+        })
+      ).resolves.toHaveProperty('_id');
 
-      expect(createResult).toHaveProperty('_id');
-
-      const deleteResult = JSON.parse(
-        await execute(
+      await expect(
+        execute(
           [
             'delete',
             'credential',
             '--format=json',
             `--project-id=${knownIds.project}`,
-            createResult._id
+            credential_id
           ],
           {
             token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
           }
-        )
-      );
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toHaveProperty('id', credential_id);
 
-      expect(deleteResult).toHaveProperty('id', createResult._id);
-
-      const getAfterDeleteResult = JSON.parse(
-        await execute(
+      await expect(
+        execute(
           [
             'get',
             'credential',
             '--format=json',
             `--project-id=${knownIds.project}`,
-            id
+            credentialId
           ],
           {
             token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN!
           }
-        )
-      );
-
-      expect(getAfterDeleteResult).toBeNull();
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toBeNull();
     });
   });
 
   describe('pipeline', () => {
     test('create & delete pipeline', async () => {
-      const createResult = JSON.parse(
-        await execute(
+      let pipelineId = 'pipelineId';
+      await expect(
+        execute(
           [
             'create',
             'pipeline',
@@ -84,33 +85,34 @@ describe('factoryctl create', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
+        ).then((result) => {
+          const pipeline = parseOutput(result, asJson);
+          pipelineId = pipeline._id;
+          return pipeline;
+        })
+      ).resolves.toHaveProperty('_id');
 
-      expect(createResult).toHaveProperty('_id');
-
-      const deleteResult = JSON.parse(
-        await execute(
+      await expect(
+        execute(
           [
             'delete',
             'pipeline',
             '--project-id',
             knownIds.project,
-            createResult._id,
+            pipelineId,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
-
-      expect(deleteResult).toHaveProperty('_id', createResult._id);
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toHaveProperty('_id', pipelineId);
     });
   });
 
   describe('job', () => {
     test('create & delete job (type: manual)', async () => {
-      const createResult = JSON.parse(
-        await execute(
+      let jobId = 'jobId';
+      await expect(
+        execute(
           [
             'create',
             'job',
@@ -127,31 +129,32 @@ describe('factoryctl create', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
+        ).then((result) => {
+          const job = parseOutput(result, asJson);
+          jobId = job._id;
+          return job;
+        })
+      ).resolves.toHaveProperty('_id');
 
-      expect(createResult).toHaveProperty('_id');
-
-      const deleteResult = JSON.parse(
-        await execute(
+      await expect(
+        execute(
           [
             'delete',
             'job',
             '--project-id',
             knownIds.project,
-            createResult._id,
+            jobId,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
-
-      expect(deleteResult).toHaveProperty('_id', createResult._id);
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toHaveProperty('_id', jobId);
     });
 
     test('create & delete job with variables', async () => {
-      const createResult = JSON.parse(
-        await execute(
+      let jobId = 'jobId';
+      await expect(
+        execute(
           [
             'create',
             'job',
@@ -178,26 +181,26 @@ describe('factoryctl create', () => {
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
+        ).then((result) => {
+          const job = parseOutput(result, asJson);
+          jobId = job._id;
+          return job;
+        })
+      ).resolves.toHaveProperty('_id');
 
-      expect(createResult).toHaveProperty('_id');
-
-      const deleteResult = JSON.parse(
-        await execute(
+      await expect(
+        execute(
           [
             'delete',
             'job',
             '--project-id',
             knownIds.project,
-            createResult._id,
+            jobId,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
-
-      expect(deleteResult).toHaveProperty('_id', createResult._id);
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toHaveProperty('_id', jobId);
     });
 
     test('create & delete job (type: scheduled)', async () => {
@@ -212,8 +215,9 @@ describe('factoryctl create', () => {
         intervalType: 'day',
         offset: '-08:00'
       };
-      const createResult = JSON.parse(
-        await execute(
+      let jobId = 'jobId';
+      await expect(
+        execute(
           [
             'create',
             'job',
@@ -239,26 +243,26 @@ describe('factoryctl create', () => {
             schedule.offset
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
+        ).then((result) => {
+          const job = parseOutput(result, asJson);
+          jobId = job._id;
+          return job;
+        })
+      ).resolves.toHaveProperty('_id');
 
-      expect(createResult).toHaveProperty('_id');
-
-      const deleteResult = JSON.parse(
-        await execute(
+      await expect(
+        execute(
           [
             'delete',
             'job',
             '--project-id',
             knownIds.project,
-            createResult._id,
+            jobId,
             '--format=json'
           ],
           { token: process.env.FACTORY_DYNAMIC_AUTH_TOKEN! }
-        )
-      );
-
-      expect(deleteResult).toHaveProperty('_id', createResult._id);
+        ).then((result) => parseOutput(result, asJson))
+      ).resolves.toHaveProperty('_id', jobId);
     });
   });
 });
